@@ -1,0 +1,157 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Medology Find A Lab - Component
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// @require foundation-sites
+// @require font-awesome
+// @require foundation-font-awesome-buttons
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+// Defaults
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+/// Height for component.
+/// @type Number
+$findalab-height: 300px !default;
+
+/// Global padding for component.
+/// @type Number
+$findalab-padding: 1rem !default;
+
+/// Border for component.
+/// @type Border (width, style, color)
+$findalab-border: $callout-border !default;
+
+/// Width for results list.
+/// @type Number
+$findalab-list-width: 295px !default;
+
+/// Border radius for component.
+/// @type Number
+$findalab-radius: $global-radius !default;
+
+/// Background for search area.
+/// @type Color
+$findalab-search-background: $dark-secondary-color !default;
+
+/// Background color for total area.
+/// @type Color
+$findalab-total-background: $lighter-gray !default;
+
+/// Box shadow for total area.
+/// @type Box Shadow
+$findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
+
+
+// Styles
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+.findalab {
+  border: $findalab-border;
+  border-radius: $findalab-radius;
+  overflow: hidden;
+  position: relative;
+}
+
+.findalab__search {
+  background: $findalab-search-background;
+  border-radius: $findalab-radius 0 0;
+  padding: $findalab-padding;
+
+  @include breakpoint(large) {
+    width: $findalab-list-width;
+  }
+}
+
+.findalab__search-input {
+  margin-bottom: 0;
+}
+
+.findalab__total {
+  background: $findalab-total-background;
+  border-radius: 0 0 0 $findalab-radius;
+  box-shadow: $findalab-total-shadow;
+  padding: $findalab-padding;
+
+  @include breakpoint(large) {
+    width: $findalab-list-width;
+  }
+}
+
+.findalab__map {
+  display: none;
+  height: $findalab-height;
+
+  @include breakpoint(large) {
+    border-left: $findalab-border;
+    border-radius: 0 $callout-title-radius $callout-title-radius 0;
+    display: block;
+    height: 100%;
+    left: $findalab-list-width;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: calc(100% - #{$findalab-list-width}); // interpolate for sass to interpret var
+  }
+
+  // TODO: Remove when refactoring map embed
+  img {
+    min-height: 100%;
+    min-width: 100%;
+  }
+}
+
+.findalab__results {
+  height: $findalab-height;
+  margin: 0;
+  overflow: auto;
+
+  @include breakpoint(large) {
+    height: 450px;
+    width: $findalab-list-width;
+  }
+}
+
+.findalab__result {
+  border-bottom: $findalab-border;
+  padding: $findalab-padding;
+  padding-bottom: 0;
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+}
+
+.findalab__tabs {
+  .button {
+    background: $tab-content-background;
+    border-bottom: 1px solid $tab-border;
+    border-radius: 0;
+    color: $secondary-color;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+    padding: $tab-item-padding;
+
+    &:hover {
+      background: $tab-item-background-hover;
+      color: $secondary-color;
+    }
+  }
+
+  .js-active-tab {
+    .button {
+      background: $tab-background-active;
+      color: $white;
+    }
+  }
+}
+
+.findalab__address-list {
+  list-style: none;
+  margin: 0;
+}
+
+.findalab__structured-hours {
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,77 @@
+<div class="findalab">
+
+  <div class="findalab__search">
+    <form>
+      <div class="input-group findalab__search-input">
+        <input class="input-group-field" type="text" placeholder="Enter Your Zip">
+        <div class="input-group-button">
+          <button type="submit" class="secondary button findalab__button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="findalab__tabs [ row  collapse ] hide-for-large">
+    <div class="js-list-view-tab js-findalab-tab js-active-tab [ columns small-6 ]">
+      <button class="[ button secondary expanded ]">List View</button>
+    </div>
+    <div class="js-map-view-tab js-findalab-tab [ columns small-6 ]">
+      <button class="[ button secondary expanded ]">Map View</button>
+    </div>
+  </div>
+
+  <ul class="js-list-view-content findalab__results scrollbar">
+  </ul>
+
+  <div id="map" class="js-map-view-content findalab__map">
+    <!-- TODO: Replace <img> with map embed -->
+    <img src="/images/placeholder-map-img.png" alt="Delete Me">
+  </div>
+
+  <div class="findalab__total text-center">
+    <small class="subtle-text">Showing results 1-20</small>
+  </div>
+
+</div>
+
+<!-- Template for lab result -->
+<li class="findalab__result hide">
+  <address class="findalab__address-list">
+    <h5>LabCorp</h5>
+    8313 Southwest Fwy Ste 111
+    <br>
+    Houston, TX 77074
+    <br>
+    <small class="subtle-text">Distance: 1.41 miles</small>
+  </address>
+  <div class="findalab__structured-hours">
+    <a href="#">Show Hours ▼</a>
+    <table class="structured-hours__table">
+      <tbody>
+        <tr>
+          <th>Monday</th>
+          <td>8:00 AM - 4:30 PM</td>
+        </tr>
+        <tr>
+          <th>Tuesday</th>
+          <td>8:00 AM - 4:30 PM</td>
+        </tr>
+        <tr>
+          <th>Wednesday</th>
+          <td>8:00 AM - 4:30 PM</td>
+        </tr>
+        <tr>
+          <th>Thursday</th>
+          <td>8:00 AM - 4:30 PM</td>
+        </tr>
+        <tr>
+          <th>Friday</th>
+          <td>8:00 AM - 4:30 PM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="[ button secondary small ] [ ffab-after fa-arrow-right ]">Choose This Location</button>
+</li>
