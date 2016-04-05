@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medology Find A Lab Component</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+  <div class="row">
+    <div class="columns">
+      <h1>Medology - Find A Lab</h1>
+      <div id="medology-findalab"></div>
+    </div>
+  </div>
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/what-input/what-input.js"></script>
+  <script src="bower_components/foundation-sites/dist/foundation.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxBWgQaHW2wWAoWXUgKtwIn8BDJDtqOAA"></script>
+  <script src="../medology-findalab.js"></script>
+
+  <script>
+  $(document).foundation();
+  $('#medology-findalab').load('../medology-findalab.html', function() {
+    var findalab = $(this).find('.findalab').findalab();
+    findalab.baseURL = '/refactor/public/bower_components/medology-findalab/example';
+  });
+  </script>
+
+
+
+</body>
+</html>

@@ -61,10 +61,10 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
   @include breakpoint(large) {
     width: $findalab-list-width;
   }
-}
 
-.findalab__search-input {
-  margin-bottom: 0;
+  .input-group {
+    margin-bottom: 0;
+  }
 }
 
 .findalab__total {
@@ -84,7 +84,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
 
   @include breakpoint(large) {
     border-left: $findalab-border;
-    border-radius: 0 $callout-title-radius $callout-title-radius 0;
+    border-radius: 0 $findalab-radius $findalab-radius 0;
     display: block;
     height: 100%;
     left: $findalab-list-width;
@@ -125,7 +125,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
 .findalab__tabs {
   .button {
     background: $tab-content-background;
-    border-bottom: 1px solid $tab-border;
+    // border-bottom: 1px solid ;
     border-radius: 0;
     color: $secondary-color;
     font-size: 14px;
@@ -152,6 +152,10 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
   margin: 0;
 }
 
-.findalab__structured-hours {
+.findalab__hours {
   margin-bottom: 0.5rem;
+}
+
+.findalab__hours__wrap {
+  display: none;
 }
