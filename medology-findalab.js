@@ -7,7 +7,7 @@
      * @returns {labSearch}
      */
     labSearch: function (settings) {
-      var self = this;
+      var self = _this;
 
       /** @var {int} The zoom level for when no search has been performed yet (pretty far out) */
       this._initialZoom = 3;
@@ -23,8 +23,8 @@
 
       /** @var {string} */
       this.noResultsMessage =
-          "Oops! Sorry, we could not find any testing centers near that location. " +
-          "Please try your search again with a different or less specific address.";
+          'Oops! Sorry, we could not find any testing centers near that location. ' +
+          'Please try your search again with a different or less specific address.';
 
       /** @var {google.maps.Map} */
       this._map = null;
@@ -45,7 +45,7 @@
       this.limit = undefined;
 
       /** @var {string} text for the lab selection buttons */
-      this.labSelectText = "Choose This Location";
+      this.labSelectText = 'Choose This Location';
 
       /**
        * Initializes the map and sets the default viewport lat / long.
@@ -70,10 +70,10 @@
         var mapOptions = {
           center: this._buildLatLong(settings.lat, settings.long),
           zoom: this._initialZoom,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
         };
 
-        this._map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        this._map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
         this._geoCoder = new google.maps.Geocoder();
 
@@ -105,7 +105,9 @@
        * @returns {string} The two character country code. Either CA, PR or US.
        */
       this.getZipCodeCountry = function (zipCode) {
-        var caRegex = new RegExp(/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i);
+        var caRegex = new RegExp(
+          /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
+        );
 
         if (caRegex.test(zipCode)) {
           return 'CA';
@@ -176,7 +178,8 @@
       /**
        * Event handler for when a user selects a lab.
        *
-       * Should be overridden to implement the appropriate behavior on the page this component is used on.
+       * Should be overridden to implement the appropriate behavior
+       * on the page this component is used on.
        *
        * @param {{
        *   id:int
@@ -192,11 +195,12 @@
       };
 
       /**
-       * This function will retrieve latitude and longitudes and also labs near these coordinates.
+       * This function will retrieve latitude and longitudes and also labs
+       * near these coordinates.
        */
       this.search = function (zipcode) {
         this.clearError();
-        $("#results_list").html('');
+        $('#results_list').html('');
 
         this.find('input[name="inputZipSearch"]').val(zipcode);
 
@@ -212,11 +216,11 @@
           return;
         }
 
-        $('.btn_find_lab').html("<i class='fa fa-spin fa-refresh'></i>");
+        $('.btn_find_lab').html('<i class="fa fa-spin fa-refresh"></i>');
 
         $.ajax({
-          url: "/geocode",
-          data: {zip: zipcode, countryCode: country}
+          url: '/geocode',
+          data: { zip: zipcode, countryCode: country },
         }).done(
             /**
              * @param {[{latitude:float, longitude:float, countryCode:string}]}  result
@@ -227,13 +231,13 @@
               }
 
               $.ajax({
-                url: "/labs/nearCoords",
+                url: '/labs/nearCoords',
                 data: $.extend({
                   countryCode: country,
                   filterNetwork: self.excludeNetworks,
                   labCount: self.limit,
-                  network: self.onlyNetwork
-                }, result[0])
+                  network: self.onlyNetwork,
+                }, result[0]),
               }).
               done(self._onSearchSuccess).
               fail(self._onSearchError).
@@ -249,7 +253,7 @@
        *
        * @param {string} message the placeholder message
        */
-      this.setPlaceholder = function(message) {
+      this.setPlaceholder = function (message) {
         this.find('input[name="inputZipSearch"]').attr('placeholder', message);
       };
 
@@ -258,7 +262,7 @@
        *
        * @param {string} text
        */
-      this.setLabSelectText = function(text) {
+      this.setLabSelectText = function (text) {
         this.find('.btn_select_address').html(text);
         this.labSelectText = text;
       };
@@ -269,7 +273,11 @@
        * @param {string} message This is the error message that will be shown.
        */
       this.setError = function (message) {
-        this.find('.message').html("<div id='unmistakable-error' class='row us-labs-error'>" + message + "</div>");
+        this.find('.message').html(
+          '<div id="unmistakable-error" class="row us-labs-error">' +
+          message +
+          '</div>'
+        );
       };
 
       /**
@@ -297,11 +305,11 @@
          * Hide/Show Hours
          * @see https://css-tricks.com/snippets/jquery/toggle-text/
          */
-        $(".c-hours__link").on("click", function (e) {
-          var link = $(this);
-          var toggle = link.siblings(".c-hours__toggle-js");
-          link.text(toggle.is(":visible") ? "Show Hours ▼" : "Hide Hours ▲");
-          toggle.slideToggle("300");
+        $('.c-hours__link').on('click', function (e) {
+          var $link = $(this);
+          var toggle = $link.siblings('.c-hours__toggle-js');
+          $link.text(toggle.is(':visible') ? 'Show Hours ▼' : 'Hide Hours ▲');
+          toggle.slideToggle('300');
 
           e.preventDefault();
         });
@@ -318,7 +326,7 @@
         this._map.setCenter(this._buildLatLong(lat, long));
 
         this._geoCoder.geocode({
-              address: lat + ',' + long
+              address: lat + ',' + long,
             },
             /**
              * @param {[{geometry:{}}]} results
@@ -328,7 +336,7 @@
               if (status == google.maps.GeocoderStatus.OK) {
                 self._map.setCenter(results[0].geometry.location);
               } else {
-                alert("Geocode was not successful for the following reason: " + status);
+                alert('Geocode was not successful for the following reason: ' + status);
               }
             }
         );
@@ -372,18 +380,30 @@
         var vMarker;
 
         var mapMarker = {
-          path: 'm-13.86316,-25.61974l10.845,22.96658c0.31974,0.69158 0.79816,1.17 1.38316,1.54184c0.63711,0.37184 1.32868,0.585 2.02026,0.585c0.69158,0 1.38079,-0.21316 2.02027,-0.585c0.585,-0.37184 1.06342,-0.85026 1.38079,-1.54184l10.845,-22.96658c0.63947,-1.38079 0.95684,-3.13579 0.95684,-5.31473c0,-4.14711 -1.48737,-7.76132 -4.46448,-10.68632c-2.9771,-2.9771 -6.53921,-4.46447 -10.73842,-4.46447c-4.19921,0 -7.76131,1.48737 -10.73842,4.46447c-2.9771,2.925 -4.46684,6.53921 -4.46684,10.68632c0,2.17894 0.31974,3.93394 0.95684,5.31473l0,0zm14.24842,-12.86289c2.07237,0 3.87948,0.74368 5.36921,2.23105c1.48737,1.48974 2.23342,3.24237 2.23342,5.31711c0,2.12447 -0.74605,3.87947 -2.23342,5.36921c-1.48973,1.48737 -3.29684,2.23105 -5.36921,2.23105c-2.07473,0 -3.88184,-0.74368 -5.36921,-2.23105c-1.48973,-1.48974 -2.23342,-3.24474 -2.23342,-5.36921c0,-2.07474 0.74369,-3.82737 2.23342,-5.31711c1.48737,-1.48737 3.29448,-2.23105 5.36921,-2.23105l0,0z',
+          path: 'm-13.86316,-25.61974l10.845,22.96658c0.31974,0.69158 0.79816,1.17' +
+          '1.38316,1.54184c0.63711,0.37184 1.32868,0.585 2.02026,0.585c0.69158,0 1.38079,-0.21316' +
+          ' 2.02027,-0.585c0.585,-0.37184 1.06342,-0.85026' +
+          ' 1.38079,-1.54184l10.845,-22.96658c0.63947,-1.38079 0.95684,-3.13579' +
+          ' 0.95684,-5.31473c0,-4.14711 -1.48737,-7.76132 -4.46448,-10.68632c-2.9771,-2.9771' +
+          ' -6.53921,-4.46447 -10.73842,-4.46447c-4.19921,0 -7.76131,1.48737' +
+          ' -10.73842,4.46447c-2.9771,2.925 -4.46684,6.53921 -4.46684,10.68632c0,2.17894' +
+          ' 0.31974,3.93394 0.95684,5.31473l0,0zm14.24842,-12.86289c2.07237,0 3.87948,0.74368' +
+          ' 5.36921,2.23105c1.48737,1.48974 2.23342,3.24237 2.23342,5.31711c0,2.12447 -0.74605,' +
+          ' 3.87947 -2.23342,5.36921c-1.48973,1.48737 -3.29684,2.23105 -5.36921,2.23105c-2.07473,' +
+          ' 0 -3.88184,-0.74368 -5.36921,-2.23105c-1.48973,-1.48974 -2.23342,-3.24474' +
+          ' -2.23342,-5.36921c0,-2.07474 0.74369,-3.82737 2.23342,-5.31711c1.48737,-1.48737' +
+          ' 3.29448,-2.23105 5.36921,-2.23105l0,0z',
           fillColor: '#3398db',
           fillOpacity: 1,
           scale: 1,
           strokeColor: 'white',
-          strokeWeight: 2
+          strokeWeight: 2,
         };
 
         vMarker = new google.maps.Marker({
           map: this._map,
           icon: mapMarker,
-          position: location
+          position: location,
         });
 
         google.maps.event.addListener(vMarker, 'click', $.proxy(function () {
@@ -392,22 +412,22 @@
               '<div class="addressMarker__lab">' + lab.network_name + '</div>' +
               '<p>' +
               lab.center_address + '<br />' +
-              lab.center_city + ", " + lab.center_state + " " + lab.center_zip + "<br/>" +
-              "<a " +
-              "class='btn_select_address' " +
-              "href='#' " +
-              "data-id='" + lab.center_id + "' " +
-              "data-address='" + lab.center_address + "' " +
-              "data-city='" + lab.center_city + "' " +
-              "data-state='" + lab.center_state + "' " +
-              "data-zip='" + lab.center_zip + "' " +
-              "data-network='" + lab.network_name + "'" +
-              "data-country='" + lab.center_country + "'" +
-              ">" +
+              lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip + '<br/>' +
+              '<a ' +
+              'class="btn_select_address" ' +
+              'href="#" ' +
+              'data-id="' + lab.center_id + '" ' +
+              'data-address="' + lab.center_address + '" ' +
+              'data-city="' + lab.center_city + '" ' +
+              'data-state="' + lab.center_state + '" ' +
+              'data-zip="' + lab.center_zip + '" ' +
+              'data-network="' + lab.network_name + '" ' +
+              'data-country="' + lab.center_country + '"' +
+              '>' +
               this.labSelectText +
-              "</a>" +
-              "</p>" +
-              "</div>"
+              '</a>' +
+              '</p>' +
+              '</div>'
           );
 
           //noinspection JSUnresolvedFunction
@@ -436,7 +456,7 @@
         $('.result-map-wrap').show();
 
         var html = '';
-        var resultsList = $("#results_list");
+        var $resultsList = $('#results_list');
 
         /**
          * @param {int} index
@@ -457,31 +477,31 @@
           html += '<li>' +
               '<div class="address-list__title">' + lab.network_name + '</div>' +
               '<address class="address-list__address">' +
-              lab.center_address + "<br>" +
-              lab.center_city + ", " + lab.center_state + " " + lab.center_zip +
-              "</address>" +
-              "<dl>" +
-              "<dt>Distance:</dt>" +
-              "<dd>" + lab.center_distance.toFixed(2) + "mi.</dd>" +
+              lab.center_address + '<br>' +
+              lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip +
+              '</address>' +
+              '<dl>' +
+              '<dt>Distance:</dt>' +
+              '<dd>' + lab.center_distance.toFixed(2) + 'mi.</dd>' +
               this._buildHoursDom(lab) +
-              "<a " +
-              "class='btn_select_address' " +
-              "href='#' " +
-              "data-id='" + lab.center_id + "' " +
-              "data-address='" + lab.center_address + "' " +
-              "data-city='" + lab.center_city + "' " +
-              "data-state='" + lab.center_state + "' " +
-              "data-zip='" + lab.center_zip + "' " +
-              "data-network='" + lab.network_name + "'" +
-              ">" +
+              '<a ' +
+              'class="btn_select_address" ' +
+              'href="#" ' +
+              'data-id="' + lab.center_id + '" ' +
+              'data-address="' + lab.center_address + '" ' +
+              'data-city="' + lab.center_city + '" ' +
+              'data-state="' + lab.center_state + '" ' +
+              'data-zip="' + lab.center_zip + '" ' +
+              'data-network="' + lab.network_name + '"' +
+              '>' +
               this.labSelectText +
-              "</a>" +
-              "</dl>" +
-              "</li>";
+              '</a>' +
+              '</dl>' +
+              '</li>';
         }, this));
 
-        resultsList.find("li").remove();
-        resultsList.html(html);
+        $resultsList.find('li').remove();
+        $resultsList.html(html);
 
         this._initShowStructuredHours();
 
@@ -500,7 +520,7 @@
        * @returns {string} The structured hours DOM.
        * @private
        */
-      this._buildHoursDom = function(labData) {
+      this._buildHoursDom = function (labData) {
         var hours;
         var value;
         var label;
@@ -521,14 +541,14 @@
            */
           $.each(labData.structured_hours, function (day, hours) {
             label = day;
-            value = hours.open + " - " + hours.close;
+            value = hours.open + ' - ' + hours.close;
 
             if (hours.lunch_start) {
               label += '<br><small>Closed for Lunch</small>';
               value += '<br><small>' + hours.lunch_start + ' - ' + hours.lunch_stop + '</small>';
             }
 
-            html += "<tr><th>" + label + "</th><td>" + value + "</td></tr>";
+            html += '<tr><th>' + label + '</th><td>' + value + '</td></tr>';
           });
 
           html += '</table></div></div><dl>';
@@ -599,7 +619,7 @@
        * @private
        */
       this._onSearchErrorString = function (message) {
-        $("#results_list").html("<li>No Results.</li>");
+        $('#results_list').html('<li>No Results.</li>');
 
         self.setError(this.noResultsMessage);
         self.onSearchError(JSON.parse(message).message);
@@ -610,12 +630,12 @@
        * @private
        */
       this._onSearchComplete = function () {
-        $('.btn_find_lab').html("Search");
+        $('.btn_find_lab').html('Search');
       };
 
       this.construct(settings);
 
       return this;
-    }
+    },
   });
 })(jQuery);
