@@ -1,4 +1,4 @@
-(function ($) {
+(function($) {
   $.fn.extend({
     /**
      * Controller for Lab Search component.
@@ -6,11 +6,14 @@
      * @param   {{lat:float, long:float}} settings
      * @returns {labSearch}
      */
-    labSearch: function (settings) {
-      var self = _this;
+    findalab: function(settings) {
+      var self = this;
+
+      // TODO: add docblock
+      this.baseURL = '';
 
       /** @var {int} The zoom level for when no search has been performed yet (pretty far out) */
-      this._initialZoom = 3;
+      this._initialZoom = 4;
 
       /** @var {int} The zoom level for when there are search results */
       this._resultsZoom = 10;
@@ -47,6 +50,9 @@
       /** @var {string} text for the lab selection buttons */
       this.labSelectText = 'Choose This Location';
 
+      /** @var {string} placeholder text for the search input */
+      this.searchInputPlaceholder = 'Enter Your Zip';
+
       /**
        * Initializes the map and sets the default viewport lat / long.
        *
@@ -63,9 +69,15 @@
           return false;
         }, this));
 
-        this.find('.btn_find_lab').on('click', $.proxy(this._onSearchSubmit, this));
+        this.find('.findalab__search__button').on('click', $.proxy(this._onSearchSubmit, this));
 
         settings = settings || {};
+
+        if (typeof google === 'undefined') {
+          alert('Hey! The Google Maps script is missing or not properly called, please check ' +
+          'the Medology Find A Labs component documentation to make sure everything is ' +
+          'setup correctly.');
+        }
 
         var mapOptions = {
           center: this._buildLatLong(settings.lat, settings.long),
@@ -80,7 +92,7 @@
         this._infoWindow = new google.maps.InfoWindow();
 
         // Capture lab selection events
-        this.on('click', '.btn_select_address', $.proxy(function (event) {
+        this.on('click', '.findalab__result-button', $.proxy(function(event) {
           event.preventDefault();
 
           this._onLabSelect($(event.target).data());
@@ -90,9 +102,9 @@
       };
 
       /**
-       * This function will handle clearing error text.
+       * This functionwill handle clearing error text.
        */
-      this.clearError = function () {
+      this.clearError = function() {
         this.find('.message').html('');
       };
 
@@ -104,7 +116,7 @@
        * @param   {string} zipCode The zipCode to get the country code for.
        * @returns {string} The two character country code. Either CA, PR or US.
        */
-      this.getZipCodeCountry = function (zipCode) {
+      this.getZipCodeCountry = function(zipCode) {
         var caRegex = new RegExp(
           /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
         );
@@ -131,7 +143,7 @@
        *
        * Useful for when the map was hidden when it booted.
        */
-      this.resize = function () {
+      this.resize = function() {
         google.maps.event.trigger(this._map, 'resize');
       };
 
@@ -145,7 +157,7 @@
        * @param  {string}  zip The zip or postal code that was entered into the search field.
        * @throws {string}  error message if the search cannot be performed for some reason.
        */
-      this.onSearchSubmit = function (zip) {
+      this.onSearchSubmit = function(zip) {
         // override me!
       };
 
@@ -159,7 +171,7 @@
        * @param {float} lat   The latitude used for the search.
        * @param {float} long  The longitude used for the search.
        */
-      this.onSearchSuccess = function (labs, lat, long) {
+      this.onSearchSuccess = function(labs, lat, long) {
         // override me!
       };
 
@@ -171,7 +183,7 @@
        *
        * @param {string} message The error message.
        */
-      this.onSearchError = function (message) {
+      this.onSearchError = function(message) {
         // override me!
       };
 
@@ -190,19 +202,19 @@
        *   zip:int
        * }} lab
        */
-      this.onLabSelect = function (lab) {
+      this.onLabSelect = function(lab) {
         // override me!
       };
 
       /**
-       * This function will retrieve latitude and longitudes and also labs
+       * This functionwill retrieve latitude and longitudes and also labs
        * near these coordinates.
        */
-      this.search = function (zipcode) {
+      this.search = function(zipcode) {
         this.clearError();
-        $('#results_list').html('');
+        $('.findalab__results').html('');
 
-        this.find('input[name="inputZipSearch"]').val(zipcode);
+        this.find('.findalab__search__input').val(zipcode);
 
         try {
           var country = this.getZipCodeCountry(zipcode);
@@ -216,22 +228,24 @@
           return;
         }
 
-        $('.btn_find_lab').html('<i class="fa fa-spin fa-refresh"></i>');
+        $('.findalab__search__button').html('<i class="fa fa-spin fa-refresh"></i>');
 
         $.ajax({
-          url: '/geocode',
+          url: this.baseURL + '/geocode',
+          dataType: 'json',
           data: { zip: zipcode, countryCode: country },
         }).done(
             /**
              * @param {[{latitude:float, longitude:float, countryCode:string}]}  result
              */
-            function (result) {
+            function(result) {
               if (result.length == 0) {
                 self._onSearchErrorString('No Results');
               }
 
               $.ajax({
-                url: '/labs/nearCoords',
+                url: self.baseURL + '/labs/nearCoords',
+                dataType: 'json',
                 data: $.extend({
                   countryCode: country,
                   filterNetwork: self.excludeNetworks,
@@ -241,8 +255,8 @@
               }).
               done(self._onSearchSuccess).
               fail(self._onSearchError).
-              always(self._onSearchComplete);
-            }).fail(function (jqXhr) {
+              always($.proxy(self._onSearchComplete, self));
+            }).fail(function(jqXhr) {
           self._onSearchError(jqXhr);
           self._onSearchComplete();
         });
@@ -253,8 +267,8 @@
        *
        * @param {string} message the placeholder message
        */
-      this.setPlaceholder = function (message) {
-        this.find('input[name="inputZipSearch"]').attr('placeholder', message);
+      this.setPlaceholder = function(message) {
+        this.find('.findalab__search__input').attr('placeholder', message);
       };
 
       /**
@@ -262,8 +276,8 @@
        *
        * @param {string} text
        */
-      this.setLabSelectText = function (text) {
-        this.find('.btn_select_address').html(text);
+      this.setLabSelectText = function(text) {
+        this.find('.findalab__result__button').html(text);
         this.labSelectText = text;
       };
 
@@ -272,9 +286,9 @@
        *
        * @param {string} message This is the error message that will be shown.
        */
-      this.setError = function (message) {
+      this.setError = function(message) {
         this.find('.message').html(
-          '<div id="unmistakable-error" class="row us-labs-error">' +
+          '<div class="small error callout">' +
           message +
           '</div>'
         );
@@ -288,7 +302,7 @@
        * @return  {{}}
        * @private
        */
-      this._buildLatLong = function (lat, long) {
+      this._buildLatLong = function(lat, long) {
         lat = lat !== undefined ? lat : this._defaultLat;
         long = long !== undefined ? long : this._defaultLong;
 
@@ -300,18 +314,17 @@
        *
        * @private
        */
-      this._initShowStructuredHours = function () {
+      this._initShowStructuredHours = function() {
         /**
          * Hide/Show Hours
          * @see https://css-tricks.com/snippets/jquery/toggle-text/
          */
-        $('.c-hours__link').on('click', function (e) {
-          var $link = $(this);
-          var toggle = $link.siblings('.c-hours__toggle-js');
-          $link.text(toggle.is(':visible') ? 'Show Hours ▼' : 'Hide Hours ▲');
-          toggle.slideToggle('300');
-
+        $('.findalab__hours__link').on('click', function(e) {
           e.preventDefault();
+          var $link = $(this);
+          var $toggle = $link.siblings('.findalab__hours__wrap');
+          $link.text($toggle.is(':visible') ? 'Show Hours ▼' : 'Hide Hours ▲');
+          $toggle.slideToggle('300');
         });
       };
 
@@ -322,7 +335,7 @@
        * @param {float} long  The longitude to center to.
        * @private
        */
-      this._centerMap = function (lat, long) {
+      this._centerMap = function(lat, long) {
         this._map.setCenter(this._buildLatLong(lat, long));
 
         this._geoCoder.geocode({
@@ -332,7 +345,7 @@
              * @param {[{geometry:{}}]} results
              * @param status
              */
-            function (results, status) {
+            function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
                 self._map.setCenter(results[0].geometry.location);
               } else {
@@ -354,7 +367,7 @@
        *   zip:int
        * }} lab
        */
-      this._onLabSelect = function (lab) {
+      this._onLabSelect = function(lab) {
         this.onLabSelect(lab);
       };
 
@@ -375,7 +388,7 @@
        * }} lab
        * @private
        */
-      this._showMarker = function (lab) {
+      this._showMarker = function(lab) {
         var location = this._buildLatLong(lab.center_latitude, lab.center_longitude);
         var vMarker;
 
@@ -406,7 +419,7 @@
           position: location,
         });
 
-        google.maps.event.addListener(vMarker, 'click', $.proxy(function () {
+        google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
           this._infoWindow.setContent(
               '<div class="addressMarker">' +
               '<div class="addressMarker__lab">' + lab.network_name + '</div>' +
@@ -430,13 +443,13 @@
               '</div>'
           );
 
-          //noinspection JSUnresolvedFunction
+          // noinspection JSUnresolvedFunction
           this._infoWindow.open(this._map, vMarker);
         }, this));
       };
 
       /**
-       * This function will handle rendering labs.
+       * This functionwill handle rendering labs.
        * @param {[{
        *   center_id:int,
        *   center_address:string,
@@ -451,12 +464,15 @@
        * }]} labs
        * @private
        */
-      this._render = function (labs) {
-        $('.bg_map_image').hide();
-        $('.result-map-wrap').show();
+      this._render = function(labs) {
+        // $('.bg_map_image').hide(); // hide empty results
+        // $('.result-map-wrap').show(); // remove?
 
         var html = '';
-        var $resultsList = $('#results_list');
+        var $resultsList = this.find('.findalab__results');
+
+        var pluralLabs = labs.length > 1 ? 's' : '';
+        this.find('.findalab__total__text').html(labs.length + ' Result' + pluralLabs);
 
         /**
          * @param {int} index
@@ -473,19 +489,19 @@
          *   structured_hours:object
          * }} lab
          */
-        $.each(labs, $.proxy(function (index, lab) {
-          html += '<li>' +
-              '<div class="address-list__title">' + lab.network_name + '</div>' +
-              '<address class="address-list__address">' +
+        $.each(labs, $.proxy(function(index, lab) {
+          html += '<li class="findalab__result">' +
+              '<h5 class="findalab__result__title">' + lab.network_name + '</h5>' +
+              '<address class="findalab__result__address">' +
               lab.center_address + '<br>' +
               lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip +
               '</address>' +
-              '<dl>' +
-              '<dt>Distance:</dt>' +
-              '<dd>' + lab.center_distance.toFixed(2) + 'mi.</dd>' +
+              '<small class="subtle-text"><strong>Distance: </strong>' +
+              lab.center_distance.toFixed(2) + 'mi.' +
+              '</small>' +
               this._buildHoursDom(lab) +
               '<a ' +
-              'class="btn_select_address" ' +
+              'class="findalab__result-button [ button secondary small ] [ ffab-after fa-arrow-right ]" ' +
               'href="#" ' +
               'data-id="' + lab.center_id + '" ' +
               'data-address="' + lab.center_address + '" ' +
@@ -520,7 +536,7 @@
        * @returns {string} The structured hours DOM.
        * @private
        */
-      this._buildHoursDom = function (labData) {
+      this._buildHoursDom = function(labData) {
         var hours;
         var value;
         var label;
@@ -530,16 +546,17 @@
           html = '<dt>Hours:</dt><dd>' + labData.center_hours + '</dd>';
         } else {
           html += '</dl>' +
-              '<div class="c-hours">' +
-              '<a href="#" class="c-hours__link" id="' + labData.center_id + '">Show Hours ▼</a>' +
-              '<div class="c-hours__toggle-js">' +
-              '<table class="c-hours__table">';
+              '<div class="findalab__hours">' +
+              '<a href="#" class="findalab__hours__link" id="' + labData.center_id + '">Show Hours ▼</a>' +
+              '<div class="findalab__hours__wrap">' +
+              '<small>' +
+              '<table class="findalab__hours__table">';
 
           /**
            * @param {{string}} day
            * @param {{open:string, close:string, lunch_start:string, lunch_stop:string}} hours
            */
-          $.each(labData.structured_hours, function (day, hours) {
+          $.each(labData.structured_hours, function(day, hours) {
             label = day;
             value = hours.open + ' - ' + hours.close;
 
@@ -551,7 +568,7 @@
             html += '<tr><th>' + label + '</th><td>' + value + '</td></tr>';
           });
 
-          html += '</table></div></div><dl>';
+          html += '</table></small></div></div><dl>';
         }
 
         return html;
@@ -562,10 +579,10 @@
        *
        * @private
        */
-      this._onSearchSubmit = function (e) {
-        e.preventDefault();
+      this._onSearchSubmit = function(event) {
+        event.preventDefault();
 
-        var zip = this.find('input[name="inputZipSearch"]').val();
+        var zip = this.find('.findalab__search__input').val();
 
         this.search(zip);
 
@@ -593,7 +610,8 @@
        * }}    response
        * @private
        */
-      this._onSearchSuccess = function (response) {
+      this._onSearchSuccess = function(response) {
+        console.log(response);
         if (response.labs.length == 0) {
           self._onSearchErrorString(self.noResultsMessage);
         } else {
@@ -608,7 +626,7 @@
        * @param {{responseText:string}} jqXhr
        * @private
        */
-      this._onSearchError = function (jqXhr) {
+      this._onSearchError = function(jqXhr) {
         self._onSearchErrorString(jqXhr.responseText);
       };
 
@@ -618,19 +636,19 @@
        * @param {string} message
        * @private
        */
-      this._onSearchErrorString = function (message) {
-        $('#results_list').html('<li>No Results.</li>');
+      this._onSearchErrorString = function(message) {
+        this.find('.findalab__results').html('<li>No Results.</li>');
 
         self.setError(this.noResultsMessage);
         self.onSearchError(JSON.parse(message).message);
       };
 
       /**
-       * This function will handle clean up after searches regardless of server response.
+       * This functionwill handle clean up after searches regardless of server response.
        * @private
        */
-      this._onSearchComplete = function () {
-        $('.btn_find_lab').html('Search');
+      this._onSearchComplete = function() {
+        this.find('.findalab__search__button').html('<i class="fa fa-search"></i>');
       };
 
       this.construct(settings);
