@@ -1,11 +1,11 @@
 <div class="findalab">
 
   <div class="findalab__search">
-    <form>
-      <div class="input-group findalab__search-input">
-        <input class="input-group-field" type="text" placeholder="Enter Your Zip">
+    <form class="findalab__search__form">
+      <div class="input-group">
+        <input type="text" class="findalab__search__input input-group-field">
         <div class="input-group-button">
-          <button type="submit" class="secondary button findalab__button">
+          <button type class="[ secondary button ] findalab__search__button">
             <i class="fa fa-search"></i>
           </button>
         </div>
@@ -23,55 +23,36 @@
   </div>
 
   <ul class="js-list-view-content findalab__results scrollbar">
+    <li class="findalab__result hide">
+      <address class="findalab__result__address">
+        <h5>LabCorp</h5>
+        Address
+        <br>
+        City, State Zip
+        <br>
+        <small class="subtle-text">Distance: #.## miles</small>
+      </address>
+      <div class="findalab__hours">
+        <a href="#" class="findalab__hours__link">Show Hours ▼</a>
+        <div class="findalab__hours__wrap">
+          <table class="findalab__hours__table">
+            <tbody>
+              <tr>
+                <th>Day</th>
+                <td>Hours</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <button class="findalab__result-button [ button secondary small ] [ ffab-after fa-arrow-right ]">Choose This Location</button>
+    </li>
   </ul>
 
-  <div id="map" class="js-map-view-content findalab__map">
-    <!-- TODO: Replace <img> with map embed -->
-    <img src="/images/placeholder-map-img.png" alt="Delete Me">
-  </div>
+  <div class="js-map-view-content findalab__map" id="map"></div>
 
   <div class="findalab__total text-center">
-    <small class="subtle-text">Showing results 1-20</small>
+    <small class="subtle-text findalab__total__text">No Results</small>
   </div>
 
 </div>
-
-<!-- Template for lab result -->
-<li class="findalab__result hide">
-  <address class="findalab__address-list">
-    <h5>LabCorp</h5>
-    8313 Southwest Fwy Ste 111
-    <br>
-    Houston, TX 77074
-    <br>
-    <small class="subtle-text">Distance: 1.41 miles</small>
-  </address>
-  <div class="findalab__structured-hours">
-    <a href="#">Show Hours ▼</a>
-    <table class="structured-hours__table">
-      <tbody>
-        <tr>
-          <th>Monday</th>
-          <td>8:00 AM - 4:30 PM</td>
-        </tr>
-        <tr>
-          <th>Tuesday</th>
-          <td>8:00 AM - 4:30 PM</td>
-        </tr>
-        <tr>
-          <th>Wednesday</th>
-          <td>8:00 AM - 4:30 PM</td>
-        </tr>
-        <tr>
-          <th>Thursday</th>
-          <td>8:00 AM - 4:30 PM</td>
-        </tr>
-        <tr>
-          <th>Friday</th>
-          <td>8:00 AM - 4:30 PM</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <button class="[ button secondary small ] [ ffab-after fa-arrow-right ]">Choose This Location</button>
-</li>
