@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker run -it -v $(pwd):/data --rm chekote/bower:1.7.7 "echo pid1 > /dev/null && bower $@"
+
