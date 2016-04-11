@@ -1,58 +1,73 @@
 <div class="findalab">
 
   <div class="findalab__search">
-    <form class="findalab__search__form">
-      <div class="input-group">
-        <input type="text" class="findalab__search__input input-group-field">
-        <div class="input-group-button">
-          <button type class="[ secondary button ] findalab__search__button">
-            <i class="fa fa-search"></i>
-          </button>
-        </div>
+    <div class="input-group">
+      <input type="text" class="input-group-field" data-findalab-search-field>
+      <div class="input-group-button">
+        <button type class="[ secondary button ]" data-findalab-search-button>
+          <i class="[ fa fa-search ]"></i>
+        </button>
       </div>
-    </form>
+    </div>
+    <div data-findalab-error></div>
   </div>
 
-  <div class="findalab__tabs [ row  collapse ] hide-for-large">
-    <div class="js-list-view-tab js-findalab-tab js-active-tab [ columns small-6 ]">
-      <button class="[ button secondary expanded ]">List View</button>
-    </div>
-    <div class="js-map-view-tab js-findalab-tab [ columns small-6 ]">
-      <button class="[ button secondary expanded ]">Map View</button>
-    </div>
-  </div>
-
-  <ul class="js-list-view-content findalab__results scrollbar">
-    <li class="findalab__result hide">
-      <address class="findalab__result__address">
-        <h5>LabCorp</h5>
-        Address
-        <br>
-        City, State Zip
-        <br>
-        <small class="subtle-text">Distance: #.## miles</small>
-      </address>
-      <div class="findalab__hours">
-        <a href="#" class="findalab__hours__link">Show Hours ▼</a>
-        <div class="findalab__hours__wrap">
-          <table class="findalab__hours__table">
-            <tbody>
-              <tr>
-                <th>Day</th>
-                <td>Hours</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <button class="findalab__result-button [ button secondary small ] [ ffab-after fa-arrow-right ]">Choose This Location</button>
+  <ul class="findalab__nav show-for-small-only" data-findalab-nav>
+    <li class="[ small-6 columns ] is-active">
+      <a href="#" data-findalab-nav-list>List View</a>
+    </li>
+    <li class="[ small-6 columns ]">
+      <a href="#" data-findalab-nav-map>Map View</a>
     </li>
   </ul>
 
-  <div class="js-map-view-content findalab__map" id="map"></div>
+  <div class="findalab__list">
+    <ul class="findalab__results scrollbar" data-findalab-result-list>
+      <li class="findalab__result hide" data-findalab-result>
+        <h5 data-findalab-result-title></h5>
+        <address data-findalab-result-address></address>
+        <small class="subtle-text">
+          Distance: <span data-findalab-result-distance></span>mi.
+        </small>
+        <div data-findalab-result-hours></div>
+        <div data-findalab-result-structured-hours>
+          <a href="#" data-findalab-toggle-hours>Show Hours ▼</a>
+          <div class="findalab__hours">
+            <table>
+              <tbody data-findalab-structured-hours-body>
+                <tr data-findalab-structured-hours-row>
+                  <th>
+                    <div>
+                      <small data-findalab-result-day></small>
+                    </div>
+                    <div data-findalab-result-day-lunch>
+                      <small>Closed for Lunch</small>
+                    </div>
+                  </th>
+                  <td class="text-right">
+                    <div>
+                      <small data-findalab-result-hours></small>
+                    </div>
+                    <div data-findalab-result-day-lunch>
+                      <small data-findalab-result-hours-lunch></small>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <button class="[ button secondary small ][ ffab-after fa-arrow-right ]"
+        data-findalab-result-button></button>
+      </li>
+    </ul>
+  </div>
 
-  <div class="findalab__total text-center">
-    <small class="subtle-text findalab__total__text">No Results</small>
+  <!-- TODO: Use the data attribute to load the map (instead of the ID) -->
+  <div class="findalab__map" id="map" data-findalab-map></div>
+
+  <div class="findalab__total">
+    <small class="subtle-text" data-findalab-total>No Results</small>
   </div>
 
 </div>

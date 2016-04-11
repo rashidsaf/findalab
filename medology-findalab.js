@@ -58,8 +58,8 @@
        *
        * @param {{lat:float, long:float}} settings
        */
-      this.construct = function (settings) {
-        this.find('input').keyup($.proxy(function (e) {
+      this.construct = function(settings) {
+        this.find('input').keyup($.proxy(function(e) {
           e.preventDefault();
 
           if (e.keyCode == 13) {
@@ -69,7 +69,9 @@
           return false;
         }, this));
 
-        this.find('.findalab__search__button').on('click', $.proxy(this._onSearchSubmit, this));
+        this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
+
+        this.setPlaceholder(self.searchInputPlaceholder);
 
         settings = settings || {};
 
@@ -92,11 +94,9 @@
         this._infoWindow = new google.maps.InfoWindow();
 
         // Capture lab selection events
-        this.on('click', '.findalab__result-button', $.proxy(function(event) {
+        this.on('click', '[data-findalab-result-button]', $.proxy(function(event) {
           event.preventDefault();
-
           this._onLabSelect($(event.target).data());
-
           return false;
         }, this));
       };
@@ -105,7 +105,7 @@
        * This functionwill handle clearing error text.
        */
       this.clearError = function() {
-        this.find('.message').html('');
+        this.find('[data-findalab-error]').html('');
       };
 
       /**
@@ -212,9 +212,9 @@
        */
       this.search = function(zipcode) {
         this.clearError();
-        $('.findalab__results').html('');
+        // $('[data-findalab-result-list]').html('');
 
-        this.find('.findalab__search__input').val(zipcode);
+        this.find('[data-findalab-search-field]').val(zipcode);
 
         try {
           var country = this.getZipCodeCountry(zipcode);
@@ -228,7 +228,7 @@
           return;
         }
 
-        $('.findalab__search__button').html('<i class="fa fa-spin fa-refresh"></i>');
+        $('[data-findalab-search-button]').html('<i class="fa fa-spin fa-refresh"></i>');
 
         $.ajax({
           url: this.baseURL + '/geocode',
@@ -268,7 +268,7 @@
        * @param {string} message the placeholder message
        */
       this.setPlaceholder = function(message) {
-        this.find('.findalab__search__input').attr('placeholder', message);
+        this.find('[data-findalab-search-field]').attr('placeholder', message);
       };
 
       /**
@@ -277,7 +277,7 @@
        * @param {string} text
        */
       this.setLabSelectText = function(text) {
-        this.find('.findalab__result__button').html(text);
+        this.find('[data-findalab-result-button]').html(text);
         this.labSelectText = text;
       };
 
@@ -287,8 +287,10 @@
        * @param {string} message This is the error message that will be shown.
        */
       this.setError = function(message) {
-        this.find('.message').html(
-          '<div class="small error callout">' +
+        console.log(message);
+        this.find('[data-findalab-error]').html(
+          '<div class="small alert callout findalab__error">' +
+          '<i class="fa fa-warning"></i> ' +
           message +
           '</div>'
         );
@@ -319,10 +321,10 @@
          * Hide/Show Hours
          * @see https://css-tricks.com/snippets/jquery/toggle-text/
          */
-        $('.findalab__hours__link').on('click', function(e) {
-          e.preventDefault();
+        $('[data-findalab-toggle-hours]').on('click', function(event) {
+          event.preventDefault();
           var $link = $(this);
-          var $toggle = $link.siblings('.findalab__hours__wrap');
+          var $toggle = $link.siblings('.findalab__hours');
           $link.text($toggle.is(':visible') ? 'Show Hours ▼' : 'Hide Hours ▲');
           $toggle.slideToggle('300');
         });
@@ -421,13 +423,14 @@
 
         google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
           this._infoWindow.setContent(
-              '<div class="addressMarker">' +
-              '<div class="addressMarker__lab">' + lab.network_name + '</div>' +
+              '<h6 style="margin: 0;">' + lab.network_name + '</h6>' +
               '<p>' +
-              lab.center_address + '<br />' +
-              lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip + '<br/>' +
+              lab.center_address + '<br>' +
+              lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip +
+              '</p>' +
               '<a ' +
-              'class="btn_select_address" ' +
+              'class="[ tiny secondary button ][ ffab-after fa-arrow-right ]" ' +
+              'style="margin-bottom: 0;" ' +
               'href="#" ' +
               'data-id="' + lab.center_id + '" ' +
               'data-address="' + lab.center_address + '" ' +
@@ -438,9 +441,7 @@
               'data-country="' + lab.center_country + '"' +
               '>' +
               this.labSelectText +
-              '</a>' +
-              '</p>' +
-              '</div>'
+              '</a>'
           );
 
           // noinspection JSUnresolvedFunction
@@ -469,10 +470,12 @@
         // $('.result-map-wrap').show(); // remove?
 
         var html = '';
-        var $resultsList = this.find('.findalab__results');
+        var $resultsList = this.find('[data-findalab-result-list]');
+        var $resultTemplate = this.find('[data-findalab-result]');
+        var $rowTemplate = this.find('[data-findalab-structured-hours-row]');
 
         var pluralLabs = labs.length > 1 ? 's' : '';
-        this.find('.findalab__total__text').html(labs.length + ' Result' + pluralLabs);
+        this.find('[data-findalab-total]').html(labs.length + ' Result' + pluralLabs);
 
         /**
          * @param {int} index
@@ -490,34 +493,38 @@
          * }} lab
          */
         $.each(labs, $.proxy(function(index, lab) {
-          html += '<li class="findalab__result">' +
-              '<h5 class="findalab__result__title">' + lab.network_name + '</h5>' +
-              '<address class="findalab__result__address">' +
-              lab.center_address + '<br>' +
-              lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip +
-              '</address>' +
-              '<small class="subtle-text"><strong>Distance: </strong>' +
-              lab.center_distance.toFixed(2) + 'mi.' +
-              '</small>' +
-              this._buildHoursDom(lab) +
-              '<a ' +
-              'class="findalab__result-button [ button secondary small ] [ ffab-after fa-arrow-right ]" ' +
-              'href="#" ' +
-              'data-id="' + lab.center_id + '" ' +
-              'data-address="' + lab.center_address + '" ' +
-              'data-city="' + lab.center_city + '" ' +
-              'data-state="' + lab.center_state + '" ' +
-              'data-zip="' + lab.center_zip + '" ' +
-              'data-network="' + lab.network_name + '"' +
-              '>' +
-              this.labSelectText +
-              '</a>' +
-              '</dl>' +
-              '</li>';
+          var $result = $resultTemplate.clone();
+          $result.find('[data-findalab-result-title]').html(lab.network_name);
+          $result.find('[data-findalab-result-address]').html(
+            lab.center_address + '<br>' +
+            lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip
+          );
+          $result.find('[data-findalab-result-distance]').html(
+            lab.center_distance.toFixed(2)
+          );
+          $result.find('[data-findalab-result-button]')
+          .attr('data-id', lab.center_id)
+          .attr('data-address', lab.center_address)
+          .attr('data-city', lab.center_city)
+          .attr('data-state', lab.center_state)
+          .attr('data-zip', lab.center_zip)
+          .attr('data-network', lab.network_name)
+          .html(this.labSelectText);
+
+          if (!lab.structured_hours) {
+            $result.find('[data-findalab-result-hours]').html(labData.center_hours);
+          } else {
+            // var hours = this._buildHoursDom(lab);
+          }
+
+          // $result.find('[data-findalab-structured-hours-body]').html(hours);
+
+          $result.removeClass('hide').appendTo('[data-findalab-result-list]');
+
         }, this));
 
-        $resultsList.find('li').remove();
-        $resultsList.html(html);
+        // $resultsList.html('');
+        // TODO: Clear old results
 
         this._initShowStructuredHours();
 
@@ -537,41 +544,46 @@
        * @private
        */
       this._buildHoursDom = function(labData) {
-        var hours;
-        var value;
-        var label;
         var html = '';
+        /**
+         * @param {{string}} day
+         * @param {{open:string, close:string, lunch_start:string, lunch_stop:string}} hours
+         */
+        $.each(labData.structured_hours, function(day, hours) {
+          html += '<tr data-findalab-structured-hours-row>' +
+            '<th>' +
+              '<div>' +
+                '<small data-findalab-result-day>' +
+                day +
+                '</small>' +
+              '</div>' +
+              '<div data-findalab-result-day-lunch>' +
+                '<small>Closed for Lunch</small>' +
+              '</div>' +
+            '</th>' +
+            '<td class="text-right">' +
+              '<div>' +
+                '<small data-findalab-result-hours></small>' +
+              '</div>' +
+              '<div data-findalab-result-day-lunch>' +
+                '<small data-findalab-result-hours-lunch></small>' +
+              '</div>' +
+            '</td>' +
+          '</tr>'
 
-        if (!labData.structured_hours) {
-          html = '<dt>Hours:</dt><dd>' + labData.center_hours + '</dd>';
-        } else {
-          html += '</dl>' +
-              '<div class="findalab__hours">' +
-              '<a href="#" class="findalab__hours__link" id="' + labData.center_id + '">Show Hours ▼</a>' +
-              '<div class="findalab__hours__wrap">' +
-              '<small>' +
-              '<table class="findalab__hours__table">';
-
-          /**
-           * @param {{string}} day
-           * @param {{open:string, close:string, lunch_start:string, lunch_stop:string}} hours
-           */
-          $.each(labData.structured_hours, function(day, hours) {
-            label = day;
-            value = hours.open + ' - ' + hours.close;
-
-            if (hours.lunch_start) {
-              label += '<br><small>Closed for Lunch</small>';
-              value += '<br><small>' + hours.lunch_start + ' - ' + hours.lunch_stop + '</small>';
-            }
-
-            html += '<tr><th>' + label + '</th><td>' + value + '</td></tr>';
-          });
-
-          html += '</table></small></div></div><dl>';
-        }
-
-        return html;
+          if (hours.lunch_start) {
+            $row.find('[data-findalab-result-hours-lunch]').html(
+              hours.lunch_start + ' - ' + hours.lunch_stop
+            );
+          } else {
+            $row.find('[data-findalab-result-day-lunch]').remove();
+          }
+          $row.find('[data-findalab-result-day]').html(day);
+          $row.find('[data-findalab-result-hours]').html(
+            hours.open + ' - ' + hours.close
+          );
+          // var html += html;
+        });
       };
 
       /**
@@ -582,7 +594,7 @@
       this._onSearchSubmit = function(event) {
         event.preventDefault();
 
-        var zip = this.find('.findalab__search__input').val();
+        var zip = this.find('[data-findalab-search-field]').val();
 
         this.search(zip);
 
@@ -611,7 +623,6 @@
        * @private
        */
       this._onSearchSuccess = function(response) {
-        console.log(response);
         if (response.labs.length == 0) {
           self._onSearchErrorString(self.noResultsMessage);
         } else {
@@ -637,7 +648,7 @@
        * @private
        */
       this._onSearchErrorString = function(message) {
-        this.find('.findalab__results').html('<li>No Results.</li>');
+        this.find('[data-findalab-result-list]').html('<li>No Results.</li>');
 
         self.setError(this.noResultsMessage);
         self.onSearchError(JSON.parse(message).message);
@@ -648,7 +659,7 @@
        * @private
        */
       this._onSearchComplete = function() {
-        this.find('.findalab__search__button').html('<i class="fa fa-search"></i>');
+        this.find('[data-findalab-search-button]').html('<i class="fa fa-search"></i>');
       };
 
       this.construct(settings);
