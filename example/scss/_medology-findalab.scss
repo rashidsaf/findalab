@@ -67,11 +67,17 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
   }
 }
 
+.findalab__error {
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+}
+
 .findalab__total {
   background: $findalab-total-background;
   border-radius: 0 0 0 $findalab-radius;
   box-shadow: $findalab-total-shadow;
   padding: $findalab-padding;
+  text-align: center;
 
   @include breakpoint(large) {
     width: $findalab-list-width;
@@ -153,6 +159,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
 }
 
 .findalab__hours {
+  display: none;
   margin-bottom: 0.5rem;
 }
 
