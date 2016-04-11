@@ -512,12 +512,10 @@
           .html(this.labSelectText);
 
           if (!lab.structured_hours) {
-            $result.find('[data-findalab-result-hours]').html(labData.center_hours);
+            $result.find('[data-findalab-result-hours]').html(lab.center_hours);
           } else {
-            // var hours = this._buildHoursDom(lab);
+            this._buildHoursDom(lab, $result);
           }
-
-          // $result.find('[data-findalab-structured-hours-body]').html(hours);
 
           $result.removeClass('hide').appendTo('[data-findalab-result-list]');
 
@@ -539,51 +537,46 @@
       /**
        * Builds the structured hours DOM for a Lab entry.
        *
-       * @param   {{center_id:int, center_hours:string, structured_hours:object}} labData
+       * @param {{
+       *   center_id:int,
+       *   center_address:string,
+       *   center_city:string,
+       *   center_state:string,
+       *   center_zip:string,
+       *   center_hours:string,
+       *   center_network:string,
+       *   center_distance:float,
+       *   network_name:string,
+       *   structured_hours:object
+       * }} lab
+       * @param   {jQuery} $result The jQuery DOM that should be modified to show the hours.
        * @returns {string} The structured hours DOM.
        * @private
        */
-      this._buildHoursDom = function(labData) {
-        var html = '';
+      this._buildHoursDom = function(lab, $result) {
+        var $table = $result.find('[data-findalab-structured-hours-body]');
+
         /**
          * @param {{string}} day
          * @param {{open:string, close:string, lunch_start:string, lunch_stop:string}} hours
          */
-        $.each(labData.structured_hours, function(day, hours) {
-          html += '<tr data-findalab-structured-hours-row>' +
-            '<th>' +
-              '<div>' +
-                '<small data-findalab-result-day>' +
-                day +
-                '</small>' +
-              '</div>' +
-              '<div data-findalab-result-day-lunch>' +
-                '<small>Closed for Lunch</small>' +
-              '</div>' +
-            '</th>' +
-            '<td class="text-right">' +
-              '<div>' +
-                '<small data-findalab-result-hours></small>' +
-              '</div>' +
-              '<div data-findalab-result-day-lunch>' +
-                '<small data-findalab-result-hours-lunch></small>' +
-              '</div>' +
-            '</td>' +
-          '</tr>'
+        $.each(lab.structured_hours, function(day, hours) {
+          var $row = $result.find('[data-findalab-structured-hours-row][data-template]').clone();
+          $row.removeAttr('data-template');
+
+          console.log(day);
+          $row.find('[data-findalab-result-day]').html(day);
+          $row.find('[data-findalab-result-hours]').html(hours.open + " - " + hours.close);
 
           if (hours.lunch_start) {
-            $row.find('[data-findalab-result-hours-lunch]').html(
-              hours.lunch_start + ' - ' + hours.lunch_stop
-            );
-          } else {
-            $row.find('[data-findalab-result-day-lunch]').remove();
+            $row.find('[data-findalab-result-hours-lunch]').html(hours.lunch_start + ' - ' + hours.lunch_stop);
+            $row.find('[data-findalab-result-day-lunch]').removeClass('hide');
           }
-          $row.find('[data-findalab-result-day]').html(day);
-          $row.find('[data-findalab-result-hours]').html(
-            hours.open + ' - ' + hours.close
-          );
-          // var html += html;
+
+          $table.append($row);
         });
+
+        $result.find('[data-findalab-result-structured-hours]').removeClass('hide');
       };
 
       /**

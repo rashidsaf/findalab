@@ -30,17 +30,17 @@
           Distance: <span data-findalab-result-distance></span>mi.
         </small>
         <div data-findalab-result-hours></div>
-        <div data-findalab-result-structured-hours>
+        <div class="hide" data-findalab-result-structured-hours>
           <a href="#" data-findalab-toggle-hours>Show Hours ▼</a>
           <div class="findalab__hours">
             <table>
               <tbody data-findalab-structured-hours-body>
-                <tr data-findalab-structured-hours-row>
+                <tr data-findalab-structured-hours-row data-template>
                   <th>
                     <div>
                       <small data-findalab-result-day></small>
                     </div>
-                    <div data-findalab-result-day-lunch>
+                    <div class="hide" data-findalab-result-day-lunch>
                       <small>Closed for Lunch</small>
                     </div>
                   </th>
@@ -48,7 +48,7 @@
                     <div>
                       <small data-findalab-result-hours></small>
                     </div>
-                    <div data-findalab-result-day-lunch>
+                    <div class="hide" data-findalab-result-day-lunch>
                       <small data-findalab-result-hours-lunch></small>
                     </div>
                   </td>
