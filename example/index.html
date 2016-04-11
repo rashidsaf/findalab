@@ -23,10 +23,10 @@
   <script src="../medology-findalab.js"></script>
 
   <script>
-  $(document).foundation();
   $('#medology-findalab').load('../medology-findalab.html', function() {
     var findalab = $(this).find('.findalab').findalab();
     findalab.baseURL = '/refactor/public/bower_components/medology-findalab/example';
+    $(document).foundation();
   });
   </script>
 
