@@ -8,7 +8,7 @@ var sassPaths = [
   BOWER + '/fontawesome/scss',
 ];
 
-gulp.task('sass', function () {
+gulp.task('sass', function() {
   return gulp.src('scss/app.scss')
     .pipe($.sass({
       includePaths: sassPaths,
@@ -20,6 +20,6 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('css'));
 });
 
-gulp.task('default', ['sass'], function () {
+gulp.task('default', ['sass'], function() {
   gulp.watch(['scss/**/*.scss'], ['sass']);
 });
