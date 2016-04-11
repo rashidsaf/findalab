@@ -1,1 +1,1364 @@
-{"labs":[{"number":"5867","address":"23816 Hwy 59 North","geocode_address":"","city":"Kingwood","state":"TX","zipcode":"77339","hours":"M-F 7:00 am-6:00 pm","latitude":"30.0527960000","longitude":"-95.2559850000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"2.2097600582310806","center_id":"5867","center_address":"23816 Hwy 59 North","center_state":"TX","center_city":"Kingwood","center_zip":"77339","center_hours":"M-F 7:00 am-6:00 pm","center_latitude":"30.0527960000","center_longitude":"-95.2559850000","center_network":"National","center_country":"US","center_distance":2.2097600582311,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:00 AM","close":"6:00 PM"},"Tuesday":{"open":"7:00 AM","close":"6:00 PM"},"Wednesday":{"open":"7:00 AM","close":"6:00 PM"},"Thursday":{"open":"7:00 AM","close":"6:00 PM"},"Friday":{"open":"7:00 AM","close":"6:00 PM"}}},{"number":"13","address":"201 KINGWOOD MEDICAL DR #A100","geocode_address":"201 KINGWOOD MEDICAL DR #A100","city":"KINGWOOD","state":"TX","zipcode":"77339","hours":"M-F  7:30-4:30PM Sat 8AM - 12PM","latitude":"30.0470049000","longitude":"-95.2569061000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"2.2505084601543994","center_id":"13","center_address":"201 Kingwood Medical Dr #a100","center_state":"TX","center_city":"Kingwood","center_zip":"77339","center_hours":"M-F  7:30-4:30PM Sat 8AM - 12PM","center_latitude":"30.0470049000","center_longitude":"-95.2569061000","center_network":"Labcorp","center_country":"US","center_distance":2.2505084601544,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"7:30 AM","close":"4:30 PM"},"Tuesday":{"open":"7:30 AM","close":"4:30 PM"},"Wednesday":{"open":"7:30 AM","close":"4:30 PM"},"Thursday":{"open":"7:30 AM","close":"4:30 PM"},"Friday":{"open":"7:30 AM","close":"4:30 PM"},"Saturday":{"open":"8:00 AM","close":"12:00 PM"}}},{"number":"3215","address":"8901 Farm to Market 1960 Rd W Ste # 203 ","geocode_address":"","city":"Humble","state":"TX","zipcode":"77338","hours":"M-F 6:30 am-5:30 pm|Sa 8:00 am-12:00 pm ","latitude":"30.0016540000","longitude":"-95.2898100000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"5.326037447368544","center_id":"3215","center_address":"8901 Farm To Market 1960 Rd W Ste # 203 ","center_state":"TX","center_city":"Humble","center_zip":"77338","center_hours":"M-F 6:30 am-5:30 pm|Sa 8:00 am-12:00 pm ","center_latitude":"30.0016540000","center_longitude":"-95.2898100000","center_network":"National","center_country":"US","center_distance":5.3260374473685,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"6:30 AM","close":"5:30 PM"},"Tuesday":{"open":"6:30 AM","close":"5:30 PM"},"Wednesday":{"open":"6:30 AM","close":"5:30 PM"},"Thursday":{"open":"6:30 AM","close":"5:30 PM"},"Friday":{"open":"6:30 AM","close":"5:30 PM"},"Saturday":{"open":"8:00 AM","close":"12:00 PM"}}},{"number":"2256","address":"18648 MCKAY BLVD # 215","geocode_address":"","city":"HUMBLE","state":"TX","zipcode":"77338","hours":"M-F 7:30AM-5:00PM","latitude":"29.9859374017","longitude":"-95.2799465507","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"5.655866478366728","center_id":"2256","center_address":"18648 Mckay Blvd # 215","center_state":"TX","center_city":"Humble","center_zip":"77338","center_hours":"M-F 7:30AM-5:00PM","center_latitude":"29.9859374017","center_longitude":"-95.2799465507","center_network":"Labcorp","center_country":"US","center_distance":5.6558664783667,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"7:30 AM","close":"5:00 PM"},"Tuesday":{"open":"7:30 AM","close":"5:00 PM"},"Wednesday":{"open":"7:30 AM","close":"5:00 PM"},"Thursday":{"open":"7:30 AM","close":"5:00 PM"},"Friday":{"open":"7:30 AM","close":"5:00 PM"}}},{"number":"2819","address":"837 F M 1960 Road West Ste 100","geocode_address":"","city":"Houston","state":"TX","zipcode":"77090","hours":"M-F 8:00 am-5:00 pm","latitude":"30.0166549700","longitude":"-95.4427566500","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"13.546865556056007","center_id":"2819","center_address":"837 F M 1960 Road West Ste 100","center_state":"TX","center_city":"Houston","center_zip":"77090","center_hours":"M-F 8:00 am-5:00 pm","center_latitude":"30.0166549700","center_longitude":"-95.4427566500","center_network":"National","center_country":"US","center_distance":13.546865556056,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"3206","address":"17070 Red Oak Dr Ste 106 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77090","hours":"M-F 7:30 am-4:30 pm","latitude":"30.0199280000","longitude":"-95.4446720000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"13.624784359848048","center_id":"3206","center_address":"17070 Red Oak Dr Ste 106 ","center_state":"TX","center_city":"Houston","center_zip":"77090","center_hours":"M-F 7:30 am-4:30 pm","center_latitude":"30.0199280000","center_longitude":"-95.4446720000","center_network":"National","center_country":"US","center_distance":13.624784359848,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:30 AM","close":"4:30 PM"},"Tuesday":{"open":"7:30 AM","close":"4:30 PM"},"Wednesday":{"open":"7:30 AM","close":"4:30 PM"},"Thursday":{"open":"7:30 AM","close":"4:30 PM"},"Friday":{"open":"7:30 AM","close":"4:30 PM"}}},{"number":"2","address":"17070 RED OAK DR STE 107","geocode_address":"17070 RED OAK DR STE 107","city":"HOUSTON","state":"TX","zipcode":"77090","hours":"M-F  730-5PM Sat 8AM - 12PM","latitude":"30.0189980000","longitude":"-95.4447340000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"13.638055039086995","center_id":"2","center_address":"17070 Red Oak Dr Ste 107","center_state":"TX","center_city":"Houston","center_zip":"77090","center_hours":"M-F  730-5PM Sat 8AM - 12PM","center_latitude":"30.0189980000","center_longitude":"-95.4447340000","center_network":"Labcorp","center_country":"US","center_distance":13.638055039087,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"7:30 AM","close":"5:00 PM"},"Tuesday":{"open":"7:30 AM","close":"5:00 PM"},"Wednesday":{"open":"7:30 AM","close":"5:00 PM"},"Thursday":{"open":"7:30 AM","close":"5:00 PM"},"Friday":{"open":"7:30 AM","close":"5:00 PM"},"Saturday":{"open":"8:00 AM","close":"12:00 PM"}}},{"number":"208","address":"1001 MEDICAL PLAZA DR STE 180","geocode_address":"1001 MEDICAL PLAZA DR STE 180","city":"SPRING","state":"TX","zipcode":"77380","hours":"M-F  7:30AM-5PM","latitude":"30.1722889000","longitude":"-95.4546261000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"16.45011460237126","center_id":"208","center_address":"1001 Medical Plaza Dr Ste 180","center_state":"TX","center_city":"Spring","center_zip":"77380","center_hours":"M-F  7:30AM-5PM","center_latitude":"30.1722889000","center_longitude":"-95.4546261000","center_network":"Labcorp","center_country":"US","center_distance":16.450114602371,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"7:30 AM","close":"5:00 PM"},"Tuesday":{"open":"7:30 AM","close":"5:00 PM"},"Wednesday":{"open":"7:30 AM","close":"5:00 PM"},"Thursday":{"open":"7:30 AM","close":"5:00 PM"},"Friday":{"open":"7:30 AM","close":"5:00 PM"}}},{"number":"2551","address":"8850 Six Pines Drive Suite 230","geocode_address":"","city":"The Woodlands","state":"TX","zipcode":"77380","hours":"M-F 7:30 am-5:00 pm ","latitude":"30.1759200000","longitude":"-95.4587100000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"16.788939477707764","center_id":"2551","center_address":"8850 Six Pines Drive Suite 230","center_state":"TX","center_city":"The Woodlands","center_zip":"77380","center_hours":"M-F 7:30 am-5:00 pm ","center_latitude":"30.1759200000","center_longitude":"-95.4587100000","center_network":"National","center_country":"US","center_distance":16.788939477708,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:30 AM","close":"5:00 PM"},"Tuesday":{"open":"7:30 AM","close":"5:00 PM"},"Wednesday":{"open":"7:30 AM","close":"5:00 PM"},"Thursday":{"open":"7:30 AM","close":"5:00 PM"},"Friday":{"open":"7:30 AM","close":"5:00 PM"}}},{"number":"196","address":"7007 NORTH FWY STE 235","geocode_address":"7007 NORTH FWY STE 235","city":"HOUSTON","state":"TX","zipcode":"77076","hours":"M-F  8AM-5PM","latitude":"29.8636344000","longitude":"-95.4044529000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"16.92307754544036","center_id":"196","center_address":"7007 North Fwy Ste 235","center_state":"TX","center_city":"Houston","center_zip":"77076","center_hours":"M-F  8AM-5PM","center_latitude":"29.8636344000","center_longitude":"-95.4044529000","center_network":"Labcorp","center_country":"US","center_distance":16.92307754544,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"3200","address":"1140 Westmont Dr Ste 510 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77015","hours":"M-F 7:30 am-5:00 pm ","latitude":"29.7724490000","longitude":"-95.1953280000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"19.144328190424417","center_id":"3200","center_address":"1140 Westmont Dr Ste 510 ","center_state":"TX","center_city":"Houston","center_zip":"77015","center_hours":"M-F 7:30 am-5:00 pm ","center_latitude":"29.7724490000","center_longitude":"-95.1953280000","center_network":"National","center_country":"US","center_distance":19.144328190424,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:30 AM","close":"5:00 PM"},"Tuesday":{"open":"7:30 AM","close":"5:00 PM"},"Wednesday":{"open":"7:30 AM","close":"5:00 PM"},"Thursday":{"open":"7:30 AM","close":"5:00 PM"},"Friday":{"open":"7:30 AM","close":"5:00 PM"}}},{"number":"206","address":"427 W 20TH ST STE 504","geocode_address":"427 W 20TH ST STE 504","city":"HOUSTON","state":"TX","zipcode":"77008","hours":"M-F  8:30AM-6PM","latitude":"29.8039987000","longitude":"-95.4048188000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"20.2317677252436","center_id":"206","center_address":"427 W 20th St Ste 504","center_state":"TX","center_city":"Houston","center_zip":"77008","center_hours":"M-F  8:30AM-6PM","center_latitude":"29.8039987000","center_longitude":"-95.4048188000","center_network":"Labcorp","center_country":"US","center_distance":20.231767725244,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:30 AM","close":"6:00 PM"},"Tuesday":{"open":"8:30 AM","close":"6:00 PM"},"Wednesday":{"open":"8:30 AM","close":"6:00 PM"},"Thursday":{"open":"8:30 AM","close":"6:00 PM"},"Friday":{"open":"8:30 AM","close":"6:00 PM"}}},{"number":"2531","address":"13300 Hargrave Road Suite 507","geocode_address":"","city":"Houston","state":"TX","zipcode":"77070","hours":"M-F 7:00 am-5:00 pm ","latitude":"29.9678960000","longitude":"-95.5517650000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"20.658921651336115","center_id":"2531","center_address":"13300 Hargrave Road Suite 507","center_state":"TX","center_city":"Houston","center_zip":"77070","center_hours":"M-F 7:00 am-5:00 pm ","center_latitude":"29.9678960000","center_longitude":"-95.5517650000","center_network":"National","center_country":"US","center_distance":20.658921651336,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:00 AM","close":"5:00 PM"},"Tuesday":{"open":"7:00 AM","close":"5:00 PM"},"Wednesday":{"open":"7:00 AM","close":"5:00 PM"},"Thursday":{"open":"7:00 AM","close":"5:00 PM"},"Friday":{"open":"7:00 AM","close":"5:00 PM"}}},{"number":"6","address":"13215 DOTSON RD #120","geocode_address":"13215 DOTSON RD #120","city":"HOUSTON","state":"TX","zipcode":"77070","hours":"M-F  7:30AM-6PM Sat 8AM - 12PM","latitude":"29.9674908000","longitude":"-95.5531932000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"20.748795431945197","center_id":"6","center_address":"13215 Dotson Rd #120","center_state":"TX","center_city":"Houston","center_zip":"77070","center_hours":"M-F  7:30AM-6PM Sat 8AM - 12PM","center_latitude":"29.9674908000","center_longitude":"-95.5531932000","center_network":"Labcorp","center_country":"US","center_distance":20.748795431945,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"7:30 AM","close":"6:00 PM"},"Tuesday":{"open":"7:30 AM","close":"6:00 PM"},"Wednesday":{"open":"7:30 AM","close":"6:00 PM"},"Thursday":{"open":"7:30 AM","close":"6:00 PM"},"Friday":{"open":"7:30 AM","close":"6:00 PM"},"Saturday":{"open":"8:00 AM","close":"12:00 PM"}}},{"number":"184","address":"1919 NORTH LOOP W # 172","geocode_address":"1919 NORTH LOOP W # 172","city":"HOUSTON","state":"TX","zipcode":"77008","hours":"M-F  7:30AM-4:30PM","latitude":"29.8107076000","longitude":"-95.4341276000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"20.878571205124366","center_id":"184","center_address":"1919 North Loop W # 172","center_state":"TX","center_city":"Houston","center_zip":"77008","center_hours":"M-F  7:30AM-4:30PM","center_latitude":"29.8107076000","center_longitude":"-95.4341276000","center_network":"Labcorp","center_country":"US","center_distance":20.878571205124,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"7:30 AM","close":"4:30 PM"},"Tuesday":{"open":"7:30 AM","close":"4:30 PM"},"Wednesday":{"open":"7:30 AM","close":"4:30 PM"},"Thursday":{"open":"7:30 AM","close":"4:30 PM"},"Friday":{"open":"7:30 AM","close":"4:30 PM"}}},{"number":"3207","address":"1919 North Loop W Ste 125 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77008","hours":"M-F 6:30 am-5:00 pm|Sa 8:00 am-12:00 pm ","latitude":"29.8104920000","longitude":"-95.4342040000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"20.893132520495215","center_id":"3207","center_address":"1919 North Loop W Ste 125 ","center_state":"TX","center_city":"Houston","center_zip":"77008","center_hours":"M-F 6:30 am-5:00 pm|Sa 8:00 am-12:00 pm ","center_latitude":"29.8104920000","center_longitude":"-95.4342040000","center_network":"National","center_country":"US","center_distance":20.893132520495,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"6:30 AM","close":"5:00 PM"},"Tuesday":{"open":"6:30 AM","close":"5:00 PM"},"Wednesday":{"open":"6:30 AM","close":"5:00 PM"},"Thursday":{"open":"6:30 AM","close":"5:00 PM"},"Friday":{"open":"6:30 AM","close":"5:00 PM"},"Saturday":{"open":"8:00 AM","close":"12:00 PM"}}},{"number":"2506","address":"800 Riverwood Court Suite 103","geocode_address":"","city":"Conroe","state":"TX","zipcode":"77304","hours":"M-Th 7:00 am-4:00 pm|F 7:00 am-12:00 pm ","latitude":"30.2843930000","longitude":"-95.4651570000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"21.923843025771856","center_id":"2506","center_address":"800 Riverwood Court Suite 103","center_state":"TX","center_city":"Conroe","center_zip":"77304","center_hours":"M-Th 7:00 am-4:00 pm|F 7:00 am-12:00 pm ","center_latitude":"30.2843930000","center_longitude":"-95.4651570000","center_network":"National","center_country":"US","center_distance":21.923843025772,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:00 AM","close":"4:00 PM"},"Tuesday":{"open":"7:00 AM","close":"4:00 PM"},"Wednesday":{"open":"7:00 AM","close":"4:00 PM"},"Thursday":{"open":"7:00 AM","close":"4:00 PM"},"Friday":{"open":"7:00 AM","close":"12:00 PM"}}},{"number":"287","address":"100 MEDICAL CENTER BLVD STE 114","geocode_address":"100 MEDICAL CENTER BLVD STE 114","city":"CONROE","state":"TX","zipcode":"77304","hours":"M-F 8AM-5PM ","latitude":"30.2868923000","longitude":"-95.4648721000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"22.040918218589493","center_id":"287","center_address":"100 Medical Center Blvd Ste 114","center_state":"TX","center_city":"Conroe","center_zip":"77304","center_hours":"M-F 8AM-5PM ","center_latitude":"30.2868923000","center_longitude":"-95.4648721000","center_network":"Labcorp","center_country":"US","center_distance":22.040918218589,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"723","address":"7207 GESSNER DR","geocode_address":"7207 GESSNER DR","city":"HOUSTON","state":"TX","zipcode":"77040","hours":"M-F  8AM-5PM","latitude":"29.8745789000","longitude":"-95.5418397000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"22.74817967854119","center_id":"723","center_address":"7207 Gessner Dr","center_state":"TX","center_city":"Houston","center_zip":"77040","center_hours":"M-F  8AM-5PM","center_latitude":"29.8745789000","center_longitude":"-95.5418397000","center_network":"Labcorp","center_country":"US","center_distance":22.748179678541,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"2529","address":"10680 Jones Road Suite 200","geocode_address":"","city":"Houston","state":"TX","zipcode":"77065","hours":"M-F 8:00 am-5:00 pm|Sa 8:00 am-12:00 pm ","latitude":"29.9282320000","longitude":"-95.5839690000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"23.35519158937237","center_id":"2529","center_address":"10680 Jones Road Suite 200","center_state":"TX","center_city":"Houston","center_zip":"77065","center_hours":"M-F 8:00 am-5:00 pm|Sa 8:00 am-12:00 pm ","center_latitude":"29.9282320000","center_longitude":"-95.5839690000","center_network":"National","center_country":"US","center_distance":23.355191589372,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"},"Saturday":{"open":"8:00 AM","close":"12:00 PM"}}},{"number":"3","address":"11301 fallbrook # 126","geocode_address":"11301 fallbrook # 126","city":"HOUSTON","state":"TX","zipcode":"77065","hours":"M-F  7AM-5PM Sat 7:30AM - 12PM","latitude":"29.9254630000","longitude":"-95.5917390000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"23.85809859124773","center_id":"3","center_address":"11301 Fallbrook # 126","center_state":"TX","center_city":"Houston","center_zip":"77065","center_hours":"M-F  7AM-5PM Sat 7:30AM - 12PM","center_latitude":"29.9254630000","center_longitude":"-95.5917390000","center_network":"Labcorp","center_country":"US","center_distance":23.858098591248,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"7:00 AM","close":"5:00 PM"},"Tuesday":{"open":"7:00 AM","close":"5:00 PM"},"Wednesday":{"open":"7:00 AM","close":"5:00 PM"},"Thursday":{"open":"7:00 AM","close":"5:00 PM"},"Friday":{"open":"7:00 AM","close":"5:00 PM"},"Saturday":{"open":"7:30 AM","close":"12:00 PM"}}},{"number":"3202","address":"11811 Fm 1960 Rd W Ste 155 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77065","hours":"M-F 8:00 am-5:00 pm","latitude":"29.9254470000","longitude":"-95.5962680000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"24.111842184661164","center_id":"3202","center_address":"11811 Fm 1960 Rd W Ste 155 ","center_state":"TX","center_city":"Houston","center_zip":"77065","center_hours":"M-F 8:00 am-5:00 pm","center_latitude":"29.9254470000","center_longitude":"-95.5962680000","center_network":"National","center_country":"US","center_distance":24.111842184661,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"154","address":"506 Graham Suite 260","geocode_address":"506 Graham  Suite 260","city":"TOMBALL","state":"TX","zipcode":"77375","hours":"M-F  7:30-5PM","latitude":"30.0894160000","longitude":"-95.6200290000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"24.12269256109101","center_id":"154","center_address":"506 Graham Suite 260","center_state":"TX","center_city":"Tomball","center_zip":"77375","center_hours":"M-F  7:30-5PM","center_latitude":"30.0894160000","center_longitude":"-95.6200290000","center_network":"Labcorp","center_country":"US","center_distance":24.122692561091,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"7:30 AM","close":"5:00 PM"},"Tuesday":{"open":"7:30 AM","close":"5:00 PM"},"Wednesday":{"open":"7:30 AM","close":"5:00 PM"},"Thursday":{"open":"7:30 AM","close":"5:00 PM"},"Friday":{"open":"7:30 AM","close":"5:00 PM"}}},{"number":"3235","address":"13406 Medical Complex Dr Ste 170 ","geocode_address":"","city":"Tomball","state":"TX","zipcode":"77375","hours":"M-F 7:00 am-4:00 pm ","latitude":"30.0850750000","longitude":"-95.6233520000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"24.28775412099893","center_id":"3235","center_address":"13406 Medical Complex Dr Ste 170 ","center_state":"TX","center_city":"Tomball","center_zip":"77375","center_hours":"M-F 7:00 am-4:00 pm ","center_latitude":"30.0850750000","center_longitude":"-95.6233520000","center_network":"National","center_country":"US","center_distance":24.287754120999,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:00 AM","close":"4:00 PM"},"Tuesday":{"open":"7:00 AM","close":"4:00 PM"},"Wednesday":{"open":"7:00 AM","close":"4:00 PM"},"Thursday":{"open":"7:00 AM","close":"4:00 PM"},"Friday":{"open":"7:00 AM","close":"4:00 PM"}}},{"number":"3191","address":"407 W Baker Rd Ste X ","geocode_address":"","city":"Baytown","state":"TX","zipcode":"77521","hours":"M-F 7:00 am-4:00 pm|Sa 8:00 am-12:00 pm","latitude":"29.7693060000","longitude":"-94.9678650000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"24.486222929422794","center_id":"3191","center_address":"407 W Baker Rd Ste X ","center_state":"TX","center_city":"Baytown","center_zip":"77521","center_hours":"M-F 7:00 am-4:00 pm|Sa 8:00 am-12:00 pm","center_latitude":"29.7693060000","center_longitude":"-94.9678650000","center_network":"National","center_country":"US","center_distance":24.486222929423,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:00 AM","close":"4:00 PM"},"Tuesday":{"open":"7:00 AM","close":"4:00 PM"},"Wednesday":{"open":"7:00 AM","close":"4:00 PM"},"Thursday":{"open":"7:00 AM","close":"4:00 PM"},"Friday":{"open":"7:00 AM","close":"4:00 PM"},"Saturday":{"open":"8:00 AM","close":"12:00 PM"}}},{"number":"2818","address":"1200 Binz St Ste 115","geocode_address":"","city":"Houston","state":"TX","zipcode":"77004","hours":"M-F 8:00 am-5:30 pm ","latitude":"29.7241000000","longitude":"-95.3877790000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"24.5958112094978","center_id":"2818","center_address":"1200 Binz St Ste 115","center_state":"TX","center_city":"Houston","center_zip":"77004","center_hours":"M-F 8:00 am-5:30 pm ","center_latitude":"29.7241000000","center_longitude":"-95.3877790000","center_network":"National","center_country":"US","center_distance":24.595811209498,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:30 PM"},"Tuesday":{"open":"8:00 AM","close":"5:30 PM"},"Wednesday":{"open":"8:00 AM","close":"5:30 PM"},"Thursday":{"open":"8:00 AM","close":"5:30 PM"},"Friday":{"open":"8:00 AM","close":"5:30 PM"}}},{"number":"4250","address":"1200 BINZ SUITE 140","geocode_address":"","city":"HOUSTON","state":"TX","zipcode":"77004","hours":"M-F 8:30AM-5:00PM","latitude":"29.7240441000","longitude":"-95.3878596000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"24.601315411472655","center_id":"4250","center_address":"1200 Binz Suite 140","center_state":"TX","center_city":"Houston","center_zip":"77004","center_hours":"M-F 8:30AM-5:00PM","center_latitude":"29.7240441000","center_longitude":"-95.3878596000","center_network":"Labcorp","center_country":"US","center_distance":24.601315411473,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:30 AM","close":"5:00 PM"},"Tuesday":{"open":"8:30 AM","close":"5:00 PM"},"Wednesday":{"open":"8:30 AM","close":"5:00 PM"},"Thursday":{"open":"8:30 AM","close":"5:00 PM"},"Friday":{"open":"8:30 AM","close":"5:00 PM"}}},{"number":"2530","address":"1213 Hermann Drive Suite 120","geocode_address":"","city":"Houston","state":"TX","zipcode":"77004","hours":"M-Th 8:00 am-12:30 pm & 1:30 pm-5:00 pm|F 8:00 am-12:30 pm & 1:30 pm-3:00 pm","latitude":"29.7232630000","longitude":"-95.3884430000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"24.664887317525004","center_id":"2530","center_address":"1213 Hermann Drive Suite 120","center_state":"TX","center_city":"Houston","center_zip":"77004","center_hours":"M-Th 8:00 am-12:30 pm & 1:30 pm-5:00 pm|F 8:00 am-12:30 pm & 1:30 pm-3:00 pm","center_latitude":"29.7232630000","center_longitude":"-95.3884430000","center_network":"National","center_country":"US","center_distance":24.664887317525,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"12:30 PM","lunch_stop":"1:30 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"12:30 PM","lunch_stop":"1:30 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"12:30 PM","lunch_stop":"1:30 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"12:30 PM","lunch_stop":"1:30 PM"},"Friday":{"open":"8:00 AM","close":"3:00 PM","lunch_start":"12:30 PM","lunch_stop":"1:30 PM"}}},{"number":"192","address":"1213 HERMANN DR STE 155","geocode_address":"1213 HERMANN DR STE 155","city":"HOUSTON","state":"TX","zipcode":"77004","hours":"M-F  8AM-5:30P","latitude":"29.7232620000","longitude":"-95.3884410000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"24.664901127089262","center_id":"192","center_address":"1213 Hermann Dr Ste 155","center_state":"TX","center_city":"Houston","center_zip":"77004","center_hours":"M-F  8AM-5:30P","center_latitude":"29.7232620000","center_longitude":"-95.3884410000","center_network":"Labcorp","center_country":"US","center_distance":24.664901127089,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:30 PM"},"Tuesday":{"open":"8:00 AM","close":"5:30 PM"},"Wednesday":{"open":"8:00 AM","close":"5:30 PM"},"Thursday":{"open":"8:00 AM","close":"5:30 PM"},"Friday":{"open":"8:00 AM","close":"5:30 PM"}}},{"number":"2748","address":"5711 Almeda Rd Ste 131B","geocode_address":"","city":"Houston","state":"TX","zipcode":"77004","hours":"M-F 8:00 am-5:00 pm","latitude":"29.7184540000","longitude":"-95.3797990000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"24.762727435231234","center_id":"2748","center_address":"5711 Almeda Rd Ste 131b","center_state":"TX","center_city":"Houston","center_zip":"77004","center_hours":"M-F 8:00 am-5:00 pm","center_latitude":"29.7184540000","center_longitude":"-95.3797990000","center_network":"National","center_country":"US","center_distance":24.762727435231,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"3190","address":"2802 Garth Rd Ste 213 ","geocode_address":"","city":"Baytown","state":"TX","zipcode":"77521","hours":"M-F 8:00 am-5:00 pm ","latitude":"29.7525900000","longitude":"-94.9782560000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"25.043647636412192","center_id":"3190","center_address":"2802 Garth Rd Ste 213 ","center_state":"TX","center_city":"Baytown","center_zip":"77521","center_hours":"M-F 8:00 am-5:00 pm ","center_latitude":"29.7525900000","center_longitude":"-94.9782560000","center_network":"National","center_country":"US","center_distance":25.043647636412,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"3209","address":"6410 Fannin St Ste 220 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77030","hours":"M-F 8:00 am-5:00 pm","latitude":"29.7144070000","longitude":"-95.3978880000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"25.456706215685237","center_id":"3209","center_address":"6410 Fannin St Ste 220 ","center_state":"TX","center_city":"Houston","center_zip":"77030","center_hours":"M-F 8:00 am-5:00 pm","center_latitude":"29.7144070000","center_longitude":"-95.3978880000","center_network":"National","center_country":"US","center_distance":25.456706215685,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"195","address":"6410 FANNIN ST STE 110","geocode_address":"6410 FANNIN ST STE 110","city":"HOUSTON","state":"TX","zipcode":"77030","hours":"M-F  8AM-5PM","latitude":"29.7144070000","longitude":"-95.3978880000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"25.456706215685237","center_id":"195","center_address":"6410 Fannin St Ste 110","center_state":"TX","center_city":"Houston","center_zip":"77030","center_hours":"M-F  8AM-5PM","center_latitude":"29.7144070000","center_longitude":"-95.3978880000","center_network":"Labcorp","center_country":"US","center_distance":25.456706215685,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"3208","address":"3400 Bissonnet St Ste 298 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77005","hours":"M-F 7:30 am-12:30 pm & 1:30 pm-4:00 pm","latitude":"29.7257630000","longitude":"-95.4307480000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"25.658898439052425","center_id":"3208","center_address":"3400 Bissonnet St Ste 298 ","center_state":"TX","center_city":"Houston","center_zip":"77005","center_hours":"M-F 7:30 am-12:30 pm & 1:30 pm-4:00 pm","center_latitude":"29.7257630000","center_longitude":"-95.4307480000","center_network":"National","center_country":"US","center_distance":25.658898439052,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:30 AM","close":"4:00 PM","lunch_start":"12:30 PM","lunch_stop":"1:30 PM"},"Tuesday":{"open":"7:30 AM","close":"4:00 PM","lunch_start":"12:30 PM","lunch_stop":"1:30 PM"},"Wednesday":{"open":"7:30 AM","close":"4:00 PM","lunch_start":"12:30 PM","lunch_stop":"1:30 PM"},"Thursday":{"open":"7:30 AM","close":"4:00 PM","lunch_start":"12:30 PM","lunch_stop":"1:30 PM"},"Friday":{"open":"7:30 AM","close":"4:00 PM","lunch_start":"12:30 PM","lunch_stop":"1:30 PM"}}},{"number":"4251","address":"9539 HUFFMEISTER SUITE B","geocode_address":"","city":"HOUSTON","state":"TX","zipcode":"77095","hours":"M-F 7:00AM-5:00PM","latitude":"29.9168664000","longitude":"-95.6305725000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"26.243275697001767","center_id":"4251","center_address":"9539 Huffmeister Suite B","center_state":"TX","center_city":"Houston","center_zip":"77095","center_hours":"M-F 7:00AM-5:00PM","center_latitude":"29.9168664000","center_longitude":"-95.6305725000","center_network":"Labcorp","center_country":"US","center_distance":26.243275697002,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"7:00 AM","close":"5:00 PM"},"Tuesday":{"open":"7:00 AM","close":"5:00 PM"},"Wednesday":{"open":"7:00 AM","close":"5:00 PM"},"Thursday":{"open":"7:00 AM","close":"5:00 PM"},"Friday":{"open":"7:00 AM","close":"5:00 PM"}}},{"number":"2532","address":"7515 Main Street Suite 190","geocode_address":"","city":"Houston","state":"TX","zipcode":"77054","hours":"M,T,Th,F 8:00 am-1:00 pm & 2:00 pm-5:00 pm|W 8:00 am-1:00 pm & 2:00 pm-3:00 pm ","latitude":"29.6986140000","longitude":"-95.4101260000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"26.756074921500602","center_id":"2532","center_address":"7515 Main Street Suite 190","center_state":"TX","center_city":"Houston","center_zip":"77054","center_hours":"M,T,Th,F 8:00 am-1:00 pm & 2:00 pm-5:00 pm|W 8:00 am-1:00 pm & 2:00 pm-3:00 pm ","center_latitude":"29.6986140000","center_longitude":"-95.4101260000","center_network":"National","center_country":"US","center_distance":26.756074921501,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"1:00 PM","lunch_stop":"2:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"1:00 PM","lunch_stop":"2:00 PM"},"Wednesday":{"open":"8:00 AM","close":"3:00 PM","lunch_start":"1:00 PM","lunch_stop":"2:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"1:00 PM","lunch_stop":"2:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"1:00 PM","lunch_stop":"2:00 PM"}}},{"number":"2254","address":"7400 FANNIN ST STE 145","geocode_address":"","city":"HOUSTON","state":"TX","zipcode":"77054","hours":"M-F 8:00AM-5:00PM","latitude":"29.6945991516","longitude":"-95.4011306763","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"26.78358698577374","center_id":"2254","center_address":"7400 Fannin St Ste 145","center_state":"TX","center_city":"Houston","center_zip":"77054","center_hours":"M-F 8:00AM-5:00PM","center_latitude":"29.6945991516","center_longitude":"-95.4011306763","center_network":"Labcorp","center_country":"US","center_distance":26.783586985774,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"3210","address":"7400 Fannin St Ste 180 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77054","hours":"M-F 8:30 am-5:30 pm","latitude":"29.6945990000","longitude":"-95.4011310000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"26.783604444364432","center_id":"3210","center_address":"7400 Fannin St Ste 180 ","center_state":"TX","center_city":"Houston","center_zip":"77054","center_hours":"M-F 8:30 am-5:30 pm","center_latitude":"29.6945990000","center_longitude":"-95.4011310000","center_network":"National","center_country":"US","center_distance":26.783604444364,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:30 AM","close":"5:30 PM"},"Tuesday":{"open":"8:30 AM","close":"5:30 PM"},"Wednesday":{"open":"8:30 AM","close":"5:30 PM"},"Thursday":{"open":"8:30 AM","close":"5:30 PM"},"Friday":{"open":"8:30 AM","close":"5:30 PM"}}},{"number":"3211","address":"7900 Fannin St # 1700 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77054","hours":"M-F 8:30 am-5:30 pm","latitude":"29.6933670000","longitude":"-95.4028850000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"26.90419825627598","center_id":"3211","center_address":"7900 Fannin St # 1700 ","center_state":"TX","center_city":"Houston","center_zip":"77054","center_hours":"M-F 8:30 am-5:30 pm","center_latitude":"29.6933670000","center_longitude":"-95.4028850000","center_network":"National","center_country":"US","center_distance":26.904198256276,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:30 AM","close":"5:30 PM"},"Tuesday":{"open":"8:30 AM","close":"5:30 PM"},"Wednesday":{"open":"8:30 AM","close":"5:30 PM"},"Thursday":{"open":"8:30 AM","close":"5:30 PM"},"Friday":{"open":"8:30 AM","close":"5:30 PM"}}},{"number":"2533","address":"7580 Fannin Suite 233","geocode_address":"","city":"Houston","state":"TX","zipcode":"77054","hours":"M-Th 8:00 am-1:00 pm & 2:00 pm-5:00 pm|F 8:00 am-3:00 pm","latitude":"29.6933670000","longitude":"-95.4028854400","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"26.904209031205973","center_id":"2533","center_address":"7580 Fannin Suite 233","center_state":"TX","center_city":"Houston","center_zip":"77054","center_hours":"M-Th 8:00 am-1:00 pm & 2:00 pm-5:00 pm|F 8:00 am-3:00 pm","center_latitude":"29.6933670000","center_longitude":"-95.4028854400","center_network":"National","center_country":"US","center_distance":26.904209031206,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"1:00 PM","lunch_stop":"2:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"1:00 PM","lunch_stop":"2:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"1:00 PM","lunch_stop":"2:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM","lunch_start":"1:00 PM","lunch_stop":"2:00 PM"},"Friday":{"open":"8:00 AM","close":"3:00 PM"}}},{"number":"719","address":"7580 FANNIN ST STE 320","geocode_address":"7580 FANNIN ST STE 320","city":"HOUSTON","state":"TX","zipcode":"77054","hours":"M-F  8AM-5PM","latitude":"29.6933670000","longitude":"-95.4029640000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"26.906133188480638","center_id":"719","center_address":"7580 Fannin St Ste 320","center_state":"TX","center_city":"Houston","center_zip":"77054","center_hours":"M-F  8AM-5PM","center_latitude":"29.6933670000","center_longitude":"-95.4029640000","center_network":"Labcorp","center_country":"US","center_distance":26.906133188481,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"3205","address":"12385 Kingsride Avenue ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77024","hours":"M-F 7:30 am-5:30 pm|Sa 8:00 am-12:00 pm","latitude":"29.7790552700","longitude":"-95.5472494700","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"27.071316301718035","center_id":"3205","center_address":"12385 Kingsride Avenue ","center_state":"TX","center_city":"Houston","center_zip":"77024","center_hours":"M-F 7:30 am-5:30 pm|Sa 8:00 am-12:00 pm","center_latitude":"29.7790552700","center_longitude":"-95.5472494700","center_network":"National","center_country":"US","center_distance":27.071316301718,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:30 AM","close":"5:30 PM"},"Tuesday":{"open":"7:30 AM","close":"5:30 PM"},"Wednesday":{"open":"7:30 AM","close":"5:30 PM"},"Thursday":{"open":"7:30 AM","close":"5:30 PM"},"Friday":{"open":"7:30 AM","close":"5:30 PM"},"Saturday":{"open":"8:00 AM","close":"12:00 PM"}}},{"number":"2255","address":"855 FROSTWOOD","geocode_address":"","city":"HOUSTON","state":"TX","zipcode":"77024","hours":"M-TH 7:00AM-6:00PM F 7:00AM-4:30PM SAT 7:00AM-2:00PM","latitude":"29.7784182429","longitude":"-95.5478087068","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"27.12595175331699","center_id":"2255","center_address":"855 Frostwood","center_state":"TX","center_city":"Houston","center_zip":"77024","center_hours":"M-TH 7:00AM-6:00PM F 7:00AM-4:30PM SAT 7:00AM-2:00PM","center_latitude":"29.7784182429","center_longitude":"-95.5478087068","center_network":"Labcorp","center_country":"US","center_distance":27.125951753317,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"7:00 AM","close":"6:00 PM"},"Tuesday":{"open":"7:00 AM","close":"6:00 PM"},"Wednesday":{"open":"7:00 AM","close":"6:00 PM"},"Thursday":{"open":"7:00 AM","close":"6:00 PM"},"Friday":{"open":"7:00 AM","close":"4:30 PM"},"Saturday":{"open":"7:00 AM","close":"2:00 PM"}}},{"number":"2811","address":"6565 West Loop South Ste 302","geocode_address":"","city":"Bellaire","state":"TX","zipcode":"77401","hours":"M-F 8:00 am-5:30 pm","latitude":"29.7099270000","longitude":"-95.4586640000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"27.451617647024662","center_id":"2811","center_address":"6565 West Loop South Ste 302","center_state":"TX","center_city":"Bellaire","center_zip":"77401","center_hours":"M-F 8:00 am-5:30 pm","center_latitude":"29.7099270000","center_longitude":"-95.4586640000","center_network":"National","center_country":"US","center_distance":27.451617647025,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:30 PM"},"Tuesday":{"open":"8:00 AM","close":"5:30 PM"},"Wednesday":{"open":"8:00 AM","close":"5:30 PM"},"Thursday":{"open":"8:00 AM","close":"5:30 PM"},"Friday":{"open":"8:00 AM","close":"5:30 PM"}}},{"number":"3199","address":"10837 Katy Fwy Ste 150 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77079","hours":"M-F 8:00 am-6:00 pm","latitude":"29.7835920000","longitude":"-95.5682220000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"27.787736078319753","center_id":"3199","center_address":"10837 Katy Fwy Ste 150 ","center_state":"TX","center_city":"Houston","center_zip":"77079","center_hours":"M-F 8:00 am-6:00 pm","center_latitude":"29.7835920000","center_longitude":"-95.5682220000","center_network":"National","center_country":"US","center_distance":27.78773607832,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"8:00 AM","close":"6:00 PM"},"Tuesday":{"open":"8:00 AM","close":"6:00 PM"},"Wednesday":{"open":"8:00 AM","close":"6:00 PM"},"Thursday":{"open":"8:00 AM","close":"6:00 PM"},"Friday":{"open":"8:00 AM","close":"6:00 PM"}}},{"number":"194","address":"5420 DASHWOOD DR STE 205","geocode_address":"5420 DASHWOOD DR STE 205","city":"HOUSTON","state":"TX","zipcode":"77081","hours":"M-F  8AM-5PM","latitude":"29.7079730000","longitude":"-95.4750360000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"28.089516340015866","center_id":"194","center_address":"5420 Dashwood Dr Ste 205","center_state":"TX","center_city":"Houston","center_zip":"77081","center_hours":"M-F  8AM-5PM","center_latitude":"29.7079730000","center_longitude":"-95.4750360000","center_network":"Labcorp","center_country":"US","center_distance":28.089516340016,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:00 AM","close":"5:00 PM"},"Tuesday":{"open":"8:00 AM","close":"5:00 PM"},"Wednesday":{"open":"8:00 AM","close":"5:00 PM"},"Thursday":{"open":"8:00 AM","close":"5:00 PM"},"Friday":{"open":"8:00 AM","close":"5:00 PM"}}},{"number":"3203","address":"1201 Dairy Ashford St Ste 120 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77079","hours":"M-F 7:30 am-5:30 pm","latitude":"29.7827090000","longitude":"-95.6071320000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"29.617506770367235","center_id":"3203","center_address":"1201 Dairy Ashford St Ste 120 ","center_state":"TX","center_city":"Houston","center_zip":"77079","center_hours":"M-F 7:30 am-5:30 pm","center_latitude":"29.7827090000","center_longitude":"-95.6071320000","center_network":"National","center_country":"US","center_distance":29.617506770367,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:30 AM","close":"5:30 PM"},"Tuesday":{"open":"7:30 AM","close":"5:30 PM"},"Wednesday":{"open":"7:30 AM","close":"5:30 PM"},"Thursday":{"open":"7:30 AM","close":"5:30 PM"},"Friday":{"open":"7:30 AM","close":"5:30 PM"}}},{"number":"3213","address":"8200 Wednesbury Lane Suite # 450 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77074","hours":"M-F 7:30 am-5:00 pm|Sa 8:00 am-12:00 pm ","latitude":"29.6892280000","longitude":"-95.5267640000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"30.92393830494392","center_id":"3213","center_address":"8200 Wednesbury Lane Suite # 450 ","center_state":"TX","center_city":"Houston","center_zip":"77074","center_hours":"M-F 7:30 am-5:00 pm|Sa 8:00 am-12:00 pm ","center_latitude":"29.6892280000","center_longitude":"-95.5267640000","center_network":"National","center_country":"US","center_distance":30.923938304944,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"7:30 AM","close":"5:00 PM"},"Tuesday":{"open":"7:30 AM","close":"5:00 PM"},"Wednesday":{"open":"7:30 AM","close":"5:00 PM"},"Thursday":{"open":"7:30 AM","close":"5:00 PM"},"Friday":{"open":"7:30 AM","close":"5:00 PM"},"Saturday":{"open":"8:00 AM","close":"12:00 PM"}}},{"number":"193","address":"8313 SOUTHWEST FWY STE 111","geocode_address":"8313 SOUTHWEST FWY STE 111","city":"HOUSTON","state":"TX","zipcode":"77074","hours":"M-F  8AM-4:30PM","latitude":"29.6880770000","longitude":"-95.5277380000","network":"Labcorp","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"LabCorp","country":"US","distance":"31.0226365219262","center_id":"193","center_address":"8313 Southwest Fwy Ste 111","center_state":"TX","center_city":"Houston","center_zip":"77074","center_hours":"M-F  8AM-4:30PM","center_latitude":"29.6880770000","center_longitude":"-95.5277380000","center_network":"Labcorp","center_country":"US","center_distance":31.022636521926,"network_name":"LabCorp","structured_hours":{"Monday":{"open":"8:00 AM","close":"4:30 PM"},"Tuesday":{"open":"8:00 AM","close":"4:30 PM"},"Wednesday":{"open":"8:00 AM","close":"4:30 PM"},"Thursday":{"open":"8:00 AM","close":"4:30 PM"},"Friday":{"open":"8:00 AM","close":"4:30 PM"}}},{"number":"3204","address":"12121 Richmond Ave Ste 124 ","geocode_address":"","city":"Houston","state":"TX","zipcode":"77082","hours":"M-F 6:30 am-5:00 pm ","latitude":"29.7296350000","longitude":"-95.5931170000","network":"National","phoneNumber":"","fax_number":null,"friendlyPhone":"","twilio_sid":"","lab_title":"","country":"US","distance":"31.423507987532286","center_id":"3204","center_address":"12121 Richmond Ave Ste 124 ","center_state":"TX","center_city":"Houston","center_zip":"77082","center_hours":"M-F 6:30 am-5:00 pm ","center_latitude":"29.7296350000","center_longitude":"-95.5931170000","center_network":"National","center_country":"US","center_distance":31.423507987532,"network_name":"Quest Diagnostics","structured_hours":{"Monday":{"open":"6:30 AM","close":"5:00 PM"},"Tuesday":{"open":"6:30 AM","close":"5:00 PM"},"Wednesday":{"open":"6:30 AM","close":"5:00 PM"},"Thursday":{"open":"6:30 AM","close":"5:00 PM"},"Friday":{"open":"6:30 AM","close":"5:00 PM"}}}],"latitude":"30.0487594604","longitude":"-95.2193298340","resultCount":50}
+{
+  "labs": [
+    {
+      "number": "5867",
+      "address": "23816 Hwy 59 North",
+      "geocode_address": "",
+      "city": "Kingwood",
+      "state": "TX",
+      "zipcode": "77339",
+      "hours": "M-F 7:00 am-6:00 pm",
+      "latitude": "30.0527960000",
+      "longitude": "-95.2559850000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "2.2097600582310806",
+      "center_id": "5867",
+      "center_address": "23816 Hwy 59 North",
+      "center_state": "TX",
+      "center_city": "Kingwood",
+      "center_zip": "77339",
+      "center_hours": "M-F 7:00 am-6:00 pm",
+      "center_latitude": "30.0527960000",
+      "center_longitude": "-95.2559850000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 2.2097600582311,
+      "network_name": "Quest Diagnostics"
+    },
+    {
+      "number": "13",
+      "address": "201 KINGWOOD MEDICAL DR #A100",
+      "geocode_address": "201 KINGWOOD MEDICAL DR #A100",
+      "city": "KINGWOOD",
+      "state": "TX",
+      "zipcode": "77339",
+      "hours": "M-F  7:30-4:30PM Sat 8AM - 12PM",
+      "latitude": "30.0470049000",
+      "longitude": "-95.2569061000",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "LabCorp",
+      "country": "US",
+      "distance": "2.2505084601543994",
+      "center_id": "13",
+      "center_address": "201 Kingwood Medical Dr #a100",
+      "center_state": "TX",
+      "center_city": "Kingwood",
+      "center_zip": "77339",
+      "center_hours": "M-F  7:30-4:30PM Sat 8AM - 12PM",
+      "center_latitude": "30.0470049000",
+      "center_longitude": "-95.2569061000",
+      "center_network": "Labcorp",
+      "center_country": "US",
+      "center_distance": 2.2505084601544,
+      "network_name": "LabCorp",
+      "structured_hours": {
+        "Monday": {
+          "open": "7:30 AM",
+          "close": "4:30 PM"
+        },
+        "Tuesday": {
+          "open": "7:30 AM",
+          "close": "4:30 PM"
+        },
+        "Wednesday": {
+          "open": "7:30 AM",
+          "close": "4:30 PM"
+        },
+        "Thursday": {
+          "open": "7:30 AM",
+          "close": "4:30 PM"
+        },
+        "Friday": {
+          "open": "7:30 AM",
+          "close": "4:30 PM"
+        },
+        "Saturday": {
+          "open": "8:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "number": "2530",
+      "address": "1213 Hermann Drive Suite 120",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77004",
+      "hours": "M-Th 8:00 am-12:30 pm & 1:30 pm-5:00 pm|F 8:00 am-12:30 pm & 1:30 pm-3:00 pm",
+      "latitude": "29.7232630000",
+      "longitude": "-95.3884430000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "24.664887317525004",
+      "center_id": "2530",
+      "center_address": "1213 Hermann Drive Suite 120",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77004",
+      "center_hours": "M-Th 8:00 am-12:30 pm & 1:30 pm-5:00 pm|F 8:00 am-12:30 pm & 1:30 pm-3:00 pm",
+      "center_latitude": "29.7232630000",
+      "center_longitude": "-95.3884430000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 24.664887317525,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "3:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        }
+      }
+    },
+    {
+      "number": "192",
+      "address": "1213 HERMANN DR STE 155",
+      "geocode_address": "1213 HERMANN DR STE 155",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zipcode": "77004",
+      "hours": "M-F  8AM-5:30P",
+      "latitude": "29.7232620000",
+      "longitude": "-95.3884410000",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "LabCorp",
+      "country": "US",
+      "distance": "24.664901127089262",
+      "center_id": "192",
+      "center_address": "1213 Hermann Dr Ste 155",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77004",
+      "center_hours": "M-F  8AM-5:30P",
+      "center_latitude": "29.7232620000",
+      "center_longitude": "-95.3884410000",
+      "center_network": "Labcorp",
+      "center_country": "US",
+      "center_distance": 24.664901127089,
+      "network_name": "LabCorp",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        }
+      }
+    },
+    {
+      "number": "2748",
+      "address": "5711 Almeda Rd Ste 131B",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77004",
+      "hours": "M-F 8:00 am-5:00 pm",
+      "latitude": "29.7184540000",
+      "longitude": "-95.3797990000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "24.762727435231234",
+      "center_id": "2748",
+      "center_address": "5711 Almeda Rd Ste 131b",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77004",
+      "center_hours": "M-F 8:00 am-5:00 pm",
+      "center_latitude": "29.7184540000",
+      "center_longitude": "-95.3797990000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 24.762727435231,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        }
+      }
+    },
+    {
+      "number": "3190",
+      "address": "2802 Garth Rd Ste 213 ",
+      "geocode_address": "",
+      "city": "Baytown",
+      "state": "TX",
+      "zipcode": "77521",
+      "hours": "M-F 8:00 am-5:00 pm ",
+      "latitude": "29.7525900000",
+      "longitude": "-94.9782560000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "25.043647636412192",
+      "center_id": "3190",
+      "center_address": "2802 Garth Rd Ste 213 ",
+      "center_state": "TX",
+      "center_city": "Baytown",
+      "center_zip": "77521",
+      "center_hours": "M-F 8:00 am-5:00 pm ",
+      "center_latitude": "29.7525900000",
+      "center_longitude": "-94.9782560000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 25.043647636412,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        }
+      }
+    },
+    {
+      "number": "3209",
+      "address": "6410 Fannin St Ste 220 ",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77030",
+      "hours": "M-F 8:00 am-5:00 pm",
+      "latitude": "29.7144070000",
+      "longitude": "-95.3978880000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "25.456706215685237",
+      "center_id": "3209",
+      "center_address": "6410 Fannin St Ste 220 ",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77030",
+      "center_hours": "M-F 8:00 am-5:00 pm",
+      "center_latitude": "29.7144070000",
+      "center_longitude": "-95.3978880000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 25.456706215685,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        }
+      }
+    },
+    {
+      "number": "195",
+      "address": "6410 FANNIN ST STE 110",
+      "geocode_address": "6410 FANNIN ST STE 110",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zipcode": "77030",
+      "hours": "M-F  8AM-5PM",
+      "latitude": "29.7144070000",
+      "longitude": "-95.3978880000",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "LabCorp",
+      "country": "US",
+      "distance": "25.456706215685237",
+      "center_id": "195",
+      "center_address": "6410 Fannin St Ste 110",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77030",
+      "center_hours": "M-F  8AM-5PM",
+      "center_latitude": "29.7144070000",
+      "center_longitude": "-95.3978880000",
+      "center_network": "Labcorp",
+      "center_country": "US",
+      "center_distance": 25.456706215685,
+      "network_name": "LabCorp",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        }
+      }
+    },
+    {
+      "number": "3208",
+      "address": "3400 Bissonnet St Ste 298 ",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77005",
+      "hours": "M-F 7:30 am-12:30 pm & 1:30 pm-4:00 pm",
+      "latitude": "29.7257630000",
+      "longitude": "-95.4307480000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "25.658898439052425",
+      "center_id": "3208",
+      "center_address": "3400 Bissonnet St Ste 298 ",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77005",
+      "center_hours": "M-F 7:30 am-12:30 pm & 1:30 pm-4:00 pm",
+      "center_latitude": "29.7257630000",
+      "center_longitude": "-95.4307480000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 25.658898439052,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "7:30 AM",
+          "close": "4:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Tuesday": {
+          "open": "7:30 AM",
+          "close": "4:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Wednesday": {
+          "open": "7:30 AM",
+          "close": "4:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Thursday": {
+          "open": "7:30 AM",
+          "close": "4:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Friday": {
+          "open": "7:30 AM",
+          "close": "4:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        }
+      }
+    },
+    {
+      "number": "4251",
+      "address": "9539 HUFFMEISTER SUITE B",
+      "geocode_address": "",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zipcode": "77095",
+      "hours": "M-F 7:00AM-5:00PM",
+      "latitude": "29.9168664000",
+      "longitude": "-95.6305725000",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "LabCorp",
+      "country": "US",
+      "distance": "26.243275697001767",
+      "center_id": "4251",
+      "center_address": "9539 Huffmeister Suite B",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77095",
+      "center_hours": "M-F 7:00AM-5:00PM",
+      "center_latitude": "29.9168664000",
+      "center_longitude": "-95.6305725000",
+      "center_network": "Labcorp",
+      "center_country": "US",
+      "center_distance": 26.243275697002,
+      "network_name": "LabCorp",
+      "structured_hours": {
+        "Monday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        }
+      }
+    },
+    {
+      "number": "2532",
+      "address": "7515 Main Street Suite 190",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77054",
+      "hours": "M,T,Th,F 8:00 am-1:00 pm & 2:00 pm-5:00 pm|W 8:00 am-1:00 pm & 2:00 pm-3:00 pm ",
+      "latitude": "29.6986140000",
+      "longitude": "-95.4101260000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "26.756074921500602",
+      "center_id": "2532",
+      "center_address": "7515 Main Street Suite 190",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77054",
+      "center_hours": "M,T,Th,F 8:00 am-1:00 pm & 2:00 pm-5:00 pm|W 8:00 am-1:00 pm & 2:00 pm-3:00 pm ",
+      "center_latitude": "29.6986140000",
+      "center_longitude": "-95.4101260000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 26.756074921501,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "2:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "2:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "3:00 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "2:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "2:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "2:00 PM"
+        }
+      }
+    },
+    {
+      "number": "2254",
+      "address": "7400 FANNIN ST STE 145",
+      "geocode_address": "",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zipcode": "77054",
+      "hours": "M-F 8:00AM-5:00PM",
+      "latitude": "29.6945991516",
+      "longitude": "-95.4011306763",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "LabCorp",
+      "country": "US",
+      "distance": "26.78358698577374",
+      "center_id": "2254",
+      "center_address": "7400 Fannin St Ste 145",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77054",
+      "center_hours": "M-F 8:00AM-5:00PM",
+      "center_latitude": "29.6945991516",
+      "center_longitude": "-95.4011306763",
+      "center_network": "Labcorp",
+      "center_country": "US",
+      "center_distance": 26.783586985774,
+      "network_name": "LabCorp",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        }
+      }
+    },
+    {
+      "number": "3210",
+      "address": "7400 Fannin St Ste 180 ",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77054",
+      "hours": "M-F 8:30 am-5:30 pm",
+      "latitude": "29.6945990000",
+      "longitude": "-95.4011310000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "26.783604444364432",
+      "center_id": "3210",
+      "center_address": "7400 Fannin St Ste 180 ",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77054",
+      "center_hours": "M-F 8:30 am-5:30 pm",
+      "center_latitude": "29.6945990000",
+      "center_longitude": "-95.4011310000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 26.783604444364,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:30 AM",
+          "close": "5:30 PM"
+        },
+        "Tuesday": {
+          "open": "8:30 AM",
+          "close": "5:30 PM"
+        },
+        "Wednesday": {
+          "open": "8:30 AM",
+          "close": "5:30 PM"
+        },
+        "Thursday": {
+          "open": "8:30 AM",
+          "close": "5:30 PM"
+        },
+        "Friday": {
+          "open": "8:30 AM",
+          "close": "5:30 PM"
+        }
+      }
+    },
+    {
+      "number": "3211",
+      "address": "7900 Fannin St # 1700 ",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77054",
+      "hours": "M-F 8:30 am-5:30 pm",
+      "latitude": "29.6933670000",
+      "longitude": "-95.4028850000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "26.90419825627598",
+      "center_id": "3211",
+      "center_address": "7900 Fannin St # 1700 ",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77054",
+      "center_hours": "M-F 8:30 am-5:30 pm",
+      "center_latitude": "29.6933670000",
+      "center_longitude": "-95.4028850000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 26.904198256276,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:30 AM",
+          "close": "5:30 PM"
+        },
+        "Tuesday": {
+          "open": "8:30 AM",
+          "close": "5:30 PM"
+        },
+        "Wednesday": {
+          "open": "8:30 AM",
+          "close": "5:30 PM"
+        },
+        "Thursday": {
+          "open": "8:30 AM",
+          "close": "5:30 PM"
+        },
+        "Friday": {
+          "open": "8:30 AM",
+          "close": "5:30 PM"
+        }
+      }
+    },
+    {
+      "number": "2533",
+      "address": "7580 Fannin Suite 233",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77054",
+      "hours": "M-Th 8:00 am-1:00 pm & 2:00 pm-5:00 pm|F 8:00 am-3:00 pm",
+      "latitude": "29.6933670000",
+      "longitude": "-95.4028854400",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "26.904209031205973",
+      "center_id": "2533",
+      "center_address": "7580 Fannin Suite 233",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77054",
+      "center_hours": "M-Th 8:00 am-1:00 pm & 2:00 pm-5:00 pm|F 8:00 am-3:00 pm",
+      "center_latitude": "29.6933670000",
+      "center_longitude": "-95.4028854400",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 26.904209031206,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "2:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "2:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "2:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "2:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "3:00 PM"
+        }
+      }
+    },
+    {
+      "number": "719",
+      "address": "7580 FANNIN ST STE 320",
+      "geocode_address": "7580 FANNIN ST STE 320",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zipcode": "77054",
+      "hours": "M-F  8AM-5PM",
+      "latitude": "29.6933670000",
+      "longitude": "-95.4029640000",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "LabCorp",
+      "country": "US",
+      "distance": "26.906133188480638",
+      "center_id": "719",
+      "center_address": "7580 Fannin St Ste 320",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77054",
+      "center_hours": "M-F  8AM-5PM",
+      "center_latitude": "29.6933670000",
+      "center_longitude": "-95.4029640000",
+      "center_network": "Labcorp",
+      "center_country": "US",
+      "center_distance": 26.906133188481,
+      "network_name": "LabCorp",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        }
+      }
+    },
+    {
+      "number": "3205",
+      "address": "12385 Kingsride Avenue ",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77024",
+      "hours": "M-F 7:30 am-5:30 pm|Sa 8:00 am-12:00 pm",
+      "latitude": "29.7790552700",
+      "longitude": "-95.5472494700",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "27.071316301718035",
+      "center_id": "3205",
+      "center_address": "12385 Kingsride Avenue ",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77024",
+      "center_hours": "M-F 7:30 am-5:30 pm|Sa 8:00 am-12:00 pm",
+      "center_latitude": "29.7790552700",
+      "center_longitude": "-95.5472494700",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 27.071316301718,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "7:30 AM",
+          "close": "5:30 PM"
+        },
+        "Tuesday": {
+          "open": "7:30 AM",
+          "close": "5:30 PM"
+        },
+        "Wednesday": {
+          "open": "7:30 AM",
+          "close": "5:30 PM"
+        },
+        "Thursday": {
+          "open": "7:30 AM",
+          "close": "5:30 PM"
+        },
+        "Friday": {
+          "open": "7:30 AM",
+          "close": "5:30 PM"
+        },
+        "Saturday": {
+          "open": "8:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "number": "2255",
+      "address": "855 FROSTWOOD",
+      "geocode_address": "",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zipcode": "77024",
+      "hours": "M-TH 7:00AM-6:00PM F 7:00AM-4:30PM SAT 7:00AM-2:00PM",
+      "latitude": "29.7784182429",
+      "longitude": "-95.5478087068",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "LabCorp",
+      "country": "US",
+      "distance": "27.12595175331699",
+      "center_id": "2255",
+      "center_address": "855 Frostwood",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77024",
+      "center_hours": "M-TH 7:00AM-6:00PM F 7:00AM-4:30PM SAT 7:00AM-2:00PM",
+      "center_latitude": "29.7784182429",
+      "center_longitude": "-95.5478087068",
+      "center_network": "Labcorp",
+      "center_country": "US",
+      "center_distance": 27.125951753317,
+      "network_name": "LabCorp",
+      "structured_hours": {
+        "Monday": {
+          "open": "7:00 AM",
+          "close": "6:00 PM"
+        },
+        "Tuesday": {
+          "open": "7:00 AM",
+          "close": "6:00 PM"
+        },
+        "Wednesday": {
+          "open": "7:00 AM",
+          "close": "6:00 PM"
+        },
+        "Thursday": {
+          "open": "7:00 AM",
+          "close": "6:00 PM"
+        },
+        "Friday": {
+          "open": "7:00 AM",
+          "close": "4:30 PM"
+        },
+        "Saturday": {
+          "open": "7:00 AM",
+          "close": "2:00 PM"
+        }
+      }
+    },
+    {
+      "number": "2811",
+      "address": "6565 West Loop South Ste 302",
+      "geocode_address": "",
+      "city": "Bellaire",
+      "state": "TX",
+      "zipcode": "77401",
+      "hours": "M-F 8:00 am-5:30 pm",
+      "latitude": "29.7099270000",
+      "longitude": "-95.4586640000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "27.451617647024662",
+      "center_id": "2811",
+      "center_address": "6565 West Loop South Ste 302",
+      "center_state": "TX",
+      "center_city": "Bellaire",
+      "center_zip": "77401",
+      "center_hours": "M-F 8:00 am-5:30 pm",
+      "center_latitude": "29.7099270000",
+      "center_longitude": "-95.4586640000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 27.451617647025,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        }
+      }
+    },
+    {
+      "number": "3199",
+      "address": "10837 Katy Fwy Ste 150 ",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77079",
+      "hours": "M-F 8:00 am-6:00 pm",
+      "latitude": "29.7835920000",
+      "longitude": "-95.5682220000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "27.787736078319753",
+      "center_id": "3199",
+      "center_address": "10837 Katy Fwy Ste 150 ",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77079",
+      "center_hours": "M-F 8:00 am-6:00 pm",
+      "center_latitude": "29.7835920000",
+      "center_longitude": "-95.5682220000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 27.78773607832,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "6:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "6:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "6:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "6:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "6:00 PM"
+        }
+      }
+    },
+    {
+      "number": "194",
+      "address": "5420 DASHWOOD DR STE 205",
+      "geocode_address": "5420 DASHWOOD DR STE 205",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zipcode": "77081",
+      "hours": "M-F  8AM-5PM",
+      "latitude": "29.7079730000",
+      "longitude": "-95.4750360000",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "LabCorp",
+      "country": "US",
+      "distance": "28.089516340015866",
+      "center_id": "194",
+      "center_address": "5420 Dashwood Dr Ste 205",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77081",
+      "center_hours": "M-F  8AM-5PM",
+      "center_latitude": "29.7079730000",
+      "center_longitude": "-95.4750360000",
+      "center_network": "Labcorp",
+      "center_country": "US",
+      "center_distance": 28.089516340016,
+      "network_name": "LabCorp",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        }
+      }
+    },
+    {
+      "number": "3203",
+      "address": "1201 Dairy Ashford St Ste 120 ",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77079",
+      "hours": "M-F 7:30 am-5:30 pm",
+      "latitude": "29.7827090000",
+      "longitude": "-95.6071320000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "29.617506770367235",
+      "center_id": "3203",
+      "center_address": "1201 Dairy Ashford St Ste 120 ",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77079",
+      "center_hours": "M-F 7:30 am-5:30 pm",
+      "center_latitude": "29.7827090000",
+      "center_longitude": "-95.6071320000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 29.617506770367,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "7:30 AM",
+          "close": "5:30 PM"
+        },
+        "Tuesday": {
+          "open": "7:30 AM",
+          "close": "5:30 PM"
+        },
+        "Wednesday": {
+          "open": "7:30 AM",
+          "close": "5:30 PM"
+        },
+        "Thursday": {
+          "open": "7:30 AM",
+          "close": "5:30 PM"
+        },
+        "Friday": {
+          "open": "7:30 AM",
+          "close": "5:30 PM"
+        }
+      }
+    },
+    {
+      "number": "3213",
+      "address": "8200 Wednesbury Lane Suite # 450 ",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77074",
+      "hours": "M-F 7:30 am-5:00 pm|Sa 8:00 am-12:00 pm ",
+      "latitude": "29.6892280000",
+      "longitude": "-95.5267640000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "30.92393830494392",
+      "center_id": "3213",
+      "center_address": "8200 Wednesbury Lane Suite # 450 ",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77074",
+      "center_hours": "M-F 7:30 am-5:00 pm|Sa 8:00 am-12:00 pm ",
+      "center_latitude": "29.6892280000",
+      "center_longitude": "-95.5267640000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 30.923938304944,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "7:30 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "7:30 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "7:30 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "7:30 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "7:30 AM",
+          "close": "5:00 PM"
+        },
+        "Saturday": {
+          "open": "8:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "number": "193",
+      "address": "8313 SOUTHWEST FWY STE 111",
+      "geocode_address": "8313 SOUTHWEST FWY STE 111",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zipcode": "77074",
+      "hours": "M-F  8AM-4:30PM",
+      "latitude": "29.6880770000",
+      "longitude": "-95.5277380000",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "LabCorp",
+      "country": "US",
+      "distance": "31.0226365219262",
+      "center_id": "193",
+      "center_address": "8313 Southwest Fwy Ste 111",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77074",
+      "center_hours": "M-F  8AM-4:30PM",
+      "center_latitude": "29.6880770000",
+      "center_longitude": "-95.5277380000",
+      "center_network": "Labcorp",
+      "center_country": "US",
+      "center_distance": 31.022636521926,
+      "network_name": "LabCorp",
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM"
+        }
+      }
+    },
+    {
+      "number": "3204",
+      "address": "12121 Richmond Ave Ste 124 ",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77082",
+      "hours": "M-F 6:30 am-5:00 pm ",
+      "latitude": "29.7296350000",
+      "longitude": "-95.5931170000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": null,
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "31.423507987532286",
+      "center_id": "3204",
+      "center_address": "12121 Richmond Ave Ste 124 ",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77082",
+      "center_hours": "M-F 6:30 am-5:00 pm ",
+      "center_latitude": "29.7296350000",
+      "center_longitude": "-95.5931170000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 31.423507987532,
+      "network_name": "Quest Diagnostics",
+      "structured_hours": {
+        "Monday": {
+          "open": "6:30 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "6:30 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "6:30 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "6:30 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "6:30 AM",
+          "close": "5:00 PM"
+        }
+      }
+    }
+  ],
+  "latitude": "30.0487594604",
+  "longitude": "-95.2193298340",
+  "resultCount": 50
+}
