@@ -563,8 +563,6 @@
         $.each(lab.structured_hours, function(day, hours) {
           var $row = $result.find('[data-findalab-structured-hours-row][data-template]').clone();
           $row.removeAttr('data-template');
-
-          console.log(day);
           $row.find('[data-findalab-result-day]').html(day);
           $row.find('[data-findalab-result-hours]').html(hours.open + " - " + hours.close);
 
