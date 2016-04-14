@@ -194,11 +194,12 @@
        * on the page this component is used on.
        *
        * @param {{
-       *   id:int
-       *   network:string
-       *   address:string
-       *   city:string
-       *   state:string
+       *   id:int,
+       *   lab_title:string,
+       *   network:string,
+       *   address:string,
+       *   city:string,
+       *   state:string,
        *   zip:int
        * }} lab
        */
@@ -361,11 +362,12 @@
        * Private event handler for when the user selects a lab.
        *
        * @param {{
-       *   id:int
-       *   network:string
-       *   address:string
-       *   city:string
-       *   state:string
+       *   id:int,
+       *   lab_title:string,
+       *   network:string,
+       *   address:string,
+       *   city:string,
+       *   state:string,
        *   zip:int
        * }} lab
        */
@@ -384,9 +386,10 @@
        *    center_city:string,
        *    center_state:string,
        *    center_zip:string,
-       *    center_network:string
-       *    center_country:string
-       *    network_name:string,
+       *    center_network:string,
+       *    center_country:string,
+       *    lab_title:string,
+       *    network:string,
        * }} lab
        * @private
        */
@@ -423,7 +426,7 @@
 
         google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
           this._infoWindow.setContent(
-              '<h6 style="margin: 0;">' + lab.network_name + '</h6>' +
+              '<h6 style="margin: 0;">' + lab.lab_title + '</h6>' +
               '<p>' +
               lab.center_address + '<br>' +
               lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip +
@@ -437,7 +440,8 @@
               'data-city="' + lab.center_city + '" ' +
               'data-state="' + lab.center_state + '" ' +
               'data-zip="' + lab.center_zip + '" ' +
-              'data-network="' + lab.network_name + '" ' +
+              'data-network="' + lab.network + '" ' +
+              'data-title="' + lab.lab_title + '" ' +
               'data-country="' + lab.center_country + '"' +
               '>' +
               this.labSelectText +
@@ -460,7 +464,8 @@
        *   center_hours:string,
        *   center_network:string,
        *   center_distance:float,
-       *   network_name:string,
+       *   lab_title:string,
+       *   network:string,
        *   structured_hours:object
        * }]} labs
        * @private
@@ -488,13 +493,14 @@
          *   center_hours:string,
          *   center_network:string,
          *   center_distance:float,
-         *   network_name:string,
+         *   lab_title:string,
+         *   network:string,
          *   structured_hours:object
          * }} lab
          */
         $.each(labs, $.proxy(function(index, lab) {
           var $result = $resultTemplate.clone();
-          $result.find('[data-findalab-result-title]').html(lab.network_name);
+          $result.find('[data-findalab-result-title]').html(lab.lab_title);
           $result.find('[data-findalab-result-address]').html(
             lab.center_address + '<br>' +
             lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip
@@ -508,7 +514,8 @@
           .attr('data-city', lab.center_city)
           .attr('data-state', lab.center_state)
           .attr('data-zip', lab.center_zip)
-          .attr('data-network', lab.network_name)
+          .attr('data-network', lab.networke)
+          .attr('data-title', lab.lab_title)
           .html(this.labSelectText);
 
           if (!lab.structured_hours) {
@@ -546,7 +553,8 @@
        *   center_hours:string,
        *   center_network:string,
        *   center_distance:float,
-       *   network_name:string,
+       *   lab_title:string,
+       *   network:string,
        *   structured_hours:object
        * }} lab
        * @param   {jQuery} $result The jQuery DOM that should be modified to show the hours.
@@ -605,7 +613,8 @@
        *    center_hours:string,
        *    center_network:string,
        *    center_distance:float,
-       *    network_name:string,
+       *    lab_title:string,
+       *    network:string,
        *    structured_hours:object
        *   }],
        *   latitude:float,
