@@ -32,6 +32,9 @@
       /** @var {google.maps.Map} */
       this._map = null;
 
+      /** @var {array} Array of map markers. */
+      this._markers = [];
+
       /** @var {google.maps.Geocoder} */
       this._geoCoder = null;
 
@@ -207,7 +210,27 @@
       };
 
       /**
-       * This functionwill retrieve latitude and longitudes and also labs
+       * Resets the lab finder to its default state.
+       */
+      this.reset = function() {
+        this.find('.findalab__results li:gt(0)').remove();
+        this.find('[data-findalab-search-field]').val('');
+        this.find('[data-findalab-total]').html('No Results');
+        this.find('[data-findalab-error]').html('');
+
+        this._map.setCenter(this._buildLatLong(this._defaultLat, this._defaultLong));
+        this._map.setZoom(this._initialZoom);
+        this._map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+
+        for (var i = 0; i < this._markers.length; i++) {
+          this._markers[i].setMap(null);
+        }
+
+        this._markers = [];
+      };
+
+      /**
+       * This function will retrieve latitude and longitudes and also labs
        * near these coordinates.
        */
       this.search = function(zipcode) {
@@ -420,6 +443,8 @@
           icon: mapMarker,
           position: location,
         });
+
+        this._markers.push(vMarker);
 
         google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
           this._infoWindow.setContent(
