@@ -514,7 +514,7 @@
           .attr('data-city', lab.center_city)
           .attr('data-state', lab.center_state)
           .attr('data-zip', lab.center_zip)
-          .attr('data-network', lab.networke)
+          .attr('data-network', lab.network)
           .attr('data-title', lab.lab_title)
           .html(this.labSelectText);
 
