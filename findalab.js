@@ -66,9 +66,8 @@
       this.searchButtonLoadingText = '...';
 
       this.emptyListMessage =
-        '<li class="findalab__result">' +
-        'Please "' + self.searchInputPlaceholder + '" above and press "' + self.searchButtonText + '" to see results.' +
-        '</li>';
+        'Please "' + self.searchInputPlaceholder + '" above and press "' +
+        self.searchButtonText + '" to see results.';
 
       /**
        * Initializes the map and sets the default viewport lat / long.
@@ -76,6 +75,8 @@
        * @param {{lat:float, long:float}} settings
        */
       this.construct = function(settings) {
+        this.find('[data-findalab-empty-list-message]').html(self.emptyListMessage);
+
         this.find('input').keyup($.proxy(function(e) {
           e.preventDefault();
 
@@ -88,7 +89,6 @@
 
         this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
         this.find('[data-findalab-search-button]').addClass(self.searchbuttonClass).html(self.searchButtonText);
-        this.find('.findalab__results').html(self.emptyListMessage);
         this.setPlaceholder(self.searchInputPlaceholder);
 
         settings = settings || {};
@@ -117,6 +117,7 @@
         this.on('click', '[data-findalab-result-button]', $.proxy(function(event) {
           event.preventDefault();
           this._onLabSelect($(event.target).data());
+
           return false;
         }, this));
       };
@@ -129,6 +130,7 @@
           $(this).addClass('is-active');
           self.find('[data-findalab-content]').removeClass('is-active');
           self.find('[data-findalab-content="' + content + '"]').addClass('is-active');
+          self.resize();  
         });
       };
 
@@ -246,9 +248,7 @@
         this.find('[data-findalab-search-field]').val('');
         this.find('[data-findalab-total]').html('No Results');
         this.find('[data-findalab-error]').addClass('findalab__hide').html('');
-
-        this.find('.findalab__results').html(self.emptyListMessage);
-
+        this.find('[data-findalab-empty-list-message]').removeClass('findalab__hide');
 
         this._map.setCenter(this._buildLatLong(this._defaultLat, this._defaultLong));
         this._map.setZoom(this._initialZoom);
@@ -581,6 +581,7 @@
           }
 
           $result.removeClass('findalab__hide').appendTo('[data-findalab-result-list]');
+          self.find('[data-findalab-empty-list-message]').addClass('findalab__hide');
 
         }, this));
 

@@ -19,11 +19,18 @@ gulp.task('sass', function() {
   .pipe($.autoprefixer({
     browsers: ['last 2 versions', 'ie >= 9'],
   }))
-  .pipe(gulp.dest('css'))
-  .pipe(browserSync.stream());
+  .pipe(gulp.dest('css'));
 });
 
-gulp.task('default', ['sass'], function() {
-  gulp.watch(['scss/**/*.scss'], ['sass']);
+gulp.task('stylesheet', function() {
+  return gulp.src('scss/findalab.scss')
+  .pipe($.sass({
+    browsers: ['last 2 versions', 'ie >= 9'],
+  })
+  .pipe(gulp.dest('../css'));
+});
+
+gulp.task('default', ['sass', 'stylesheet'], function() {
+  gulp.watch(['scss/**/*.scss'], ['sass', 'stylesheet']);
   gulp.watch('*.html').on('change', browserSync.reload);
 });

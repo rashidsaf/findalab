@@ -21,7 +21,7 @@ $findalab-height: 300px !default;
 
 /// Global padding for component.
 /// @type Number
-$findalab-padding: 1rem !default;
+$findalab-padding: 16px !default;
 
 /// Border for component.
 /// @type Border (width, style, color)
@@ -91,6 +91,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
 }
 
 .findalab__nav {
+  border-bottom: $findalab-border;
   @media only screen and (min-width: $findalab-breakpoint) {
     display: none;
   }
@@ -110,11 +111,9 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
 
 .findalab__map {
   display: none;
-  height: $findalab-height;
+  width: 100%;
 
   @media only screen and (min-width: $findalab-breakpoint) {
-    border-left: $findalab-border;
-    border-radius: 0 $findalab-radius $findalab-radius 0;
     display: block;
     height: 100%;
     left: $findalab-list-width;
@@ -122,6 +121,12 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
     position: absolute;
     top: 0;
     width: calc(100% - #{$findalab-list-width}); // interpolate for sass to interpret var
+    border-left: $findalab-border;
+    border-radius: 0 $findalab-radius $findalab-radius 0;
+  }
+
+  &.is-active {
+    display: block;
   }
 
   // TODO: Remove when refactoring map embed
@@ -131,16 +136,37 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
   }
 }
 
+.findalab__map__embed {
+  height: $findalab-height;
+  width: 100% !important;
+
+  @media only screen and (min-width: $findalab-breakpoint) {
+    display: block;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%; // interpolate for sass to interpret var
+  }
+}
+
 .findalab__results {
+  display: none;
   height: $findalab-height;
   list-style-type: none;
   margin: 0;
   overflow: auto;
   padding: 0;
+  width: 100%;
 
   @media only screen and (min-width: $findalab-breakpoint) {
     height: 450px;
     width: $findalab-list-width;
+  }
+
+  &.is-active {
+    display: block;
   }
 
   &::-webkit-scrollbar {
@@ -167,7 +193,8 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
 }
 
 .findalab__nav {
-  padding: 10px;
+  padding: $findalab-padding;
+  box-shadow: 0 -2px 15px 0 rgba(17, 17, 17, 0.2);
 }
 
 .findalab__nav__item {

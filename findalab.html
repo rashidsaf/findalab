@@ -16,6 +16,7 @@
   </div>
 
   <ul class="findalab__results is-active" data-findalab-result-list data-findalab-content="list">
+    <li class="findalab__result" data-findalab-empty-list-message></li>
     <li class="findalab__result findalab__hide" data-findalab-result>
       <h4 data-findalab-result-title></h4>
       <address data-findalab-result-address></address>
@@ -53,7 +54,9 @@
     </li>
   </ul>
 
-  <div class="findalab__map" id="findalab-map" data-findalab-map data-findalab-content="map"></div>
+  <div class="findalab__map" data-findalab-content="map">
+    <div class="findalab__map__embed" id="findalab-map" data-findalab-map></div>
+  </div>
 
   <div class="findalab__total">
     <small data-findalab-total>No Results</small>
