@@ -1,35 +1,46 @@
-# Medology Find A Lab Component
+# Find A Lab - jQuery Plugin
 
-The find a lab component is used throughout all of our projects to implement our users to search
+The find a lab plugin is used throughout all of our (Medology) projects to implement our users to search
 for a testing lab using their postal code and choosing a location best for them.
 
 ## Install
-This component can be installed as a bower dependency.
+This plugin can be installed as a bower dependency. Run the following command in the root of your project:
 
-Run the following command in the root of your project:
 ```bash
 $ bower install medology-findalab --save-dev
 ```
 
+## Requirements
+
+The `findalab` plugin requires the following dependencies:
+- jQuery
+- findalab.js
+- findalab.css
+
+Make sure to load the scripts and stylesheets when using the plugin.
+
 ## Setup
 
-### Sass
-
-Include the following file in your main sass file.
-
-```sass
-@import 'path/to/bower_components/medology-findalab';
-```
-
-### JS
-
-Include `medology-findalab.js` in a script tag or concatenate it into your build file.
-
-Include the following code to initialize the component on the page:
+Include the following code to initialize the plugin on the page:
 
 ```js
-$('put-selector-here').load('../medology-findalab.html', function() {
-  $(this).find('.findalab').findalab(); // initialize findalab jQuery component
-  $(document).foundation(); // initialize foundation after template loads
+$('#your-selector').load('../path/from/bower/findalab.html', function() {
+  $(this).find('.findalab').findalab();
+});
+```
+
+## Custom Options
+
+The plugin can be customized by redefining `findalab` variables.
+
+Here is an example using [Foundation Font Awesome Buttons](https://github.com/joshmedeski/foundation-font-awesome-buttons):
+
+```js
+$('#your-selector').load('../path/from/bower/findalab.html', function() {
+  $(this).find('.findalab').findalab();
+  findalab.searchbuttonClass = 'secondary button';
+  findalab.searchButtonText = '<i class="fa fa-search"></i>';
+  findalab.searchButtonLoadingText = '<i class="fa fa-spin fa-refresh"></i>';
+  findalab.labSelectedButtonClass = 'small secondary button ffab-after fa-arrow-right';
 });
 ```
