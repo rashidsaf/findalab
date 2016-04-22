@@ -9,7 +9,7 @@
     findalab: function(settings) {
       var self = this;
 
-      // TODO: add docblock
+      /** @var {string} The root directory for the plugin. */
       this.baseURL = '';
 
       /** @var {int} The zoom level for when no search has been performed yet (pretty far out) */
@@ -53,8 +53,22 @@
       /** @var {string} text for the lab selection buttons */
       this.labSelectText = 'Choose This Location';
 
+      /** @var {string} Class name(s) for the lab selected button */
+      this.labSelectedButtonClass = 'button';
+
       /** @var {string} placeholder text for the search input */
       this.searchInputPlaceholder = 'Enter Your Zip';
+
+      this.searchButtonClass = null;
+
+      this.searchButtonText = 'Search';
+
+      this.searchButtonLoadingText = '...';
+
+      this.emptyListMessage =
+        '<li class="findalab__result">' +
+        'Please "' + self.searchInputPlaceholder + '" above and press "' + self.searchButtonText + '" to see results.' +
+        '</li>';
 
       /**
        * Initializes the map and sets the default viewport lat / long.
@@ -73,7 +87,8 @@
         }, this));
 
         this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
-
+        this.find('[data-findalab-search-button]').addClass(self.searchbuttonClass).html(self.searchButtonText);
+        this.find('.findalab__results').html(self.emptyListMessage);
         this.setPlaceholder(self.searchInputPlaceholder);
 
         settings = settings || {};
@@ -90,11 +105,13 @@
           mapTypeId: google.maps.MapTypeId.ROADMAP,
         };
 
-        this._map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        this._map = new google.maps.Map(document.getElementById('findalab-map'), mapOptions);
 
         this._geoCoder = new google.maps.Geocoder();
 
         this._infoWindow = new google.maps.InfoWindow();
+
+        this.contentNav();
 
         // Capture lab selection events
         this.on('click', '[data-findalab-result-button]', $.proxy(function(event) {
@@ -104,11 +121,22 @@
         }, this));
       };
 
+
+      this.contentNav = function() {
+        $('[data-findalab-nav-item]').on('click', function() {
+          content = $(this).data('findalab-nav-item');
+          $('[data-findalab-nav-item]').removeClass('is-active');
+          $(this).addClass('is-active');
+          self.find('[data-findalab-content]').removeClass('is-active');
+          self.find('[data-findalab-content="' + content + '"]').addClass('is-active');
+        });
+      };
+
       /**
        * This functionwill handle clearing error text.
        */
       this.clearError = function() {
-        this.find('[data-findalab-error]').html('');
+        this.find('[data-findalab-error]').addClass('findalab__hide').html('');
       };
 
       /**
@@ -217,7 +245,10 @@
         this.find('.findalab__results li:gt(0)').remove();
         this.find('[data-findalab-search-field]').val('');
         this.find('[data-findalab-total]').html('No Results');
-        this.find('[data-findalab-error]').html('');
+        this.find('[data-findalab-error]').addClass('findalab__hide').html('');
+
+        this.find('.findalab__results').html(self.emptyListMessage);
+
 
         this._map.setCenter(this._buildLatLong(this._defaultLat, this._defaultLong));
         this._map.setZoom(this._initialZoom);
@@ -236,8 +267,6 @@
        */
       this.search = function(zipcode) {
         this.clearError();
-        // $('[data-findalab-result-list]').html('');
-
         this.find('[data-findalab-search-field]').val(zipcode);
 
         try {
@@ -252,7 +281,7 @@
           return;
         }
 
-        $('[data-findalab-search-button]').html('<i class="fa fa-spin fa-refresh"></i>');
+        $('[data-findalab-search-button]').html(this.searchButtonLoadingText);
 
         $.ajax({
           url: this.baseURL + '/geocode',
@@ -311,13 +340,7 @@
        * @param {string} message This is the error message that will be shown.
        */
       this.setError = function(message) {
-        console.log(message);
-        this.find('[data-findalab-error]').html(
-          '<div class="small alert callout findalab__error">' +
-          '<i class="fa fa-warning"></i> ' +
-          message +
-          '</div>'
-        );
+        this.find('[data-findalab-error]').removeClass('findalab__hide').html(message);
       };
 
       /**
@@ -349,7 +372,7 @@
           event.preventDefault();
           var $link = $(this);
           var $toggle = $link.siblings('.findalab__hours');
-          $link.text($toggle.is(':visible') ? 'Show Hours ▼' : 'Hide Hours ▲');
+          $link.text($toggle.is(':visible') ? 'Show ▼' : 'Hide ▲');
           $toggle.slideToggle('300');
         });
       };
@@ -457,7 +480,7 @@
               lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip +
               '</p>' +
               '<a ' +
-              'class="[ tiny secondary button ][ ffab-after fa-arrow-right ]" ' +
+              'class="' + this.labSelectedButtonClass + '" ' +
               'style="margin-bottom: 0;" ' +
               'href="#" ' +
               'data-id="' + lab.center_id + '" ' +
@@ -496,10 +519,6 @@
        * @private
        */
       this._render = function(labs) {
-        // $('.bg_map_image').hide(); // hide empty results
-        // $('.result-map-wrap').show(); // remove?
-
-        var html = '';
         var $resultsList = this.find('[data-findalab-result-list]');
         var $resultTemplate = this.find('[data-findalab-result]');
         var $rowTemplate = this.find('[data-findalab-structured-hours-row]');
@@ -525,13 +544,19 @@
          */
         $.each(labs, $.proxy(function(index, lab) {
           var $result = $resultTemplate.clone();
-          $result.find('[data-findalab-result-title]').html(lab.lab_title);
+
+          if (lab.lab_title) {
+            $result.find('[data-findalab-result-title]').html(lab.lab_title);
+          } else {
+            $result.find('[data-findalab-result-title]').remove();
+          }
+
           $result.find('[data-findalab-result-address]').html(
             lab.center_address + '<br>' +
             lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip
           );
           $result.find('[data-findalab-result-distance]').html(
-            lab.center_distance.toFixed(2)
+            '<strong>Distance:</strong> ' + lab.center_distance.toFixed(2) + 'mi.'
           );
           $result.find('[data-findalab-result-button]')
           .attr('data-id', lab.center_id)
@@ -541,20 +566,25 @@
           .attr('data-zip', lab.center_zip)
           .attr('data-network', lab.network)
           .attr('data-title', lab.lab_title)
+          .addClass(this.labSelectedButtonClass)
           .html(this.labSelectText);
 
           if (!lab.structured_hours) {
-            $result.find('[data-findalab-result-hours]').html(lab.center_hours);
+            $result.find('[data-findalab-result-structured-hours]').remove();
+            $result.find('[data-findalab-result-simple-hours]').html(
+              '<strong>Hours:</strong> ' + lab.center_hours
+            );
           } else {
+            $result.find('[data-findalab-result-simple-hours]').remove();
             this._buildHoursDom(lab, $result);
+            $result.find('[data-findalab-structured-hours-row][data-template]').remove();
           }
 
-          $result.removeClass('hide').appendTo('[data-findalab-result-list]');
+          $result.removeClass('findalab__hide').appendTo('[data-findalab-result-list]');
 
         }, this));
 
         // $resultsList.html('');
-        // TODO: Clear old results
 
         this._initShowStructuredHours();
 
@@ -601,13 +631,13 @@
 
           if (hours.lunch_start) {
             $row.find('[data-findalab-result-hours-lunch]').html(hours.lunch_start + ' - ' + hours.lunch_stop);
-            $row.find('[data-findalab-result-day-lunch]').removeClass('hide');
+          } else {
+            $row.find('[data-findalab-result-day-lunch]').remove();
+            $row.find('[data-findalab-result-hours-lunch]').remove();
           }
 
           $table.append($row);
         });
-
-        $result.find('[data-findalab-result-structured-hours]').removeClass('hide');
       };
 
       /**
@@ -673,7 +703,9 @@
        * @private
        */
       this._onSearchErrorString = function(message) {
-        this.find('[data-findalab-result-list]').html('<li>No Results.</li>');
+        this.find('[data-findalab-result-list]').html(
+          '<li class="findalab__result">There are no search results.</li>'
+        );
 
         self.setError(this.noResultsMessage);
         self.onSearchError(JSON.parse(message).message);
@@ -684,7 +716,7 @@
        * @private
        */
       this._onSearchComplete = function() {
-        this.find('[data-findalab-search-button]').html('<i class="fa fa-search"></i>');
+        this.find('[data-findalab-search-button]').html(this.searchButtonText);
       };
 
       this.construct(settings);

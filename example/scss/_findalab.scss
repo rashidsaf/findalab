@@ -10,6 +10,11 @@
 // Defaults
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+
+/// Breakpoint
+/// @type Number
+$findalab-breakpoint: 1024px;
+
 /// Height for component.
 /// @type Number
 $findalab-height: 300px !default;
@@ -20,7 +25,7 @@ $findalab-padding: 1rem !default;
 
 /// Border for component.
 /// @type Border (width, style, color)
-$findalab-border: $callout-border !default;
+$findalab-border:  1px solid #e2e2e2 !default;
 
 /// Width for results list.
 /// @type Number
@@ -28,29 +33,41 @@ $findalab-list-width: 295px !default;
 
 /// Border radius for component.
 /// @type Number
-$findalab-radius: $global-radius !default;
+$findalab-radius: 6px !default;
 
 /// Background for search area.
 /// @type Color
-$findalab-search-background: $dark-secondary-color !default;
+$findalab-search-background: #2a2a2a !default;
 
 /// Background color for total area.
 /// @type Color
-$findalab-total-background: $lighter-gray !default;
+$findalab-total-background: #fefefe !default;
 
 /// Box shadow for total area.
 /// @type Box Shadow
-$findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
-
+$findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
 
 // Styles
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+.findalab__hide {
+  display: none;
+}
+
+.findalab__text-right {
+  text-align: right;
+}
+
 .findalab {
-  border: $findalab-border;
   border-radius: $findalab-radius;
+  border: $findalab-border;
+  box-sizing: border-box;
   overflow: hidden;
   position: relative;
+
+  & * {
+    box-sizing: border-box;
+  }
 }
 
 .findalab__search {
@@ -58,7 +75,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
   border-radius: $findalab-radius 0 0;
   padding: $findalab-padding;
 
-  @include breakpoint(large) {
+  @media only screen and (min-width: $findalab-breakpoint) {
     width: $findalab-list-width;
   }
 
@@ -68,8 +85,15 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
 }
 
 .findalab__error {
-  margin-bottom: 0;
-  margin-top: 0.5rem;
+  background: lighten(red, 45%);
+  border: 1px solid red;
+  padding: 5px;
+}
+
+.findalab__nav {
+  @media only screen and (min-width: $findalab-breakpoint) {
+    display: none;
+  }
 }
 
 .findalab__total {
@@ -79,7 +103,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
   padding: $findalab-padding;
   text-align: center;
 
-  @include breakpoint(large) {
+  @media only screen and (min-width: $findalab-breakpoint) {
     width: $findalab-list-width;
   }
 }
@@ -88,7 +112,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
   display: none;
   height: $findalab-height;
 
-  @include breakpoint(large) {
+  @media only screen and (min-width: $findalab-breakpoint) {
     border-left: $findalab-border;
     border-radius: 0 $findalab-radius $findalab-radius 0;
     display: block;
@@ -109,47 +133,49 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba($black, 0.2) !default;
 
 .findalab__results {
   height: $findalab-height;
+  list-style-type: none;
   margin: 0;
   overflow: auto;
+  padding: 0;
 
-  @include breakpoint(large) {
+  @media only screen and (min-width: $findalab-breakpoint) {
     height: 450px;
     width: $findalab-list-width;
   }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #7f7f7f;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #fefefe;
+  }
 }
+
 
 .findalab__result {
   border-bottom: $findalab-border;
   padding: $findalab-padding;
-  padding-bottom: 0;
 
   &:last-of-type {
     border-bottom: 0;
   }
 }
 
-.findalab__tabs {
-  .button {
-    background: $tab-content-background;
-    // border-bottom: 1px solid ;
-    border-radius: 0;
-    color: $secondary-color;
-    font-size: 14px;
-    font-weight: 700;
-    margin: 0;
-    padding: $tab-item-padding;
+.findalab__nav {
+  padding: 10px;
+}
 
-    &:hover {
-      background: $tab-item-background-hover;
-      color: $secondary-color;
-    }
-  }
+.findalab__nav__item {
+  padding-right: 10px;
 
-  .js-active-tab {
-    .button {
-      background: $tab-background-active;
-      color: $white;
-    }
+  &.is-active {
+    text-decoration: none;
+    color: #111;
   }
 }
 
