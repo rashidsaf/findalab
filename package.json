@@ -1,0 +1,31 @@
+{
+  "name": "findalab",
+  "version": "1.1.0",
+  "description": "Find a Lab jQuery plugin.",
+  "main": "src/findalab.js",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.1.0"
+  },
+  "scripts": {
+    "install": "bower install && node install",
+    "start": "php -S localhost:6789 && gulp",
+    "build": "gulp stylesheet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Medology/findalab"
+  },
+  "bugs": {
+    "url": "https://github.com/Medology/findalab/issues"
+  },
+  "contributors": [
+    "Amy Troppe <amy@medology.com>",
+    "Donald Tyler <donald@medology.com>",
+    "Joel Padron <joel@medology.com>",
+    "Josh Medeski <josh@medology.com>"
+  ],
+  "license": "Private",
+  "private": true
+}

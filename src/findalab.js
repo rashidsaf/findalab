@@ -75,7 +75,8 @@
        * @param {{lat:float, long:float}} settings
        */
       this.construct = function(settings) {
-        this.find('[data-findalab-empty-list-message]').html(self.emptyListMessage);
+
+        this.find('[data-findalab-empty-list-message]').html(settings.emptyListMessage);
 
         this.find('input').keyup($.proxy(function(e) {
           e.preventDefault();
@@ -87,9 +88,9 @@
           return false;
         }, this));
 
+        this.find('[data-findalab-search-button]').addClass(this.searchbuttonClass).html(this.searchButtonText);
+        this.setPlaceholder(this.searchInputPlaceholder);
         this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
-        this.find('[data-findalab-search-button]').addClass(self.searchbuttonClass).html(self.searchButtonText);
-        this.setPlaceholder(self.searchInputPlaceholder);
 
         settings = settings || {};
 
@@ -130,7 +131,7 @@
           $(this).addClass('is-active');
           self.find('[data-findalab-content]').removeClass('is-active');
           self.find('[data-findalab-content="' + content + '"]').addClass('is-active');
-          self.resize();  
+          self.resize();
         });
       };
 
@@ -628,7 +629,7 @@
           var $row = $result.find('[data-findalab-structured-hours-row][data-template]').clone();
           $row.removeAttr('data-template');
           $row.find('[data-findalab-result-day]').html(day);
-          $row.find('[data-findalab-result-hours]').html(hours.open + " - " + hours.close);
+          $row.find('[data-findalab-result-hours]').html(hours.open + ' - ' + hours.close);
 
           if (hours.lunch_start) {
             $row.find('[data-findalab-result-hours-lunch]').html(hours.lunch_start + ' - ' + hours.lunch_stop);

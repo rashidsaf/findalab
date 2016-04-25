@@ -1,15 +1,9 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// Medology Find A Lab - Component
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// @require foundation-sites
-// @require font-awesome
-// @require foundation-font-awesome-buttons
+// Find A Lab - jQuery Plugin
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
-// Defaults
+// Variables
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 
 /// Breakpoint
 /// @type Number
@@ -181,7 +175,6 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
     background-color: #fefefe;
   }
 }
-
 
 .findalab__result {
   border-bottom: $findalab-border;

@@ -1,0 +1,45 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Findalab - Foundation</title>
+  <link rel="stylesheet" href="/css/foundation-findalab.css">
+</head>
+<body>
+
+  <div class="row">
+    <div class="columns">
+      <h1>Foundation - Find A Lab</h1>
+      <div id="foundation-findalab"></div>
+    </div>
+  </div>
+
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/foundation-sites/dist/foundation.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxBWgQaHW2wWAoWXUgKtwIn8BDJDtqOAA"
+      ></script>
+  <script src="/src/findalab.js"></script>
+
+  <script>
+  $('#foundation-findalab').load('../src/findalab.html', function() {
+    var findalab = $(this).find('.findalab').findalab(foundationSettings);
+
+    var findalab = $(this).find('.findalab').findalab({
+      baseURL: 'http://localhost:6789/',
+      labSelectText: 'Choose this place, yo!',
+      searchInputPlaceholder: 'Enter your zippadeedoodah',
+      searchbuttonClass: 'secondary button',
+      searchButtonText: '<i class="fa fa-search"></i>',
+      searchButtonLoadingText: '<i class="fa fa-spin fa-refresh"></i>',
+      labSelectedButtonClass: 'small secondary button ffab-after fa-arrow-right'
+    });
+    $(document).foundation();
+  });
+  </script>
+
+
+
+</body>
+</html>
