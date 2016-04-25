@@ -31,5 +31,6 @@ gulp.task('stylesheet', function() {
 });
 
 gulp.task('default', ['sass', 'stylesheet'], function() {
-  gulp.watch(['scss/**/*.scss'], ['sass', 'stylesheet']);
+  gulp.watch(['scss/*.scss'], ['sass', 'stylesheet']);
+  gulp.watch(['src/*.scss'], ['sass', 'stylesheet']);
 });
