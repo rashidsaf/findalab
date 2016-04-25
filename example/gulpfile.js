@@ -26,7 +26,7 @@ gulp.task('stylesheet', function() {
   return gulp.src('scss/findalab.scss')
   .pipe($.sass({
     browsers: ['last 2 versions', 'ie >= 9'],
-  })
+  }))
   .pipe(gulp.dest('../css'));
 });
 
