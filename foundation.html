@@ -24,22 +24,24 @@
 
   <script>
   $('#foundation-findalab').load('../src/findalab.html', function() {
-    var findalab = $(this).find('.findalab').findalab(foundationSettings);
-
     var findalab = $(this).find('.findalab').findalab({
       baseURL: 'http://localhost:6789/',
-      labSelectText: 'Choose this place, yo!',
-      searchInputPlaceholder: 'Enter your zippadeedoodah',
-      searchbuttonClass: 'secondary button',
-      searchButtonText: '<i class="fa fa-search"></i>',
-      searchButtonLoadingText: '<i class="fa fa-spin fa-refresh"></i>',
-      labSelectedButtonClass: 'small secondary button ffab-after fa-arrow-right'
+      lab: {
+        buttonClass: 'small secondary button ffab-after fa-arrow-right',
+        buttonText: 'Choose this place, yo!'
+      },
+      search: {
+        buttonClass: 'secondary button',
+        buttonLoadingText: '<i class="fa fa-spin fa-refresh"></i>',
+        buttonText: '<i class="fa fa-search"></i>',
+        inputGroupButtonClass: null,
+        inputGroupClass: null,
+        inputGroupFieldClass: null,
+        placeholder: 'Enter your zippadeedoodah'
+      }
     });
     $(document).foundation();
   });
   </script>
-
-
-
 </body>
 </html>

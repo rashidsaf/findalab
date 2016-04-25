@@ -1,84 +1,72 @@
 (function($) {
   $.fn.extend({
+
     /**
      * Controller for Lab Search component.
      *
      * @param   {{lat:float, long:float}} settings
+     * @var {object} find
      * @returns {labSearch}
      */
     findalab: function(settings) {
       var self = this;
 
-      /** @var {string} The root directory for the plugin. */
-      this.baseURL = '';
+      this.settings = {
+        baseURL: 'http://localhost:6789/',
+        googleMaps: {
+          defaultLat: 39.97712, // TODO: Address Canada's default lat
+          defaultLong: -99.587403, // TODO: Address Canada's default long
+          geoCoder: null,
+          infoWindow: null,
+          initialZoom: 4, // The zoom level for when no search has been performed yet (pretty far out)
+          map: null,
+          markers: [],
+          resultsZoom: 10 // The zoom level for when there are search results
+        },
+        searchFunction: {
+          excludeNetworks: undefined,
+          limit: undefined,
+          onlyNetwork: undefined
+        },
+        lab: {
+          buttonClass: null,
+          buttonText: 'Choose This Location'
+        },
+        search: {
+          buttonClass: null,
+          buttonLoadingText: '...',
+          buttonText: 'Search',
+          inputGroupButtonClass: null,
+          inputGroupClass: null,
+          inputGroupFieldClass: null,
+          placeholder: 'Enter your zip'
+        }
+      };
 
-      /** @var {int} The zoom level for when no search has been performed yet (pretty far out) */
-      this._initialZoom = 4;
+      this.settings = $.extend(this.settings, settings);
 
-      /** @var {int} The zoom level for when there are search results */
-      this._resultsZoom = 10;
+      var emptyResultsMessage = 'Please "' + this.settings.search.placeholder + '" above and press "' +
+      this.settings.search.buttonText + '" to see results.';
 
-      /** @var {float} */
-      this._defaultLat = 39.97712;
-
-      /** @var {float} */
-      this._defaultLong = -99.587403;
-
-      /** @var {string} */
-      this.noResultsMessage =
-          'Oops! Sorry, we could not find any testing centers near that location. ' +
-          'Please try your search again with a different or less specific address.';
-
-      /** @var {google.maps.Map} */
-      this._map = null;
-
-      /** @var {array} Array of map markers. */
-      this._markers = [];
-
-      /** @var {google.maps.Geocoder} */
-      this._geoCoder = null;
-
-      /** @var {google.maps.InfoWindow} */
-      this._infoWindow = null;
-
-      /** @var {string} */
-      this.onlyNetwork = undefined;
-
-      /** @var {string} */
-      this.excludeNetworks = undefined;
-
-      /** @var {int} */
-      this.limit = undefined;
-
-      /** @var {string} text for the lab selection buttons */
-      this.labSelectText = 'Choose This Location';
-
-      /** @var {string} Class name(s) for the lab selected button */
-      this.labSelectedButtonClass = 'button';
-
-      /** @var {string} placeholder text for the search input */
-      this.searchInputPlaceholder = 'Enter Your Zip';
-
-      this.searchButtonClass = null;
-
-      this.searchButtonText = 'Search';
-
-      this.searchButtonLoadingText = '...';
-
-      this.emptyListMessage =
-        'Please "' + self.searchInputPlaceholder + '" above and press "' +
-        self.searchButtonText + '" to see results.';
+      var noResultsMessage = 'Oops! Sorry, we could not find any testing centers near that location. ' +
+      'Please try your search again with a different or less specific address.';
 
       /**
        * Initializes the map and sets the default viewport lat / long.
        *
+       * @var {object} google
        * @param {{lat:float, long:float}} settings
        */
       this.construct = function(settings) {
 
-        this.find('[data-findalab-empty-list-message]').html(settings.emptyListMessage);
+        this.find('[data-findalab-empty-list-message]').html(emptyResultsMessage);
+        this.find('[data-findalab-search-button]').addClass(self.settings.search.buttonClass).html(
+          self.settings.search.buttonText
+        );
+        this.setPlaceholder(self.settings.search.placeholder);
+        this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
 
-        this.find('input').keyup($.proxy(function(e) {
+        this.find('[data-findalab-search-field]').keyup($.proxy(function(e) {
           e.preventDefault();
 
           if (e.keyCode == 13) {
@@ -88,12 +76,6 @@
           return false;
         }, this));
 
-        this.find('[data-findalab-search-button]').addClass(this.searchbuttonClass).html(this.searchButtonText);
-        this.setPlaceholder(this.searchInputPlaceholder);
-        this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
-
-        settings = settings || {};
-
         if (typeof google === 'undefined') {
           alert('Hey! The Google Maps script is missing or not properly called, please check ' +
           'the Medology Find A Labs component documentation to make sure everything is ' +
@@ -101,18 +83,18 @@
         }
 
         var mapOptions = {
-          center: this._buildLatLong(settings.lat, settings.long),
-          zoom: this._initialZoom,
+          center: this._buildLatLong(self.settings.googleMaps.lat, self.settings.googleMaps.long),
+          zoom: self.settings.googleMaps.initialZoom,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
         };
 
-        this._map = new google.maps.Map(document.getElementById('findalab-map'), mapOptions);
+        self.settings.googleMaps.map = new google.maps.Map(document.getElementById('findalab-map'), mapOptions);
 
-        this._geoCoder = new google.maps.Geocoder();
+        self.settings.googleMaps.geoCoder = new google.maps.Geocoder();
 
-        this._infoWindow = new google.maps.InfoWindow();
+        self.settings.googleMaps.infoWindow = new google.maps.InfoWindow();
 
-        this.contentNav();
+        this._contentNav();
 
         // Capture lab selection events
         this.on('click', '[data-findalab-result-button]', $.proxy(function(event) {
@@ -123,8 +105,10 @@
         }, this));
       };
 
-
-      this.contentNav = function() {
+      /**
+       * Tab navigation on smaller screens.
+       */
+      this._contentNav = function() {
         $('[data-findalab-nav-item]').on('click', function() {
           content = $(this).data('findalab-nav-item');
           $('[data-findalab-nav-item]').removeClass('is-active');
@@ -178,7 +162,7 @@
        * Useful for when the map was hidden when it booted.
        */
       this.resize = function() {
-        google.maps.event.trigger(this._map, 'resize');
+        google.maps.event.trigger(self.settings.googleMaps.map, 'resize');
       };
 
       /**
@@ -251,15 +235,17 @@
         this.find('[data-findalab-error]').addClass('findalab__hide').html('');
         this.find('[data-findalab-empty-list-message]').removeClass('findalab__hide');
 
-        this._map.setCenter(this._buildLatLong(this._defaultLat, this._defaultLong));
-        this._map.setZoom(this._initialZoom);
-        this._map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+        self.settings.googleMaps.map.setCenter(this._buildLatLong(
+          self.settings.googleMaps.defaultLat, self.settings.googleMaps.defaultLong
+        ));
+        self.settings.googleMaps.map.setZoom(self.settings.googleMaps.initialZoom);
+        self.settings.googleMaps.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
-        for (var i = 0; i < this._markers.length; i++) {
-          this._markers[i].setMap(null);
+        for (var i = 0; j = self.settings.googleMaps.markers.length, i < j; i++) {
+          self.settings.googleMaps.markers[i].setMap(null);
         }
 
-        this._markers = [];
+        self.settings.googleMaps.markers = [];
       };
 
       /**
@@ -285,7 +271,7 @@
         $('[data-findalab-search-button]').html(this.searchButtonLoadingText);
 
         $.ajax({
-          url: this.baseURL + '/geocode',
+          url: self.settings.baseURL + '/geocode',
           dataType: 'json',
           data: { zip: zipcode, countryCode: country },
         }).done(
@@ -298,13 +284,13 @@
               }
 
               $.ajax({
-                url: self.baseURL + '/labs/nearCoords',
+                url: self.settings.baseURL + '/labs/nearCoords',
                 dataType: 'json',
                 data: $.extend({
                   countryCode: country,
-                  filterNetwork: self.excludeNetworks,
-                  labCount: self.limit,
-                  network: self.onlyNetwork,
+                  filterNetwork: self.settings.searchFunction.excludeNetworks,
+                  labCount: self.settings.searchFunction.limit,
+                  network: self.settings.searchFunction.onlyNetwork,
                 }, result[0]),
               }).
               done(self._onSearchSuccess).
@@ -332,7 +318,7 @@
        */
       this.setLabSelectText = function(text) {
         this.find('[data-findalab-result-button]').html(text);
-        this.labSelectText = text;
+        self.settings.lab.buttonText = text;
       };
 
       /**
@@ -353,8 +339,8 @@
        * @private
        */
       this._buildLatLong = function(lat, long) {
-        lat = lat !== undefined ? lat : this._defaultLat;
-        long = long !== undefined ? long : this._defaultLong;
+        lat = lat !== undefined ? lat : self.settings.googleMaps.defaultLat;
+        long = long !== undefined ? long : self.settings.googleMaps.defaultLong;
 
         return new google.maps.LatLng(lat, long);
       };
@@ -386,9 +372,9 @@
        * @private
        */
       this._centerMap = function(lat, long) {
-        this._map.setCenter(this._buildLatLong(lat, long));
+        self.settings.googleMaps.map.setCenter(this._buildLatLong(lat, long));
 
-        this._geoCoder.geocode({
+        self.settings.googleMaps.geoCoder.geocode({
               address: lat + ',' + long,
             },
             /**
@@ -397,7 +383,7 @@
              */
             function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
-                self._map.setCenter(results[0].geometry.location);
+                self.settings.googleMaps.map.setCenter(results[0].geometry.location);
               } else {
                 alert('Geocode was not successful for the following reason: ' + status);
               }
@@ -462,27 +448,26 @@
           fillOpacity: 1,
           scale: 1,
           strokeColor: 'white',
-          strokeWeight: 2,
+          strokeWeight: 2
         };
 
         vMarker = new google.maps.Marker({
-          map: this._map,
+          map: self.settings.googleMaps.map,
           icon: mapMarker,
-          position: location,
+          position: location
         });
 
-        this._markers.push(vMarker);
+        self.settings.googleMaps.markers.push(vMarker);
 
         google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
-          this._infoWindow.setContent(
-              '<h6 style="margin: 0;">' + lab.lab_title + '</h6>' +
+          self.settings.googleMaps.infoWindow.setContent(
+              '<h6>' + lab.lab_title + '</h6>' +
               '<p>' +
               lab.center_address + '<br>' +
               lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip +
               '</p>' +
               '<a ' +
-              'class="' + this.labSelectedButtonClass + '" ' +
-              'style="margin-bottom: 0;" ' +
+              'class="' + self.settings.lab.buttonClass + '" ' +
               'href="#" ' +
               'data-id="' + lab.center_id + '" ' +
               'data-address="' + lab.center_address + '" ' +
@@ -493,12 +478,12 @@
               'data-title="' + lab.lab_title + '" ' +
               'data-country="' + lab.center_country + '"' +
               '>' +
-              this.labSelectText +
+              this.self.settings.lab.buttonText +
               '</a>'
           );
 
           // noinspection JSUnresolvedFunction
-          this._infoWindow.open(this._map, vMarker);
+          self.settings.googleMaps.infoWindow.open(self.settings.googleMaps.map, vMarker);
         }, this));
       };
 
@@ -522,9 +507,9 @@
       this._render = function(labs) {
         var $resultsList = this.find('[data-findalab-result-list]');
         var $resultTemplate = this.find('[data-findalab-result]');
-        var $rowTemplate = this.find('[data-findalab-structured-hours-row]');
-
         var pluralLabs = labs.length > 1 ? 's' : '';
+
+        $resultsList.html('');
         this.find('[data-findalab-total]').html(labs.length + ' Result' + pluralLabs);
 
         /**
@@ -567,8 +552,8 @@
           .attr('data-zip', lab.center_zip)
           .attr('data-network', lab.network)
           .attr('data-title', lab.lab_title)
-          .addClass(this.labSelectedButtonClass)
-          .html(this.labSelectText);
+          .addClass(self.settings.lab.buttonClass)
+          .html(self.settings.lab.buttonText);
 
           if (!lab.structured_hours) {
             $result.find('[data-findalab-result-structured-hours]').remove();
@@ -586,15 +571,13 @@
 
         }, this));
 
-        // $resultsList.html('');
-
         this._initShowStructuredHours();
 
         labs.map($.proxy(this._showMarker, this));
 
         if (labs[0]) {
           this._centerMap(labs[0].center_latitude, labs[0].center_longitude);
-          this._map.setZoom(this._resultsZoom);
+          self.settings.googleMaps.map.setZoom(self.settings.googleMaps.resultsZoom);
         }
       };
 
@@ -709,7 +692,7 @@
           '<li class="findalab__result">There are no search results.</li>'
         );
 
-        self.setError(this.noResultsMessage);
+        self.setError(self.noResultsMessage);
         self.onSearchError(JSON.parse(message).message);
       };
 
@@ -724,6 +707,6 @@
       this.construct(settings);
 
       return this;
-    },
+    }
   });
 })(jQuery);
