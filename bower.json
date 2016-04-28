@@ -1,7 +1,6 @@
 {
-  "name": "medology-findalab",
-  "version": "1.0.0",
-  "homepage": "https://github.com/Medology/medology-labs",
+  "name": "findalab",
+  "homepage": "https://github.com/Medology/findalab",
   "authors": [
     "Amy Troppe <amy@medology.com>",
     "Donald Tyler <donald@medology.com>",
@@ -14,6 +13,6 @@
     "bower_components"
   ],
   "dependencies": {
-    "foundation-font-awesome-buttons": "3.1.0"
+    "jquery": "^2.2.3"
   }
 }

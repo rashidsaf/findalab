@@ -1,4 +1,4 @@
 .DS_Store
 bower_components
-example/node_modules
-example/css
+node_modules
+.idea

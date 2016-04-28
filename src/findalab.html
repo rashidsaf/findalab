@@ -1,0 +1,65 @@
+<div class="findalab">
+
+  <div class="findalab__search">
+    <div class="input-group">
+      <input type="text" class="input-group-field" data-findalab-search-field>
+      <div class="input-group-button">
+        <button type="button" data-findalab-search-button></button>
+      </div>
+    </div>
+    <div class="findalab__error findalab__hide" data-findalab-error></div>
+  </div>
+
+  <div class="findalab__nav" data-findalab-nav>
+    <a href="#" class="findalab__nav__item is-active" data-findalab-nav-item="list">List View</a>
+    <a href="#" class="findalab__nav__item" data-findalab-nav-item="map">Map View</a>
+  </div>
+
+  <ul class="findalab__results is-active" data-findalab-result-list data-findalab-content="list">
+    <li class="findalab__result" data-findalab-empty-list-message></li>
+    <li class="findalab__result findalab__hide" data-findalab-result>
+      <h4 data-findalab-result-title></h4>
+      <address data-findalab-result-address></address>
+      <div data-findalab-result-distance></div>
+      <div data-findalab-result-simple-hours></div>
+      <div data-findalab-result-structured-hours>
+        <strong>Hours:</strong> <a href="#" data-findalab-toggle-hours>Show ▼</a>
+        <div class="findalab__hours">
+          <table>
+            <tbody data-findalab-structured-hours-body>
+              <tr data-findalab-structured-hours-row data-template>
+                <th>
+                  <div>
+                    <small data-findalab-result-day></small>
+                  </div>
+                  <div data-findalab-result-day-lunch>
+                    <small>Closed for Lunch</small>
+                  </div>
+                </th>
+                <td class="findalab__text-right">
+                  <div>
+                    <small data-findalab-result-hours></small>
+                  </div>
+                  <div data-findalab-result-day-lunch>
+                    <small data-findalab-result-hours-lunch></small>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br>
+      <button data-findalab-result-button></button>
+    </li>
+  </ul>
+
+  <div class="findalab__map" data-findalab-content="map">
+    <div class="findalab__map__embed" id="findalab-map" data-findalab-map></div>
+  </div>
+
+  <div class="findalab__total">
+    <small data-findalab-total>No Results</small>
+  </div>
+
+</div>
