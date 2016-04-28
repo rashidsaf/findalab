@@ -57,7 +57,7 @@ To setup your dev environment, you have to setup NPM and Bower dependencies. Run
 
 ```bash
 $ npm install
-$ bower install foundation-font-awesome-buttons
+$ bower install
 ```
 
 Next, you will want to setup a local server to run the files:
@@ -66,9 +66,9 @@ Next, you will want to setup a local server to run the files:
 $ php -S localhost:6789
 ```
 
-__*Note:__ port 6789 is has been setup for the example pages.
+__*Note:__ port 6789 is setup for the example pages.
 
-You can visite the simple site at [localhost:6789/simple.html](http://localhost:6789/simple.html) or the Foundation Font Awesome Button version at [localhost:6789/foundation.html](http://localhost:6789/foundation.html).
+You can visit the example site at [localhost:6789](http://localhost:6789).
 
 Finally, you can compile the stylesheets by running Gulp in the root directory:
 
