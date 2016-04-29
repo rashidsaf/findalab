@@ -542,7 +542,7 @@
             lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip
           );
           $result.find('[data-findalab-result-distance]').html(
-            '<strong>Distance:</strong> ' + lab.center_distance.toFixed(2) + 'mi.'
+            '<strong>Distance:</strong> ' + this._parseDistance(lab)
           );
           $result.find('[data-findalab-result-button]')
           .attr('data-id', lab.center_id)
@@ -579,6 +579,27 @@
           this._centerMap(labs[0].center_latitude, labs[0].center_longitude);
           self.settings.googleMaps.map.setZoom(self.settings.googleMaps.resultsZoom);
         }
+      };
+
+      /**
+       * Parse the distance of lab based on the country where the lab located
+       *
+       * @param   {{center_country:string, center_distance:string}} labData
+       * @returns {string} The parsed string describe the distance information.
+       * @private
+       */
+      this._parseDistance = function (labData) {
+        var parsedDistance = '';
+        switch (labData.center_country) {
+          case "CA" :
+            parsedDistance = (labData.center_distance / 0.62137).toFixed(2) + "km.";
+            break;
+          case "US" :
+          default:
+            parsedDistance = labData.center_distance.toFixed(2) + "mi.";
+            break;
+        }
+        return "<dd>" + parsedDistance + "</dd>";
       };
 
       /**
