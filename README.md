@@ -7,7 +7,7 @@ for a testing lab using their postal code and choosing a location best for them.
 This plugin can be installed as a bower dependency. Run the following command in the root of your project:
 
 ```bash
-$ bower install medology-findalab --save-dev
+$ bower install findalab --save-dev
 ```
 
 ## Requirements
