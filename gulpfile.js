@@ -14,5 +14,5 @@ gulp.task('stylesheet', function() {
 });
 
 gulp.task('default', ['stylesheet'], function() {
-  gulp.watch(['src/*.scss'], ['sass', 'stylesheet']);
+  gulp.watch(['src/*.scss'], ['stylesheet']);
 });

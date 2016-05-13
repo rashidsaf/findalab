@@ -1,9 +1,9 @@
 <div class="findalab">
 
   <div class="findalab__search">
-    <div class="input-group">
-      <input type="text" class="input-group-field" data-findalab-search-field>
-      <div class="input-group-button">
+    <div data-findalab-inputgroup-container>
+      <input type="text" data-findalab-search-field data-findalab-inputgroup-field>
+      <div data-findalab-inputgroup-button>
         <button type="button" data-findalab-search-button></button>
       </div>
     </div>
@@ -15,9 +15,12 @@
     <a href="#" class="findalab__nav__item" data-findalab-nav-item="map">Map View</a>
   </div>
 
-  <ul class="findalab__results is-active" data-findalab-result-list data-findalab-content="list">
+  <ul class="findalab__results is-active" data-findalab-result-list data-template data-findalab-content="list">
+  </ul>
+
+  <ul class="findalab__hide" data-findalab-results-template>
     <li class="findalab__result" data-findalab-empty-list-message></li>
-    <li class="findalab__result findalab__hide" data-findalab-result>
+    <li class="findalab__result" data-findalab-result data-template>
       <h4 data-findalab-result-title></h4>
       <address data-findalab-result-address></address>
       <div data-findalab-result-distance></div>
@@ -29,19 +32,15 @@
             <tbody data-findalab-structured-hours-body>
               <tr data-findalab-structured-hours-row data-template>
                 <th>
-                  <div>
-                    <small data-findalab-result-day></small>
-                  </div>
-                  <div data-findalab-result-day-lunch>
-                    <small>Closed for Lunch</small>
+                  <div data-findalab-result-day></div>
+                  <div class="findalab__small" data-findalab-result-day-lunch>
+                    Closed for Lunch
                   </div>
                 </th>
                 <td class="findalab__text-right">
-                  <div>
-                    <small data-findalab-result-hours></small>
-                  </div>
-                  <div data-findalab-result-day-lunch>
-                    <small data-findalab-result-hours-lunch></small>
+                  <div data-findalab-result-hours></div>
+                  <div class="findalab__small" data-findalab-result-day-lunch>
+                    <div data-findalab-result-hours-lunch></div>
                   </div>
                 </td>
               </tr>
