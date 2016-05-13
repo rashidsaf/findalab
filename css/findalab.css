@@ -121,6 +121,12 @@
 .findalab__hours {
   display: none;
   margin-bottom: 0.5rem; }
+  .findalab__hours table {
+    width: 100%;
+    margin-top: 6px; }
+
+.findalab__small {
+  font-size: 90%; }
 
 .findalab__hours__wrap {
   display: none; }
