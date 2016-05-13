@@ -63,8 +63,9 @@
        * @param {{lat:float, long:float}} settings
        */
       this.construct = function(settings) {
+        var emptyMessage = this.find('[data-findalab-empty-list-message]').clone();
+        emptyMessage.appendTo('[data-findalab-result-list]').html(emptyResultsMessage);
 
-        this.find('[data-findalab-empty-list-message]').html(emptyResultsMessage);
         this.find('[data-findalab-search-button]').addClass(self.settings.search.buttonClass).html(
           self.settings.search.buttonText
         );
@@ -242,7 +243,6 @@
         this.find('[data-findalab-search-field]').val('');
         this.find('[data-findalab-total]').html('No Results');
         this.find('[data-findalab-error]').addClass('findalab__hide').html('');
-        this.find('[data-findalab-empty-list-message]').removeClass('findalab__hide');
 
         self.settings.googleMaps.map.setCenter(this._buildLatLong(
           self.settings.googleMaps.defaultLat, self.settings.googleMaps.defaultLong
@@ -515,10 +515,11 @@
        */
       this._render = function(labs) {
         var $resultsList = this.find('[data-findalab-result-list]');
-        var $resultTemplate = this.find('[data-findalab-result]');
+        var $resultTemplate = this.find('[data-findalab-result][data-template]');
         var pluralLabs = labs.length > 1 ? 's' : '';
 
-        $resultsList.html('');
+        $resultsList.empty();
+
         this.find('[data-findalab-total]').html(labs.length + ' Result' + pluralLabs);
 
         /**
@@ -538,7 +539,7 @@
          * }} lab
          */
         $.each(labs, $.proxy(function(index, lab) {
-          var $result = $resultTemplate.clone();
+          var $result = $resultTemplate.clone().removeAttr('data-template');
 
           if (lab.lab_title) {
             $result.find('[data-findalab-result-title]').html(lab.lab_title);
@@ -575,8 +576,7 @@
             $result.find('[data-findalab-structured-hours-row][data-template]').remove();
           }
 
-          $result.removeClass('findalab__hide').appendTo('[data-findalab-result-list]');
-          self.find('[data-findalab-empty-list-message]').addClass('findalab__hide');
+          $result.appendTo($resultsList);
 
         }, this));
 
@@ -639,8 +639,7 @@
          * @param {{open:string, close:string, lunch_start:string, lunch_stop:string}} hours
          */
         $.each(lab.structured_hours, function(day, hours) {
-          var $row = $result.find('[data-findalab-structured-hours-row][data-template]').clone();
-          $row.removeAttr('data-template');
+          var $row = $result.find('[data-findalab-structured-hours-row][data-template]').clone().removeAttr('data-template');
           $row.find('[data-findalab-result-day]').html(day);
           $row.find('[data-findalab-result-hours]').html(hours.open + ' - ' + hours.close);
 
