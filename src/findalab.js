@@ -45,15 +45,17 @@
           inputGroupClass: null,
           inputGroupFieldClass: null,
           placeholder: 'Enter your zip'
-        }
+        },
+        emptyResultsMessage: '',
+        noResultsMessage: '',
       };
 
       this.settings = $.extend(this.settings, settings);
 
-      var emptyResultsMessage = 'Please "' + this.settings.search.placeholder + '" above and press "' +
-      this.settings.search.buttonText + '" to see results.';
+      this.emptyResultsMessage = 'Please "' + this.settings.search.placeholder + '" above and press "' +
+        this.settings.search.buttonText + '" to see results.';
 
-      var noResultsMessage = 'Oops! Sorry, we could not find any testing centers near that location. ' +
+      this.noResultsMessage = 'Oops! Sorry, we could not find any testing centers near that location. ' +
       'Please try your search again with a different or less specific address.';
 
       /**
@@ -63,8 +65,7 @@
        * @param {{lat:float, long:float}} settings
        */
       this.construct = function(settings) {
-        var emptyMessage = this.find('[data-findalab-empty-list-message]').clone();
-        emptyMessage.appendTo('[data-findalab-result-list]').html(emptyResultsMessage);
+        self.setMessage(this.emptyResultsMessage);
 
         this.find('[data-findalab-search-button]').addClass(self.settings.search.buttonClass).html(
           self.settings.search.buttonText
@@ -127,13 +128,6 @@
           self.find('[data-findalab-content="' + content + '"]').addClass('is-active');
           self.resize();
         });
-      };
-
-      /**
-       * This functionwill handle clearing error text.
-       */
-      this.clearError = function() {
-        this.find('[data-findalab-error]').addClass('findalab__hide').html('');
       };
 
       /**
@@ -242,7 +236,6 @@
         this.find('.findalab__results li:gt(0)').remove();
         this.find('[data-findalab-search-field]').val('');
         this.find('[data-findalab-total]').html('No Results');
-        this.find('[data-findalab-error]').addClass('findalab__hide').html('');
 
         self.settings.googleMaps.map.setCenter(this._buildLatLong(
           self.settings.googleMaps.defaultLat, self.settings.googleMaps.defaultLong
@@ -262,18 +255,17 @@
        * near these coordinates.
        */
       this.search = function(zipcode) {
-        this.clearError();
         this.find('[data-findalab-search-field]').val(zipcode);
 
         try {
           var country = this.getZipCodeCountry(zipcode);
           if (country == 'Unknown') {
-            throw this.noResultsMessage;
+            this.setMessage(this.noResultsMessage);
+            return;
           }
-
           this.onSearchSubmit(zipcode, country);
         } catch (error) {
-          this.setError(error);
+          this.setMessage(error);
           return;
         }
 
@@ -331,13 +323,16 @@
       };
 
       /**
-       * Displays the specified error message to the user.
+       * Displays the specified message to the user.
        *
-       * @param {string} message This is the error message that will be shown.
+       * @param {string} message This is the message that will be shown.
        */
-      this.setError = function(message) {
-        this.find('[data-findalab-error]').removeClass('findalab__hide').html(message);
-      };
+      this.setMessage = function(message) {
+        $('[data-findalab-result-list]').empty();
+        $message = this.find('[data-findalab-message][data-template]').clone().removeAttr('data-template');
+        $message.html(message).appendTo('[data-findalab-result-list]');
+      }
+
 
       /**
        * Builds a Google Maps Latitude/Longitude object.
@@ -721,7 +716,7 @@
           '<li class="findalab__result">There are no search results.</li>'
         );
 
-        self.setError(self.noResultsMessage);
+        self.setMessage(self.noResultsMessage);
         self.onSearchError(JSON.parse(message).message);
       };
 
