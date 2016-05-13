@@ -32,6 +32,11 @@
           buttonClass: null,
           buttonText: 'Choose This Location'
         },
+        inputGroup: {
+          container: 'input-group',
+          field: 'input-group-field',
+          button: 'input-group-button',
+        },
         search: {
           buttonClass: null,
           buttonLoadingText: '...',
@@ -65,6 +70,10 @@
         );
         this.setPlaceholder(self.settings.search.placeholder);
         this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
+
+        this.find('[data-findalab-inputgroup-container]').addClass(this.settings.inputGroup.container);
+        this.find('[data-findalab-inputgroup-field]').addClass(this.settings.inputGroup.field);
+        this.find('[data-findalab-inputgroup-button]').addClass(this.settings.inputGroup.button);
 
         this.find('[data-findalab-search-field]').keyup($.proxy(function(e) {
           e.preventDefault();
