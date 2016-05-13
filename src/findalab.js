@@ -608,7 +608,7 @@
             parsedDistance = labData.center_distance.toFixed(2) + "mi.";
             break;
         }
-        return "<dd>" + parsedDistance + "</dd>";
+        return parsedDistance;
       };
 
       /**
