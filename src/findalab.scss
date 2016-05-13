@@ -31,15 +31,19 @@ $findalab-radius: 6px !default;
 
 /// Background for search area.
 /// @type Color
-$findalab-search-background: #2a2a2a !default;
+$findalab-search-background: #f9f9f9 !default;
+
+/// Background for results.
+/// @type Color
+$findalab-results-background: #fff !default;
 
 /// Background color for total area.
 /// @type Color
-$findalab-total-background: #fefefe !default;
+$findalab-total-background: #f9f9f9 !default;
 
 /// Box shadow for total area.
 /// @type Box Shadow
-$findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
+$findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
 
 // Styles
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -66,6 +70,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
 
 .findalab__search {
   background: $findalab-search-background;
+  border-bottom: $findalab-border;
   border-radius: $findalab-radius 0 0;
   padding: $findalab-padding;
 
@@ -78,13 +83,8 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
   }
 }
 
-.findalab__error {
-  background: lighten(red, 45%);
-  border: 1px solid red;
-  padding: 5px;
-}
-
 .findalab__nav {
+  background-color: darken($findalab-total-background, 5%);
   border-bottom: $findalab-border;
   @media only screen and (min-width: $findalab-breakpoint) {
     display: none;
@@ -94,6 +94,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
 .findalab__total {
   background: $findalab-total-background;
   border-radius: 0 0 0 $findalab-radius;
+  border-top: $findalab-border;
   box-shadow: $findalab-total-shadow;
   padding: $findalab-padding;
   text-align: center;
@@ -146,6 +147,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
 }
 
 .findalab__results {
+  background-color: $findalab-results-background;
   display: none;
   height: $findalab-height;
   list-style-type: none;
@@ -187,7 +189,6 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.2) !default;
 
 .findalab__nav {
   padding: $findalab-padding;
-  box-shadow: 0 -2px 15px 0 rgba(17, 17, 17, 0.2);
 }
 
 .findalab__nav__item {
