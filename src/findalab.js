@@ -50,7 +50,7 @@
         noResultsMessage: '',
       };
 
-      this.settings = $.extend(this.settings, settings);
+      this.settings = $.extend(true, this.settings, settings);
 
       this.emptyResultsMessage = 'Please "' + this.settings.search.placeholder + '" above and press "' +
         this.settings.search.buttonText + '" to see results.';
