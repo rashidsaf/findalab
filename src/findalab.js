@@ -77,15 +77,9 @@
         this.find('[data-findalab-inputgroup-field]').addClass(this.settings.inputGroup.field);
         this.find('[data-findalab-inputgroup-button]').addClass(this.settings.inputGroup.button);
 
-        this.find('[data-findalab-search-field]').keyup($.proxy(function(e) {
-          e.preventDefault();
-
-          if (e.keyCode == 13) {
-            this._onSearchSubmit(e);
-          }
-
-          return false;
-        }, this));
+        this.find('[data-findalab-search-field]')
+            .keydown($.proxy(onSearchKeyDown, this))
+            .keyup($.proxy(onSearchKeyUp, this));
 
         if (typeof google === 'undefined') {
           alert('Hey! The Google Maps script is missing or not properly called, please check ' +
@@ -114,6 +108,37 @@
 
           return false;
         }, this));
+
+        /**
+         * Prevents submission of the form on key down.
+         *
+         * @param e The key down event.
+         * @returns {boolean} Always false to prevent bubbling.
+         */
+        function onSearchKeyDown(e) {
+          if (e.keyCode === 13) {
+            e.preventDefault();
+          }
+
+          return false;
+        }
+
+        /**
+         * Triggers a search if the enter key was pressed.
+         *
+         * @this {Object} The find a lab instance.
+         * @param e The key up event.
+         * @returns {boolean} Always false to prevent bubbling.
+         */
+        function onSearchKeyUp(e) {
+          e.preventDefault();
+
+          if (e.keyCode == 13) {
+            this._onSearchSubmit(e);
+          }
+
+          return false;
+        }
       };
 
       /**
