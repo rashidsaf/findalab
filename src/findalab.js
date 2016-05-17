@@ -108,14 +108,14 @@
          * Prevents submission of the form on key down.
          *
          * @param e The key down event.
-         * @returns {boolean} Always false to prevent bubbling.
+         * @returns {boolean} False if the enter key was pressed. This prevents bubbling.
          */
         function onSearchKeyDown(e) {
           if (e.keyCode === 13) {
             e.preventDefault();
-          }
 
-          return false;
+            return false;
+          }
         }
 
         /**
