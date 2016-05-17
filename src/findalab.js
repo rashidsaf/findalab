@@ -102,12 +102,7 @@
         this._contentNav();
 
         // Capture lab selection events
-        this.on('click', '[data-findalab-result-button]', $.proxy(function(event) {
-          event.preventDefault();
-          this._onLabSelect($(event.target).data());
-
-          return false;
-        }, this));
+        this.on('click', '[data-findalab-result-button]', $.proxy(onLabSelectClick, this));
 
         /**
          * Prevents submission of the form on key down.
@@ -136,6 +131,20 @@
           if (e.keyCode == 13) {
             this._onSearchSubmit(e);
           }
+
+          return false;
+        }
+
+        /**
+         * Calls the `onLabSelect` method when a lab is selected.
+         *
+         * @this {Object} The find a lab instance.
+         * @param e The click event.
+         * @returns {boolean} Always false to prevent bubbling.
+         */
+        function onLabSelectClick(e) {
+          e.preventDefault();
+          this._onLabSelect($(e.target).data());
 
           return false;
         }
