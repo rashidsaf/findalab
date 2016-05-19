@@ -222,7 +222,8 @@
        *   address:string,
        *   city:string,
        *   state:string,
-       *   zip:int
+       *   zip:int,
+       *   fax_number:string,
        * }} lab
        */
       this.onLabSelect = function(lab) {
@@ -405,7 +406,8 @@
        *   address:string,
        *   city:string,
        *   state:string,
-       *   zip:int
+       *   zip:int,
+       *   fax_number:string,
        * }} lab
        */
       this._onLabSelect = function(lab) {
@@ -427,6 +429,7 @@
        *    center_country:string,
        *    lab_title:string,
        *    network:string,
+       *    fax_number:string,
        * }} lab
        * @private
        */
@@ -481,6 +484,7 @@
               'data-network="' + lab.network + '" ' +
               'data-title="' + lab.lab_title + '" ' +
               'data-country="' + lab.center_country + '"' +
+              'data-fax_number="' + lab.fax_number + '"' +
               '>' +
               this.self.settings.lab.buttonText +
               '</a>'
@@ -504,6 +508,7 @@
        *   center_distance:float,
        *   lab_title:string,
        *   network:string,
+       *   fax_number:string,
        *   structured_hours:object
        * }]} labs
        * @private
@@ -530,6 +535,7 @@
          *   center_distance:float,
          *   lab_title:string,
          *   network:string,
+         *   fax_number:string,
          *   structured_hours:object
          * }} lab
          */
@@ -550,15 +556,16 @@
             '<strong>Distance:</strong> ' + this._parseDistance(lab)
           );
           $result.find('[data-findalab-result-button]')
-          .attr('data-id', lab.center_id)
-          .attr('data-address', lab.center_address)
-          .attr('data-city', lab.center_city)
-          .attr('data-state', lab.center_state)
-          .attr('data-zip', lab.center_zip)
-          .attr('data-network', lab.network)
-          .attr('data-title', lab.lab_title)
-          .addClass(self.settings.lab.buttonClass)
-          .html(self.settings.lab.buttonText);
+              .attr('data-id', lab.center_id)
+              .attr('data-address', lab.center_address)
+              .attr('data-city', lab.center_city)
+              .attr('data-state', lab.center_state)
+              .attr('data-zip', lab.center_zip)
+              .attr('data-network', lab.network)
+              .attr('data-title', lab.lab_title)
+              .attr('data-fax_number', lab.fax_number)
+              .addClass(self.settings.lab.buttonClass)
+              .html(self.settings.lab.buttonText);
 
           if (!lab.structured_hours) {
             $result.find('[data-findalab-result-structured-hours]').remove();
@@ -620,6 +627,7 @@
        *   center_distance:float,
        *   lab_title:string,
        *   network:string,
+       *   fax_number:string,
        *   structured_hours:object
        * }} lab
        * @param   {jQuery} $result The jQuery DOM that should be modified to show the hours.
@@ -679,6 +687,7 @@
        *    center_distance:float,
        *    lab_title:string,
        *    network:string,
+       *    fax_number:string,
        *    structured_hours:object
        *   }],
        *   latitude:float,
