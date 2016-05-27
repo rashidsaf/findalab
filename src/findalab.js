@@ -151,6 +151,32 @@
       };
 
       /**
+       * Centers the map to the specified coordinates.
+       *
+       * @param {float} lat   The latitude to center to.
+       * @param {float} long  The longitude to center to.
+       */
+      this.centerMap = function(lat, long) {
+        self.settings.googleMaps.map.setCenter(this._buildLatLong(lat, long));
+
+        self.settings.googleMaps.geoCoder.geocode({
+              address: lat + ',' + long,
+            },
+            /**
+             * @param {[{geometry:{}}]} results
+             * @param status
+             */
+            function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK) {
+                self.settings.googleMaps.map.setCenter(results[0].geometry.location);
+              } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+              }
+            }
+        );
+      };
+
+      /**
        * Tab navigation on smaller screens.
        */
       this._contentNav = function() {
@@ -404,33 +430,6 @@
       };
 
       /**
-       * Centers the map to the specified coordinates.
-       *
-       * @param {float} lat   The latitude to center to.
-       * @param {float} long  The longitude to center to.
-       * @private
-       */
-      this._centerMap = function(lat, long) {
-        self.settings.googleMaps.map.setCenter(this._buildLatLong(lat, long));
-
-        self.settings.googleMaps.geoCoder.geocode({
-              address: lat + ',' + long,
-            },
-            /**
-             * @param {[{geometry:{}}]} results
-             * @param status
-             */
-            function(results, status) {
-              if (status == google.maps.GeocoderStatus.OK) {
-                self.settings.googleMaps.map.setCenter(results[0].geometry.location);
-              } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-              }
-            }
-        );
-      };
-
-      /**
        * Private event handler for when the user selects a lab.
        *
        * @param {{
@@ -621,7 +620,7 @@
         labs.map($.proxy(this._showMarker, this));
 
         if (labs[0]) {
-          this._centerMap(labs[0].center_latitude, labs[0].center_longitude);
+          this.centerMap(labs[0].center_latitude, labs[0].center_longitude);
           self.settings.googleMaps.map.setZoom(self.settings.googleMaps.resultsZoom);
         }
       };
