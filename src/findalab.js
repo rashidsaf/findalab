@@ -44,7 +44,8 @@
           inputGroupButtonClass: null,
           inputGroupClass: null,
           inputGroupFieldClass: null,
-          placeholder: 'Enter your zip'
+          placeholder: 'Enter your zip',
+          inputType: 'text'
         },
         emptyResultsMessage: '',
         noResultsMessage: '',
@@ -71,6 +72,7 @@
           self.settings.search.buttonText
         );
         this.setPlaceholder(self.settings.search.placeholder);
+        this.setInputType(self.settings.search.inputType);
         this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
 
         this.find('[data-findalab-inputgroup-container]').addClass(this.settings.inputGroup.container);
@@ -371,6 +373,15 @@
        */
       this.setPlaceholder = function(message) {
         this.find('[data-findalab-search-field]').attr('placeholder', message);
+      };
+
+      /**
+       * Sets the type value of the search input.
+       *
+       * @param {string} theType the type of input
+       */
+      this.setInputType = function(theType) {
+        this.find('[data-findalab-search-field]').attr('type', theType);
       };
 
       /**
