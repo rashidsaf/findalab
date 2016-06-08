@@ -530,7 +530,7 @@
               'data-country="' + lab.center_country + '"' +
               'data-fax_number="' + lab.fax_number + '"' +
               '>' +
-              this.self.settings.lab.buttonText +
+              self.settings.lab.buttonText +
               '</a>'
           );
 
