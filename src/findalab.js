@@ -518,6 +518,7 @@
               lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip +
               '</p>' +
               '<a ' +
+              'data-findalab-result-button ' +
               'class="' + self.settings.lab.buttonClass + '" ' +
               'href="#" ' +
               'data-id="' + lab.center_id + '" ' +
