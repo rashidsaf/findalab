@@ -90,12 +90,6 @@
       width: 310px; } }
   .findalab__results.is-active {
     display: block; }
-  .findalab__results::-webkit-scrollbar {
-    width: 6px; }
-  .findalab__results::-webkit-scrollbar-thumb {
-    background-color: #7f7f7f; }
-  .findalab__results::-webkit-scrollbar-track {
-    background-color: #fefefe; }
 
 .findalab__result {
   border-bottom: 1px solid #e2e2e2;

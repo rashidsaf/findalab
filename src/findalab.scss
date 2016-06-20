@@ -164,18 +164,6 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
   &.is-active {
     display: block;
   }
-
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #7f7f7f;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: #fefefe;
-  }
 }
 
 .findalab__result {
