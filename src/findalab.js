@@ -712,6 +712,8 @@
       this._onSearchSubmit = function(event) {
         event.preventDefault();
 
+        $('[data-findalab-search-button]').html(this.settings.search.buttonLoadingText);
+
         var zip = this.find('[data-findalab-search-field]').val();
 
         this.search(zip);
