@@ -197,13 +197,18 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
   margin-bottom: 0.5rem;
 
   table {
-  width: 100%;
     margin-top: 6px;
+    width: 100%;
+
+    td {
+      padding-bottom: 5px;
+    }
   }
 }
 
 .findalab__small {
-  font-size: 90%;
+  font-size: 85%;
+  font-style: italic;
 }
 
 .findalab__hours__wrap {

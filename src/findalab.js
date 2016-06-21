@@ -332,8 +332,6 @@
           return;
         }
 
-        $('[data-findalab-search-button]').html(this.searchButtonLoadingText);
-
         $.ajax({
           url: self.settings.baseURL + '/geocode',
           dataType: 'json',
@@ -403,6 +401,7 @@
         $('[data-findalab-result-list]').empty();
         $message = this.find('[data-findalab-message][data-template]').clone().removeAttr('data-template');
         $message.html(message).appendTo('[data-findalab-result-list]');
+        self._onSearchComplete();
       }
 
 
@@ -710,6 +709,8 @@
       this._onSearchSubmit = function(event) {
         event.preventDefault();
 
+        $('[data-findalab-search-button]').html(this.settings.search.buttonLoadingText);
+
         var zip = this.find('[data-findalab-search-field]').val();
 
         this.search(zip);
@@ -779,7 +780,7 @@
        * @private
        */
       this._onSearchComplete = function() {
-        this.find('[data-findalab-search-button]').html(this.searchButtonText);
+        this.find('[data-findalab-search-button]').html(this.settings.search.buttonText);
       };
 
       this.construct(settings);
