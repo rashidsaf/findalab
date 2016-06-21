@@ -781,7 +781,7 @@
        * @private
        */
       this._onSearchComplete = function() {
-        this.find('[data-findalab-search-button]').html(this.searchButtonText);
+        this.find('[data-findalab-search-button]').html(this.settings.search.buttonText);
       };
 
       this.construct(settings);
