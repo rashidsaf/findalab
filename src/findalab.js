@@ -334,8 +334,6 @@
           return;
         }
 
-        $('[data-findalab-search-button]').html(this.searchButtonLoadingText);
-
         $.ajax({
           url: self.settings.baseURL + '/geocode',
           dataType: 'json',
