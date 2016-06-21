@@ -324,13 +324,11 @@
           var country = this.getZipCodeCountry(zipcode);
           if (country == 'Unknown') {
             this.setMessage(this.noResultsMessage);
-            self._onSearchComplete();
             return;
           }
           this.onSearchSubmit(zipcode, country);
         } catch (error) {
           this.setMessage(error);
-          self._onSearchComplete();
           return;
         }
 
@@ -403,6 +401,7 @@
         $('[data-findalab-result-list]').empty();
         $message = this.find('[data-findalab-message][data-template]').clone().removeAttr('data-template');
         $message.html(message).appendTo('[data-findalab-result-list]');
+        self._onSearchComplete();
       }
 
 
