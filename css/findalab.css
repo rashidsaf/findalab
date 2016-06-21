@@ -113,11 +113,14 @@
   display: none;
   margin-bottom: 0.5rem; }
   .findalab__hours table {
-    width: 100%;
-    margin-top: 6px; }
+    margin-top: 6px;
+    width: 100%; }
+    .findalab__hours table td {
+      padding-bottom: 5px; }
 
 .findalab__small {
-  font-size: 90%; }
+  font-size: 85%;
+  font-style: italic; }
 
 .findalab__hours__wrap {
   display: none; }
