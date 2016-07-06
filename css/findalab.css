@@ -23,13 +23,6 @@
   .findalab__search .input-group {
     margin-bottom: 0; }
 
-.findalab__nav {
-  background-color: #ececec;
-  border-bottom: 1px solid #e2e2e2; }
-  @media only screen and (min-width: 1024px) {
-    .findalab__nav {
-      display: none; } }
-
 .findalab__total {
   background: #f9f9f9;
   border-radius: 0 0 0 6px;
@@ -94,13 +87,27 @@
     border-bottom: 0; }
 
 .findalab__nav {
-  padding: 16px; }
+  border: 2px solid #3398db;
+  margin-top: 8px;
+  border-radius: 6px;
+  font-size: 80%; }
+  @media only screen and (min-width: 1024px) {
+    .findalab__nav {
+      display: none; } }
 
 .findalab__nav__item {
-  padding-right: 10px; }
+  display: inline-block;
+  padding: 8px;
+  text-align: center;
+  width: 50%;
+  text-decoration: none;
+  color: #3398db; }
+  .findalab__nav__item:first-child {
+    float: left; }
   .findalab__nav__item.is-active {
     text-decoration: none;
-    color: #111; }
+    color: #fff;
+    background: #3398db; }
 
 .findalab__address-list {
   list-style: none;

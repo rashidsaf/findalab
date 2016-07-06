@@ -33,6 +33,10 @@ $findalab-radius: 6px !default;
 /// @type Color
 $findalab-search-background: #f9f9f9 !default;
 
+/// Color for nav
+/// @type Color
+$findalab-nav-color: #3398db;
+
 /// Background for results.
 /// @type Color
 $findalab-results-background: #fff !default;
@@ -79,14 +83,6 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
 
   .input-group {
     margin-bottom: 0;
-  }
-}
-
-.findalab__nav {
-  background-color: darken($findalab-total-background, 5%);
-  border-bottom: $findalab-border;
-  @media only screen and (min-width: $findalab-breakpoint) {
-    display: none;
   }
 }
 
@@ -169,15 +165,32 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
 }
 
 .findalab__nav {
-  padding: $findalab-padding;
+  border: 2px solid $findalab-nav-color;
+  margin-top: $findalab-padding/2;
+  border-radius: $findalab-radius;
+  font-size: 80%;
+
+  @media only screen and (min-width: $findalab-breakpoint) {
+    display: none;
+  }
 }
 
 .findalab__nav__item {
-  padding-right: 10px;
+  display: inline-block;
+  padding: $findalab-padding/2;
+  text-align: center;
+  width: 50%;
+  text-decoration: none;
+  color: $findalab-nav-color;
+
+  &:first-child {
+    float: left;
+  }
 
   &.is-active {
     text-decoration: none;
-    color: #111;
+    color: #fff;
+    background: $findalab-nav-color;
   }
 }
 
