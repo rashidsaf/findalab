@@ -96,12 +96,14 @@
       display: none; } }
 
 .findalab__nav__item {
+  border: none;
+  color: #3398db;
+  background-color: transparent;
   display: inline-block;
   padding: 8px;
   text-align: center;
-  width: 50%;
   text-decoration: none;
-  color: #3398db; }
+  width: 50%; }
   .findalab__nav__item:first-child {
     float: left; }
   .findalab__nav__item.is-active {

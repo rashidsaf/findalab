@@ -1,4 +1,5 @@
 (function($) {
+
   $.fn.extend({
 
     /**
