@@ -35,7 +35,7 @@ $findalab-search-background: #f9f9f9 !default;
 
 /// Color for nav
 /// @type Color
-$findalab-nav-color: #3398db;
+$findalab-nav-color: #3398db !default;
 
 /// Background for results.
 /// @type Color
@@ -138,7 +138,7 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
 .findalab__results {
   background-color: $findalab-results-background;
   display: none;
-  height: $findalab-height;
+  max-height: $findalab-height;
   list-style-type: none;
   margin: 0;
   overflow: auto;
