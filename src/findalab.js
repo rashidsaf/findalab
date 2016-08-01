@@ -78,37 +78,14 @@
       this.construct = function(settings) {
         self._setMessage(this.emptyResultsMessage);
 
-        this.find('[data-findalab-search-button]').addClass(self.settings.search.buttonClass).html(
-          self.settings.search.buttonText
-        );
-        this._setPlaceholder(self.settings.search.placeholder);
-        this._setInputType(self.settings.search.inputType);
-        this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
-
-        this.find('[data-findalab-inputgroup-container]').addClass(this.settings.inputGroup.container);
-        this.find('[data-findalab-inputgroup-field]').addClass(this.settings.inputGroup.field);
-        this.find('[data-findalab-inputgroup-button]').addClass(this.settings.inputGroup.button);
         self._constructInHomeCollection(settings.inHomeCollection);
+        self._constructSearchInputGroup(settings.search, settings.inputGroup);
 
         this.find('[data-findalab-search-field]')
             .keydown($.proxy(onSearchKeyDown, this))
             .keyup($.proxy(onSearchKeyUp, this));
 
-        if (typeof google === 'undefined') {
-          alert('Hey! The Google Maps script is missing or not properly called, please check ' +
-          'the Medology Find A Labs component documentation to make sure everything is ' +
-          'setup correctly.');
-        }
-
-        var mapOptions = {
-          center: this._buildLatLong(self.settings.googleMaps.lat, self.settings.googleMaps.long),
-          zoom: self.settings.googleMaps.initialZoom,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        self.settings.googleMaps.map = new google.maps.Map(document.getElementById('findalab-map'), mapOptions);
-        self.settings.googleMaps.geoCoder = new google.maps.Geocoder();
-        self.settings.googleMaps.infoWindow = new google.maps.InfoWindow();
+        self._constructGoogleMaps(settings.googleMaps);
 
         this._contentNav();
 
@@ -185,20 +162,6 @@
               }
             }
         );
-      };
-
-      /**
-       * Tab navigation on smaller screens.
-       */
-      this._contentNav = function() {
-        $('[data-findalab-nav-item]').on('click', function() {
-          var content = $(this).data('findalab-nav-item');
-          $('[data-findalab-nav-item]').removeClass('is-active');
-          $(this).addClass('is-active');
-          self.find('[data-findalab-content]').removeClass('is-active');
-          self.find('[data-findalab-content="' + content + '"]').addClass('is-active');
-          self.resize();
-        });
       };
 
       /**
@@ -301,56 +264,7 @@
        */
       this.search = function(searchValue) {
         var searchValueCountry = self._getPostalCodeCountry(searchValue);
-
-        $.ajax({
-          url: self.settings.baseURL + '/geocode',
-          dataType: 'json',
-          data: { zip: searchValue, countryCode: searchValueCountry }
-        }).done(self._searchCollectionCenters);
-      };
-
-      /**
-       * Search the collection centers.
-       *
-       * @param {[{latitude:float, longitude:float, countryCode:string}]} result
-       * @param {string} searchValueCountry The country value
-       */
-      this._searchCollectionCenters = function(result, searchValueCountry) {
-        if (result.length == 0) {
-          self._onSearchErrorString('No Results');
-        }
-
-        var searchLabs = self._searchNearCoords('labs', searchValueCountry, result);
-        var searchPhlebotomists = self._searchNearCoords('phlebotomists', searchValueCountry, result);
-
-        $.when(searchLabs, searchPhlebotomists).done(
-            function(resultsLabs, resultsPhlebotomists) {
-              console.log(resultsLabs);
-              console.log(resultsPhlebotomists);
-              self._renderLabs(resultsLabs[0].labs);
-              self._renderPhlebotomists(resultsPhlebotomists[0].phlebotomists);
-            }
-          );
-      };
-
-      /**
-       * Checks that the postal code has an associated country.
-       *
-       * @param  {string} postalCode The postal code
-       * @private
-       */
-      this._assertPostalCodeHasCountry = function(postalCode) {
-        try {
-          var country = this._getPostalCodeCountry(postalCode);
-          if (country == 'Unknown') {
-            self._setMessage(this.noResultsMessage);
-            return;
-          }
-          this.onSearchSubmit(postalCode, country);
-        } catch (error) {
-          self._setMessage(error);
-          return;
-        }
+        self._searchGeoCode(searchValue, searchValueCountry);
       };
 
       /**
@@ -369,6 +283,29 @@
       };
 
       /**
+       * Construct Google Maps
+       *
+       * @param  {object} googleMapsObject Google Maps settings
+       */
+      this._constructGoogleMaps = function(googleMapsObject) {
+        if (typeof google === 'undefined') {
+          alert('Hey! The Google Maps script is missing or not properly called, please check ' +
+          'the Medology Find A Labs component documentation to make sure everything is ' +
+          'setup correctly.');
+        }
+
+        var mapOptions = {
+          center: this._buildLatLong(googleMapsObject.lat, googleMapsObject.long),
+          zoom: googleMapsObject.initialZoom,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        googleMapsObject.map = new google.maps.Map(document.getElementById('findalab-map'), mapOptions);
+        googleMapsObject.geoCoder = new google.maps.Geocoder();
+        googleMapsObject.infoWindow = new google.maps.InfoWindow();
+      };
+
+      /**
        * Construct the in home collection component.
        *
        * @param  {object} inHomeCollectionObject In-home collection settings
@@ -382,33 +319,65 @@
         this.find('[data-findalab-ihc-notice]').html(inHomeCollectionObject.notice);
       };
 
+      /**
+       * Construct search button, fields and input group.
+       *
+       * @param  {object} searchObject     Search settings
+       * @param  {object} inputGroupObject Input group settings
+       */
+      this._constructSearchInputGroup = function(searchObject, inputGroupObject) {
+        this.find('[data-findalab-search-button]').addClass(searchObject.buttonClass).html(
+          searchObject.buttonText
+        );
+        this._setPlaceholder(searchObject.placeholder);
+        this._setInputType(searchObject.inputType);
+        this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
+        this.find('[data-findalab-inputgroup-container]').addClass(inputGroupObject.container);
+        this.find('[data-findalab-inputgroup-field]').addClass(inputGroupObject.field);
+        this.find('[data-findalab-inputgroup-button]').addClass(inputGroupObject.button);
+      };
+
+      /**
+       * Tab navigation on smaller screens.
+       */
+      this._contentNav = function() {
+        $('[data-findalab-nav-item]').on('click', function() {
+          var content = $(this).data('findalab-nav-item');
+          $('[data-findalab-nav-item]').removeClass('is-active');
+          $(this).addClass('is-active');
+          self.find('[data-findalab-content]').removeClass('is-active');
+          self.find('[data-findalab-content="' + content + '"]').addClass('is-active');
+          self.resize();
+        });
+      };
 
       /**
        * Returns the country code for the specified zip code.
        *
        * Currently only supports Canada, United States and Puerto Rico.
        *
-       * @param   {string} zipCode The zipCode to get the country code for.
+       * @param   {string} postalCode The zipCode to get the country code for.
        * @returns {string} The two character country code. Either CA, PR or US.
        * @private
        */
-      this._getPostalCodeCountry = function(zipCode) {
+      this._getPostalCodeCountry = function(postalCode) {
         var caRegex = new RegExp(
           /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
         );
 
-        if (caRegex.test(zipCode)) {
+        if (caRegex.test(postalCode)) {
           return 'CA';
         }
 
         // Check for Puerto Rico zips
-        var intZip = parseInt(zipCode);
+        var intZip = parseInt(postalCode);
         if ((intZip >= 600 && intZip <= 799) || (intZip >= 900 && intZip <= 999)) {
           return 'PR';
         }
 
         if (isNaN(intZip)) {
-          return 'Unknown';
+          self._setMessage(this.noResultsMessage);
+          return;
         }
 
         return 'US';
@@ -452,9 +421,45 @@
       };
 
       /**
+       * Search the collection centers.
+       *
+       * @param {[{latitude:float, longitude:float, countryCode:string}]} result
+       * @param {string} searchValueCountry The country value
+       */
+      this._searchCollectionCenters = function(result, searchValueCountry) {
+        if (result.length == 0) {
+          self._onSearchErrorString('No Results');
+        }
+
+        var searchLabs = self._searchNearCoords('labs', searchValueCountry, result);
+        var searchPhlebotomists = self._searchNearCoords('phlebotomists', searchValueCountry, result);
+
+        $.when(searchLabs, searchPhlebotomists).done(
+            function(resultsLabs, resultsPhlebotomists) {
+              self._renderLabs(resultsLabs[0].labs);
+              self._renderPhlebotomists(resultsPhlebotomists[0].phlebotomists);
+            }
+          ).fail(self._onSearchError).always($.proxy(self._onSearchComplete, self));
+      };
+
+      /**
+       * Search the geocode location
+       * @param  {string} searchValue        The value searched
+       * @param  {string} searchValueCountry The country of the searched value
+       */
+      this._searchGeoCode = function(searchValue, searchValueCountry) {
+        $.ajax({
+          url: self.settings.baseURL + '/geocode',
+          dataType: 'json',
+          data: { zip: searchValue, countryCode: searchValueCountry }
+        }).done(self._searchCollectionCenters).fail(self._onSearchError);
+      };
+
+      /**
        * Searches for the nearby coordinates of a collection center
        * @param  {string} collectionCenter The type of collection center
        * @param  {string} country          The country of the search
+       * @param  {object} result           The ajax result of the geocode
        * @return {ajax}                  [description]
        */
       this._searchNearCoords = function(collectionCenter, country, result) {
@@ -732,7 +737,6 @@
        *   structured_hours:object
        * }} lab
        * @param   {jQuery} $result The jQuery DOM that should be modified to show the hours.
-       * @returns {string} The structured hours DOM.
        * @private
        */
       this._buildHoursDom = function(lab, $result) {
@@ -780,11 +784,13 @@
 
         $('[data-findalab-search-button]').html(this.settings.search.buttonLoadingText);
 
-        var zip = this.find('[data-findalab-search-field]').val();
+        var searchValue = this.find('[data-findalab-search-field]').val();
 
-        this.search(zip);
-
-        return false;
+        if (!searchValue.length) {
+          self._setMessage(this.emptyResultsMessage);
+        } else {
+          this.search(searchValue);
+        }
       };
 
       /**
@@ -851,7 +857,7 @@
         this.find('[data-findalab-search-button]').html(this.settings.search.buttonText);
       };
 
-      this.construct(settings);
+      this.construct(self.settings);
 
       return this;
     }
