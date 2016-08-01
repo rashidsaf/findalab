@@ -49,6 +49,14 @@
           placeholder: 'Enter your zip',
           inputType: 'text'
         },
+        inHomeCollection: {
+          title: 'In-Home Collection',
+          description: 'Get the lab to come to you. Schedule an in-home appointment with a Lab Collection Specialist',
+          timeTitle: 'Avaliable:',
+          timeDetails: '5:00am - 8:00pm, 7 days a week',
+          button: 'Select &amp; Continue',
+          notice: 'You will schedule your appointment during checkout.'
+        },
         emptyResultsMessage: '',
         noResultsMessage: ''
       };
@@ -80,6 +88,7 @@
         this.find('[data-findalab-inputgroup-container]').addClass(this.settings.inputGroup.container);
         this.find('[data-findalab-inputgroup-field]').addClass(this.settings.inputGroup.field);
         this.find('[data-findalab-inputgroup-button]').addClass(this.settings.inputGroup.button);
+        self._constructInHomeCollection(settings.inHomeCollection);
 
         this.find('[data-findalab-search-field]')
             .keydown($.proxy(onSearchKeyDown, this))
@@ -357,6 +366,20 @@
         long = long !== undefined ? long : self.settings.googleMaps.defaultLong;
 
         return new google.maps.LatLng(lat, long);
+      };
+
+      /**
+       * Construct the in home collection component.
+       *
+       * @param  {object} inHomeCollectionObject In-home collection settings
+       */
+      this._constructInHomeCollection = function(inHomeCollectionObject) {
+        this.find('[data-findalab-ihc-title]').html(inHomeCollectionObject.title);
+        this.find('[data-findalab-ihc-description]').html(inHomeCollectionObject.description);
+        this.find('[data-findalab-ihc-time-title]').html(inHomeCollectionObject.timeTitle);
+        this.find('[data-findalab-ihc-time-details]').html(inHomeCollectionObject.timeDetails);
+        this.find('[data-findalab-ihc-button]').html(inHomeCollectionObject.button);
+        this.find('[data-findalab-ihc-notice]').html(inHomeCollectionObject.notice);
       };
 
 
