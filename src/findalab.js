@@ -1,3 +1,4 @@
+/*global google*/
 (function($) {
 
   $.fn.extend({
@@ -5,7 +6,7 @@
     /**
      * Controller for Lab Search component.
      *
-     * @param   {{lat:float, long:float}} settings
+     * @param  {{lat:float, long:float}} settings
      * @var {object} find
      * @returns {labSearch}
      */
@@ -36,7 +37,7 @@
         inputGroup: {
           container: 'input-group',
           field: 'input-group-field',
-          button: 'input-group-button',
+          button: 'input-group-button'
         },
         search: {
           buttonClass: null,
@@ -49,7 +50,7 @@
           inputType: 'text'
         },
         emptyResultsMessage: '',
-        noResultsMessage: '',
+        noResultsMessage: ''
       };
 
       this.settings = $.extend(true, this.settings, settings);
@@ -67,13 +68,13 @@
        * @param {{lat:float, long:float}} settings
        */
       this.construct = function(settings) {
-        self.setMessage(this.emptyResultsMessage);
+        self._setMessage(this.emptyResultsMessage);
 
         this.find('[data-findalab-search-button]').addClass(self.settings.search.buttonClass).html(
           self.settings.search.buttonText
         );
-        this.setPlaceholder(self.settings.search.placeholder);
-        this.setInputType(self.settings.search.inputType);
+        this._setPlaceholder(self.settings.search.placeholder);
+        this._setInputType(self.settings.search.inputType);
         this.find('[data-findalab-search-button]').on('click', $.proxy(this._onSearchSubmit, this));
 
         this.find('[data-findalab-inputgroup-container]').addClass(this.settings.inputGroup.container);
@@ -93,13 +94,11 @@
         var mapOptions = {
           center: this._buildLatLong(self.settings.googleMaps.lat, self.settings.googleMaps.long),
           zoom: self.settings.googleMaps.initialZoom,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
         self.settings.googleMaps.map = new google.maps.Map(document.getElementById('findalab-map'), mapOptions);
-
         self.settings.googleMaps.geoCoder = new google.maps.Geocoder();
-
         self.settings.googleMaps.infoWindow = new google.maps.InfoWindow();
 
         this._contentNav();
@@ -110,12 +109,12 @@
         /**
          * Prevents submission of the form on key down.
          *
-         * @param e The key down event.
-         * @returns {boolean} False if the enter key was pressed. This prevents bubbling.
+         * @param {event} event The key down event.
+         * @returns {boolean}   False if the enter key was pressed. This prevents bubbling.
          */
-        function onSearchKeyDown(e) {
-          if (e.keyCode === 13) {
-            e.preventDefault();
+        function onSearchKeyDown(event) {
+          if (event.keyCode === 13) {
+            event.preventDefault();
 
             return false;
           }
@@ -124,9 +123,9 @@
         /**
          * Triggers a search if the enter key was pressed.
          *
-         * @this {Object} The find a lab instance.
-         * @param e The key up event.
-         * @returns {boolean} Always false to prevent bubbling.
+         * @this    {Object}    The find a lab instance.
+         * @param   {int}     e The key up event.
+         * @returns {boolean}   Always false to prevent bubbling.
          */
         function onSearchKeyUp(e) {
           e.preventDefault();
@@ -142,12 +141,12 @@
          * Calls the `onLabSelect` method when a lab is selected.
          *
          * @this {Object} The find a lab instance.
-         * @param e The click event.
+         * @param {event} event The click event.
          * @returns {boolean} Always false to prevent bubbling.
          */
-        function onLabSelectClick(e) {
-          e.preventDefault();
-          this._onLabSelect($(e.target).data());
+        function onLabSelectClick(event) {
+          event.preventDefault();
+          this._onLabSelect($(event.target).data());
 
           return false;
         }
@@ -163,11 +162,11 @@
         self.settings.googleMaps.map.setCenter(this._buildLatLong(lat, long));
 
         self.settings.googleMaps.geoCoder.geocode({
-              address: lat + ',' + long,
-            },
+          address: lat + ',' + long
+        },
             /**
              * @param {[{geometry:{}}]} results
-             * @param status
+             * @param {int} status
              */
             function(results, status) {
               if (status == google.maps.GeocoderStatus.OK) {
@@ -184,43 +183,13 @@
        */
       this._contentNav = function() {
         $('[data-findalab-nav-item]').on('click', function() {
-          content = $(this).data('findalab-nav-item');
+          var content = $(this).data('findalab-nav-item');
           $('[data-findalab-nav-item]').removeClass('is-active');
           $(this).addClass('is-active');
           self.find('[data-findalab-content]').removeClass('is-active');
           self.find('[data-findalab-content="' + content + '"]').addClass('is-active');
           self.resize();
         });
-      };
-
-      /**
-       * Returns the country code for the specified zip code.
-       *
-       * Currently only supports Canada, United States and Puerto Rico.
-       *
-       * @param   {string} zipCode The zipCode to get the country code for.
-       * @returns {string} The two character country code. Either CA, PR or US.
-       */
-      this.getZipCodeCountry = function(zipCode) {
-        var caRegex = new RegExp(
-          /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
-        );
-
-        if (caRegex.test(zipCode)) {
-          return 'CA';
-        }
-
-        // Check for Puerto Rico zips
-        var intZip = parseInt(zipCode);
-        if ((intZip >= 600 && intZip <= 799) || (intZip >= 900 && intZip <= 999)) {
-          return 'PR';
-        }
-
-        if (isNaN(intZip)) {
-          return 'Unknown';
-        }
-
-        return 'US';
       };
 
       /**
@@ -307,7 +276,8 @@
         self.settings.googleMaps.map.setZoom(self.settings.googleMaps.initialZoom);
         self.settings.googleMaps.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
-        for (var i = 0; j = self.settings.googleMaps.markers.length, i < j; i++) {
+        var j = self.settings.googleMaps.markers.length;
+        for (var i = 0; i < j; i++) {
           self.settings.googleMaps.markers[i].setMap(null);
         }
 
@@ -315,96 +285,64 @@
       };
 
       /**
-       * This function will retrieve latitude and longitudes and also labs
+       * This function will retrieve latitude and longitudes and also collection centers
        * near these coordinates.
+       *
+       * @param {string} searchValue
        */
-      this.search = function(zipcode) {
-        this.find('[data-findalab-search-field]').val(zipcode);
-
-        try {
-          var country = this.getZipCodeCountry(zipcode);
-          if (country == 'Unknown') {
-            this.setMessage(this.noResultsMessage);
-            return;
-          }
-          this.onSearchSubmit(zipcode, country);
-        } catch (error) {
-          this.setMessage(error);
-          return;
-        }
+      this.search = function(searchValue) {
+        var searchValueCountry = self._getPostalCodeCountry(searchValue);
 
         $.ajax({
           url: self.settings.baseURL + '/geocode',
           dataType: 'json',
-          data: { zip: zipcode, countryCode: country },
-        }).done(
-            /**
-             * @param {[{latitude:float, longitude:float, countryCode:string}]}  result
-             */
-            function(result) {
-              if (result.length == 0) {
-                self._onSearchErrorString('No Results');
-              }
-
-              $.ajax({
-                url: self.settings.baseURL + '/labs/nearCoords',
-                dataType: 'json',
-                data: $.extend({
-                  countryCode: country,
-                  filterNetwork: self.settings.searchFunction.excludeNetworks,
-                  labCount: self.settings.searchFunction.limit,
-                  network: self.settings.searchFunction.onlyNetwork,
-                }, result[0]),
-              }).
-              done(self._onSearchSuccess).
-              fail(self._onSearchError).
-              always($.proxy(self._onSearchComplete, self));
-            }).fail(function(jqXhr) {
-          self._onSearchError(jqXhr);
-          self._onSearchComplete();
-        });
+          data: { zip: searchValue, countryCode: searchValueCountry }
+        }).done(self._searchCollectionCenters);
       };
 
       /**
-       * Sets the placeholder text for the search input.
+       * Search the collection centers.
        *
-       * @param {string} message the placeholder message
+       * @param {[{latitude:float, longitude:float, countryCode:string}]} result
+       * @param {string} searchValueCountry The country value
        */
-      this.setPlaceholder = function(message) {
-        this.find('[data-findalab-search-field]').attr('placeholder', message);
+      this._searchCollectionCenters = function(result, searchValueCountry) {
+        if (result.length == 0) {
+          self._onSearchErrorString('No Results');
+        }
+
+        var searchLabs = self._searchNearCoords('labs', searchValueCountry, result);
+        var searchPhlebotomists = self._searchNearCoords('phlebotomists', searchValueCountry, result);
+
+        $.when(searchLabs, searchPhlebotomists).done(
+            function(resultsLabs, resultsPhlebotomists) {
+              console.log(resultsLabs);
+              console.log(resultsPhlebotomists);
+              self._renderLabs(resultsLabs[0].labs);
+              self._renderPhlebotomists(resultsPhlebotomists[0].phlebotomists);
+            }
+          );
       };
 
       /**
-       * Sets the type value of the search input.
+       * Checks that the postal code has an associated country.
        *
-       * @param {string} theType the type of input
+       * @param  {string} postalCode The postal code
+       * @private
        */
-      this.setInputType = function(theType) {
-        this.find('[data-findalab-search-field]').attr('type', theType);
+      this._assertPostalCodeHasCountry = function(postalCode) {
+        try {
+          var country = this._getPostalCodeCountry(postalCode);
+          if (country == 'Unknown') {
+            self._setMessage(this.noResultsMessage);
+            return;
+          }
+          this.onSearchSubmit(postalCode, country);
+        } catch (error) {
+          self._setMessage(error);
+          return;
+        }
       };
-
-      /**
-       * Sets the text to display on the lab select buttons.
-       *
-       * @param {string} text
-       */
-      this.setLabSelectText = function(text) {
-        this.find('[data-findalab-result-button]').html(text);
-        self.settings.lab.buttonText = text;
-      };
-
-      /**
-       * Displays the specified message to the user.
-       *
-       * @param {string} message This is the message that will be shown.
-       */
-      this.setMessage = function(message) {
-        $('[data-findalab-result-list]').empty();
-        $message = this.find('[data-findalab-message][data-template]').clone().removeAttr('data-template');
-        $message.html(message).appendTo('[data-findalab-result-list]');
-        self._onSearchComplete();
-      }
-
 
       /**
        * Builds a Google Maps Latitude/Longitude object.
@@ -419,6 +357,38 @@
         long = long !== undefined ? long : self.settings.googleMaps.defaultLong;
 
         return new google.maps.LatLng(lat, long);
+      };
+
+
+      /**
+       * Returns the country code for the specified zip code.
+       *
+       * Currently only supports Canada, United States and Puerto Rico.
+       *
+       * @param   {string} zipCode The zipCode to get the country code for.
+       * @returns {string} The two character country code. Either CA, PR or US.
+       * @private
+       */
+      this._getPostalCodeCountry = function(zipCode) {
+        var caRegex = new RegExp(
+          /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
+        );
+
+        if (caRegex.test(zipCode)) {
+          return 'CA';
+        }
+
+        // Check for Puerto Rico zips
+        var intZip = parseInt(zipCode);
+        if ((intZip >= 600 && intZip <= 799) || (intZip >= 900 && intZip <= 999)) {
+          return 'PR';
+        }
+
+        if (isNaN(intZip)) {
+          return 'Unknown';
+        }
+
+        return 'US';
       };
 
       /**
@@ -456,6 +426,69 @@
        */
       this._onLabSelect = function(lab) {
         this.onLabSelect(lab);
+      };
+
+      /**
+       * Searches for the nearby coordinates of a collection center
+       * @param  {string} collectionCenter The type of collection center
+       * @param  {string} country          The country of the search
+       * @return {ajax}                  [description]
+       */
+      this._searchNearCoords = function(collectionCenter, country, result) {
+        return $.ajax({
+          url: self.settings.baseURL + '/' + collectionCenter + '/nearCoords',
+          dataType: 'json',
+          data: $.extend({
+            countryCode: country,
+            filterNetwork: self.settings.searchFunction.excludeNetworks,
+            labCount: self.settings.searchFunction.limit,
+            network: self.settings.searchFunction.onlyNetwork
+          }, result[0])
+        });
+      };
+
+      /**
+      * Sets the type value of the search input.
+      *
+      * @param {string} theType the type of input
+      * @private
+      */
+      this._setInputType = function(theType) {
+        this.find('[data-findalab-search-field]').attr('type', theType);
+      };
+
+      /**
+      * Sets the text to display on the lab select buttons.
+      *
+      * @param {string} text
+      * @private
+      */
+      this._setLabSelectText = function(text) {
+        this.find('[data-findalab-result-button]').html(text);
+        self.settings.lab.buttonText = text;
+      };
+
+      /**
+       * Displays the specified message to the user.
+       *
+       * @param {string} message This is the message that will be shown.
+       * @private
+       */
+      this._setMessage = function(message) {
+        $('[data-findalab-result-list]').empty();
+        var $message = this.find('[data-findalab-message][data-template]').clone().removeAttr('data-template');
+        $message.html(message).appendTo('[data-findalab-result-list]');
+        self._onSearchComplete();
+      };
+
+      /**
+       * Sets the placeholder text for the search input.
+       *
+       * @param {string} message the placeholder message
+       * @private
+       */
+      this._setPlaceholder = function(message) {
+        this.find('[data-findalab-search-field]').attr('placeholder', message);
       };
 
       /**
@@ -558,7 +591,7 @@
        * }]} labs
        * @private
        */
-      this._render = function(labs) {
+      this._renderLabs = function(labs) {
         var $resultsList = this.find('[data-findalab-result-list]');
         var $resultTemplate = this.find('[data-findalab-result][data-template]');
         var pluralLabs = labs.length > 1 ? 's' : '';
@@ -647,13 +680,13 @@
       this._parseDistance = function (labData) {
         var parsedDistance = '';
         switch (labData.center_country) {
-          case "CA" :
-            parsedDistance = (labData.center_distance / 0.62137).toFixed(2) + "km.";
-            break;
-          case "US" :
-          default:
-            parsedDistance = labData.center_distance.toFixed(2) + "mi.";
-            break;
+        case 'CA' :
+          parsedDistance = (labData.center_distance / 0.62137).toFixed(2) + 'km.';
+          break;
+        case 'US' :
+        default:
+          parsedDistance = labData.center_distance.toFixed(2) + 'mi.';
+          break;
         }
         return parsedDistance;
       };
@@ -687,7 +720,9 @@
          * @param {{open:string, close:string, lunch_start:string, lunch_stop:string}} hours
          */
         $.each(lab.structured_hours, function(day, hours) {
-          var $row = $result.find('[data-findalab-structured-hours-row][data-template]').clone().removeAttr('data-template');
+          var $row = $result.find('[data-findalab-structured-hours-row][data-template]')
+          .clone()
+          .removeAttr('data-template');
           $row.find('[data-findalab-result-day]').html(day);
           $row.find('[data-findalab-result-hours]').html(hours.open + ' - ' + hours.close);
 
@@ -702,9 +737,19 @@
         });
       };
 
+      this._renderPhlebotomists = function(phlebotomists) {
+        var $resultsList = this.find('[data-findalab-result-list]');
+        var $inHomeCollection = this.find('[data-findalab-ihc][data-template]').clone().removeAttr('data-template');
+
+        if (phlebotomists.length) {
+          $inHomeCollection.prependTo($resultsList);
+        }
+      };
+
       /**
        * Private event handler for a search is initiated.
        *
+       * @param {event} event
        * @private
        */
       this._onSearchSubmit = function(event) {
@@ -746,7 +791,6 @@
         if (response.labs.length == 0) {
           self._onSearchErrorString(self.noResultsMessage);
         } else {
-          self._render(response.labs);
           self.onSearchSuccess(response.labs, response.latitude, response.longitude);
         }
       };
@@ -772,7 +816,7 @@
           '<li class="findalab__result">There are no search results.</li>'
         );
 
-        self.setMessage(self.noResultsMessage);
+        self._setMessage(self.noResultsMessage);
         self.onSearchError(JSON.parse(message).message);
       };
 
