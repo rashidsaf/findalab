@@ -95,6 +95,19 @@
     .findalab__nav {
       display: none; } }
 
+.findalab__ihc {
+  border: 3px solid #8ac4ea;
+  border-radius: 6px;
+  margin: 16px;
+  padding: 8px; }
+
+.findalab__ihc__title {
+  color: #fff;
+  background-color: #8ac4ea;
+  margin: -8px;
+  margin-bottom: 0;
+  padding: 8px; }
+
 .findalab__nav__item {
   border: none;
   color: #3398db;

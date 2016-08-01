@@ -37,6 +37,10 @@ $findalab-search-background: #f9f9f9 !default;
 /// @type Color
 $findalab-nav-color: #3398db !default;
 
+/// Color for ihc (in-home collection) component
+/// @type Color
+$findalab-ihc-color: lighten(#3398db, 20%) !default;
+
 /// Background for results.
 /// @type Color
 $findalab-results-background: #fff !default;
@@ -173,6 +177,21 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
   @media only screen and (min-width: $findalab-breakpoint) {
     display: none;
   }
+}
+
+.findalab__ihc {
+  border: 3px solid $findalab-ihc-color;
+  border-radius: $findalab-radius;
+  margin: $findalab-padding;
+  padding: $findalab-padding/2;
+}
+
+.findalab__ihc__title {
+  color: #fff;
+  background-color: $findalab-ihc-color;
+  margin: -$findalab-padding/2;
+  margin-bottom: 0;
+  padding: $findalab-padding/2;
 }
 
 .findalab__nav__item {
