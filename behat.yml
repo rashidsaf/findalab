@@ -1,0 +1,18 @@
+default:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://findalab.local
+      default_session: selenium_chrome
+      javascript_session: selenium_chrome
+      files_path: %paths.base%/features/fixtures
+      sessions:
+        selenium_chrome:
+          selenium2:
+            browser: chrome
+            wd_host: http://chrome:4444/wd/hub
+  suites:
+    web_features:
+      paths: [ features/web ]
+      contexts:
+        - WebContext:
+            base_url: http://findalab.local

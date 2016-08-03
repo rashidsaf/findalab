@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+ACCOUNT=medology
+REPO=stdcheck-php-cli
+VERSION=2016-06-07
+PROJECT_NAME=findalab
+
+. "${DIR}"/lib/args.sh
+. "${DIR}"/lib/rm.sh
+. "${DIR}"/lib/tty.sh
+
+COMMAND="echo pid1 > /dev/null && php $ARGS"
+
+docker run -u=1000 -i${TTY} -v $(pwd):/data ${RM} --net ${PROJECT_NAME}_default \
+    --link web:findalab.local \
+    --link web:www.findalab.local \
+    ${ACCOUNT}/${REPO}:${VERSION} "${COMMAND}"

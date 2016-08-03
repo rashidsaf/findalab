@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  chrome:
+    depends_on:
+      - web
+    environment:
+        - no_proxy:localhost
+    links:
+      - web
+      - web:findalab.local
+      - web:www.findalab.local
+    volumes:
+      - /dev/shm:/dev/shm
+      - ..:/data

@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  app:
+    build: app
+    volumes:
+      - ..:/data
+
+  web:
+    build: nginx
+    depends_on:
+      - app
+    links:
+      - app
+    volumes:
+      - ..:/data

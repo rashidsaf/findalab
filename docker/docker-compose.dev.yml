@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  web:
+    ports:
+      - 80:80
+
+  chrome:
+    image: selenium/standalone-chrome-debug:2.53.0
+    ports:
+      - 5900:5900

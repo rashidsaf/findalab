@@ -3,7 +3,7 @@
 The find a lab plugin is used throughout all of our (Medology) projects to implement our users to search
 for a testing lab using their postal code and choosing a location best for them.
 
-## Install
+## Install into Project
 This plugin can be installed as a bower dependency. Run the following command in the root of your project:
 
 ```bash
@@ -29,23 +29,28 @@ $('#your-selector').load('../path/from/bower/findalab.html', function() {
 });
 ```
 
-## Custom Options
+## Custom Settings
 
-The plugin can be customized by redefining `findalab` variables.
-
-Here is an example using [Foundation Font Awesome Buttons](https://github.com/joshmedeski/foundation-font-awesome-buttons):
+The plugin can be customized by redefining `findalab` settings object.
 
 ```js
-$('#your-selector').load('../path/from/bower/findalab.html', function() {
-  $(this).find('.findalab').findalab();
-  findalab.searchbuttonClass = 'secondary button';
-  findalab.searchButtonText = '<i class="fa fa-search"></i>';
-  findalab.searchButtonLoadingText = '<i class="fa fa-spin fa-refresh"></i>';
-  findalab.labSelectedButtonClass = 'small secondary button ffab-after fa-arrow-right';
+<script>
+$('#findalab-selector').load('../path/to/src/findalab.html', function() {
+  var findalab = $(this).find('.findalab').findalab({
+    baseURL: 'http://localhost:6789/',
+    lab: {
+      buttonText: 'Choose this place, yo!',
+    },
+    search: {
+      buttonText: 'Find Now',
+      placeholder: 'Fill in the zippaty',
+    },
+  });
 });
+</script>
 ```
 
-## Testing
+## Development
 
 To test and make updates to the jQuery plugin clone the repository:
 
@@ -53,22 +58,19 @@ To test and make updates to the jQuery plugin clone the repository:
 $ git clone https://github.com/Medology/findalab.git && cd findalab
 ```
 
-To setup your dev environment, you have to setup NPM and Bower dependencies. Run the following commands in the root directory:
+To setup your dev environment, you have to setup NPM and Bower dependencies. Run the following command in the root directory:
 
 ```bash
-$ npm install
-$ bower install
+$ init_project
 ```
 
-Next, you will want to setup a local server to run the files:
+Next, you will want to setup and run the Docker environment by running the following command
 
 ```bash
-$ php -S localhost:6789
+containers up
 ```
 
-__*Note:__ port 6789 is setup for the example pages.
-
-You can visit the example site at [localhost:6789](http://localhost:6789).
+You can visit the example site at [findalab.local](http://findalab.local/).
 
 Finally, you can compile the stylesheets by running Gulp in the root directory:
 
@@ -77,3 +79,9 @@ $ gulp
 ```
 
 Gulp includes the `sass` task that compiles the example CSS as well as the `stylesheet` task that creates the individual CSS file.
+
+If you want to watch the files and rebuild gulp on save, use the following command
+
+```bash
+$ gulp watch
+````

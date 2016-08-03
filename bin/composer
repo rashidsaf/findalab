@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+ACCOUNT=medology
+REPO=composer
+VERSION=php5.4.45-2016-05-17-12-25-44
+PROJECT_NAME=findalab
+
+. "${DIR}"/lib/args.sh
+. "${DIR}"/lib/rm.sh
+. "${DIR}"/lib/tty.sh
+
+COMMAND="echo pid1 > /dev/null && composer $ARGS"
+
+docker run -i${TTY} -v ~/.composer:/root/.composer -v $(pwd):/data ${RM} --net ${PROJECT_NAME}_default \
+    ${ACCOUNT}/${REPO}:${VERSION} "${COMMAND}"
