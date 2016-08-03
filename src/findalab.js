@@ -53,7 +53,7 @@
           title: 'In-Home Collection',
           description: 'Get the lab to come to you. Schedule an in-home appointment with a Lab Collection Specialist',
           timeTitle: 'Avaliable:',
-          timeDetails: '5:00am - 8:00pm, 7 days a week',
+          timeDetails: '7:00am - 8:00pm, 7 days a week',
           button: 'Select &amp; Continue',
           notice: 'You will schedule your appointment during checkout.'
         },
@@ -444,6 +444,7 @@
 
       /**
        * Search the geocode location
+       *
        * @param  {string} searchValue        The value searched
        * @param  {string} searchValueCountry The country of the searched value
        */
@@ -456,7 +457,8 @@
       };
 
       /**
-       * Searches for the nearby coordinates of a collection center
+       * Finds neaby collection centers from the country and geocode given.
+       *
        * @param  {string} collectionCenter The type of collection center
        * @param  {string} country          The country of the search
        * @param  {object} result           The ajax result of the geocode
@@ -748,8 +750,8 @@
          */
         $.each(lab.structured_hours, function(day, hours) {
           var $row = $result.find('[data-findalab-structured-hours-row][data-template]')
-          .clone()
-          .removeAttr('data-template');
+                      .clone()
+                      .removeAttr('data-template');
           $row.find('[data-findalab-result-day]').html(day);
           $row.find('[data-findalab-result-hours]').html(hours.open + ' - ' + hours.close);
 
