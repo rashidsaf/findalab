@@ -457,12 +457,12 @@
       };
 
       /**
-       * Finds neaby collection centers from the country and geocode given.
+       * Finds nearby collection centers from the country and geocode given.
        *
        * @param  {string} collectionCenter The type of collection center
        * @param  {string} country          The country of the search
        * @param  {object} result           The ajax result of the geocode
-       * @return {ajax}                  [description]
+       * @return {ajax}                    The collection center results from the ajax request 
        */
       this._searchNearCoords = function(collectionCenter, country, result) {
         return $.ajax({
