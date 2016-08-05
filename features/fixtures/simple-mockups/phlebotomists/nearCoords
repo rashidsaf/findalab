@@ -1,0 +1,14 @@
+{
+  "phlebotomists": [
+    {
+      "name": "Acme Phlebotomists Inc",
+      "zipcode": 96786,
+      "distance": 10
+    },
+    {
+      "name": "John Smith M.D.",
+      "zipcode": 96734,
+      "distance": 5
+    }
+  ]
+}
