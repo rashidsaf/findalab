@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Findalab - Simple Mockups</title>
+  <title>Findalab - Live API</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/findalab.css">
   <style>
@@ -15,7 +15,7 @@
 </head>
 <body>
 
-  <h1>Find A Lab - Simple Mockups</h1>
+  <h1>Find A Lab - Live API</h1>
   <div id="simple-findalab"></div>
 
   <script src="/bower_components/jquery/dist/jquery.js"></script>
@@ -25,13 +25,13 @@
   <script>
   $('#simple-findalab').load('../src/findalab.html', function() {
     var findalab = $(this).find('.findalab').findalab({
-      baseURL: 'http://findalab.local/features/fixtures/simple-mockups/',
+      baseURL: 'https://www.stdcheck.com?api_key=GreenEggsAndHam',
       lab: {
         buttonText: 'Choose this place, yo!',
       },
       search: {
-        buttonText: 'Find Simple',
-        placeholder: 'Fill in the zippaty codes',
+        buttonText: 'Find from API',
+        placeholder: 'Fill in the zippaty',
       },
     });
   });
