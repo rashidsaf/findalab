@@ -26,11 +26,6 @@
       "features\\contexts\\": "../features/contexts/"
     }
   },
-  "autoload-dev": {
-    "classmap": [
-      "tests/TestCase.php"
-    ]
-  },
   "config": {
     "preferred-install": "dist"
   },
