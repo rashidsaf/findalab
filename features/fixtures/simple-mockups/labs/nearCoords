@@ -29,7 +29,8 @@
       "center_network": "National",
       "center_country": "US",
       "center_distance": 2.2097600582311,
-      "network_name": "Quest Diagnostics"
+      "network_name": "Quest Diagnostics",
+      "max_distance": null
     },
     {
       "number": "13",
@@ -61,6 +62,7 @@
       "center_country": "US",
       "center_distance": 2.2505084601544,
       "network_name": "LabCorp",
+      "max_distance": null,
       "structured_hours": {
         "Monday": {
           "open": "7:30 AM",
@@ -118,6 +120,7 @@
       "center_country": "US",
       "center_distance": 24.664887317525,
       "network_name": "Quest Diagnostics",
+      "max_distance": null,
       "structured_hours": {
         "Monday": {
           "open": "8:00 AM",
@@ -181,6 +184,7 @@
       "center_country": "US",
       "center_distance": 24.664901127089,
       "network_name": "LabCorp",
+      "max_distance": null,
       "structured_hours": {
         "Monday": {
           "open": "8:00 AM",
@@ -234,6 +238,7 @@
       "center_country": "US",
       "center_distance": 24.762727435231,
       "network_name": "Quest Diagnostics",
+      "max_distance": null,
       "structured_hours": {
         "Monday": {
           "open": "8:00 AM",
@@ -287,6 +292,7 @@
       "center_country": "US",
       "center_distance": 25.043647636412,
       "network_name": "Quest Diagnostics",
+      "max_distance": null,
       "structured_hours": {
         "Monday": {
           "open": "8:00 AM",
@@ -340,6 +346,7 @@
       "center_country": "US",
       "center_distance": 25.456706215685,
       "network_name": "Quest Diagnostics",
+      "max_distance": null,
       "structured_hours": {
         "Monday": {
           "open": "8:00 AM",
@@ -393,6 +400,7 @@
       "center_country": "US",
       "center_distance": 25.456706215685,
       "network_name": "LabCorp",
+      "max_distance": null,
       "structured_hours": {
         "Monday": {
           "open": "8:00 AM",
@@ -446,6 +454,7 @@
       "center_country": "US",
       "center_distance": 25.658898439052,
       "network_name": "Quest Diagnostics",
+      "max_distance": null,
       "structured_hours": {
         "Monday": {
           "open": "7:30 AM",

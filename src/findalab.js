@@ -15,6 +15,10 @@
 
       this.settings = {
         baseURL: 'http://localhost:6789/',
+        searchURL: {
+          labs: 'labs',
+          phlebotomists: 'phlebotomists'
+        },
         googleMaps: {
           defaultLat: 39.97712, // TODO: Address Canada's default lat
           defaultLong: -99.587403, // TODO: Address Canada's default long
@@ -50,6 +54,7 @@
           inputType: 'text'
         },
         inHomeCollection: {
+          showComponent: true,
           title: 'In-Home Collection',
           description: 'Get the lab to come to you. Schedule an in-home appointment with a Lab Collection Specialist',
           timeTitle: 'Avaliable:',
@@ -431,13 +436,18 @@
           self._onSearchErrorString('No Results');
         }
 
-        var searchLabs = self._searchNearCoords('labs', searchValueCountry, result);
-        var searchPhlebotomists = self._searchNearCoords('phlebotomists', searchValueCountry, result);
+        var searchLabs = self._searchNearCoords(
+          self.settings.searchURL.labs, searchValueCountry, result
+        );
+        var searchPhlebotomists = self._searchNearCoords(
+          self.settings.searchURL.phlebotomists, searchValueCountry, result
+        );
 
         $.when(searchLabs, searchPhlebotomists).done(
             function(resultsLabs, resultsPhlebotomists) {
               self._renderLabs(resultsLabs[0].labs);
-              self._renderPhlebotomists(resultsPhlebotomists[0].phlebotomists);
+              console.dir(resultsPhlebotomists);
+              self._renderPhlebotomists(resultsPhlebotomists[0]);
             }
           ).fail(self._onSearchError).always($.proxy(self._onSearchComplete, self));
       };
@@ -462,7 +472,7 @@
        * @param  {string} collectionCenter The type of collection center
        * @param  {string} country          The country of the search
        * @param  {object} result           The ajax result of the geocode
-       * @return {ajax}                    The collection center results from the ajax request 
+       * @return {ajax}                    The collection center results from the ajax request
        */
       this._searchNearCoords = function(collectionCenter, country, result) {
         return $.ajax({
@@ -701,6 +711,20 @@
       };
 
       /**
+       * Renders the phlebotomists component
+       *
+       * @param  {json} phlebotomists Response from api
+       */
+      this._renderPhlebotomists = function(phlebotomists) {
+        var $resultsList = this.find('[data-findalab-result-list]');
+        var $inHomeCollection = this.find('[data-findalab-ihc][data-template]').clone().removeAttr('data-template');
+
+        if (self.settings.inHomeCollection.showComponent && phlebotomists.hasPhlebotomists) {
+          $inHomeCollection.prependTo($resultsList);
+        }
+      };
+
+      /**
        * Parse the distance of lab based on the country where the lab located
        *
        * @param   {{center_country:string, center_distance:string}} labData
@@ -764,15 +788,6 @@
 
           $table.append($row);
         });
-      };
-
-      this._renderPhlebotomists = function(phlebotomists) {
-        var $resultsList = this.find('[data-findalab-result-list]');
-        var $inHomeCollection = this.find('[data-findalab-ihc][data-template]').clone().removeAttr('data-template');
-
-        if (phlebotomists.length) {
-          $inHomeCollection.prependTo($resultsList);
-        }
       };
 
       /**
