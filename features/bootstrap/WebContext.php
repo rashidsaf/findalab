@@ -4,6 +4,7 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\FlexibleMink\Context\FlexibleContext;
 use Behat\FlexibleMink\Context\StoreContext;
+use Behat\FlexibleMink\PseudoInterface\MinkContextInterface;
 
 /**
  * Defines application features from the context of a Web Page.
@@ -11,6 +12,7 @@ use Behat\FlexibleMink\Context\StoreContext;
 class WebContext extends FlexibleContext implements Context, SnippetAcceptingContext
 {
     use StoreContext;
+    use MinkContextInterface;
 
     protected $base_url = 'http://www.findalab.local';
 
@@ -29,16 +31,6 @@ class WebContext extends FlexibleContext implements Context, SnippetAcceptingCon
     public function __construct($base_url)
     {
         $this->parameters = ['base_url' => $base_url];
-    }
-
-    public function getSession($name = null)
-    {
-        // TODO: Implement getSession() method.
-    }
-
-    public function waitFor(callable $lambda, $timeout = 30)
-    {
-        // TODO: Implement waitFor() method.
     }
 
     /**

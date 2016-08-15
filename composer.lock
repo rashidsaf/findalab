@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "977bdd8063bbe5d201f8cab2c75b8030",
+    "hash": "08d7158b890e876b8a3632e75693a8b8",
     "content-hash": "dcc0abc598afa0fb3342497ad4f133d6",
     "packages": [
         {
@@ -847,12 +847,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Medology/FlexibleMink.git",
-                "reference": "605c265af887e9b7fa347726602299f285ef3966"
+                "reference": "749541f0128b9d29487100d3f681bf71190a6bed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Medology/FlexibleMink/zipball/605c265af887e9b7fa347726602299f285ef3966",
-                "reference": "605c265af887e9b7fa347726602299f285ef3966",
+                "url": "https://api.github.com/repos/Medology/FlexibleMink/zipball/749541f0128b9d29487100d3f681bf71190a6bed",
+                "reference": "749541f0128b9d29487100d3f681bf71190a6bed",
                 "shasum": ""
             },
             "require": {
@@ -867,7 +867,9 @@
             "type": "behat-extension",
             "autoload": {
                 "psr-0": {
-                    "Behat\\FlexibleMink\\": "src/"
+                    "Behat\\FlexibleMink\\": "src/",
+                    "Behat\\ParallelWorker\\": "src/",
+                    "features\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -875,7 +877,7 @@
                 "MIT"
             ],
             "description": "Mink extension with patient assertions and object storage",
-            "time": "2016-08-02 20:12:41"
+            "time": "2016-08-10 17:10:22"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
