@@ -27,7 +27,7 @@ $dotenv->load();
   <script src="https://maps.googleapis.com/maps/api/js?key=<?= getenv('GOOGLE_MAP_API_KEY'); ?>"></script>
   <script src="/src/findalab.js"></script>
   <script>
-  $('#simple-findalab').load('../src/findalab.html', function() {
+  $('#simple-findalab').load('src/findalab.html', function() {
     var findalab = $(this).find('.findalab').findalab({
       baseURL: 'http://findalab.local/features/fixtures/simple-mockups',
       lab: {
