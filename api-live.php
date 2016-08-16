@@ -5,7 +5,7 @@ $dotenv->load();
 ?>
 <!doctype html>
 
-<html class="no-js" lang="en">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Findalab - Live API</title>

@@ -37,7 +37,7 @@ The plugin can be customized by redefining `findalab` settings object.
 <script>
 $('#findalab-selector').load('../path/to/src/findalab.html', function() {
   var findalab = $(this).find('.findalab').findalab({
-    baseURL: 'http://localhost:6789/',
+    baseURL: YOUR_PROJECTS_URL,
     lab: {
       buttonText: 'Choose this place, yo!',
     },

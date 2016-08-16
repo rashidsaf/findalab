@@ -4,7 +4,7 @@ Feature: Find Collection Centers
   I have to be able to search for collection centers
 
   Scenario: Find a select collection center
-    When I am on "/"
+    When I am on "/simple.php"
      And I fill in "Fill in the zippaty codes" with "77057"
      And I press "Find Simple"
-     And I should see "23816 Hwy 59 North"
+    Then I should see "23816 Hwy 59 North"

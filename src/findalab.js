@@ -14,7 +14,7 @@
       var self = this;
 
       this.settings = {
-        baseURL: 'http://localhost:6789/',
+        baseURL: 'http://findalab.local/',
         searchURL: {
           labs: 'labs',
           phlebotomists: 'phlebotomists'
@@ -114,15 +114,15 @@
         /**
          * Triggers a search if the enter key was pressed.
          *
-         * @this    {Object}    The find a lab instance.
-         * @param   {int}     e The key up event.
-         * @returns {boolean}   Always false to prevent bubbling.
+         * @this    {Object}        The find a lab instance.
+         * @param   {int}     event The key up event.
+         * @returns {boolean}       Always false to prevent bubbling.
          */
-        function onSearchKeyUp(e) {
-          e.preventDefault();
+        function onSearchKeyUp(event) {
+          event.preventDefault();
 
-          if (e.keyCode == 13) {
-            this._onSearchSubmit(e);
+          if (event.keyCode == 13) {
+            this._onSearchSubmit(event);
           }
 
           return false;
@@ -433,7 +433,7 @@
        */
       this._searchCollectionCenters = function(result, searchValueCountry) {
         if (result.length == 0) {
-          self._onSearchErrorString('No Results');
+          self._setMessage('No results');
         }
 
         var searchLabs = self._searchNearCoords(
@@ -446,7 +446,6 @@
         $.when(searchLabs, searchPhlebotomists).done(
             function(resultsLabs, resultsPhlebotomists) {
               self._renderLabs(resultsLabs[0].labs);
-              console.dir(resultsPhlebotomists);
               self._renderPhlebotomists(resultsPhlebotomists[0]);
             }
           ).fail(self._onSearchError).always($.proxy(self._onSearchComplete, self));
@@ -804,7 +803,7 @@
         var searchValue = this.find('[data-findalab-search-field]').val();
 
         if (!searchValue.length) {
-          self._setMessage(this.emptyResultsMessage);
+          self._setMessage('Please do not leave the search field blank. Enter a value and try searching again.');
         } else {
           this.search(searchValue);
         }
