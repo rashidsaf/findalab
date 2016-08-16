@@ -1,4 +1,10 @@
+<?php
+require_once('vendor/autoload.php');
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+?>
 <!doctype html>
+
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
@@ -19,8 +25,7 @@
   <div id="simple-findalab"></div>
 
   <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxBWgQaHW2wWAoWXUgKtwIn8BDJDtqOAA"
-      ></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<?= getenv('GOOGLE_MAP_API_KEY'); ?>"></script>
   <script src="/src/findalab.js"></script>
   <script>
   $('#simple-findalab').load('../src/findalab.html', function() {
@@ -36,5 +41,6 @@
     });
   });
   </script>
+
 </body>
 </html>
