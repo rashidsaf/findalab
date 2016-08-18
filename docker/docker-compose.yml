@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+  app:
+    image: php:7.0-fpm
+    volumes:
+      - ..:/data
+
+  web:
+    image: php:7-apache
+    depends_on:
+      - app
+    links:
+      - app
+    volumes:
+      - ..:/data
+      - ../web:/var/www/html
+      - ../src:/var/www/html/src
+      - ../css:/var/www/html/css
+      - ../vendor:/var/www/html/vendor
+      - ../features:/var/www/html/features
+    ports:
+      - 80:80
+
+  chrome:
+    image: selenium/standalone-chrome-debug:2.53.0
+    depends_on:
+      - web
+    environment:
+        - no_proxy:localhost
+    links:
+      - web
+      - web:findalab.local
+    volumes:
+      - /dev/shm:/dev/shm
+      - ..:/data
+    ports:
+      - 5900:5900
