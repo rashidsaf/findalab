@@ -1,10 +1,5 @@
-<?php
-require_once('vendor/autoload.php');
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
-?>
+<?php require __DIR__ . '/config/bootstrap.php' ?>
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -30,7 +25,7 @@ $dotenv->load();
   <script>
   $('#simple-findalab').load('src/findalab.html', function() {
     var findalab = $(this).find('.findalab').findalab({
-      baseURL: 'https://www.stdcheck.com?api_key=GreenEggsAndHam',
+      baseURL: 'https://www.stdcheck.com?api_key=<?= getenv('STDCHECK_API_KEY'); ?>',
       lab: {
         buttonText: 'Choose this place, yo!',
       },

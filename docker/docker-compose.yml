@@ -19,6 +19,7 @@ services:
       - ../css:/var/www/html/css
       - ../vendor:/var/www/html/vendor
       - ../features:/var/www/html/features
+      - ../config:/var/www/html/config
     ports:
       - 80:80
 
