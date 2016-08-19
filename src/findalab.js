@@ -63,7 +63,8 @@
           notice: 'You will schedule your appointment during checkout.'
         },
         emptyResultsMessage: '',
-        noResultsMessage: ''
+        noResultsMessage: '',
+        invalidPostalCodeMessage: ''
       };
 
       this.settings = $.extend(true, this.settings, settings);
@@ -73,6 +74,8 @@
 
       this.noResultsMessage = 'Oops! Sorry, we could not find any testing centers near that location. ' +
       'Please try your search again with a different or less specific address.';
+
+      this.invalidPostalCodeMessage = 'Oops! Invalid postal code: please enter a valid postal code and search again.';
 
       /**
        * Initializes the map and sets the default viewport lat / long.
@@ -381,7 +384,7 @@
         }
 
         if (isNaN(intZip)) {
-          self._setMessage(this.noResultsMessage);
+          self._setMessage(self.invalidPostalCodeMessage);
           return;
         }
 
@@ -433,7 +436,7 @@
        */
       this._searchCollectionCenters = function(result, searchValueCountry) {
         if (result.length == 0) {
-          self._setMessage('No results');
+          self._setMessage(self.noResultsMessage);
         }
 
         var searchLabs = self._searchNearCoords(
