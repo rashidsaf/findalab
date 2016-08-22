@@ -154,22 +154,20 @@
        */
       this.centerMap = function(lat, long) {
         self.settings.googleMaps.map.setCenter(this._buildLatLong(lat, long));
-
-        self.settings.googleMaps.geoCoder.geocode({
-          address: lat + ',' + long
-        },
-            /**
-             * @param {[{geometry:{}}]} results
-             * @param {int} status
-             */
-            function(results, status) {
-              if (status == google.maps.GeocoderStatus.OK) {
-                self.settings.googleMaps.map.setCenter(results[0].geometry.location);
-              } else {
-                alert('Geocode was not successful for the following reason: ' + status);
-              }
-            }
-        );
+        /**
+         * Handles the response from Google's GeoCoding service.
+         *
+         * @param {[{geometry:{}}]} results
+         * @param {int} status
+         */
+        var handleGeoCodeResponse = function (results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            self.settings.googleMaps.map.setCenter(results[0].geometry.location);
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        };
+        self.settings.googleMaps.geoCoder.geocode({ address: lat + ',' + long }, handleGeoCodeResponse);
       };
 
       /**
@@ -256,8 +254,8 @@
         self.settings.googleMaps.map.setZoom(self.settings.googleMaps.initialZoom);
         self.settings.googleMaps.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
-        var j = self.settings.googleMaps.markers.length;
-        for (var i = 0; i < j; i++) {
+        var markersLength = self.settings.googleMaps.markers.length;
+        for (var i = 0; i < markersLength; i++) {
           self.settings.googleMaps.markers[i].setMap(null);
         }
 
@@ -385,7 +383,7 @@
 
         if (isNaN(intZip)) {
           self._setMessage(self.invalidPostalCodeMessage);
-          return;
+            return null;
         }
 
         return 'US';
