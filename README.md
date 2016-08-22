@@ -74,7 +74,7 @@ Update your hosts file:
 
 ```bash
 echo -e "\n\
-$(docker-machine ip $DOCKER_MACHINE_NAME) findalab.local\n\
+127.0.0.1 findalab.local\n\
 " | sudo tee -a /etc/hosts
 ```
 
