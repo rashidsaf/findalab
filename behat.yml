@@ -10,9 +10,4 @@ default:
           selenium2:
             browser: chrome
             wd_host: http://chrome:4444/wd/hub
-  suites:
-    web_features:
-      paths: [ features/web ]
-      contexts:
-        - WebContext:
-            base_url: http://findalab.local
+ 

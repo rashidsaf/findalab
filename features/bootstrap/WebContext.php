@@ -14,25 +14,6 @@ class WebContext extends FlexibleContext implements Context, SnippetAcceptingCon
     use StoreContext;
     use MinkContextInterface;
 
-    protected $base_url = 'http://www.findalab.local';
-
-    /** @var array Context parameters set in the configuration for this context */
-    protected $parameters;
-
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     *
-     * @param string $base_url the base URL for tests using this context
-     */
-    public function __construct($base_url)
-    {
-        $this->parameters = ['base_url' => $base_url];
-    }
-
     /**
      * {@inheritdoc}
      *
