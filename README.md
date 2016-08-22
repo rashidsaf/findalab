@@ -70,6 +70,15 @@ Next, you will want to setup and run the Docker environment by running the follo
 containers up
 ```
 
+Update your hosts file:
+
+```bash
+echo -e "\n\
+$(docker-machine ip $DOCKER_MACHINE_NAME) findalab.local\n\
+" | sudo tee -a /etc/hosts
+```
+
+
 You can visit the example site at [findalab.local](http://findalab.local/).
 
 Finally, you can compile the stylesheets by running Gulp in the root directory:
