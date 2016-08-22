@@ -734,13 +734,13 @@
       this._parseDistance = function (labData) {
         var parsedDistance = '';
         switch (labData.center_country) {
-        case 'CA' :
-          parsedDistance = (labData.center_distance / 0.62137).toFixed(2) + 'km.';
-          break;
-        case 'US' :
-        default:
-          parsedDistance = labData.center_distance.toFixed(2) + 'mi.';
-          break;
+          case 'CA' :
+            parsedDistance = (labData.center_distance / 0.62137).toFixed(2) + 'km.';
+            break;
+          case 'US' :
+          default:
+            parsedDistance = labData.center_distance.toFixed(2) + 'mi.';
+            break;
         }
         return parsedDistance;
       };
