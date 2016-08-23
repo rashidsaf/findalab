@@ -1,11 +1,6 @@
 version: '2'
 
 services:
-  app:
-    image: php:7.0.10-fpm
-    volumes:
-      - ..:/data
-
   web:
     image: php:7.0.10-apache
     depends_on:
