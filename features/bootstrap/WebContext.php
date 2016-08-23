@@ -13,14 +13,4 @@ class WebContext extends FlexibleContext implements Context, SnippetAcceptingCon
 {
     use StoreContext;
     use MinkContextInterface;
-
-    /**
-     * {@inheritdoc}
-     *
-     * This overrides MinkContext::visit() to inject stored values into the URL.
-     */
-    public function visit($page)
-    {
-        parent::visit($this->injectStoredValues($page));
-    }
 }
