@@ -4,6 +4,7 @@
   "description": "Find a Lab jQuery plugin.",
   "main": "src/findalab.js",
   "devDependencies": {
+    "bower": "^1.7.9",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-sass": "^2.1.0"

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+. "${DIR}"/bin/lib/exitCheck.sh
+
+echo "Installing Composer dependencies..."
+"$DIR"/bin/composer install
+exitCheck $?
+
+echo "Installing NPM dependencies..."
+"$DIR"/bin/npm install
+exitCheck $?
+
+echo "Installing bower dependencies..."
+"$DIR"/bin/bower install
+exitCheck $?
+
+echo "Compiling Gulp resources..."
+"$DIR"/bin/gulp
+exitCheck $?

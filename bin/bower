@@ -1,13 +1,3 @@
 #!/usr/bin/env bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-ACCOUNT=chekote
-REPO=bower
-VERSION=1.7.7
-
-. "${DIR}"/lib/args.sh
-
-COMMAND="echo pid1 > /dev/null && bower $ARGS"
-
-docker run -it -v $(pwd):/data --rm ${ACCOUNT}/${REPO}:${VERSION} "${COMMAND}"
+docker run -it -v $(pwd):/data --rm chekote/bower:1.7.9-node6.2.1 "echo pid1 > /dev/null && bower $@"
