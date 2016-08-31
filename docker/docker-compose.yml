@@ -3,10 +3,6 @@ version: '2'
 services:
   web:
     image: php:7.0.10-apache
-    depends_on:
-      - app
-    links:
-      - app
     volumes:
       - ..:/data
       - ../web:/var/www/html
