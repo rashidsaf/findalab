@@ -275,7 +275,7 @@
           self._setMessage(message);
           return;
         }
-        var searchValueCountry = self._getPostalCodeCountry(searchValue);
+        var searchValueCountry = self.getPostalCodeCountry(searchValue);
         if (searchValueCountry === null) {
           self._setMessage(self.invalidPostalCodeMessage);
           return;
@@ -374,9 +374,8 @@
        *
        * @param   {string} postalCode The zipCode to get the country code for.
        * @returns {string} The two character country code. Either CA, PR or US.
-       * @private
        */
-      this._getPostalCodeCountry = function(postalCode) {
+      this.getPostalCodeCountry = function(postalCode) {
         var caRegex = new RegExp(
           /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
         );
