@@ -269,7 +269,17 @@
        * @param {string} searchValue
        */
       this.search = function(searchValue) {
+        try {
+          this.onSearchSubmit(searchValue);
+        } catch(message) {
+          self._setMessage(message);
+          return;
+        }
         var searchValueCountry = self._getPostalCodeCountry(searchValue);
+        if (searchValueCountry === null) {
+          self._setMessage(self.invalidPostalCodeMessage);
+          return;
+        }
         self._searchGeoCode(searchValue, searchValueCountry);
       };
 
@@ -382,8 +392,7 @@
         }
 
         if (isNaN(intZip)) {
-          self._setMessage(self.invalidPostalCodeMessage);
-            return null;
+          return null;
         }
 
         return 'US';
