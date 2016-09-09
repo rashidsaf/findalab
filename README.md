@@ -64,6 +64,8 @@ To setup your dev environment, you have to setup NPM and Bower dependencies. Run
 $ init_project
 ```
 
+The preceding command will initialize the file `web/.env`. Open the file and replace any placeholder environmental variables with the necessary API keys for testing.
+
 Next, you will want to setup and run the Docker environment by running the following command
 
 ```bash

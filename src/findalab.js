@@ -454,8 +454,9 @@
 
         $.when(searchLabs, searchPhlebotomists).done(
             function(resultsLabs, resultsPhlebotomists) {
-              self._renderLabs(resultsLabs[0].labs);
-              self._renderPhlebotomists(resultsPhlebotomists[0]);
+              if (!self._renderLabs(resultsLabs[0].labs) && !self._renderPhlebotomists(resultsPhlebotomists[0])) {
+                self._setMessage(self.noResultsMessage);
+              }
             }
           ).fail(self._onSearchError).always($.proxy(self._onSearchComplete, self));
       };
@@ -622,7 +623,7 @@
       };
 
       /**
-       * This functionwill handle rendering labs.
+       * This function will handle rendering labs.
        * @param {[{
        *   center_id:int,
        *   center_address:string,
@@ -637,6 +638,7 @@
        *   fax_number:string,
        *   structured_hours:object
        * }]} labs
+       * @return {boolean} Whether any labs were rendered.
        * @private
        */
       this._renderLabs = function(labs) {
@@ -715,13 +717,18 @@
         if (labs[0]) {
           this.centerMap(labs[0].center_latitude, labs[0].center_longitude);
           self.settings.googleMaps.map.setZoom(self.settings.googleMaps.resultsZoom);
+
+          return true;
         }
+
+        return false;
       };
 
       /**
        * Renders the phlebotomists component
        *
        * @param  {json} phlebotomists Response from api
+       * @return {boolean} whether the in-home collections modal was rendered.
        */
       this._renderPhlebotomists = function(phlebotomists) {
         var $resultsList = this.find('[data-findalab-result-list]');
@@ -730,6 +737,8 @@
         if (self.settings.inHomeCollection.showComponent && phlebotomists.hasPhlebotomists) {
           $inHomeCollection.prependTo($resultsList);
         }
+
+        return phlebotomists.hasPhlebotomists;
       };
 
       /**
