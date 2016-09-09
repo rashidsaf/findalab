@@ -244,9 +244,10 @@
        * Resets the lab finder to its default state.
        */
       this.reset = function() {
-        this.find('.findalab__results li:gt(0)').remove();
+        this.find('.findalab__results li').remove();
         this.find('[data-findalab-search-field]').val('');
         this.find('[data-findalab-total]').html('No Results');
+        self._setMessage(self.emptyResultsMessage);
 
         self.settings.googleMaps.map.setCenter(this._buildLatLong(
           self.settings.googleMaps.defaultLat, self.settings.googleMaps.defaultLong
