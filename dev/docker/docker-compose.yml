@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  app:
+    image: chekote/php:7.0.8
+    volumes:
+      - ..:/data
+    entrypoint:
+      - php-fpm7.0
+  web:
+    build: nginx
+    volumes:
+      - ..:/data
+      - ../../dist:/data/html/dist
+      - ../../js:/data/html/js
+      - ../../template:/data/html/template
+    ports:
+      - 80:80
+
+  chrome:
+    image: selenium/standalone-chrome-debug:2.53.0
+    depends_on:
+      - web
+    environment:
+        - no_proxy:localhost
+    links:
+      - web
+      - web:findalab.local
+    volumes:
+      - /dev/shm:/dev/shm
+      - ..:/data
+    ports:
+      - 5900:5900

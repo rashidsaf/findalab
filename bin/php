@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-docker run -u=1000 -it -v $(pwd):/data -w /data --rm --net findalab_default \
-    --link web:findalab.local \
-    php:7.0.10-cli php $@
