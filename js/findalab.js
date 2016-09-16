@@ -27,7 +27,8 @@
           initialZoom: 4, // The zoom level for when no search has been performed yet (pretty far out)
           map: null,
           markers: [],
-          resultsZoom: 10 // The zoom level for when there are search results
+          resultsZoom: 10, // The zoom level for when there are search results
+          mapMarkerFillColor: '#3398db'
         },
         searchFunction: {
           excludeNetworks: undefined,
@@ -578,7 +579,7 @@
           ' 0 -3.88184,-0.74368 -5.36921,-2.23105c-1.48973,-1.48974 -2.23342,-3.24474' +
           ' -2.23342,-5.36921c0,-2.07474 0.74369,-3.82737 2.23342,-5.31711c1.48737,-1.48737' +
           ' 3.29448,-2.23105 5.36921,-2.23105l0,0z',
-          fillColor: '#3398db',
+          fillColor: self.settings.googleMaps.mapMarkerFillColor,
           fillOpacity: 1,
           scale: 1,
           strokeColor: 'white',
