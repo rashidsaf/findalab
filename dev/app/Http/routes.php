@@ -16,5 +16,5 @@ $app->get('/', function () use ($app) {
 });
 
 $app->get('/api', function () use ($app) {
-    echo "hello world";
+    echo 'hello world';
 });
