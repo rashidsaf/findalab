@@ -55,7 +55,7 @@ $('#findalab-selector').load('../path/to/src/findalab.html', function() {
 To test and make updates to the jQuery plugin clone the repository:
 
 ```bash
-$ git clone https://github.com/Medology/findalab.git && cd findalab
+$ git clone https://github.com/Medology/findalab.git && cd findalab/dev
 ```
 
 To setup your dev environment, you have to setup NPM and Bower dependencies. Run the following command in the root directory:
