@@ -272,6 +272,8 @@
        * @param {string} searchValue
        */
       this.search = function(searchValue) {
+        this.find('[data-findalab-search-field]').val(searchValue);
+
         try {
           this.onSearchSubmit(searchValue);
         } catch(message) {
