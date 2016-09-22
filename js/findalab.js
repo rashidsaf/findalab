@@ -36,6 +36,7 @@
           onlyNetwork: undefined
         },
         lab: {
+          hasButton: true,
           buttonClass: null,
           buttonText: 'Choose This Location'
         },
@@ -594,30 +595,35 @@
 
         self.settings.googleMaps.markers.push(vMarker);
 
-        google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
-          self.settings.googleMaps.infoWindow.setContent(
+        var infoWindowContent =
               '<h6>' + lab.lab_title + '</h6>' +
               '<p>' +
               lab.center_address + '<br>' +
               lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip +
-              '</p>' +
-              '<a ' +
-              'data-findalab-result-button ' +
-              'class="' + self.settings.lab.buttonClass + '" ' +
-              'href="#" ' +
-              'data-id="' + lab.center_id + '" ' +
-              'data-address="' + lab.center_address + '" ' +
-              'data-city="' + lab.center_city + '" ' +
-              'data-state="' + lab.center_state + '" ' +
-              'data-zip="' + lab.center_zip + '" ' +
-              'data-network="' + lab.network + '" ' +
-              'data-title="' + lab.lab_title + '" ' +
-              'data-country="' + lab.center_country + '"' +
-              'data-fax_number="' + lab.fax_number + '"' +
-              '>' +
-              self.settings.lab.buttonText +
-              '</a>'
-          );
+              '</p>';
+
+        if (self.settings.lab.hasButton) {
+          infoWindowContent +=
+            '<a ' +
+            'data-findalab-result-button ' +
+            'class="' + self.settings.lab.buttonClass + '" ' +
+            'href="#" ' +
+            'data-id="' + lab.center_id + '" ' +
+            'data-address="' + lab.center_address + '" ' +
+            'data-city="' + lab.center_city + '" ' +
+            'data-state="' + lab.center_state + '" ' +
+            'data-zip="' + lab.center_zip + '" ' +
+            'data-network="' + lab.network + '" ' +
+            'data-title="' + lab.lab_title + '" ' +
+            'data-country="' + lab.center_country + '"' +
+            'data-fax_number="' + lab.fax_number + '"' +
+            '>' +
+            self.settings.lab.buttonText +
+            '</a>';
+        };
+
+        google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
+          self.settings.googleMaps.infoWindow.setContent(infoWindowContent);
 
           // noinspection JSUnresolvedFunction
           self.settings.googleMaps.infoWindow.open(self.settings.googleMaps.map, vMarker);
@@ -685,7 +691,9 @@
           $result.find('[data-findalab-result-distance]').html(
             '<strong>Distance:</strong> ' + this._parseDistance(lab)
           );
-          $result.find('[data-findalab-result-button]')
+
+          if (self.settings.lab.hasButton) {
+            $result.find('[data-findalab-result-button]')
               .attr('data-id', lab.center_id)
               .attr('data-address', lab.center_address)
               .attr('data-city', lab.center_city)
@@ -696,6 +704,10 @@
               .attr('data-fax_number', lab.fax_number)
               .addClass(self.settings.lab.buttonClass)
               .html(self.settings.lab.buttonText);
+          } else {
+            $result.find('[data-findalab-result-button]').remove();
+            $result.find('[data-findalab-break]').remove();
+          }
 
           if (!lab.structured_hours) {
             $result.find('[data-findalab-result-structured-hours]').remove();

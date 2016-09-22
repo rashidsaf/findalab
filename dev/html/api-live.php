@@ -28,11 +28,7 @@
       baseURL: 'http://findalab.local/api',
       lab: {
         buttonText: 'Choose this place, yo!',
-      },
-      search: {
-        buttonText: 'Find from API',
-        placeholder: 'Fill in the zippaty',
-      },
+      }
     });
   });
   </script>

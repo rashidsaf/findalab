@@ -26,17 +26,7 @@
   <script>
   $('#simple-findalab').load('/template/findalab.html', function() {
     var findalab = $(this).find('.findalab').findalab({
-      baseURL: 'http://findalab.local/simple-mockups',
-      googleMaps: {
-        mapMarkerFillColor: '#0000ee'
-      },
-      lab: {
-        buttonText: 'Choose this place, yo!'
-      },
-      search: {
-        buttonText: 'Find Simple',
-        placeholder: 'Fill in the zippaty codes'
-      }
+      baseURL: 'http://findalab.local/simple-mockups'
     });
 
     $('.findalab-reset').on('click', function() {

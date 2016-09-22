@@ -5,6 +5,13 @@ Feature: Find Collection Centers
 
   Scenario: Find a select collection center
     When I am on "/simple.php"
-     And I fill in "Fill in the zippaty codes" with "77057"
-     And I press "Find Simple"
+     And I fill in "Enter your zip" with "77057"
+     And I press "Search"
     Then I should see "23816 Hwy 59 North"
+
+  Scenario: Lab Result Button Removed
+   Given I am on "/has-button-false.php"
+     And I fill in "Enter your zip" with "77057"
+     And I press "Search"
+    Then I should see "23816 Hwy 59 North"
+     And I should not see "Choose Location"

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Findalab - Manage Mockups</title>
+  <title>Findalab - Disabled Buttons</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/dist/findalab.css">
   <style>
@@ -16,7 +16,7 @@
 </head>
 <body>
 
-  <h1>Find A Lab - Simple Mockups</h1>
+  <h1>Find A Lab - Disabled Buttons</h1>
   <div id="simple-findalab"></div>
 
   <script src="/bower_components/jquery/dist/jquery.js"></script>
@@ -26,11 +26,8 @@
   $('#simple-findalab').load('/template/findalab.html', function() {
     var findalab = $(this).find('.findalab').findalab({
       baseURL: 'http://findalab.local/simple-mockups',
-      searchURL: {
-        labs: 'manage/phlebotomists'
-      },
-      inHomeCollection: {
-        showComponent: false
+      lab: {
+        hasButton: false,
       }
     });
   });

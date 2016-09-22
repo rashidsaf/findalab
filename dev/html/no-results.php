@@ -25,11 +25,7 @@
   <script>
   $('#simple-findalab').load('/src/findalab.html', function() {
     var findalab = $(this).find('.findalab').findalab({
-      baseURL: 'http://findalab.local/features/fixtures/no-results',
-      search: {
-        buttonText: 'Find',
-        placeholder: 'Zip code'
-      }
+      baseURL: 'http://findalab.local/features/fixtures/no-results'
     });
   });
   </script>
