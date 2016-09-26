@@ -1,3 +1,8 @@
 #!/bin/bash
-
-docker run -it -v $(pwd):/data -w /data --rm node:6.4.0-slim node_modules/gulp/bin/gulp.js $@
+#
+docker run -it --rm \
+    --env-file "$(pwd)"/docker/.env \
+    -v $(pwd):/data \
+    -w /data \
+    node:6.4.0-slim \
+    node_modules/gulp/bin/gulp.js $@

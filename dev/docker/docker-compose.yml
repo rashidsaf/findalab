@@ -7,6 +7,8 @@ services:
       - ..:/data
     entrypoint:
       - php-fpm7.0
+    env_file: .env
+
   web:
     build: nginx
     volumes:
@@ -14,6 +16,7 @@ services:
       - ../../dist:/data/html/dist
       - ../../js:/data/html/js
       - ../../template:/data/html/template
+    env_file: .env
     ports:
       - 80:80
 
@@ -29,5 +32,6 @@ services:
     volumes:
       - /dev/shm:/dev/shm
       - ..:/data
+    env_file: .env
     ports:
       - 5900:5900
