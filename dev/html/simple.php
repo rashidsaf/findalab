@@ -17,7 +17,7 @@
 <body>
 
   <h1>Find A Lab - Simple Mockups</h1>
-  <div id="simple-findalab"></div>
+  <div id="simple-findalab">Loading Test Centers...</div>
   <button class="findalab-reset" type="button">Reset findalab</button>
 
   <script src="/bower_components/jquery/dist/jquery.js"></script>
@@ -26,7 +26,7 @@
   <script>
   $('#simple-findalab').load('/template/findalab.html', function() {
     var findalab = $(this).find('.findalab').findalab({
-      baseURL: 'http://findalab.local/simple-mockups'
+      baseURL: 'http://findalab.local/fixtures/simple-mockups'
     });
 
     $('.findalab-reset').on('click', function() {

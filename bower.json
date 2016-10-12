@@ -9,8 +9,18 @@
   ],
   "license": "private",
   "ignore": [
-    "node_modules",
-    "bower_components"
+    ".bowerrc",
+    ".editorconfig",
+    ".gitignore",
+    ".scss-lint.yml",
+    "behat.yml",
+    "composer.json",
+    "composer.lock",
+    "dev",
+    "docker",
+    "features",
+    "gulpfile.js",
+    "package.json"
   ],
   "dependencies": {
     "jquery": "^2.2.3",

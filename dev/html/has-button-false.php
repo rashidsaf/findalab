@@ -25,7 +25,7 @@
   <script>
   $('#simple-findalab').load('/template/findalab.html', function() {
     var findalab = $(this).find('.findalab').findalab({
-      baseURL: 'http://findalab.local/simple-mockups',
+      baseURL: 'http://findalab.local/fixtures/simple-mockups',
       lab: {
         hasButton: false,
       }

@@ -21,17 +21,17 @@
   },
   "autoload": {
     "psr-4": {
-      "App\\": "app/",
-      "Medology\\": "../src/",
-      "features\\contexts\\": "../features/contexts/"
+      "App\\": "dev/app/",
+      "features\\contexts\\": "features/contexts/"
     }
   },
   "config": {
-    "preferred-install": "dist"
+    "preferred-install": "dist",
+    "vendor-dir": "dev/vendor"
   },
   "autoload-dev": {
     "classmap": [
-      "database/"
+      "dev/database/"
     ]
   },
   "repositories": [

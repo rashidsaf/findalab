@@ -13,9 +13,6 @@ services:
     build: nginx
     volumes:
       - ..:/data
-      - ../../dist:/data/html/dist
-      - ../../js:/data/html/js
-      - ../../template:/data/html/template
     env_file: .env
     ports:
       - 80:80

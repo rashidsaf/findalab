@@ -5,6 +5,6 @@ Feature: No Results Message
 
   Scenario: User is alerted when there are no results
     Given I am on "/no-results.php"
-     When I fill in "Zip code" with "77054"
-      And I press "Find"
+     When I fill in "Enter your zip" with "77054"
+      And I press "Search"
      Then I should see "Sorry, we could not find any testing centers near that location"
