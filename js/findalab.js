@@ -46,6 +46,7 @@
           button: 'input-group-button'
         },
         search: {
+          title: 'Test Centers',
           buttonClass: null,
           buttonLoadingText: '...',
           buttonText: 'Search',
@@ -72,12 +73,16 @@
       this.settings = $.extend(true, this.settings, settings);
 
       this.emptyResultsMessage = 'Please "' + this.settings.search.placeholder + '" above and press "' +
-        this.settings.search.buttonText + '" to see results.';
+      this.settings.search.buttonText + '" to see results.';
 
       this.noResultsMessage = 'Oops! Sorry, we could not find any testing centers near that location. ' +
       'Please try your search again with a different or less specific address.';
 
       this.invalidPostalCodeMessage = 'Oops! Invalid postal code: please enter a valid postal code and search again.';
+
+      this.searchDesc = 'Please note that these ' + this.settings.search.title + ' do not accept payment. You must ' +
+                        'place your order and submit payment over the phone or online before visiting any of the ' +
+                        this.settings.search.title + '.';
 
       /**
        * Initializes the map and sets the default viewport lat / long.
@@ -89,7 +94,7 @@
         self._setMessage(this.emptyResultsMessage);
 
         self._constructInHomeCollection(settings.inHomeCollection);
-        self._constructSearchInputGroup(settings.search, settings.inputGroup);
+        self._constructSearch(settings.search, settings.inputGroup);
 
         this.find('[data-findalab-search-field]')
             .keydown($.proxy(onSearchKeyDown, this))
@@ -341,12 +346,12 @@
       };
 
       /**
-       * Construct search button, fields and input group.
+       * Construct search button, fields and text.
        *
        * @param  {object} searchObject     Search settings
        * @param  {object} inputGroupObject Input group settings
        */
-      this._constructSearchInputGroup = function(searchObject, inputGroupObject) {
+      this._constructSearch = function(searchObject, inputGroupObject) {
         this.find('[data-findalab-search-button]').addClass(searchObject.buttonClass).html(
           searchObject.buttonText
         );
@@ -356,6 +361,8 @@
         this.find('[data-findalab-inputgroup-container]').addClass(inputGroupObject.container);
         this.find('[data-findalab-inputgroup-field]').addClass(inputGroupObject.field);
         this.find('[data-findalab-inputgroup-button]').addClass(inputGroupObject.button);
+        this.find('[data-findalab-search-title]').html(searchObject.title);
+        this.find('[data-findalab-search-desc]').html(self.searchDesc);
       };
 
       /**
