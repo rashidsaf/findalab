@@ -28,7 +28,8 @@
           map: null,
           markers: [],
           resultsZoom: 10, // The zoom level for when there are search results
-          mapMarkerFillColor: '#3398db'
+          mapMarkerFillColor: '#3398db',
+          mapMarkerHoverFillColor: '#eb4d4c'
         },
         searchFunction: {
           excludeNetworks: undefined,
@@ -84,6 +85,35 @@
                         'place your order and submit payment over the phone or online before visiting any of the ' +
                         this.settings.search.title + '.';
 
+      this.mapMarker  = {
+          path: 'm-13.86316,-25.61974l10.845,22.96658c0.31974,0.69158 0.79816,1.17' +
+          ' 1.38316,1.54184c0.63711,0.37184 1.32868,0.585 2.02026,0.585c0.69158,0 1.38079,-0.21316' +
+          ' 2.02027,-0.585c0.585,-0.37184 1.06342,-0.85026' +
+          ' 1.38079,-1.54184l10.845,-22.96658c0.63947,-1.38079 0.95684,-3.13579' +
+          ' 0.95684,-5.31473c0,-4.14711 -1.48737,-7.76132 -4.46448,-10.68632c-2.9771,-2.9771' +
+          ' -6.53921,-4.46447 -10.73842,-4.46447c-4.19921,0 -7.76131,1.48737' +
+          ' -10.73842,4.46447c-2.9771,2.925 -4.46684,6.53921 -4.46684,10.68632c0,2.17894' +
+          ' 0.31974,3.93394 0.95684,5.31473l0,0zm14.24842,-12.86289c2.07237,0 3.87948,0.74368' +
+          ' 5.36921,2.23105c1.48737,1.48974 2.23342,3.24237 2.23342,5.31711c0,2.12447 -0.74605,' +
+          ' 3.87947 -2.23342,5.36921c-1.48973,1.48737 -3.29684,2.23105 -5.36921,2.23105c-2.07473,' +
+          ' 0 -3.88184,-0.74368 -5.36921,-2.23105c-1.48973,-1.48974 -2.23342,-3.24474' +
+          ' -2.23342,-5.36921c0,-2.07474 0.74369,-3.82737 2.23342,-5.31711c1.48737,-1.48737' +
+          ' 3.29448,-2.23105 5.36921,-2.23105l0,0z',
+          fillColor: self.settings.googleMaps.mapMarkerFillColor,
+          fillOpacity: 1,
+          scale: 1,
+          strokeColor: 'white',
+          strokeWeight: 2
+        };
+
+      this.mapMarkerHover = $.extend(true, {}, this.mapMarker);
+
+      this.mapMarkerHover.fillColor = self.settings.googleMaps.mapMarkerHoverFillColor;
+
+      this.labs = [];
+
+      this.myLab;
+
       /**
        * Initializes the map and sets the default viewport lat / long.
        *
@@ -106,6 +136,8 @@
 
         // Capture lab selection events
         this.on('click', '[data-findalab-result-button]', $.proxy(onLabSelectClick, this));
+        this.on('mouseenter','[data-findalab-result]', $.proxy(onLabHover, this));
+        this.on('mouseleave','[data-findalab-result]', $.proxy(onLabUnhover, this));
 
         /**
          * Prevents submission of the form on key down.
@@ -151,6 +183,47 @@
 
           return false;
         }
+
+        /**
+         * Is called when user hovers on a result and causes the corresponding map pin to change
+         *
+         * @param  {event} event the mouseenter event
+         * @returns {boolean} Always false to prevent bubbling.
+         */
+        function onLabHover(event) {
+
+          var id;
+
+          if (event.target.tagName == 'LI') {
+            id = $(event.target).data('id');
+          } else {
+            id = $(event.target).parents('li').data('id');
+          }
+
+          this.myLab = this.labs[id];
+
+          this.myLab.marker.setIcon(this.mapMarkerHover);
+
+          this.myLab.marker.setAnimation(google.maps.Animation.BOUNCE);
+
+          return false;
+        }
+
+        /**
+         * Is called when user unhovers on a result and causes the corresponding map pin to go back to normal
+         *
+         * @param  {event} event the mouseleave event
+         * @returns {boolean} Always false to prevent bubbling.
+         */
+        function onLabUnhover(event) {
+
+          this.myLab.marker.setIcon(this.mapMarker);
+
+          this.myLab.marker.setAnimation(null);
+
+          return false;
+        }
+
       };
 
       /**
@@ -575,30 +648,9 @@
         var location = this._buildLatLong(lab.center_latitude, lab.center_longitude);
         var vMarker;
 
-        var mapMarker = {
-          path: 'm-13.86316,-25.61974l10.845,22.96658c0.31974,0.69158 0.79816,1.17' +
-          ' 1.38316,1.54184c0.63711,0.37184 1.32868,0.585 2.02026,0.585c0.69158,0 1.38079,-0.21316' +
-          ' 2.02027,-0.585c0.585,-0.37184 1.06342,-0.85026' +
-          ' 1.38079,-1.54184l10.845,-22.96658c0.63947,-1.38079 0.95684,-3.13579' +
-          ' 0.95684,-5.31473c0,-4.14711 -1.48737,-7.76132 -4.46448,-10.68632c-2.9771,-2.9771' +
-          ' -6.53921,-4.46447 -10.73842,-4.46447c-4.19921,0 -7.76131,1.48737' +
-          ' -10.73842,4.46447c-2.9771,2.925 -4.46684,6.53921 -4.46684,10.68632c0,2.17894' +
-          ' 0.31974,3.93394 0.95684,5.31473l0,0zm14.24842,-12.86289c2.07237,0 3.87948,0.74368' +
-          ' 5.36921,2.23105c1.48737,1.48974 2.23342,3.24237 2.23342,5.31711c0,2.12447 -0.74605,' +
-          ' 3.87947 -2.23342,5.36921c-1.48973,1.48737 -3.29684,2.23105 -5.36921,2.23105c-2.07473,' +
-          ' 0 -3.88184,-0.74368 -5.36921,-2.23105c-1.48973,-1.48974 -2.23342,-3.24474' +
-          ' -2.23342,-5.36921c0,-2.07474 0.74369,-3.82737 2.23342,-5.31711c1.48737,-1.48737' +
-          ' 3.29448,-2.23105 5.36921,-2.23105l0,0z',
-          fillColor: self.settings.googleMaps.mapMarkerFillColor,
-          fillOpacity: 1,
-          scale: 1,
-          strokeColor: 'white',
-          strokeWeight: 2
-        };
-
         vMarker = new google.maps.Marker({
           map: self.settings.googleMaps.map,
-          icon: mapMarker,
+          icon: this.mapMarker,
           position: location
         });
 
@@ -637,6 +689,8 @@
           // noinspection JSUnresolvedFunction
           self.settings.googleMaps.infoWindow.open(self.settings.googleMaps.map, vMarker);
         }, this));
+
+        lab.marker = vMarker;
       };
 
       /**
@@ -686,7 +740,7 @@
          */
         $.each(labs, $.proxy(function(index, lab) {
           var $result = $resultTemplate.clone().removeAttr('data-template');
-
+          $result.data('id', index);
           if (lab.lab_title) {
             $result.find('[data-findalab-result-title]').html(lab.lab_title);
           } else {
@@ -740,7 +794,7 @@
         if (labs[0]) {
           this.centerMap(labs[0].center_latitude, labs[0].center_longitude);
           self.settings.googleMaps.map.setZoom(self.settings.googleMaps.resultsZoom);
-
+          self.labs = labs;
           return true;
         }
 

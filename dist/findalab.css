@@ -89,7 +89,10 @@
 
 .findalab__result {
   border-bottom: 1px solid #e2e2e2;
-  padding: 16px; }
+  padding: 16px;
+  transition: background 0.25s ease; }
+  .findalab__result:hover {
+    background: #e2e2e2; }
   .findalab__result:last-of-type {
     border-bottom: 0; }
 

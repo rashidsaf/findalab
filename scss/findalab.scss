@@ -21,6 +21,9 @@ $findalab-padding: 16px !default;
 /// @type Border (width, style, color)
 $findalab-border:  1px solid #e2e2e2 !default;
 
+/// Hover color for a result.
+$findalab-hover:  #e2e2e2 !default;
+
 /// Width for results list.
 /// @type Number
 $findalab-list-width: 310px !default;
@@ -171,6 +174,11 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
 .findalab__result {
   border-bottom: $findalab-border;
   padding: $findalab-padding;
+  transition: background 0.25s ease;
+
+  &:hover {
+    background: $findalab-hover;
+  }
 
   &:last-of-type {
     border-bottom: 0;
