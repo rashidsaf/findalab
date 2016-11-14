@@ -44,6 +44,10 @@ $findalab-nav-color: #3398db !default;
 /// @type Color
 $findalab-ihc-color: lighten(#3398db, 20%) !default;
 
+/// Background color for initial findalab loading box.
+/// @type Color
+$findalab-background: #f9f9f9 !default;
+
 /// Background for results.
 /// @type Color
 $findalab-results-background: #fff !default;
@@ -56,6 +60,14 @@ $findalab-total-background: #f9f9f9 !default;
 /// @type Box Shadow
 $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
 
+/// Height for the loading placholder.
+/// @type Number
+$findalab-loading-height: 644px !default;
+
+/// Mobile Height for the loading placholder.
+/// @type Number
+$findalab-loading-height-mobile: 356px !default;
+
 // Styles
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -67,9 +79,12 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
   text-align: right;
 }
 
-.findalab {
-  border-radius: $findalab-radius;
+%findalab-box {
+  animation: fadeInOpacity 0.5s ease-in-out;
+  animation-fill-mode: forwards;
+  background-color: $findalab-background;
   border: $findalab-border;
+  border-radius: $findalab-radius;
   box-sizing: border-box;
   position: relative;
 
@@ -78,8 +93,32 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
   }
 }
 
+.findalab {
+  @extend %findalab-box;
+  display: none;
+}
+
+.findalab-loading {
+  @extend %findalab-box;
+  align-items: center;
+  display: flex;
+  height: $findalab-loading-height-mobile;
+  justify-content: space-around;
+  text-align: center;
+
+  @media only screen and (min-width: $findalab-breakpoint) {
+    height: $findalab-loading-height;
+  }
+}
+
+.findalab-loading__content {
+  margin-top: -3rem;
+}
+
 .findalab__search {
-  background: $findalab-search-background;
+  animation: fadeInOpacity 1s ease-in-out;
+  animation-fill-mode: forwards;
+  background-color: $findalab-search-background;
   border-bottom: $findalab-border;
   border-radius: $findalab-radius 0 0;
   padding: $findalab-padding;
@@ -103,7 +142,9 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
 }
 
 .findalab__total {
-  background: $findalab-total-background;
+  animation: fadeInOpacity 1s ease-in-out;
+  animation-fill-mode: forwards;
+  background-color: $findalab-total-background;
   border-radius: 0 0 0 $findalab-radius;
   border-top: $findalab-border;
   box-shadow: $findalab-total-shadow;
@@ -152,11 +193,13 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
 }
 
 .findalab__results {
+  animation: fadeInOpacity 1s ease-in-out;
+  animation-fill-mode: forwards;
   background-color: $findalab-results-background;
   display: none;
-  max-height: $findalab-height;
   list-style-type: none;
   margin: 0;
+  max-height: $findalab-height;
   overflow: auto;
   padding: 0;
   width: 100%;
@@ -258,4 +301,14 @@ $findalab-total-shadow: 0 -2px 15px 0 rgba(#111, 0.07) !default;
 
 .findalab__hours__wrap {
   display: none;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

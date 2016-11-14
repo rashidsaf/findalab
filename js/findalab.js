@@ -134,6 +134,8 @@
 
         this._contentNav();
 
+        this.fadeIntoView();
+
         // Capture lab selection events
         this.on('click', '[data-findalab-result-button]', $.proxy(onLabSelectClick, this));
         this.on('mouseenter','[data-findalab-result]', $.proxy(onLabHover, this));
@@ -451,6 +453,10 @@
           self.resize();
         });
       };
+
+      this.fadeIntoView = function() {
+        $(this).fadeIn(500);
+      }
 
       /**
        * Returns the country code for the specified zip code.

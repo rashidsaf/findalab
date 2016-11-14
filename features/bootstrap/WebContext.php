@@ -38,4 +38,16 @@ class WebContext extends FlexibleContext implements Context, SnippetAcceptingCon
             );
         });
     }
+
+    /**
+     * Waits the seconds specified.
+     *
+     * @param int $seconds The seconds to wait.
+     *
+     * @When I wait :seconds seconds
+     */
+    public function waitSeconds($seconds)
+    {
+        sleep($seconds);
+    }
 }

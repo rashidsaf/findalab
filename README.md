@@ -29,12 +29,38 @@ $('#your-selector').load('../path/from/bower/findalab.html', function() {
 });
 ```
 
+To include default pre-loader styles use the following markup (include class names and copy the images into the project folder).
+everything inside the findalab-selector will be removed when the component is loaded.
+
+```
+<div id="findalab-selector">
+  <div class="findalab-loading">
+    <div class="findalab-loading__content">
+      <h2>Loading Test Centers</h2>
+      <img
+        src="/three-dots.svg"
+        alt="loading"
+        width="50"
+        onerror="this.src='/loading-gif.gif';this.onerror=null;" />
+    </div>
+  </div>
+</div>
+```
+
+Make sure to override the height of `.findalab-loading` in each project's `settings.scss` file.
+Design tip: It's best to be pixel perfect in this case and match the height of the loaded component for visual effect.
+
+```scss
+  //override the default height to match the component
+  $mobile-loading-height: 461px;
+  $findalab-loading: 729px;
+```
+
 ## Custom Settings
 
 The plugin can be customized by redefining `findalab` settings object.
 
 ```js
-<script>
 $('#findalab-selector').load('../path/to/src/findalab.html', function() {
   var findalab = $(this).find('.findalab').findalab({
     baseURL: YOUR_PROJECTS_URL,
@@ -47,7 +73,6 @@ $('#findalab-selector').load('../path/to/src/findalab.html', function() {
     },
   });
 });
-</script>
 ```
 
 ## Development
