@@ -24,10 +24,19 @@ Make sure to load the scripts and stylesheets when using the plugin.
 Include the following code to initialize the plugin on the page:
 
 ```js
-$('#your-selector').load('../path/from/bower/findalab.html', function() {
-  $(this).find('.findalab').findalab();
-});
+  <script src="/jquery.js"></script>
+  <script src="/findalab.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAP_API_KEY&amp;callback=initMap" async></script>
+
+  <script>
+    function initMap() {
+      $('#findalab').load('/template/findalab.html', function() {
+        $(this).find('.findalab').findalab();
+      }
+  </script>
+
 ```
+### Pre-loader
 
 To include default pre-loader styles use the following markup (include class names and copy the images into the project folder).
 everything inside the findalab-selector will be removed when the component is loaded.

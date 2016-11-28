@@ -246,7 +246,7 @@
           if (status == google.maps.GeocoderStatus.OK) {
             self.settings.googleMaps.map.setCenter(results[0].geometry.location);
           } else {
-            alert('Geocode was not successful for the following reason: ' + status);
+            console.log('Geocode was not successful for the following reason: ' + status);
           }
         };
         self.settings.googleMaps.geoCoder.geocode({ address: lat + ',' + long }, handleGeoCodeResponse);
@@ -978,5 +978,6 @@
 
       return this;
     }
+
   });
 })(jQuery);
