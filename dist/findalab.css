@@ -140,11 +140,15 @@
   color: #fff;
   background-color: #8ac4ea;
   margin: -8px;
-  margin-bottom: 0;
+  margin-bottom: 8px;
   padding: 8px; }
+
+.findalab__ihc__notice {
+  line-height: 1; }
 
 .findalab__nav__item {
   border: none;
+  border-radius: 0;
   color: #3398db;
   background-color: transparent;
   display: inline-block;

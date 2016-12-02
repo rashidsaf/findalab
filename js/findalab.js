@@ -64,7 +64,8 @@
           timeTitle: 'Avaliable:',
           timeDetails: '7:00am - 8:00pm, 7 days a week',
           button: 'Select &amp; Continue',
-          notice: 'You will schedule your appointment during checkout.'
+          buttonClass: 'button',
+          notice: '*You will schedule your appointment during checkout.'
         },
         emptyResultsMessage: '',
         noResultsMessage: '',
@@ -417,6 +418,7 @@
         this.find('[data-findalab-ihc-time-title]').html(inHomeCollectionObject.timeTitle);
         this.find('[data-findalab-ihc-time-details]').html(inHomeCollectionObject.timeDetails);
         this.find('[data-findalab-ihc-button]').html(inHomeCollectionObject.button);
+        this.find('[data-findalab-ihc-button]').addClass(inHomeCollectionObject.buttonClass);
         this.find('[data-findalab-ihc-notice]').html(inHomeCollectionObject.notice);
       };
 
@@ -545,7 +547,9 @@
 
         $.when(searchLabs, searchPhlebotomists).done(
             function(resultsLabs, resultsPhlebotomists) {
-              if (!self._renderLabs(resultsLabs[0].labs) && !self._renderPhlebotomists(resultsPhlebotomists[0])) {
+              var noLabs = !self._renderLabs(resultsLabs[0].labs);
+              var noPhlebotomists = !self._renderPhlebotomists(resultsPhlebotomists[0]);
+              if (noLabs && noPhlebotomists) {
                 self._setMessage(self.noResultsMessage);
               }
             }

@@ -6,12 +6,12 @@ var autoprefixerBrowsers = {
   browsers: ['last 2 versions', 'ie >= 9'],
 };
 
-gulp.task('stylesheet', function() {
+gulp.task('sass', function() {
   return gulp.src('scss/findalab.scss')
   .pipe(sass(autoprefixerBrowsers))
   .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['stylesheet'], function() {
-  gulp.watch(['scss/findalab.scss'], ['stylesheet']);
+gulp.task('default', ['sass'], function() {
+  gulp.watch(['scss/findalab.scss'], ['sass']);
 });

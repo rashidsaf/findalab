@@ -250,12 +250,17 @@ $findalab-loading-height-mobile: 356px !default;
   color: #fff;
   background-color: $findalab-ihc-color;
   margin: -$findalab-padding/2;
-  margin-bottom: 0;
+  margin-bottom: $findalab-padding/2;
   padding: $findalab-padding/2;
+}
+
+.findalab__ihc__notice {
+  line-height: 1;
 }
 
 .findalab__nav__item {
   border: none;
+  border-radius: 0;
   color: $findalab-nav-color;
   background-color: transparent;
   display: inline-block;
