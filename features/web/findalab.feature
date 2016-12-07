@@ -23,3 +23,9 @@ Feature: Find Collection Centers
      Then there should be a field with the value of 77054
       And I should see "23816 Hwy 59 North"
       And I should not see "Choose This Location"
+
+  Scenario: Use Current Location
+    Given I am on "https://findalab.local/user-location.php"
+     When I wait 4 seconds
+      And I press "Or use current location"
+     Then I should see "23816 Hwy 59 North"

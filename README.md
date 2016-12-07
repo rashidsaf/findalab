@@ -36,7 +36,7 @@ Include the following code to initialize the plugin on the page:
   </script>
 
 ```
-### Pre-loader
+## Pre-loader
 
 To include default pre-loader styles use the following markup (include class names and copy the images into the project folder).
 everything inside the findalab-selector will be removed when the component is loaded.
@@ -83,6 +83,12 @@ $('#findalab-selector').load('../path/to/src/findalab.html', function() {
   });
 });
 ```
+
+## Use Current Location
+If userLocation.showOption is set to true in the custom settings, clicking the button will find the location of the user
+and search for the labs near the user's zipcode.
+To view this in development, you will have to go to:
+https://findalab.local/user-location.php
 
 ## Development
 

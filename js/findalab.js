@@ -1,6 +1,8 @@
 /*global google*/
 (function($) {
 
+  "use strict";
+
   $.fn.extend({
 
     /**
@@ -67,8 +69,14 @@
           buttonClass: 'button',
           notice: '*You will schedule your appointment during checkout.'
         },
+        userLocation: {
+          showOption: false,
+          icon: 'fa fa-map-marker',
+          msg: 'Or use current location'
+        },
         emptyResultsMessage: '',
         noResultsMessage: '',
+        cannotGeolocateMessage: '',
         invalidPostalCodeMessage: ''
       };
 
@@ -79,6 +87,8 @@
 
       this.noResultsMessage = 'Oops! Sorry, we could not find any testing centers near that location. ' +
       'Please try your search again with a different or less specific address.';
+
+      this.cannotGeolocateMessage = 'Oops! Sorry, we could not detect your location. ' + this.emptyResultsMessage;
 
       this.invalidPostalCodeMessage = 'Oops! Invalid postal code: please enter a valid postal code and search again.';
 
@@ -125,6 +135,7 @@
         self._setMessage(this.emptyResultsMessage);
 
         self._constructInHomeCollection(settings.inHomeCollection);
+
         self._constructSearch(settings.search, settings.inputGroup);
 
         this.find('[data-findalab-search-field]')
@@ -134,6 +145,12 @@
         self._constructGoogleMaps(settings.googleMaps);
 
         this._contentNav();
+
+        if (settings.userLocation.showOption) {
+          _constructUserLocation(settings.userLocation);
+        } else {
+          $('[data-findalab-user-location]').remove();
+        }
 
         this.fadeIntoView();
 
@@ -421,6 +438,18 @@
         this.find('[data-findalab-ihc-button]').addClass(inHomeCollectionObject.buttonClass);
         this.find('[data-findalab-ihc-notice]').html(inHomeCollectionObject.notice);
       };
+
+      /**
+       * Construct the use current location option.
+       *
+       * @param  {object} userLocationObject user location settings
+       */
+      var _constructUserLocation = function(userLocationObject) {
+        self.find('[data-findalab-user-location]').html('<i aria-hidden="true"></i> ' + userLocationObject.msg);
+        self.find('[data-findalab-user-location] i').addClass(userLocationObject.icon);
+        self.on('click', '[data-findalab-user-location]', _onFindLocationSubmit);
+      };
+
 
       /**
        * Construct search button, fields and text.
@@ -912,6 +941,110 @@
         } else {
           this.search(searchValue);
         }
+      };
+
+       /**
+       * Private event handler for a finding user location.
+       *
+       * @param {event} event
+       * @private
+       */
+      var _onFindLocationSubmit = function(event) {
+
+        event.preventDefault();
+
+        $('[data-findalab-user-location]').html(self.settings.userLocation.buttonLoadingText);
+
+        if(!navigator.geolocation) {
+          _displayGeolocateError();
+        } else {
+          navigator.geolocation.getCurrentPosition(_searchByCoords);
+        }
+
+        /**
+         * Searches for labs near the specified latitude and longitude.
+         *
+         * Determines the zip code nearest to the provided latitude and
+         * longitude, and searches for Labs near that zip code.
+         *
+         * @param  {object} geo                  the geolocation object
+         * @param  {string} geo.coords.latitude  the latitude of the geolocation
+         * @param  {string} geo.coords.longitude the longitude of the geolocation
+         */
+        function _searchByCoords(geo) {
+
+          var lat = geo.coords.latitude;
+          var long = geo.coords.longitude;
+
+          $.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long)
+            .success(_geolocateSuccess)
+            .fail(_displayGeolocateError);
+        }
+
+        /**
+         * called on ajax success, submits zipcode into input field
+         * @param  {object} data ajax results from google api
+         */
+        function _geolocateSuccess(data) {
+
+          var addresses = data.results.filter(_hasPostalCode);
+          var address = addresses[0];
+          var zip = _getPostalCode(address);
+
+          if (zip) {
+            $('[data-findalab-search-field]').val(zip);
+            $('[data-findalab-search-button]').click();
+          }
+        }
+
+        /**
+         * Determines if an address has a postal code address component.
+         * @param  {array}  addresses the array of addresses
+         * @return {boolean} returns true if it has a postal code
+         */
+        function _hasPostalCode(addresses) {
+          return _getPostalCode(addresses) !== null;
+        }
+
+        /**
+         * check if an address component is a postal code
+         * @param  {array}  component.types address components
+         * @return {boolean} true if the address has a postal code. false if not.
+         */
+        function _isPostalCode(component) {
+          return component.types.indexOf('postal_code') !== -1;
+        }
+
+        /**
+         * Gets the postal code of an address.
+         *
+         * @param {object} address the address to analyze.
+         * @param {array} address.address_components
+         * @return {string} the postal code, or null if the address does not have a postal code.
+         */
+        function _getPostalCode (address) {
+          if (!Array.isArray(address.address_components)) {
+            return null;
+          }
+
+          // get the first address_component that is a postal code
+          var postalCodeComponents = address.address_components.filter(_isPostalCode);
+          if (!postalCodeComponents.length) {
+            return null;
+          }
+
+          var postalCodeComponent = postalCodeComponents[0];
+
+          return postalCodeComponent.long_name;
+        }
+
+        /**
+         * sets the text of the error message that is displayed to the user
+         */
+        function _displayGeolocateError() {
+          self._setMessage(self.cannotGeolocateMessage);
+        }
+
       };
 
       /**
