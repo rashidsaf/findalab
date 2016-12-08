@@ -68,6 +68,14 @@ $findalab-loading-height: 644px !default;
 /// @type Number
 $findalab-loading-height-mobile: 356px !default;
 
+/// Color for the user location text
+/// @type Color
+$findlab-user-location-color: #3398db !default;
+
+/// Font Weight for the user location button
+/// @type number
+$findalab-user-location-font-weight: 500 !default;
+
 // Styles
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -306,6 +314,21 @@ $findalab-loading-height-mobile: 356px !default;
 
 .findalab__hours__wrap {
   display: none;
+}
+
+.findalab__search__user-location {
+  background: transparent;
+  border: 0;
+  color: $findlab-user-location-color;
+  font-weight: $findalab-user-location-font-weight;
+  line-height: 1;
+  margin-top: 0.5rem;
+  padding: 0;
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 @keyframes fadeInOpacity {

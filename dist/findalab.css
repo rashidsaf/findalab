@@ -183,6 +183,18 @@
 .findalab__hours__wrap {
   display: none; }
 
+.findalab__search__user-location {
+  background: transparent;
+  border: 0;
+  color: #3398db;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 0.5rem;
+  padding: 0;
+  text-decoration: underline; }
+  .findalab__search__user-location:hover {
+    cursor: pointer; }
+
 @keyframes fadeInOpacity {
   0% {
     opacity: 0; }
