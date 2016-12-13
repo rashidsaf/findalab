@@ -933,6 +933,7 @@
         event.preventDefault();
 
         $('[data-findalab-search-button]').html(this.settings.search.buttonLoadingText);
+        $('[data-findalab-result-list]').scrollTop(0);
 
         var searchValue = this.find('[data-findalab-search-field]').val();
 
