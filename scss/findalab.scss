@@ -268,7 +268,6 @@ $findalab-user-location-font-weight: 500 !default;
 
 .findalab__nav__item {
   border: none;
-  border-radius: 0;
   color: $findalab-nav-color;
   background-color: transparent;
   display: inline-block;
@@ -286,6 +285,11 @@ $findalab-user-location-font-weight: 500 !default;
     color: #fff;
     background: $findalab-nav-color;
   }
+}
+
+[type='button'].findalab__nav__item,
+[type='submit'].findalab__nav__item {
+  border-radius: 0;
 }
 
 .findalab__address-list {

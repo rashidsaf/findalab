@@ -148,7 +148,6 @@
 
 .findalab__nav__item {
   border: none;
-  border-radius: 0;
   color: #3398db;
   background-color: transparent;
   display: inline-block;
@@ -162,6 +161,10 @@
     text-decoration: none;
     color: #fff;
     background: #3398db; }
+
+[type='button'].findalab__nav__item,
+[type='submit'].findalab__nav__item {
+  border-radius: 0; }
 
 .findalab__address-list {
   list-style: none;
