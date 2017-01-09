@@ -484,6 +484,7 @@
           self.find('[data-findalab-content]').removeClass('is-active');
           self.find('[data-findalab-content="' + content + '"]').addClass('is-active');
           self.resize();
+          self.settings.googleMaps.map.fitBounds(self.bounds);
         });
       };
 
