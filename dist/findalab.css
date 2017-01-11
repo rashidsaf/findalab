@@ -135,6 +135,8 @@
   border-radius: 6px;
   margin: 16px;
   padding: 8px; }
+  .findalab__ihc:hover {
+    background: #e2e2e2; }
 
 .findalab__ihc__title {
   color: #fff;

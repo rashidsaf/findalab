@@ -252,6 +252,10 @@ $findalab-user-location-font-weight: 500 !default;
   border-radius: $findalab-radius;
   margin: $findalab-padding;
   padding: $findalab-padding/2;
+
+  &:hover {
+    background: $findalab-hover;
+  }
 }
 
 .findalab__ihc__title {
