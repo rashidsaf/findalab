@@ -371,26 +371,58 @@
       };
 
       /**
-       * Resets the lab finder to its default state.
+       * Empties the search field input.
        */
-      this.reset = function() {
-        this.find('.findalab__results li').remove();
+      this.resetSearchField = function() {
         this.find('[data-findalab-search-field]').val('');
+      };
+
+      /**
+       * Replaces the results and total count with no results.
+       */
+      this.resetResults = function() {
+        this.find('.findalab__results li').remove();
         this.find('[data-findalab-total]').html('No Results');
         self._setMessage(self.emptyResultsMessage);
+      };
 
+      /*
+       * Clears out all of the markes on the map.
+       */
+      this.resetMapMarkers = function() {
+        var markersLength = self.settings.googleMaps.markers.length;
+        for (var i = 0; i < markersLength; i++) {
+          self.settings.googleMaps.markers[i].setMap(null);
+        }
+        self.settings.googleMaps.markers = [];
+      };
+
+      /*
+       * Centers and resets the zoom of the map back to default position.
+       */
+      this.resetMapView = function() {
         self.settings.googleMaps.map.setCenter(this._buildLatLong(
           self.settings.googleMaps.defaultLat, self.settings.googleMaps.defaultLong
         ));
         self.settings.googleMaps.map.setZoom(self.settings.googleMaps.initialZoom);
         self.settings.googleMaps.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+      }
 
-        var markersLength = self.settings.googleMaps.markers.length;
-        for (var i = 0; i < markersLength; i++) {
-          self.settings.googleMaps.markers[i].setMap(null);
-        }
+      /**
+       * Resets the map's zoom and position, and clears the markers.
+       */
+      this.resetMap = function() {
+        self.resetMapMarkers();
+        self.resetMapView();
+      }
 
-        self.settings.googleMaps.markers = [];
+      /**
+       * Resets the lab finder to its default state.
+       */
+      this.reset = function() {
+        self.resetSearchField();
+        self.resetResults();
+        self.resetMap();
       };
 
       /**
@@ -452,6 +484,17 @@
         googleMapsObject.map = new google.maps.Map(document.getElementById('findalab-map'), mapOptions);
         googleMapsObject.geoCoder = new google.maps.Geocoder();
         googleMapsObject.infoWindow = new google.maps.InfoWindow();
+
+        var zoomChangeBoundsListener;
+        google.maps.event.addListener(googleMapsObject.map, 'zoom_changed', function() {
+          zoomChangeBoundsListener =
+            google.maps.event.addListener(googleMapsObject.map, 'bounds_changed', function(event) {
+              if (this.getZoom() > 15) {
+                // Change max/min zoom here
+                this.setZoom(15);
+              }
+            });
+        });
       };
 
       /**
@@ -781,11 +824,9 @@
 
         vMarker = new google.maps.Marker({
           map: self.settings.googleMaps.map,
-          icon: this.mapMarker,
+          icon: this.ihcMapMarker,
           position: location
         });
-
-        vMarker.icon.fillColor = self.settings.googleMaps.ihcMarkerFillColor;
 
         self.settings.googleMaps.markers.push(vMarker);
 
@@ -839,12 +880,8 @@
       this._renderLabs = function(labs) {
         var $resultsList = this.find('[data-findalab-result-list]');
         var $resultTemplate = this.find('[data-findalab-result][data-template]');
-        var pluralLabs = labs.length > 1 ? 's' : '';
 
         $resultsList.empty();
-        this.bounds = new google.maps.LatLngBounds();
-
-        this.find('[data-findalab-total]').html(labs.length + ' Result' + pluralLabs);
 
         /**
          * @param {int} index
@@ -914,18 +951,9 @@
 
         this._initShowStructuredHours();
 
-        var mapMarkerDetails = {
-          markerColor: '#3398db',
-          infoWindow: {
-            title: this.title,
-            buttonText: self.settings.lab.buttonText,
-          }
-        };
-
         labs.map($.proxy(this._showMarker, this));
 
         if (labs[0]) {
-          self.settings.googleMaps.map.fitBounds(this.bounds);
           self.labs = labs;
           return true;
         }
@@ -944,9 +972,23 @@
         var $inHomeCollection = this.find('[data-findalab-ihc][data-template]').clone().removeAttr('data-template');
         if (self.settings.inHomeCollection.showComponent && phlebotomists.hasPhlebotomists) {
           $inHomeCollection.prependTo($resultsList);
+          self._showIhcMarker(geocode);
         }
-        self._showIhcMarker(geocode);
         return phlebotomists.hasPhlebotomists;
+      };
+
+      /**
+       * Counts, adds together and displays the results and phlebotomist combined total.
+       *
+       * @param {Array} resultsLabs
+       * @param {Array} resultsPhlebotomists
+       * @private
+       */
+      this._renderResultsTotal = function(resultsLabs, resultsPhlebotomists) {
+        var totalResults = resultsLabs[0].labs.length;
+        totalResults += resultsPhlebotomists[0].hasPhlebotomists === true ? 1 : 0;
+        var pluralLabs = totalResults > 1 ? 's' : '';
+        self.find('[data-findalab-total]').html(totalResults + ' Result' + pluralLabs);
       };
 
       /**
@@ -1023,12 +1065,11 @@
        */
       this._onSearchSubmit = function(event) {
         event.preventDefault();
-
+        self.resetResults();
+        self.resetMapMarkers();
         $('[data-findalab-search-button]').html(this.settings.search.buttonLoadingText);
         $('[data-findalab-result-list]').scrollTop(0);
-
         var searchValue = this.find('[data-findalab-search-field]').val();
-
         if (!searchValue.length) {
           self._setMessage('Please do not leave the search field blank. Enter a value and try searching again.');
         } else {
@@ -1149,12 +1190,14 @@
        * @private
        */
       this._onSearchSuccess = function(resultsLabs, resultsPhlebotomists, geocode) {
+          self.bounds = new google.maps.LatLngBounds();
           var noLabs = !self._renderLabs(resultsLabs[0].labs);
           var noPhlebotomists = !self._renderPhlebotomists(resultsPhlebotomists[0], geocode);
           if (noLabs && noPhlebotomists) {
               self._setMessage(self.noResultsMessage);
           }
-
+          self.settings.googleMaps.map.fitBounds(self.bounds);
+          self._renderResultsTotal(resultsLabs, resultsPhlebotomists);
           self.onSearchSuccess(resultsLabs, resultsPhlebotomists);
       };
 

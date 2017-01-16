@@ -6,14 +6,16 @@ use Behat\FlexibleMink\Context\FlexibleContext;
 use Behat\FlexibleMink\Context\StoreContext;
 use Behat\FlexibleMink\PseudoInterface\MinkContextInterface;
 use Behat\Mink\Exception\ExpectationException;
+use features\contexts\MapContext;
 
 /**
  * Defines application features from the context of a Web Page.
  */
 class WebContext extends FlexibleContext implements Context, SnippetAcceptingContext
 {
-    use StoreContext;
+    use MapContext;
     use MinkContextInterface;
+    use StoreContext;
 
     /**
      * Asserts that a field with a specified exists on the page.
