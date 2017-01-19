@@ -310,6 +310,20 @@
       };
 
       /**
+       * disables all form elements inside the findalab component
+       */
+      this.showDisabledState = function () {
+        this.find(':input').prop('disabled', true);
+      };
+
+      /**
+       * resets all form elements inside the findalab component to enabled
+       */
+      this.removeDisabledState = function() {
+        this.find(':input').prop('disabled', false);
+      };
+
+      /**
        * Event handler for when a zip / postal code is submitted for search.
        *
        * Can be overridden with custom behavior for the particular page that the
