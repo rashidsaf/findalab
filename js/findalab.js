@@ -1,4 +1,6 @@
-/*global google*/
+/**
+ * @module medology/findalab
+ */
 (function($) {
 
   "use strict";
@@ -8,47 +10,112 @@
     /**
      * Controller for Lab Search component.
      *
-     * @param  {{lat:float, long:float}} settings
-     * @var {object} find
-     * @returns {labSearch}
+     * @class Findalab
+     * @extends jQuery.fn
+     * @param {FindalabSettings} settings
+     * @returns {Findalab}
      */
     findalab: function(settings) {
       var self = this;
 
+      /**
+       * Settings for Lab Search.
+       *
+       * @typedef {object} FindalabSettings
+       * @property {InHomeCollectionSetting} inHomeCollection In-home collection setting.
+       * @property {InputGroupSetting}       inputGroup       Search form setting.
+       * @property {GoogleMapsSetting}       googleMaps       Google map API setting.
+       * @property {SearchSetting}           search           Search preference setting.
+       * @property {UserLocationSetting}     userLocation     User current location setting.
+       */
       this.settings = {
         baseURL: 'http://findalab.local/',
         searchURL: {
           labs: 'labs',
           phlebotomists: 'phlebotomists'
         },
+        /**
+         * Setting for the google maps API.
+         *
+         * @typedef {object} GoogleMapsSetting
+         * @property {float}                  defaultLat           Default latitude.
+         * @property {float}                  defaultLong          Default longitude.
+         * @property {google.maps.Geocoder}   geoCoder             Define the Geocoder to be used.
+         * @property {google.maps.InfoWindow} infoWindow           Define the Info Window to be attached.
+         * @property {string}                 ihcMarkerFillColor   Define the fill color of In-home collection marker.
+         * @property {int}                    initialZoom          Define the initial zooming level.
+         * @property {string}                 labMarkerFillColor   Define the fill color of lab marker.
+         * @property {google.maps.Map}        map                  Define the Map to be used.
+         * @property {string}                 markerHoverFillColor Define the fill color when lab/ihc is hovered.
+         * @property {google.maps.Marker[]}   markers              The initial Markers.
+         * @property {string}                 resultsZoom          The zoom level for when there are search results.
+         */
         googleMaps: {
           defaultLat: 39.97712, // TODO: Address Canada's default lat
           defaultLong: -99.587403, // TODO: Address Canada's default long
           geoCoder: null,
           infoWindow: null,
-          initialZoom: 4, // The zoom level for when no search has been performed yet (pretty far out)
+          initialZoom: 4,
           map: null,
           markers: [],
-          resultsZoom: 10, // The zoom level for when there are search results
+          resultsZoom: 10,
           labMarkerFillColor: '#3398db',
           ihcMarkerFillColor: '#73c6eb',
           markerHoverFillColor: '#eb4d4c'
         },
+        /**
+         * Setting for the search function.
+         *
+         * @typedef {object} SearchFunctionSetting
+         * @property {string} excludeNetworks The lab network to be excluded (black-list).
+         * @property {string} limit           Limit the number of search result.
+         * @property {string} onlyNetwork     The lab network to be included (white-list).
+         */
         searchFunction: {
           excludeNetworks: undefined,
           limit: undefined,
           onlyNetwork: undefined
         },
+        /**
+         * Setting for the lab item in the search result.
+         *
+         * @typedef {object} LabSetting
+         * @property {string}  buttonClass The class name of the button.
+         * @property {string}  buttonText  The label text of the button.
+         * @property {boolean} hasButton   If the button should be displayed.
+         */
         lab: {
           hasButton: true,
           buttonClass: null,
           buttonText: 'Choose This Location'
         },
+        /**
+         * Setting for the search form.
+         *
+         * @typedef {object} InputGroupSetting
+         * @property {string} button    The class name for the search button.
+         * @property {string} container The class name for the search form container.
+         * @property {string} field     The class name for the search field.
+         */
         inputGroup: {
           container: 'input-group',
           field: 'input-group-field',
           button: 'input-group-button'
         },
+        /**
+         * More setting for the search form.
+         *
+         * @typedef {Object} SearchSetting
+         * @property {string} buttonClass           The class name for the search button.
+         * @property {string} buttonLoadingText     The loading text when search button is clicked and waiting results.
+         * @property {string} buttonText            The label text of the search button.
+         * @property {string} inputGroupButtonClass The class name for the inputGroup button.
+         * @property {string} inputGroupClass       The class name for the inputgroup.
+         * @property {string} inputType             The type of the input form field.
+         * @property {string} inputGroupFieldClass  The class of the input form field.
+         * @property {string} placeholder           The place holder text when search criteria is not entered.
+         * @property {string} title                 The title of the search field.
+         */
         search: {
           title: 'Test Centers',
           buttonClass: null,
@@ -60,16 +127,37 @@
           placeholder: 'Enter your zip',
           inputType: 'text'
         },
+        /**
+         * Setting for in-home collection feature.
+         *
+         * @typedef {Object} InHomeCollectionSetting
+         * @property {string}  button        The label text for the select button.
+         * @property {string}  buttonClass   The class name for the select button.
+         * @property {string}  description   The description of in-home feature.
+         * @property {string}  notice        The notice of in-home feature.
+         * @property {boolean} showComponent Enable/disable the in-home collection feature.
+         * @property {string}  title         The title of the in-home collection feature.
+         * @property {string}  timeTitle     The title of the time section.
+         * @property {string}  timeDetails   The detail of the time section.
+         */
         inHomeCollection: {
           showComponent: true,
           title: 'In-Home Collection',
           description: 'Get the lab to come to you. Schedule an in-home appointment with a Lab Collection Specialist',
-          timeTitle: 'Avaliable:',
+          timeTitle: 'Available:',
           timeDetails: '7:00am - 8:00pm, 7 days a week',
           button: 'Select &amp; Continue',
           buttonClass: 'button',
           notice: '*You will schedule your appointment during checkout.'
         },
+        /**
+         * Setting for the user location detection feature.
+         *
+         * @typedef {Object} UserLocationSetting
+         * @property {string}  icon       The class name for the icon.
+         * @property {string}  msg        The message of the link.
+         * @property {boolean} showOption Enable/disable user location detection feature.
+         */
         userLocation: {
           showOption: false,
           icon: 'fa fa-map-marker',
@@ -126,15 +214,14 @@
 
       this.labs = [];
 
-      this.bounds;
+      this.bounds = null;
 
-      this.myLab;
+      this.myLab = null;
 
       /**
        * Initializes the map and sets the default viewport lat / long.
        *
-       * @var {object} google
-       * @param {{lat:float, long:float}} settings
+       * @param {FindalabSettings} settings
        */
       this.construct = function(settings) {
         self._setMessage(this.emptyResultsMessage);
@@ -169,7 +256,8 @@
         /**
          * Prevents submission of the form on key down.
          *
-         * @param {event} event The key down event.
+         * @param {document#event:generic} event The key down event.
+         * @listens document#event:generic
          * @returns {boolean}   False if the enter key was pressed. This prevents bubbling.
          */
         function onSearchKeyDown(event) {
@@ -183,9 +271,10 @@
         /**
          * Triggers a search if the enter key was pressed.
          *
-         * @this    {Object}        The find a lab instance.
-         * @param   {int}     event The key up event.
-         * @returns {boolean}       Always false to prevent bubbling.
+         * @this  {Findalab}               The find a lab instance.
+         * @param {document#event:generic} event The key down event.
+         * @listens document#event:generic
+         * @returns {boolean} Always false to prevent bubbling.
          */
         function onSearchKeyUp(event) {
           event.preventDefault();
@@ -200,8 +289,9 @@
         /**
          * Calls the `onLabSelect` method when a lab is selected.
          *
-         * @this {Object} The find a lab instance.
-         * @param {event} event The click event.
+         * @this    {Findalab}               The find a lab instance.
+         * @param   {document#event:generic} event The key down event.
+         * @listens document#event:generic
          * @returns {boolean} Always false to prevent bubbling.
          */
         function onLabSelectClick(event) {
@@ -214,7 +304,9 @@
         /**
          * Is called when user hovers on a result and causes the corresponding map pin to change
          *
-         * @param   {event}   event the mouseenter event
+         * @this    {Findalab}               The find a lab instance.
+         * @param   {document#event:generic} event the mouseenter event
+         * @listens document#event:generic
          * @returns {boolean} Always false to prevent bubbling.
          */
         function onLabHover(event) {
@@ -227,6 +319,7 @@
           this.myLab = this.labs[id];
           this.myLab.marker.setIcon(this.mapMarkerHover);
           this.myLab.marker.setAnimation(google.maps.Animation.BOUNCE);
+
           return false;
         }
 
@@ -234,43 +327,42 @@
         /**
          * Is called when user hovers on a result and causes the corresponding map pin to change
          *
-         * @param   {event}   event the mouseenter event
+         * @this    {Findalab} The find a lab instance.
          * @returns {boolean} Always false to prevent bubbling.
          */
-        function onPhlebotomistsHover(event) {
-          var id;
-          if (event.target.tagName == 'LI') {
-            id = $(event.target).data('id');
-          } else {
-            id = $(event.target).parents('li').data('id');
-          }
+        function onPhlebotomistsHover() {
           this.myLab = this.phlebotomists;
           this.myLab.marker.setIcon(this.mapMarkerHover);
           this.myLab.marker.setAnimation(google.maps.Animation.BOUNCE);
+
           return false;
         }
 
         /**
          * Is called when user unhovers on a result and causes the corresponding map pin to go back to normal
          *
-         * @param   {event}   event the mouseleave event
+         * @this    {Findalab}             The find a lab instance.
+         * @listens document#event:generic
          * @returns {boolean} Always false to prevent bubbling.
          */
-        function onLabMarkerUnhover(event) {
+        function onLabMarkerUnhover() {
           this.myLab.marker.setIcon(this.mapMarker);
           this.myLab.marker.setAnimation(null);
+
           return false;
         }
 
         /**
          * Is called when user unhovers on a result and causes the corresponding map pin to go back to normal
          *
-         * @param   {event}   event the mouseleave event
+         * @this    {Findalab}             The find a lab instance.
+         * @listens document#event:generic
          * @returns {boolean} Always false to prevent bubbling.
          */
-        function onIhcMarkerUnhover(event) {
+        function onIhcMarkerUnhover() {
           this.myLab.marker.setIcon(this.ihcMapMarker);
           this.myLab.marker.setAnimation(null);
+
           return false;
         }
 
@@ -287,8 +379,8 @@
         /**
          * Handles the response from Google's GeoCoding service.
          *
-         * @param {[{geometry:{}}]} results
-         * @param {int} status
+         * @param {{geometry: {location: string}}[]} results
+         * @param {string} status
          */
         var handleGeoCodeResponse = function (results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
@@ -343,9 +435,8 @@
        * Can be overridden with custom behavior for the particular page that the
        * map is embedded into.
        *
-       * @todo improve docs. Provide full structure info on these array of objects
-       * @param {Array} labs
-       * @param {Array} phlebotomists
+       * @param {LabResult[]} labs
+       * @param {PhlebotomistResult[]} phlebotomists
        */
       this.onSearchSuccess = function(labs, phlebotomists) {
         // override me!
@@ -369,16 +460,7 @@
        * Should be overridden to implement the appropriate behavior
        * on the page this component is used on.
        *
-       * @param {{
-       *   id:int,
-       *   lab_title:string,
-       *   network:string,
-       *   address:string,
-       *   city:string,
-       *   state:string,
-       *   zip:int,
-       *   fax_number:string,
-       * }} lab
+       * @param {Lab} lab
        */
       this.onLabSelect = function(lab) {
         // override me!
@@ -400,8 +482,8 @@
         self._setMessage(self.emptyResultsMessage);
       };
 
-      /*
-       * Clears out all of the markes on the map.
+      /**
+       * Clears out all of the markers on the map.
        */
       this.resetMapMarkers = function() {
         var markersLength = self.settings.googleMaps.markers.length;
@@ -411,7 +493,7 @@
         self.settings.googleMaps.markers = [];
       };
 
-      /*
+      /**
        * Centers and resets the zoom of the map back to default position.
        */
       this.resetMapView = function() {
@@ -420,7 +502,7 @@
         ));
         self.settings.googleMaps.map.setZoom(self.settings.googleMaps.initialZoom);
         self.settings.googleMaps.map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
-      }
+      };
 
       /**
        * Resets the map's zoom and position, and clears the markers.
@@ -428,7 +510,7 @@
       this.resetMap = function() {
         self.resetMapMarkers();
         self.resetMapView();
-      }
+      };
 
       /**
        * Resets the lab finder to its default state.
@@ -465,9 +547,9 @@
       /**
        * Builds a Google Maps Latitude/Longitude object.
        *
-       * @param   {float} lat  Optional latitude parameter.
-       * @param   {float} long Optional longitude parameter.
-       * @return  {{}}
+       * @param   {float|string|number} lat  Optional latitude parameter.
+       * @param   {float|string|number} long Optional longitude parameter.
+       * @return  {LatLng}
        * @private
        */
       this._buildLatLong = function(lat, long) {
@@ -480,7 +562,8 @@
       /**
        * Construct Google Maps
        *
-       * @param  {object} googleMapsObject Google Maps settings
+       * @param  {GoogleMapsSetting} googleMapsObject Google Maps settings
+       * @private
        */
       this._constructGoogleMaps = function(googleMapsObject) {
         if (typeof google === 'undefined') {
@@ -490,7 +573,7 @@
         }
 
         var mapOptions = {
-          center: this._buildLatLong(googleMapsObject.lat, googleMapsObject.long),
+          center: this._buildLatLong(googleMapsObject.defaultLat, googleMapsObject.defaultLong),
           zoom: googleMapsObject.initialZoom,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -499,22 +582,21 @@
         googleMapsObject.geoCoder = new google.maps.Geocoder();
         googleMapsObject.infoWindow = new google.maps.InfoWindow();
 
-        var zoomChangeBoundsListener;
-        google.maps.event.addListener(googleMapsObject.map, 'zoom_changed', function() {
-          zoomChangeBoundsListener =
-            google.maps.event.addListener(googleMapsObject.map, 'bounds_changed', function(event) {
-              if (this.getZoom() > 15) {
+        var resetZoom = function() {
+            if (googleMapsObject.map.getZoom() > 15) {
                 // Change max/min zoom here
-                this.setZoom(15);
-              }
-            });
-        });
+                googleMapsObject.map.setZoom(15);
+            }
+        };
+        google.maps.event.addListener(googleMapsObject.map, 'zoom_changed', resetZoom);
+        google.maps.event.addListener(googleMapsObject.map, 'bounds_changed', resetZoom);
       };
 
       /**
        * Construct the in home collection component.
        *
-       * @param  {object} inHomeCollectionObject In-home collection settings
+       * @param {InHomeCollectionSetting} inHomeCollectionObject In-home collection settings
+       * @private
        */
       this._constructInHomeCollection = function(inHomeCollectionObject) {
         this.find('[data-findalab-ihc-title]').html(inHomeCollectionObject.title);
@@ -529,7 +611,8 @@
       /**
        * Construct the use current location option.
        *
-       * @param  {object} userLocationObject user location settings
+       * @param  {UserLocationSetting} userLocationObject user location settings
+       * @private
        */
       var _constructUserLocation = function(userLocationObject) {
         self.find('[data-findalab-user-location]').html('<i aria-hidden="true"></i> ' + userLocationObject.msg);
@@ -541,8 +624,9 @@
       /**
        * Construct search button, fields and text.
        *
-       * @param  {object} searchObject     Search settings
-       * @param  {object} inputGroupObject Input group settings
+       * @param  {SearchSetting}     searchObject     Search settings
+       * @param  {InputGroupSetting} inputGroupObject Input group settings
+       * @private
        */
       this._constructSearch = function(searchObject, inputGroupObject) {
         this.find('[data-findalab-search-button]').addClass(searchObject.buttonClass).html(
@@ -560,6 +644,8 @@
 
       /**
        * Tab navigation on smaller screens.
+       *
+       * @private
        */
       this._contentNav = function() {
         $('[data-findalab-nav-item]').on('click', function() {
@@ -575,7 +661,7 @@
 
       this.fadeIntoView = function() {
         $(this).fadeIn(500);
-      }
+      };
 
       /**
        * Returns the country code for the specified zip code.
@@ -583,7 +669,7 @@
        * Currently only supports Canada, United States and Puerto Rico.
        *
        * @param   {string} postalCode The zipCode to get the country code for.
-       * @returns {string} The two character country code. Either CA, PR or US.
+       * @returns {string|null} The two character country code. Either CA, PR or US.
        */
       this.getPostalCodeCountry = function(postalCode) {
         var caRegex = new RegExp(
@@ -629,16 +715,8 @@
       /**
        * Private event handler for when the user selects a lab.
        *
-       * @param {{
-       *   id:int,
-       *   lab_title:string,
-       *   network:string,
-       *   address:string,
-       *   city:string,
-       *   state:string,
-       *   zip:int,
-       *   fax_number:string,
-       * }} lab
+       * @param {Lab} lab
+       * @private
        */
       this._onLabSelect = function(lab) {
         this.onLabSelect(lab);
@@ -648,10 +726,8 @@
        * Search the collection centers.
        *
        * @param {object} geocode             The geocode to search near
-       * @param {float}  geocode.latitude    The latitude of the geocode
-       * @param {float}  geocode.longitude   The longitude of the geocode
-       * @param {string} geocode.countryCode The country code of the geocode
-       * @param {string} country             The country value
+       * @param {string} [country]             The country value
+       * @private
        */
       this._searchCollectionCenters = function(geocode, country) {
         var labsPromise = self._searchNearCoords(
@@ -673,13 +749,15 @@
        *
        * @param  {string} searchValue        The value searched
        * @param  {string} searchValueCountry The country of the searched value
+       * @private
        */
       this._searchGeoCode = function(searchValue, searchValueCountry) {
         $.ajax({
           url: self.settings.baseURL + '/geocode',
           dataType: 'json',
           data: { zip: searchValue, countryCode: searchValueCountry }
-        }).done(function(results) {
+        }).done(
+            function(results) {
             if (!results.length) {
                 self._setMessage(self.noResultsMessage);
             }
@@ -698,6 +776,7 @@
        * @param  {float}  geocode.longitude   The longitude of the geocode
        * @param  {string} geocode.countryCode The country code of the geocode
        * @return {ajax}   The collection center results from the ajax request
+       * @private
        */
       this._searchNearCoords = function(collectionCenter, country, geocode) {
         return $.ajax({
@@ -759,20 +838,7 @@
       /**
        * Show markers function
        *
-       * @param {{
-       *    center_id:int,
-       *    center_latitude:float,
-       *    center_longitude:float,
-       *    center_address:string,
-       *    center_city:string,
-       *    center_state:string,
-       *    center_zip:string,
-       *    center_network:string,
-       *    center_country:string,
-       *    lab_title:string,
-       *    network:string,
-       *    fax_number:string,
-       * }} lab
+       * @param {Lab} lab
        * @private
        */
       this._showMarker = function(lab) {
@@ -809,12 +875,12 @@
             'data-zipcode="' + lab.center_zip + '" ' +
             'data-network="' + lab.network + '" ' +
             'data-title="' + lab.lab_title + '" ' +
-            'data-country="' + lab.center_country + '"' +
+            'data-country="' + lab.center_country + '" ' +
             'data-fax_number="' + lab.fax_number + '"' +
             '>' +
             self.settings.lab.buttonText +
             '</a>';
-        };
+        }
 
         google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
           self.settings.googleMaps.infoWindow.setContent(infoWindowContent);
@@ -830,7 +896,8 @@
       /**
        * Shows the in-home collection marker on the Google Map
        *
-       * @param geocode {object}
+       * @param {Geocode} geocode
+       * @private
        */
       this._showIhcMarker = function(geocode) {
         var location = this._buildLatLong(geocode.latitude, geocode.longitude);
@@ -855,9 +922,9 @@
             '<button type="button" data-findalab-ihc-button class="' +
             self.settings.inHomeCollection.buttonClass +
             '">' +
-            self.settings.inHomeCollection.button
+            self.settings.inHomeCollection.button +
             '</button>'
-        };
+        }
 
         google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
           self.settings.googleMaps.infoWindow.setContent(infoWindowContent);
@@ -874,20 +941,7 @@
 
       /**
        * This function will handle rendering labs.
-       * @param {[{
-       *   center_id:int,
-       *   center_address:string,
-       *   center_city:string,
-       *   center_state:string,
-       *   center_zip:string,
-       *   center_hours:string,
-       *   center_network:string,
-       *   center_distance:float,
-       *   lab_title:string,
-       *   network:string,
-       *   fax_number:string,
-       *   structured_hours:object
-       * }]} labs
+       * @param {Lab[]} labs
        * @return {boolean} Whether any labs were rendered.
        * @private
        */
@@ -899,20 +953,7 @@
 
         /**
          * @param {int} index
-         * @param {{
-         *   center_id:int,
-         *   center_address:string,
-         *   center_city:string,
-         *   center_state:string,
-         *   center_zip:string,
-         *   center_hours:string,
-         *   center_network:string,
-         *   center_distance:float,
-         *   lab_title:string,
-         *   network:string,
-         *   fax_number:string,
-         *   structured_hours:object
-         * }} lab
+         * @param {Lab} lab
          */
         $.each(labs, $.proxy(function(index, lab) {
           var $result = $resultTemplate.clone().removeAttr('data-template');
@@ -978,8 +1019,10 @@
       /**
        * Renders the phlebotomists component
        *
-       * @param  {json} phlebotomists Response from api
+       * @param  {PhlebotomistResult} phlebotomists Response from api
+       * @param  {Geocode}            geocode
        * @return {boolean} whether the in-home collections modal was rendered.
+       * @private
        */
       this._renderPhlebotomists = function(phlebotomists, geocode) {
         var $resultsList = this.find('[data-findalab-result-list]');
@@ -994,8 +1037,8 @@
       /**
        * Counts, adds together and displays the results and phlebotomist combined total.
        *
-       * @param {Array} resultsLabs
-       * @param {Array} resultsPhlebotomists
+       * @param {LabResult[]}          resultsLabs
+       * @param {PhlebotomistResult[]} resultsPhlebotomists
        * @private
        */
       this._renderResultsTotal = function(resultsLabs, resultsPhlebotomists) {
@@ -1008,7 +1051,7 @@
       /**
        * Parse the distance of lab based on the country where the lab located
        *
-       * @param   {{center_country:string, center_distance:string}} labData
+       * @param   {Lab} labData
        * @returns {string} The parsed string describe the distance information.
        * @private
        */
@@ -1029,31 +1072,14 @@
       /**
        * Builds the structured hours DOM for a Lab entry.
        *
-       * @param {{
-       *   center_id:int,
-       *   center_address:string,
-       *   center_city:string,
-       *   center_state:string,
-       *   center_zip:string,
-       *   center_hours:string,
-       *   center_network:string,
-       *   center_distance:float,
-       *   lab_title:string,
-       *   network:string,
-       *   fax_number:string,
-       *   structured_hours:object
-       * }} lab
-       * @param   {jQuery} $result The jQuery DOM that should be modified to show the hours.
+       * @param {Lab} lab
+       * @param {jQuery} $result The jQuery DOM that should be modified to show the hours.
        * @private
        */
       this._buildHoursDom = function(lab, $result) {
         var $table = $result.find('[data-findalab-structured-hours-body]');
 
-        /**
-         * @param {{string}} day
-         * @param {{open:string, close:string, lunch_start:string, lunch_stop:string}} hours
-         */
-        $.each(lab.structured_hours, function(day, hours) {
+        $.each(lab.structured_hours, function(/**string*/ day, /**Day*/ hours) {
           var $row = $result.find('[data-findalab-structured-hours-row][data-template]')
                       .clone()
                       .removeAttr('data-template');
@@ -1074,7 +1100,8 @@
       /**
        * Private event handler for a search is initiated.
        *
-       * @param {event} event
+       * @param {document#event:generic} event
+       * @listens document#event:generic
        * @private
        */
       this._onSearchSubmit = function(event) {
@@ -1094,7 +1121,8 @@
        /**
        * Private event handler for a finding user location.
        *
-       * @param {event} event
+       * @param {document#event:generic} event
+       * @listens document#event:generic
        * @private
        */
       var _onFindLocationSubmit = function(event) {
@@ -1115,7 +1143,7 @@
          * Determines the zip code nearest to the provided latitude and
          * longitude, and searches for Labs near that zip code.
          *
-         * @param  {object} geo                  the geolocation object
+         * @param  {Geocode} geo                  the geolocation object
          * @param  {string} geo.coords.latitude  the latitude of the geolocation
          * @param  {string} geo.coords.longitude the longitude of the geolocation
          */
@@ -1131,7 +1159,7 @@
 
         /**
          * called on ajax success, submits zipcode into input field
-         * @param  {object} data ajax results from google api
+         * @param  {{results[]}} data ajax results from google api
          */
         function _geolocateSuccess(data) {
 
@@ -1166,17 +1194,16 @@
         /**
          * Gets the postal code of an address.
          *
-         * @param {object} address the address to analyze.
-         * @param {array} address.address_components
-         * @return {string} the postal code, or null if the address does not have a postal code.
+         * @param {{address_components: {long_name: string}[]}} addresses the address to analyze.
+         * @return {string|null} the postal code, or null if the address does not have a postal code.
          */
-        function _getPostalCode (address) {
-          if (!Array.isArray(address.address_components)) {
+        function _getPostalCode (addresses) {
+          if (!Array.isArray(addresses.address_components)) {
             return null;
           }
 
           // get the first address_component that is a postal code
-          var postalCodeComponents = address.address_components.filter(_isPostalCode);
+          var postalCodeComponents = addresses.address_components.filter(_isPostalCode);
           if (!postalCodeComponents.length) {
             return null;
           }
@@ -1198,9 +1225,9 @@
       /**
        * Private event handler for when a search is successful.
        *
-       * @todo improve docs. Provide full structure info on these array of objects
-       * @param {Array} resultsLabs
-       * @param {Array} resultsPhlebotomists
+       * @param {LabResult[]}          resultsLabs
+       * @param {PhlebotomistResult[]} resultsPhlebotomists
+       * @param {Geocode}              geocode
        * @private
        */
       this._onSearchSuccess = function(resultsLabs, resultsPhlebotomists, geocode) {
@@ -1241,7 +1268,7 @@
       };
 
       /**
-       * This functionwill handle clean up after searches regardless of server response.
+       * This function will handle clean up after searches regardless of server response.
        * @private
        */
       this._onSearchComplete = function() {
@@ -1252,6 +1279,208 @@
 
       return this;
     }
-
   });
 })(jQuery);
+
+/**********************         Events          *****************************/
+/**
+ * Define generic dom event
+ *
+ * @event document#generic
+ * @type {object}
+ * @property {int} keyCode
+ * @property {Object} target
+ * @property {function} preventDefault
+ */
+
+/**********************    Ajax Response Type    *****************************/
+/**
+ * Define the Day type for the Days object
+ *
+ * @typedef {Object} Day
+ * @property {string} open
+ * @property {string} close
+ * @property {string} [lunch_start]
+ * @property {string} [lunch_stop]
+ */
+
+/**
+ * Define the Days type for Lab object
+ * @typedef {Object} Days
+ * @property {Day} Monday
+ * @property {Day} Tuesday
+ * @property {Day} Wednesday
+ * @property {Day} Thursday
+ * @property {Day} Friday
+ * @property {Day} [Saturday]
+ */
+
+/**
+ * Define the lab type
+ *
+ * @typedef {Object} Lab
+ * @property {string} address
+ * @property {string} center_address
+ * @property {string} center_city
+ * @property {string} center_country
+ * @property {float}  center_distance
+ * @property {string} center_hours
+ * @property {string} center_id
+ * @property {string} center_latitude
+ * @property {string} center_longitude
+ * @property {string} center_network
+ * @property {string} center_state
+ * @property {string} center_zip
+ * @property {string} city
+ * @property {string} country
+ * @property {string} deleted_at
+ * @property {string} distance
+ * @property {string} fax_number
+ * @property {string} geocode_address
+ * @property {string} hours
+ * @property {string} import_hash
+ * @property {string} imported_hours
+ * @property {string} is_northeast
+ * @property {string} lab_title
+ * @property {string} latitude
+ * @property {string} longitude
+ * @property {google.maps.Marker} marker
+ * @property {string} max_distance
+ * @property {string} network
+ * @property {string} number
+ * @property {string} phoneNumber
+ * @property {string} state
+ * @property {Days}   structured_hours
+ * @property {string} type
+ * @property {string} zipcode
+ */
+
+/**
+ * Define the phlebotomist result type
+ * @typedef {Object} PhlebotomistResult
+ * @property {boolean} hasPhlebotomists
+ * @property {string}  latitude
+ * @property {string}  longitude
+ */
+
+/**
+ * Define the Lab result type
+ * @typedef {Object} LabResult
+ * @property {Lab[]}  labs
+ * @property {string} latitude
+ * @property {string} longitude
+ * @property {int}    resultCount
+ */
+
+/**
+ * Define the GeoCode result type.
+ * @typedef {Object} Geocode
+ * @property {string} countryCode
+ * @property {float}  latitude
+ * @property {float}  longitude
+ * @property {google.maps.Marker} marker
+ */
+
+/**********************  External: Google Map API   ***************************/
+
+/**
+ * Define the Google Map API external resource
+ * @external GoogleMapApi
+ * @see {@link https://developers.google.com/maps/documentation/javascript/reference}
+ */
+
+/******************************************
+ * @class google
+ * @property {Object} maps
+ * @memberOf GoogleMapApi
+ *****************************************/
+
+/******************************************
+ * @function maps
+ * @property {{BOUNCE:1, Co:4, DROP:2, Eo:3}} Animation
+ * @property {{ERROR: 'ERROR', OK: 'OK'}} GeocoderStatus
+ * @function {Object} LatLngBounds
+ * @property {{ROADMAP: 'roadmap'}} MapTypeId
+ * @memberOf google
+ *****************************************/
+
+/******************************************
+ * @function Marker
+ * @memberOf google.maps
+ * @see {@link https://developers.google.com/maps/documentation/javascript/reference#Marker}
+ */
+
+/**
+ * @function setIcon
+ * @memberOf google.maps.Marker
+ */
+
+/**
+ * @function setMap
+ * @memberOf google.maps.Marker
+ */
+
+/**
+ * @function setAnimation
+ * @memberOf google.maps.Marker
+ ******************************************/
+
+/******************************************
+ * @function Map
+ * @memberOf google.maps
+ * @see {@link https://developers.google.com/maps/documentation/javascript/reference#Map}
+ */
+
+/**
+ * @function fitBounds
+ * @memberOf google.maps.Map
+ */
+
+/**
+ * @function getZoom
+ * @memberOf google.maps.Map
+ * /
+
+/**
+ * @function setCenter
+ * @memberOf google.maps.Map
+ */
+
+/**
+ * @function setMapTypeId
+ * @memberOf google.maps.Map
+ */
+
+/**
+ * @function setZoom
+ * @memberOf google.maps.Map
+ ******************************************/
+
+/******************************************
+ * @function Geocoder
+ * @memberOf google.maps
+ * @see {@link https://developers.google.com/maps/documentation/javascript/reference#Geocoder}
+ */
+
+/**
+ * @function geocode
+ * @memberOf google.maps.Geocoder
+ ******************************************/
+
+/******************************************
+ * @function LatLng
+ * @memberOf google.maps
+ * @see {@link https://developers.google.com/maps/documentation/javascript/reference#LatLng}
+ ******************************************/
+
+/******************************************
+ * @function LatLngBounds
+ * @memberOf google.maps
+ * @see {@link https://developers.google.com/maps/documentation/javascript/reference#LatLngBounds}
+ ******************************************/
+
+/******************************************
+ * @function InfoWindow
+ * @memberOf google.maps
+ * @see {@link https://developers.google.com/maps/documentation/javascript/reference#InfoWindow}
+ ******************************************/
