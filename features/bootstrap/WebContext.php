@@ -5,6 +5,7 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\FlexibleMink\Context\FlexibleContext;
 use Behat\FlexibleMink\Context\StoreContext;
 use Behat\FlexibleMink\PseudoInterface\MinkContextInterface;
+use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ExpectationException;
 use features\contexts\MapContext;
 

@@ -15,6 +15,6 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-$app->get('/api', function () use ($app) {
-    echo 'hello world';
-});
+$app->get('/saturdayFilter/geocode', 'SaturdayFilterController@geocode');
+$app->get('/saturdayFilter/labs/nearCoords', 'SaturdayFilterController@labsNearCoords');
+$app->get('/saturdayFilter/phlebotomists/nearCoords', 'SaturdayFilterController@phlebotomistsNearCoords');

@@ -26,6 +26,7 @@
        * @property {InputGroupSetting}       inputGroup       Search form setting.
        * @property {GoogleMapsSetting}       googleMaps       Google map API setting.
        * @property {SearchSetting}           search           Search preference setting.
+       * @property {DayOfWeekFilterSetting}  dayOfWeekFilter  Saturday hours filter setting.
        * @property {UserLocationSetting}     userLocation     User current location setting.
        */
       this.settings = {
@@ -163,6 +164,22 @@
           icon: 'fa fa-map-marker',
           msg: 'Or use current location'
         },
+        /**
+         * Setting for the radio buttons to filter labs with saturday hours.
+         *
+         * @typedef {Object} DayOfWeekFilterSetting
+         * @property {string}  radioAllText  The label of the radio button to show all lab.
+         * @property {string}  radioDaysText The label of the radio button to show labs with saturday hours.
+         * @property {boolean} showOption    Enable/disable the saturday filter feature.
+         */
+        dayOfWeekFilter: {
+          showOption: false,
+          radioAllText: 'All',
+          radioDaysText: {
+              6 : 'Have Saturday Hours'
+          },
+          dayOnly: null
+        },
         emptyResultsMessage: '',
         noResultsMessage: '',
         cannotGeolocateMessage: '',
@@ -242,6 +259,12 @@
           _constructUserLocation(settings.userLocation);
         } else {
           $('[data-findalab-user-location]').remove();
+        }
+
+        if (settings.dayOfWeekFilter.showOption) {
+          self._constructDayOfWeekFilter(settings.dayOfWeekFilter);
+        } else {
+          $('[data-findalab-day-filter]').remove();
         }
 
         this.fadeIntoView();
@@ -620,6 +643,24 @@
         self.on('click', '[data-findalab-user-location]', _onFindLocationSubmit);
       };
 
+      /**
+       * Construct the day of week filter option.
+       *
+       * @param {DayOfWeekFilterSetting} dayOfWeekObject
+       * @private
+       */
+      this._constructDayOfWeekFilter = function (dayOfWeekObject) {
+        var container = this.find('[data-findalab-day-filter]');
+        container.append('<label><input type="radio" name="day-of-week-filter" value="" checked>'
+          + dayOfWeekObject.radioAllText + '</label>');
+        for (var day in dayOfWeekObject.radioDaysText) {
+          if (dayOfWeekObject.radioDaysText.hasOwnProperty(day)) {
+          container.append('<label><input type="radio" name="day-of-week-filter" value="' + day + '">'
+            + dayOfWeekObject.radioDaysText[day] + '</label>');
+          }
+        }
+        this.find('[data-findalab-day-filter]').on('change', this._onDayOfWeekFilterChanged);
+      };
 
       /**
        * Construct search button, fields and text.
@@ -725,8 +766,8 @@
       /**
        * Search the collection centers.
        *
-       * @param {object} geocode             The geocode to search near
-       * @param {string} [country]             The country value
+       * @param {object} geocode   The geocode to search near
+       * @param {string} [country] The country value
        * @private
        */
       this._searchCollectionCenters = function(geocode, country) {
@@ -786,7 +827,8 @@
             countryCode: country,
             filterNetwork: self.settings.searchFunction.excludeNetworks,
             labCount: self.settings.searchFunction.limit,
-            network: self.settings.searchFunction.onlyNetwork
+            network: self.settings.searchFunction.onlyNetwork,
+            dayOnly: self.settings.dayOfWeekFilter.showOption ? self.settings.dayOfWeekFilter.dayOnly : ''
           }, geocode)
         });
       };
@@ -1275,6 +1317,21 @@
         this.find('[data-findalab-search-button]').html(this.settings.search.buttonText);
       };
 
+      /**
+       * The event handler for day filter radio button is changed.
+       *
+       * @param {document#event:generic} event
+       * @listens document#event:generic
+       * @private
+       */
+      this._onDayOfWeekFilterChanged = function(event) {
+        self.settings.dayOfWeekFilter.dayOnly = $(event.target).val();
+        var searchValue = self.find('[data-findalab-search-field]').val();
+        if (searchValue.length) {
+            self.find('[data-findalab-search-button]').click();
+        }
+      };
+
       this.construct(self.settings);
 
       return this;
@@ -1375,9 +1432,9 @@
 /**
  * Define the GeoCode result type.
  * @typedef {Object} Geocode
- * @property {string} countryCode
- * @property {float}  latitude
- * @property {float}  longitude
+ * @property {string}             countryCode
+ * @property {float}              latitude
+ * @property {float}              longitude
  * @property {google.maps.Marker} marker
  */
 
