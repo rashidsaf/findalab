@@ -51,6 +51,23 @@
   margin: 0;
   margin-bottom: 0.5rem; }
 
+.findalab__search__user-location {
+  background: transparent;
+  border: 0;
+  color: #3398db;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 0.5rem;
+  padding: 0;
+  text-decoration: underline; }
+  .findalab__search__user-location:hover {
+    cursor: pointer; }
+
+.findalab__search__day-filter {
+  margin-top: 16px; }
+  .findalab__search__day-filter label {
+    font-size: 14px; }
+
 .findalab__total {
   animation: fadeInOpacity 1s ease-in-out;
   animation-fill-mode: forwards;
@@ -187,18 +204,6 @@
 
 .findalab__hours__wrap {
   display: none; }
-
-.findalab__search__user-location {
-  background: transparent;
-  border: 0;
-  color: #3398db;
-  font-weight: 500;
-  line-height: 1;
-  margin-top: 0.5rem;
-  padding: 0;
-  text-decoration: underline; }
-  .findalab__search__user-location:hover {
-    cursor: pointer; }
 
 @keyframes fadeInOpacity {
   0% {

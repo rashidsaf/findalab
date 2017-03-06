@@ -651,12 +651,12 @@
        */
       this._constructDayOfWeekFilter = function (dayOfWeekObject) {
         var container = this.find('[data-findalab-day-filter]');
-        container.append('<label><input type="radio" name="day-of-week-filter" value="" checked>'
-          + dayOfWeekObject.radioAllText + '</label>');
+        container.append('<input type="radio" name="day-of-week-filter" id="dow-all" value="" checked>'
+          + '<label for="dow-all">' + dayOfWeekObject.radioAllText + '</label>');
         for (var day in dayOfWeekObject.radioDaysText) {
           if (dayOfWeekObject.radioDaysText.hasOwnProperty(day)) {
-          container.append('<label><input type="radio" name="day-of-week-filter" value="' + day + '">'
-            + dayOfWeekObject.radioDaysText[day] + '</label>');
+          container.append('<input type="radio" name="day-of-week-filter" id="dow-' + day + '" value="' + day + '">'
+            + '<label for="dow-' + day +'">' + dayOfWeekObject.radioDaysText[day] + '</label>');
           }
         }
         this.find('[data-findalab-day-filter]').on('change', this._onDayOfWeekFilterChanged);

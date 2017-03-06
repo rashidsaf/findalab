@@ -36,6 +36,10 @@ $findalab-radius: 6px !default;
 /// @type Color
 $findalab-search-background: #f9f9f9 !default;
 
+/// Font size for day filter
+/// @type Number
+$findalab-day-filter-text-size: 14px !default;
+
 /// Color for nav
 /// @type Color
 $findalab-nav-color: #3398db !default;
@@ -147,6 +151,29 @@ $findalab-user-location-font-weight: 500 !default;
 .findalab__search__desc {
   margin: 0;
   margin-bottom: 0.5rem;
+}
+
+.findalab__search__user-location {
+  background: transparent;
+  border: 0;
+  color: $findlab-user-location-color;
+  font-weight: $findalab-user-location-font-weight;
+  line-height: 1;
+  margin-top: 0.5rem;
+  padding: 0;
+  text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.findalab__search__day-filter {
+  margin-top: $findalab-padding;
+
+  label {
+    font-size: $findalab-day-filter-text-size;
+  }
 }
 
 .findalab__total {
@@ -324,20 +351,6 @@ $findalab-user-location-font-weight: 500 !default;
   display: none;
 }
 
-.findalab__search__user-location {
-  background: transparent;
-  border: 0;
-  color: $findlab-user-location-color;
-  font-weight: $findalab-user-location-font-weight;
-  line-height: 1;
-  margin-top: 0.5rem;
-  padding: 0;
-  text-decoration: underline;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
 
 @keyframes fadeInOpacity {
   0% {
