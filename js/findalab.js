@@ -107,15 +107,16 @@
          * More setting for the search form.
          *
          * @typedef {Object} SearchSetting
-         * @property {string} buttonClass           The class name for the search button.
-         * @property {string} buttonLoadingText     The loading text when search button is clicked and waiting results.
-         * @property {string} buttonText            The label text of the search button.
-         * @property {string} inputGroupButtonClass The class name for the inputGroup button.
-         * @property {string} inputGroupClass       The class name for the inputgroup.
-         * @property {string} inputType             The type of the input form field.
-         * @property {string} inputGroupFieldClass  The class of the input form field.
-         * @property {string} placeholder           The place holder text when search criteria is not entered.
-         * @property {string} title                 The title of the search field.
+         * @property {string}  buttonClass           The class name for the search button.
+         * @property {string}  buttonLoadingText     The loading text when search button is clicked and waiting results.
+         * @property {string}  buttonText            The label text of the search button.
+         * @property {string}  inputGroupButtonClass The class name for the inputGroup button.
+         * @property {string}  inputGroupClass       The class name for the inputgroup.
+         * @property {string}  inputType             The type of the input form field.
+         * @property {string}  inputGroupFieldClass  The class of the input form field.
+         * @property {string}  placeholder           The place holder text when search criteria is not entered.
+         * @property {boolean} showDescription       Show the search description or not.
+         * @property {string}  title                 The title of the search field.
          */
         search: {
           title: 'Test Centers',
@@ -126,7 +127,8 @@
           inputGroupClass: null,
           inputGroupFieldClass: null,
           placeholder: 'Enter your zip',
-          inputType: 'text'
+          inputType: 'text',
+          showDescription: true
         },
         /**
          * Setting for in-home collection feature.
@@ -680,7 +682,9 @@
         this.find('[data-findalab-inputgroup-field]').addClass(inputGroupObject.field);
         this.find('[data-findalab-inputgroup-button]').addClass(inputGroupObject.button);
         this.find('[data-findalab-search-title]').html(searchObject.title);
-        this.find('[data-findalab-search-desc]').html(self.searchDesc);
+        if (searchObject.showDescription) {
+          this.find('[data-findalab-search-desc]').html(self.searchDesc);
+        }
       };
 
       /**
