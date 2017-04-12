@@ -43,9 +43,15 @@
          var findalab;
          $('#findalab').load('/template/findalab.html', function() {
             findalab = $(this).find('.findalab').findalab({
-              baseURL: 'https://findalab.local/fixtures/simple-mockups',
+              baseURL: '/fixtures/simple-mockups',
               userLocation : {
-              showOption: true
+                showOption: true,
+                icon: 'fa fa-map-marker',
+                msg: 'Or use current location',
+                loading: {
+                  icon: 'fa fa-spin fa-spinner',
+                  msg: 'Searching current location...'
+                }
             }
           });
          });
