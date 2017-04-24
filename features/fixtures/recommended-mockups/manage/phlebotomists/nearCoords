@@ -1,0 +1,158 @@
+{
+  "labs": [
+    {
+      "number": "5867",
+      "address": "23816 Hwy 59 North",
+      "geocode_address": "",
+      "city": "Kingwood",
+      "state": "TX",
+      "zipcode": "77339",
+      "hours": "M-F 7:00 am-6:00 pm",
+      "latitude": "30.0527960000",
+      "longitude": "-95.2559850000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": "2811111111",
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "Stick & Poke Co.",
+      "country": "US",
+      "distance": "2.2097600582310806",
+      "center_id": "5867",
+      "center_address": "23816 Hwy 59 North",
+      "center_state": "TX",
+      "center_city": "Kingwood",
+      "center_zip": "77339",
+      "center_hours": "M-F 7:00 am-6:00 pm",
+      "center_latitude": "30.0527960000",
+      "center_longitude": "-95.2559850000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 2.2097600582311,
+      "network_name": "Quest Diagnostics",
+      "max_distance": null
+    },
+    {
+      "number": "13",
+      "address": "201 KINGWOOD MEDICAL DR #A100",
+      "geocode_address": "201 KINGWOOD MEDICAL DR #A100",
+      "city": "KINGWOOD",
+      "state": "TX",
+      "zipcode": "77339",
+      "hours": "M-F  7:30-4:30PM Sat 8AM - 12PM",
+      "latitude": "30.0470049000",
+      "longitude": "-95.2569061000",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": "2811111112",
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "Houston Phlebotomists Inc",
+      "country": "US",
+      "distance": "2.2505084601543994",
+      "center_id": "13",
+      "center_address": "201 Kingwood Medical Dr #a100",
+      "center_state": "TX",
+      "center_city": "Kingwood",
+      "center_zip": "77339",
+      "center_hours": "M-F  7:30-4:30PM Sat 8AM - 12PM",
+      "center_latitude": "30.0470049000",
+      "center_longitude": "-95.2569061000",
+      "center_network": "Labcorp",
+      "center_country": "US",
+      "center_distance": 2.2505084601544,
+      "network_name": "LabCorp",
+      "max_distance": null,
+      "structured_hours": {
+        "Monday": {
+          "open": "7:30 AM",
+          "close": "4:30 PM"
+        },
+        "Tuesday": {
+          "open": "7:30 AM",
+          "close": "4:30 PM"
+        },
+        "Wednesday": {
+          "open": "7:30 AM",
+          "close": "4:30 PM"
+        },
+        "Thursday": {
+          "open": "7:30 AM",
+          "close": "4:30 PM"
+        },
+        "Friday": {
+          "open": "7:30 AM",
+          "close": "4:30 PM"
+        },
+        "Saturday": {
+          "open": "8:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "number": "2530",
+      "address": "1213 Hermann Drive Suite 120",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77004",
+      "hours": "M-Th 8:00 am-12:30 pm & 1:30 pm-5:00 pm|F 8:00 am-12:30 pm & 1:30 pm-3:00 pm",
+      "latitude": "29.7232630000",
+      "longitude": "-95.3884430000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": "2811111113",
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "24.664887317525004",
+      "center_id": "2530",
+      "center_address": "1213 Hermann Drive Suite 120",
+      "center_state": "TX",
+      "center_city": "Houston",
+      "center_zip": "77004",
+      "center_hours": "M-Th 8:00 am-12:30 pm & 1:30 pm-5:00 pm|F 8:00 am-12:30 pm & 1:30 pm-3:00 pm",
+      "center_latitude": "29.7232630000",
+      "center_longitude": "-95.3884430000",
+      "center_network": "National",
+      "center_country": "US",
+      "center_distance": 24.664887317525,
+      "network_name": "Quest Diagnostics",
+      "max_distance": null,
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "3:00 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:30 PM"
+        }
+      }
+    }
+  ]
+}

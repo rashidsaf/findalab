@@ -138,6 +138,24 @@
   .findalab__result:last-of-type {
     border-bottom: 0; }
 
+.findalab__result--recommended {
+  border-width: 3px;
+  border-color: #ffa500;
+  border-style: solid;
+  padding-top: 3px; }
+
+.findalab__result--recommended__label {
+  background-color: #ffa500;
+  color: #ffffff;
+  margin-left: -16px;
+  padding: 3px 5px; }
+
+.findalab__infowindow--recommended__label {
+  background-color: #ffa500;
+  color: #ffffff;
+  padding: 3px 5px;
+  font-size: 10px; }
+
 .findalab__nav {
   border: 2px solid #3398db;
   margin-top: 8px;
