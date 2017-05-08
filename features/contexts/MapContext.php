@@ -1,7 +1,9 @@
 <?php namespace features\contexts;
 
 use Behat\FlexibleMink\PseudoInterface\MinkContextInterface;
+use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ExpectationException;
+use Exception;
 
 /**
  * Behat context for testing findalab map content.
@@ -31,5 +33,48 @@ trait MapContext
         if (count($pins) != $number) {
             throw new ExpectationException("Expected $number pins, but found " . count($pins) . ', instead.', $this->getSession());
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @When /^I click on the "(?P<title>[^"]*)" marker/
+     */
+    public function clickMarkerByTitle($title)
+    {
+        /** @var NodeElement $marker */
+        $marker = $this->getSession()->getPage()->find('css', 'div[title="' . $title . '"]');
+
+        if (!$marker) {
+            throw new Exception("Marker \"$title\" not found on map");
+        }
+
+        $marker->click();
+    }
+
+
+    /**
+     * {@inheritdoc}
+     *
+     * @Then /^"(?P<title>[^"]*)" should (?:|(?P<not>not ))be in the viewport of search result$/
+     */
+    public function assertLabResultVisible($not = null, $title)
+    {
+        $labTitles = $this->getSession()->getPage()->findAll('css', '[data-findalab-result-title]');
+
+        /** @var NodeElement $labTitle */
+        foreach ($labTitles as $labTitle) {
+            if ($labTitle->getText() == $title) {
+                if ($not && $labTitle->isVisible()) {
+                    throw new Exception("Lab \"$title\" should not be visible");
+                }
+                if (!$not && !$labTitle->isVisible()) {
+                    throw new Exception("Lab \"$title\" should be visible");
+                }
+
+                return true;
+            }
+        }
+        throw new Exception("Lab \"$title\" not exist in the search result.");
     }
 }

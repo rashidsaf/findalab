@@ -999,7 +999,8 @@
         vMarker = new google.maps.Marker({
           map: self.settings.googleMaps.map,
           icon: iconMarker,
-          position: location
+          position: location,
+          title: lab.lab_title
         });
 
         self.settings.googleMaps.markers.push(vMarker);
@@ -1007,10 +1008,16 @@
         this.bounds.extend(location);
 
         var infoWindowContent = this._buildInfoWindowMarkerContent(lab);
+        var resultsDiv = $('.findalab__results');
 
         google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
           self.settings.googleMaps.infoWindow.setContent(infoWindowContent);
-
+          var labDiv = $('[data-lab-number=' + lab.number + ']');
+          var currentScrollYCoordinate = resultsDiv.scrollTop();
+          var labYCoordinate = labDiv.position().top;
+          var resultsDivYCoordinate = resultsDiv.position().top;
+          var scrollOffset = currentScrollYCoordinate - resultsDivYCoordinate + labYCoordinate;
+          resultsDiv.animate({scrollTop: scrollOffset}, 1000);
           // noinspection JSUnresolvedFunction
           self.settings.googleMaps.infoWindow.open(self.settings.googleMaps.map, vMarker);
         }, this));
@@ -1108,6 +1115,7 @@
          */
         $.each(labs, $.proxy(function(index, lab) {
           var $result = $resultTemplate.clone().removeAttr('data-template');
+          $result.attr('data-lab-number', lab.number);
           $result.data('id', index);
 
           if(this.checkRecommended) {
