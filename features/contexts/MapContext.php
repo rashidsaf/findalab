@@ -52,13 +52,12 @@ trait MapContext
         $marker->click();
     }
 
-
     /**
      * {@inheritdoc}
      *
      * @Then /^"(?P<title>[^"]*)" should (?:|(?P<not>not ))be in the viewport of search result$/
      */
-    public function assertLabResultVisible($not = null, $title)
+    public function assertLabResultVisible($not, $title)
     {
         $labTitles = $this->getSession()->getPage()->findAll('css', '[data-findalab-result-title]');
 

@@ -19,7 +19,7 @@ trait MapContextInterface
     /**
      * Clicks on the marker by its title.
      *
-     * @param string $title The title of the marker
+     * @param  string    $title The title of the marker
      * @throws Exception When marker not found
      */
     abstract public function clickMarkerByTitle($title);
@@ -27,10 +27,10 @@ trait MapContextInterface
     /**
      * Assert if the lab with title appears in the view port of search result.
      *
-     * @param null|string $not   If the lab should appear.
-     * @param string      $title The title of the lab.
+     * @param  null|string $not   If the lab should appear.
+     * @param  string      $title The title of the lab.
+     * @throws Exception   When Lab is not found in the search result.
      * @return bool
-     * @throws Exception  When Lab is not found in the search result.
      */
-    abstract public function assertLabResultVisible($not = null, $title);
+    abstract public function assertLabResultVisible($not, $title);
 }
