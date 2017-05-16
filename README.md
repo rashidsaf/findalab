@@ -136,3 +136,11 @@ If you want to watch the files and rebuild gulp on save, use the following comma
 ```bash
 $ gulp watch
 ````
+
+## Releases
+
+This project uses standard [semantic versioning](http://semver.org/). In order to publish a new version of the package, you have to do the following steps:
+
+1. Write your changes in `CHANGELOG.md` (please follow the pattern of the document) with your PR.
+2. Create a [new draft release](https://github.com/Medology/findalab/releases/new) using the merge commit from your PR and transfer the `CHANGELOG.md` information for this rlease in the appropriate version, title and description.
+3. Publish the release and update your project(s) using the appropriate package manager.
