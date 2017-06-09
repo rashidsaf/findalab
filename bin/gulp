@@ -1,8 +1,18 @@
-#!/bin/bash
-#
-docker run -it --rm \
-    --env-file "$(pwd)"/docker/.env \
-    -v $(pwd):/data \
-    -w /data \
-    node:6.4.0-slim \
-    node_modules/gulp/bin/gulp.js $@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT="$(cd "${DIR}"/../ && pwd)"
+
+. "${ROOT}"/docker/lib/docker_host_user_id.sh
+. "${ROOT}"/docker/lib/images.sh
+. "${DIR}"/lib/rm.sh
+. "${DIR}"/lib/tty.sh
+
+docker run \
+    -e LOCAL_USER_ID=$DOCKER_HOST_USER_ID \
+    -i${TTY} \
+    ${RM} \
+    --env-file "$ROOT"/docker/.env \
+    -v $(pwd):/workdir \
+    ${NODE_OWNER}/${NODE_REPO}:${NODE_TAG} \
+    node_modules/.bin/gulp "$@"

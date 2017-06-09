@@ -8,12 +8,11 @@ ROOT="$(cd "${DIR}"/../ && pwd)"
 . "${DIR}"/lib/rm.sh
 . "${DIR}"/lib/tty.sh
 
-docker run -i${TTY} ${RM} \
+docker run \
     -e LOCAL_USER_ID=$DOCKER_HOST_USER_ID \
     --env-file "$ROOT"/docker/.env \
-    -v ~/.cache:/home/user/.cache \
-    -v ~/.gitconfig:/home/user/.gitconfig \
-    -v ~/.ssh:/home/user/.ssh \
+    -i${TTY} \
+    ${RM} \
     -v $(pwd):/workdir \
     ${NODE_OWNER}/${NODE_REPO}:${NODE_TAG} \
-    node_modules/.bin/bower "$@"
+    node "$@"

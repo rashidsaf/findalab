@@ -4,6 +4,10 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 . "${DIR}"/bin/lib/exitCheck.sh
 
+# Initialize Docker .env
+"${DIR}"/bin/init/init_docker_env.sh
+exitCheck $?
+
 echo "Checking Lumen .env file..."
 if [ ! -e "$DIR"/dev/.env ]; then
     echo "No .env file found. Creating from .env.example..."
@@ -21,7 +25,7 @@ echo "Installing Composer dependencies..."
 exitCheck $?
 
 echo "Installing NPM dependencies..."
-"$DIR"/bin/npm install
+"$DIR"/bin/yarn
 exitCheck $?
 
 echo "Installing bower dependencies..."
