@@ -57,7 +57,7 @@ trait MapContext
      *
      * @Then /^"(?P<title>[^"]*)" should (?:|(?P<not>not ))be in the viewport of search result$/
      */
-    public function assertLabResultVisible($not, $title)
+    public function assertLabResultVisible($title, $not = null)
     {
         $labTitles = $this->getSession()->getPage()->findAll('css', '[data-findalab-result-title]');
 

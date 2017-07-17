@@ -647,8 +647,8 @@
 
           infoWindowContent +=
               '<h6>' + lab.lab_title + '</h6>' +
-              '<p>' + lab.center_address + '<br>' +
-              lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip +
+              '<p>' + lab.address + '<br>' +
+              lab.city + ', ' + lab.state + ' ' + lab.zipcode +
               '</p>';
 
           if (self.settings.lab.hasButton) {
@@ -657,14 +657,14 @@
                   'data-findalab-result-button ' +
                   'class="' + self.settings.lab.buttonClass + '" ' +
                   'href="#" ' +
-                  'data-id="' + lab.center_id + '" ' +
-                  'data-address="' + lab.center_address + '" ' +
-                  'data-city="' + lab.center_city + '" ' +
-                  'data-state="' + lab.center_state + '" ' +
-                  'data-zipcode="' + lab.center_zip + '" ' +
+                  'data-id="' + lab.number + '" ' +
+                  'data-address="' + lab.address + '" ' +
+                  'data-city="' + lab.city + '" ' +
+                  'data-state="' + lab.state + '" ' +
+                  'data-zipcode="' + lab.zipcode + '" ' +
                   'data-network="' + lab.network + '" ' +
                   'data-title="' + lab.lab_title + '" ' +
-                  'data-country="' + lab.center_country + '" ' +
+                  'data-country="' + lab.country + '" ' +
                   'data-fax_number="' + lab.fax_number + '"' +
                   '>' +
                   self.settings.lab.buttonText +
@@ -992,7 +992,7 @@
        * @private
        */
       this._showMarker = function(lab) {
-        var location = this._buildLatLong(lab.center_latitude, lab.center_longitude);
+        var location = this._buildLatLong(lab.latitude, lab.longitude);
         var iconMarker = this._buildIconMarkerNetwork(lab.network);
         var vMarker;
 
@@ -1129,8 +1129,8 @@
           }
 
           $result.find('[data-findalab-result-address]').html(
-            lab.center_address + '<br>' +
-            lab.center_city + ', ' + lab.center_state + ' ' + lab.center_zip
+            lab.address + '<br>' +
+            lab.city + ', ' + lab.state + ' ' + lab.zipcode
           );
           $result.find('[data-findalab-result-distance]').html(
             '<strong>Distance:</strong> ' + this._parseDistance(lab)
@@ -1138,11 +1138,11 @@
 
           if (self.settings.lab.hasButton) {
             $result.find('[data-findalab-result-button]')
-              .attr('data-id', lab.center_id)
-              .attr('data-address', lab.center_address)
-              .attr('data-city', lab.center_city)
-              .attr('data-state', lab.center_state)
-              .attr('data-zipcode', lab.center_zip)
+              .attr('data-id', lab.number)
+              .attr('data-address', lab.address)
+              .attr('data-city', lab.city)
+              .attr('data-state', lab.state)
+              .attr('data-zipcode', lab.zipcode)
               .attr('data-network', lab.network)
               .attr('data-title', lab.lab_title)
               .attr('data-fax_number', lab.fax_number)
@@ -1156,7 +1156,7 @@
           if (!lab.structured_hours) {
             $result.find('[data-findalab-result-structured-hours]').remove();
             $result.find('[data-findalab-result-simple-hours]').html(
-              '<strong>Hours:</strong> ' + lab.center_hours
+              '<strong>Hours:</strong> ' + lab.hours
             );
           } else {
             $result.find('[data-findalab-result-simple-hours]').remove();
@@ -1221,13 +1221,13 @@
        */
       this._parseDistance = function (labData) {
         var parsedDistance = '';
-        switch (labData.center_country) {
+        switch (labData.country) {
           case 'CA' :
-            parsedDistance = (labData.center_distance / 0.62137).toFixed(2) + 'km.';
+            parsedDistance = (parseFloat(labData.distance) / 0.62137).toFixed(2) + 'km.';
             break;
           case 'US' :
           default:
-            parsedDistance = labData.center_distance.toFixed(2) + 'mi.';
+            parsedDistance = parseFloat(labData.distance).toFixed(2) + 'mi.';
             break;
         }
         return parsedDistance;
@@ -1512,17 +1512,6 @@
  *
  * @typedef {Object} Lab
  * @property {string} address
- * @property {string} center_address
- * @property {string} center_city
- * @property {string} center_country
- * @property {float}  center_distance
- * @property {string} center_hours
- * @property {string} center_id
- * @property {string} center_latitude
- * @property {string} center_longitude
- * @property {string} center_network
- * @property {string} center_state
- * @property {string} center_zip
  * @property {string} city
  * @property {string} country
  * @property {string} deleted_at
