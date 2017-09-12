@@ -8,6 +8,7 @@ use Behat\FlexibleMink\PseudoInterface\MinkContextInterface;
 use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ExpectationException;
 use features\contexts\MapContext;
+use features\contexts\MapResultsContext;
 
 /**
  * Defines application features from the context of a Web Page.
@@ -15,6 +16,7 @@ use features\contexts\MapContext;
 class WebContext extends FlexibleContext implements Context, SnippetAcceptingContext
 {
     use MapContext;
+    use MapResultsContext;
     use MinkContextInterface;
     use StoreContext;
 

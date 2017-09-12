@@ -646,9 +646,10 @@
           }
 
           infoWindowContent +=
-              '<h6>' + lab.lab_title + '</h6>' +
+              '<h6>' + lab.title + '</h6>' +
               '<p>' + lab.address + '<br>' +
-              lab.city + ', ' + lab.state + ' ' + lab.zipcode +
+              (lab.address_2 !== '' ? lab.address_2 + '<br>' : '') +
+              lab.city + ', ' + lab.state + ' ' + lab.zip_code +
               '</p>';
 
           if (self.settings.lab.hasButton) {
@@ -657,13 +658,14 @@
                   'data-findalab-result-button ' +
                   'class="' + self.settings.lab.buttonClass + '" ' +
                   'href="#" ' +
-                  'data-id="' + lab.number + '" ' +
+                  'data-id="' + lab.id + '" ' +
                   'data-address="' + lab.address + '" ' +
+                  'data-address_2="' + lab.address_2 + '" ' +
                   'data-city="' + lab.city + '" ' +
                   'data-state="' + lab.state + '" ' +
-                  'data-zipcode="' + lab.zipcode + '" ' +
+                  'data-zip_code="' + lab.zip_code + '" ' +
                   'data-network="' + lab.network + '" ' +
-                  'data-title="' + lab.lab_title + '" ' +
+                  'data-title="' + lab.title  + '" ' +
                   'data-country="' + lab.country + '" ' +
                   'data-fax_number="' + lab.fax_number + '"' +
                   '>' +
@@ -1000,7 +1002,7 @@
           map: self.settings.googleMaps.map,
           icon: iconMarker,
           position: location,
-          title: lab.lab_title
+          title: lab.title
         });
 
         self.settings.googleMaps.markers.push(vMarker);
@@ -1012,7 +1014,7 @@
 
         google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
           self.settings.googleMaps.infoWindow.setContent(infoWindowContent);
-          var labDiv = $('[data-lab-number=' + lab.number + ']');
+          var labDiv = $('[data-lab-id=' +  lab.id + ']');
           var currentScrollYCoordinate = resultsDiv.scrollTop();
           var labYCoordinate = labDiv.position().top;
           var resultsDivYCoordinate = resultsDiv.position().top;
@@ -1083,6 +1085,27 @@
       };
 
       /**
+       * Sets new property names.
+       *
+       * @param   {Lab}  lab  The lab network
+       * @private
+       */
+      this._fixLab = function (lab) {
+          if (!lab.id && lab.number) {
+            lab.id = lab.number;
+          }
+          if (!lab.title && lab.lab_title) {
+            lab.title = lab.lab_title;
+          }
+          if (!lab.zip_code && lab.zipcode) {
+            lab.zip_code = lab.zipcode;
+          }
+          if (!lab.address_2) {
+            lab.address_2 = '';
+          }
+      };
+
+      /**
        * Adds the css class and text for recommended lab.
        *
        * @param   {string} network_name  The lab network
@@ -1114,23 +1137,25 @@
          * @param {Lab} lab
          */
         $.each(labs, $.proxy(function(index, lab) {
+          this._fixLab(lab);
           var $result = $resultTemplate.clone().removeAttr('data-template');
-          $result.attr('data-lab-number', lab.number);
+          $result.attr('data-lab-id', lab.id);
           $result.data('id', index);
 
           if(this.checkRecommended) {
             this._recommendedUI(lab.network, $result);
           }
 
-          if (lab.lab_title) {
-            $result.find('[data-findalab-result-title]').html(lab.lab_title);
+          if (lab.title) {
+            $result.find('[data-findalab-result-title]').html(lab.title);
           } else {
             $result.find('[data-findalab-result-title]').remove();
           }
 
           $result.find('[data-findalab-result-address]').html(
             lab.address + '<br>' +
-            lab.city + ', ' + lab.state + ' ' + lab.zipcode
+            (!lab.address_2 ? '' : lab.address_2 + '<br>') +
+            lab.city + ', ' + lab.state + ' ' + lab.zip_code
           );
           $result.find('[data-findalab-result-distance]').html(
             '<strong>Distance:</strong> ' + this._parseDistance(lab)
@@ -1138,13 +1163,14 @@
 
           if (self.settings.lab.hasButton) {
             $result.find('[data-findalab-result-button]')
-              .attr('data-id', lab.number)
+              .attr('data-id', lab.id)
               .attr('data-address', lab.address)
+              .attr('data-address_2', lab.address_2)
               .attr('data-city', lab.city)
               .attr('data-state', lab.state)
-              .attr('data-zipcode', lab.zipcode)
+              .attr('data-zip_code', lab.zip_code)
               .attr('data-network', lab.network)
-              .attr('data-title', lab.lab_title)
+              .attr('data-title', lab.title)
               .attr('data-fax_number', lab.fax_number)
               .addClass(self.settings.lab.buttonClass)
               .html(self.settings.lab.buttonText);
@@ -1325,7 +1351,7 @@
         }
 
         /**
-         * called on ajax success, submits zipcode into input field
+         * called on ajax success, submits zip code into input field
          * @param  {{results[]}} data ajax results from google api
          */
         function _geolocateSuccess(results) {
@@ -1512,6 +1538,7 @@
  *
  * @typedef {Object} Lab
  * @property {string} address
+ * @property {string} address_2
  * @property {string} city
  * @property {string} country
  * @property {string} deleted_at
@@ -1519,6 +1546,7 @@
  * @property {string} fax_number
  * @property {string} geocode_address
  * @property {string} hours
+ * @property {string} id
  * @property {string} import_hash
  * @property {string} imported_hours
  * @property {string} is_northeast
@@ -1532,8 +1560,10 @@
  * @property {string} phoneNumber
  * @property {string} state
  * @property {Days}   structured_hours
+ * @property {string} title
  * @property {string} type
  * @property {string} zipcode
+ * @property {string} zip_code
  */
 
 /**

@@ -29,3 +29,29 @@ Feature: Find Collection Centers
      When I wait 4 seconds
       And I press "Or use current location"
      Then I should see "23816 Hwy 59 North"
+
+  Scenario: View Lab information
+    Given I am on "simple.php"
+      And I fill in "Enter your zip" with "77057"
+      And I press "Search"
+     Then I should see the following lab in the results:
+        | 23816 Hwy 59 North |
+        | Kingwood, TX 77339 |
+
+  Scenario: View Lab information with 2nd address line
+    Given I am on "view-details.php"
+      And I fill in "Enter your zip" with "77057"
+      And I press "Search"
+     Then I should see the following lab in the results:
+        | 23816 Hwy 59 North |
+        | Suite 200          |
+        | Kingwood, TX 77339 |
+
+  Scenario: View Lab information with 2nd address line
+    Given I am on "view-details-new.php"
+      And I fill in "Enter your zip" with "77057"
+      And I press "Search"
+     Then I should see the following lab in the results:
+        | 23816 Hwy 59 North |
+        | Suite 200          |
+        | Kingwood, TX 77339 |
