@@ -74,6 +74,7 @@ trait MapContext
                 return true;
             }
         }
+
         throw new Exception("Lab \"$title\" not exist in the search result.");
     }
 }
