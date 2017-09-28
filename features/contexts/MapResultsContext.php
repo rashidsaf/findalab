@@ -1,5 +1,6 @@
 <?php namespace features\contexts;
 
+use Behat\FlexibleMink\PseudoInterface\SpinnerContextInterface;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Exception\ExpectationException;
 use InvalidArgumentException;
@@ -11,6 +12,7 @@ trait MapResultsContext
 {
     // Implements
     use MapResultsContextInterface;
+    use SpinnerContextInterface;
 
     /**
      * {@inheritdoc}
@@ -25,11 +27,13 @@ trait MapResultsContext
 
         $lines = implode('<br />', $table->getColumn(0));
 
-        $session = $this->getSession();
-        $page = $session->getPage()->getContent();
+        $this->waitFor(function () use ($lines) {
+            $session = $this->getSession();
+            $page = $session->getPage()->getContent();
 
-        if (!str_contains($page, $lines)) {
-            throw new ExpectationException('Could not find result on page', $session);
-        }
+            if (!str_contains($page, $lines)) {
+                throw new ExpectationException('Could not find result on page', $session);
+            }
+        });
     }
 }

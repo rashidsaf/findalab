@@ -22,7 +22,6 @@
        * Settings for Lab Search.
        *
        * @typedef {object} FindalabSettings
-       * @property {InHomeCollectionSetting} inHomeCollection In-home collection setting.
        * @property {InputGroupSetting}       inputGroup       Search form setting.
        * @property {GoogleMapsSetting}       googleMaps       Google map API setting.
        * @property {SearchSetting}           search           Search preference setting.
@@ -32,8 +31,7 @@
       this.settings = {
         baseURL: 'http://findalab.local/',
         searchURL: {
-          labs: 'labs',
-          phlebotomists: 'phlebotomists'
+          labs: 'labs'
         },
         /**
          * Setting for the google maps API.
@@ -43,11 +41,10 @@
          * @property {float}                  defaultLong                Default longitude.
          * @property {google.maps.Geocoder}   geoCoder                   Define the Geocoder to be used.
          * @property {google.maps.InfoWindow} infoWindow                 Define the Info Window to be attached.
-         * @property {string}                 ihcMarkerFillColor         Define the fill color of In-home collection marker.
          * @property {int}                    initialZoom                Define the initial zooming level.
          * @property {string}                 labMarkerFillColor         Define the fill color of lab marker.
          * @property {google.maps.Map}        map                        Define the Map to be used.
-         * @property {string}                 markerHoverFillColor       Define the fill color when lab/ihc is hovered.
+         * @property {string}                 markerHoverFillColor       Define the fill color when lab is hovered.
          * @property {google.maps.Marker[]}   markers                    The initial Markers.
          * @property {string}                 recommendedMarkerFillColor Define the fill color of recommended lab marker.
          * @property {string}                 resultsZoom                The zoom level for when there are search results.
@@ -62,7 +59,6 @@
           markers: [],
           resultsZoom: 10,
           labMarkerFillColor: '#3398db',
-          ihcMarkerFillColor: '#73c6eb',
           recommendedMarkerFillColor: '#ffa500',
           markerHoverFillColor: '#eb4d4c'
         },
@@ -133,29 +129,6 @@
           placeholder: 'Enter your zip',
           inputType: 'text',
           showDescription: true
-        },
-        /**
-         * Setting for in-home collection feature.
-         *
-         * @typedef {Object} InHomeCollectionSetting
-         * @property {string}  button        The label text for the select button.
-         * @property {string}  buttonClass   The class name for the select button.
-         * @property {string}  description   The description of in-home feature.
-         * @property {string}  notice        The notice of in-home feature.
-         * @property {boolean} showComponent Enable/disable the in-home collection feature.
-         * @property {string}  title         The title of the in-home collection feature.
-         * @property {string}  timeTitle     The title of the time section.
-         * @property {string}  timeDetails   The detail of the time section.
-         */
-        inHomeCollection: {
-          showComponent: true,
-          title: 'In-Home Collection',
-          description: 'Get the lab to come to you. Schedule an in-home appointment with a Lab Collection Specialist',
-          timeTitle: 'Available:',
-          timeDetails: '7:00am - 8:00pm, 7 days a week',
-          button: 'Select &amp; Continue',
-          buttonClass: 'button',
-          notice: '*You will schedule your appointment during checkout.'
         },
         /**
          * Setting for the user location detection feature.
@@ -233,9 +206,6 @@
           strokeWeight: 2
         };
 
-      this.ihcMapMarker = $.extend(true, {}, this.mapMarker);
-      this.ihcMapMarker.fillColor = self.settings.googleMaps.ihcMarkerFillColor;
-
       this.mapMarkerHover = $.extend(true, {}, this.mapMarker);
       this.mapMarkerHover.fillColor = self.settings.googleMaps.markerHoverFillColor;
 
@@ -257,8 +227,6 @@
        */
       this.construct = function(settings) {
         self._setMessage(this.emptyResultsMessage);
-
-        self._constructInHomeCollection(settings.inHomeCollection);
 
         self._constructSearch(settings.search, settings.inputGroup);
 
@@ -290,8 +258,6 @@
         this.on('click', '[data-findalab-result-button]', $.proxy(onLabSelectClick, this));
         this.on('mouseenter','[data-findalab-result]', $.proxy(onLabHover, this));
         this.on('mouseleave','[data-findalab-result]', $.proxy(onLabUnhover, this));
-        this.on('mouseenter','[data-findalab-ihc]', $.proxy(onPhlebotomistsHover, this));
-        this.on('mouseleave','[data-findalab-ihc]', $.proxy(onIhcMarkerUnhover, this));
 
         /**
          * Prevents submission of the form on key down.
@@ -378,20 +344,6 @@
         }
 
         /**
-         * Is called when user hovers on a result and causes the corresponding map pin to change
-         *
-         * @this    {Findalab} The find a lab instance.
-         * @returns {boolean} Always false to prevent bubbling.
-         */
-        function onPhlebotomistsHover() {
-          this.myLab = this.phlebotomists;
-          this.myLab.marker.setIcon(this.mapMarkerHover);
-          this.myLab.marker.setAnimation(google.maps.Animation.BOUNCE);
-
-          return false;
-        }
-
-        /**
          * Is called when user unhovers on a result and causes the corresponding map pin to go back to normal
          *
          * @this    {Findalab}               The find a lab instance.
@@ -405,20 +357,6 @@
 
           iconMarker = this._buildIconMarkerNetwork(this.myLab.network);
           this.myLab.marker.setIcon(iconMarker);
-          this.myLab.marker.setAnimation(null);
-
-          return false;
-        }
-
-        /**
-         * Is called when user unhovers on a result and causes the corresponding map pin to go back to normal
-         *
-         * @this    {Findalab}             The find a lab instance.
-         * @listens document#event:generic
-         * @returns {boolean} Always false to prevent bubbling.
-         */
-        function onIhcMarkerUnhover() {
-          this.myLab.marker.setIcon(this.ihcMapMarker);
           this.myLab.marker.setAnimation(null);
 
           return false;
@@ -494,9 +432,8 @@
        * map is embedded into.
        *
        * @param {LabResult[]} labs
-       * @param {PhlebotomistResult[]} phlebotomists
        */
-      this.onSearchSuccess = function(labs, phlebotomists) {
+      this.onSearchSuccess = function(labs) {
         // override me!
       };
 
@@ -710,22 +647,6 @@
       };
 
       /**
-       * Construct the in home collection component.
-       *
-       * @param {InHomeCollectionSetting} inHomeCollectionObject In-home collection settings
-       * @private
-       */
-      this._constructInHomeCollection = function(inHomeCollectionObject) {
-        this.find('[data-findalab-ihc-title]').html(inHomeCollectionObject.title);
-        this.find('[data-findalab-ihc-description]').html(inHomeCollectionObject.description);
-        this.find('[data-findalab-ihc-time-title]').html(inHomeCollectionObject.timeTitle);
-        this.find('[data-findalab-ihc-time-details]').html(inHomeCollectionObject.timeDetails);
-        this.find('[data-findalab-ihc-button]').html(inHomeCollectionObject.button);
-        this.find('[data-findalab-ihc-button]').addClass(inHomeCollectionObject.buttonClass);
-        this.find('[data-findalab-ihc-notice]').html(inHomeCollectionObject.notice);
-      };
-
-      /**
        * Construct the use current location option.
        *
        * @param  {UserLocationSetting} userLocationObject user location settings
@@ -873,11 +794,7 @@
           self.settings.searchURL.labs, country, geocode
         );
 
-        var phlebotomistsPromise = self._searchNearCoords(
-          self.settings.searchURL.phlebotomists, country, geocode
-        );
-
-        $.when(labsPromise, phlebotomistsPromise, geocode).
+        $.when(labsPromise, geocode).
           done(self._onSearchSuccess).
           fail(self._onSearchError).
           always($.proxy(self._onSearchComplete, self));
@@ -1027,52 +944,6 @@
         lab.marker = vMarker;
       };
 
-
-      /**
-       * Shows the in-home collection marker on the Google Map
-       *
-       * @param {Geocode} geocode
-       * @private
-       */
-      this._showIhcMarker = function(geocode) {
-        var location = this._buildLatLong(geocode.latitude, geocode.longitude);
-        var vMarker;
-
-        vMarker = new google.maps.Marker({
-          map: self.settings.googleMaps.map,
-          icon: this.ihcMapMarker,
-          position: location
-        });
-
-        self.settings.googleMaps.markers.push(vMarker);
-
-        this.bounds.extend(location);
-
-        var infoWindowContent =
-          '<h6>' + self.settings.inHomeCollection.title + '</h6>' +
-          '<p style="max-width: 200px">' + self.settings.inHomeCollection.description + '</p>';
-
-        if (self.settings.lab.hasButton) {
-          infoWindowContent +=
-            '<button type="button" data-findalab-ihc-button class="' +
-            self.settings.inHomeCollection.buttonClass +
-            '">' +
-            self.settings.inHomeCollection.button +
-            '</button>'
-        }
-
-        google.maps.event.addListener(vMarker, 'click', $.proxy(function() {
-          self.settings.googleMaps.infoWindow.setContent(infoWindowContent);
-
-          // noinspection JSUnresolvedFunction
-          self.settings.googleMaps.infoWindow.open(self.settings.googleMaps.map, vMarker);
-        }, this));
-
-        geocode.marker = vMarker;
-        this.phlebotomists = geocode;
-
-      };
-
       /**
        * Check if the lab network is recommended.
        *
@@ -1207,33 +1078,13 @@
       };
 
       /**
-       * Renders the phlebotomists component
-       *
-       * @param  {PhlebotomistResult} phlebotomists Response from api
-       * @param  {Geocode}            geocode
-       * @return {boolean} whether the in-home collections modal was rendered.
-       * @private
-       */
-      this._renderPhlebotomists = function(phlebotomists, geocode) {
-        var $resultsList = this.find('[data-findalab-result-list]');
-        var $inHomeCollection = this.find('[data-findalab-ihc][data-template]').clone().removeAttr('data-template');
-        if (self.settings.inHomeCollection.showComponent && phlebotomists.hasPhlebotomists) {
-          $inHomeCollection.prependTo($resultsList);
-          self._showIhcMarker(geocode);
-        }
-        return phlebotomists.hasPhlebotomists;
-      };
-
-      /**
-       * Counts, adds together and displays the results and phlebotomist combined total.
+       * Counts, adds together and displays the results combined total.
        *
        * @param {LabResult[]}          resultsLabs
-       * @param {PhlebotomistResult[]} resultsPhlebotomists
        * @private
        */
-      this._renderResultsTotal = function(resultsLabs, resultsPhlebotomists) {
+      this._renderResultsTotal = function(resultsLabs) {
         var totalResults = resultsLabs[0].labs.length;
-        totalResults += resultsPhlebotomists[0].hasPhlebotomists === true ? 1 : 0;
         var pluralLabs = totalResults > 1 ? 's' : '';
         self.find('[data-findalab-total]').html(totalResults + ' Result' + pluralLabs);
       };
@@ -1429,20 +1280,18 @@
        * Private event handler for when a search is successful.
        *
        * @param {LabResult[]}          resultsLabs
-       * @param {PhlebotomistResult[]} resultsPhlebotomists
        * @param {Geocode}              geocode
        * @private
        */
-      this._onSearchSuccess = function(resultsLabs, resultsPhlebotomists, geocode) {
+      this._onSearchSuccess = function(resultsLabs, geocode) {
           self.bounds = new google.maps.LatLngBounds();
           var noLabs = !self._renderLabs(resultsLabs[0].labs);
-          var noPhlebotomists = !self._renderPhlebotomists(resultsPhlebotomists[0], geocode);
-          if (noLabs && noPhlebotomists) {
+          if (noLabs) {
               self._setMessage(self.noResultsMessage);
           }
           self.settings.googleMaps.map.fitBounds(self.bounds);
-          self._renderResultsTotal(resultsLabs, resultsPhlebotomists);
-          self.onSearchSuccess(resultsLabs, resultsPhlebotomists);
+          self._renderResultsTotal(resultsLabs);
+          self.onSearchSuccess(resultsLabs);
       };
 
       /**
@@ -1564,14 +1413,6 @@
  * @property {string} type
  * @property {string} zipcode
  * @property {string} zip_code
- */
-
-/**
- * Define the phlebotomist result type
- * @typedef {Object} PhlebotomistResult
- * @property {boolean} hasPhlebotomists
- * @property {string}  latitude
- * @property {string}  longitude
  */
 
 /**

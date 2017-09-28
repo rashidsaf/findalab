@@ -8,7 +8,7 @@ Feature: Auto scroll to lab in the list when map marker is clicked
      And I fill in "Enter your zip" with "77057"
      And I press "Search"
     Then I should see "Choose This Location"
-     And I should see "5 Results"
+     And I should see "4 Results"
     When I click on the "Lab D" marker
      And I wait 1 seconds
     Then "Lab D" should be in the viewport of search result

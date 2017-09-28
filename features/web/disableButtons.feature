@@ -9,12 +9,10 @@ Feature: Findalab Input Fields Disable When Button Is Clicked
      And I press "Search"
     When I press "Keep Current Lab"
     Then the "Choose This Location" button should be disabled
-      And the "Select & Continue" button should be disabled
-      And the "Search" button should be disabled
-     When I wait 5 seconds
-     Then the "Choose This Location" button should be enabled
-      And the "Select & Continue" button should be enabled
-      And the "Search" button should be enabled
+     And the "Search" button should be disabled
+    When I wait 5 seconds
+    Then the "Choose This Location" button should be enabled
+     And the "Search" button should be enabled
 
    Scenario: Disabled state appears after choose this location button is clicked and is removed after specified time
      When I am on "/disable-buttons.php"
@@ -22,23 +20,7 @@ Feature: Findalab Input Fields Disable When Button Is Clicked
       And I press "Search"
      When I press "Choose This Location"
      Then the "Choose This Location" button should be disabled
-      And the "Select & Continue" button should be disabled
       And the "Search" button should be disabled
      When I wait 5 seconds
      Then the "Choose This Location" button should be enabled
-      And the "Select & Continue" button should be enabled
       And the "Search" button should be enabled
-
-  Scenario: Disabled state appears after select & continue button is clicked and is removed after specified time
-    When I am on "/disable-buttons.php"
-     And I fill in "Enter your zip" with "77057"
-     And I press "Search"
-    When I press "Select & Continue"
-    Then the "Choose This Location" button should be disabled
-     And the "Select & Continue" button should be disabled
-     And the "Search" button should be disabled
-    When I wait 5 seconds
-    Then the "Choose This Location" button should be enabled
-     And the "Select & Continue" button should be enabled
-     And the "Search" button should be enabled
-    

@@ -3,12 +3,14 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT="$(cd "${DIR}"/../ && pwd)"
 
-. "${DIR}"/lib/args.sh
+. "${ROOT}"/docker/lib/docker_host_user_id.sh
 
-COMMAND="echo pid1 > /dev/null && php $ARGS"
-
-docker run -u=1000 -it --rm \
+docker run -it --rm \
+    -e LOCAL_USER_ID=$DOCKER_HOST_USER_ID \
     --env-file "$ROOT"/docker/.env \
-    -v $(pwd):/data -w /data --net findalab_default \
+    -v $(pwd):/var/www \
+    -v ~/.composer:/home/user/.composer \
+    -w /var/www \
+    --net findalab_default \
     --link web:findalab.local \
-    medology/findalab-php:2016-09-09 "${COMMAND}"
+    chekote/php:5.6.30-laravel-a php "$@"
