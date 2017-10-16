@@ -50,8 +50,8 @@
          * @property {string}                 resultsZoom                The zoom level for when there are search results.
          */
         googleMaps: {
-          defaultLat: 39.97712, // TODO: Address Canada's default lat
-          defaultLong: -99.587403, // TODO: Address Canada's default long
+          defaultLat: 39.97712,
+          defaultLong: -99.587403,
           geoCoder: null,
           infoWindow: null,
           initialZoom: 4,
@@ -726,20 +726,12 @@
       /**
        * Returns the country code for the specified zip code.
        *
-       * Currently only supports Canada, United States and Puerto Rico.
+       * Currently only supports United States and Puerto Rico.
        *
        * @param   {string} postalCode The zipCode to get the country code for.
-       * @returns {string|null} The two character country code. Either CA, PR or US.
+       * @returns {string|null} The two character country code. Either PR or US.
        */
       this.getPostalCodeCountry = function(postalCode) {
-        var caRegex = new RegExp(
-          /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVWXYZ]( )?\d[ABCEGHJKLMNPRSTVWXYZ]\d$/i
-        );
-
-        if (caRegex.test(postalCode)) {
-          return 'CA';
-        }
-
         // Check for Puerto Rico zips
         var intZip = parseInt(postalCode);
         if ((intZip >= 600 && intZip <= 799) || (intZip >= 900 && intZip <= 999)) {
@@ -1099,9 +1091,6 @@
       this._parseDistance = function (labData) {
         var parsedDistance = '';
         switch (labData.country) {
-          case 'CA' :
-            parsedDistance = (parseFloat(labData.distance) / 0.62137).toFixed(2) + 'km.';
-            break;
           case 'US' :
           default:
             parsedDistance = parseFloat(labData.distance).toFixed(2) + 'mi.';

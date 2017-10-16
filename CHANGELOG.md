@@ -2,6 +2,10 @@
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
 
+## v2.7.2 - Removed Canada Code
+
+- **Changes:** All code related to Canada was removed from the project.
+
 ## v2.7.1 - Lab result auto scroll
 
 - **New Feature:** When a lab marker on the map view is selected (mouse click), its result in the left side search column will be auto scrolled and appears in that column.

@@ -1066,49 +1066,6 @@
           "close": "5:00 PM"
         }
       }
-    },
-    {
-      "number": "4634",
-      "address": "1385 Bank St., Suite B1",
-      "geocode_address": "1385 Bank St., Suite B1",
-      "city": "Ottawa",
-      "state": "ON",
-      "zipcode": "K1H 8N4",
-      "hours": "M-TH 7:30AM-6:00PM | F 7:30AM-4:00PM ",
-      "latitude": "45.3838111000",
-      "longitude": "-75.6717590000",
-      "network": "Canada",
-      "phoneNumber": "",
-      "fax_number": "2811111136",
-      "friendlyPhone": "",
-      "twilio_sid": "",
-      "lab_title": "Gamma-Dynacare",
-      "country": "CA",
-      "imported_hours": "",
-      "import_hash": null,
-      "distance": "1.1008641242117192",
-      "structured_hours": {
-        "Monday": {
-          "open": "7:30 AM",
-          "close": "6:00 PM"
-        },
-        "Tuesday": {
-          "open": "7:30 AM",
-          "close": "6:00 PM"
-        },
-        "Wednesday": {
-          "open": "7:30 AM",
-          "close": "6:00 PM"
-        },
-        "Thursday": {
-          "open": "7:30 AM",
-          "close": "6:00 PM"
-        },
-        "Friday": {
-          "open": "7:30 AM",
-          "close": "4:00 PM"
-        }
-      }
     }
   ],
   "latitude": "30.0487594604",
