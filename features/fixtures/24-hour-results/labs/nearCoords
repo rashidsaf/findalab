@@ -1,0 +1,57 @@
+{
+  "labs": [
+    {
+      "number": "13",
+      "address": "201 KINGWOOD MEDICAL DR #A100",
+      "geocode_address": "201 KINGWOOD MEDICAL DR #A100",
+      "city": "KINGWOOD",
+      "state": "TX",
+      "zipcode": "77339",
+      "hours": "M-Sun  0:00-11:59PM",
+      "latitude": "30.0470049000",
+      "longitude": "-95.2569061000",
+      "network": "Labcorp",
+      "phoneNumber": "",
+      "fax_number": "2811111112",
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "LabCorp",
+      "country": "US",
+      "distance": "2.2505084601543994",
+      "max_distance": null,
+      "structured_hours": {
+        "Monday": {
+          "open": "0:00 AM",
+          "close": "11:59 PM"
+        },
+        "Tuesday": {
+          "open": "0:00 AM",
+          "close": "11:59 PM"
+        },
+        "Wednesday": {
+          "open": "0:00 AM",
+          "close": "11:59 PM"
+        },
+        "Thursday": {
+          "open": "0:00 AM",
+          "close": "11:59 PM"
+        },
+        "Friday": {
+          "open": "0:00 AM",
+          "close": "11:59 PM"
+        },
+        "Saturday": {
+          "open": "0:00 AM",
+          "close": "11:59 PM"
+        },
+        "Sunday": {
+          "open": "0:00 AM",
+          "close": "11:59 PM"
+        }
+      }
+    }
+  ],
+  "latitude": "30.0487594604",
+  "longitude": "-95.2193298340",
+  "resultCount": 50
+}

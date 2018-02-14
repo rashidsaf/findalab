@@ -1,0 +1,57 @@
+{
+  "labs": [
+    {
+      "number": "2530",
+      "address": "1213 Hermann Drive Suite 120",
+      "geocode_address": "",
+      "city": "Houston",
+      "state": "TX",
+      "zipcode": "77004",
+      "hours": "M-S 0:00am-0:01pm",
+      "latitude": "29.7232630000",
+      "longitude": "-95.3884430000",
+      "network": "National",
+      "phoneNumber": "",
+      "fax_number": "2811111113",
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "lab_title": "",
+      "country": "US",
+      "distance": "24.664887317525004",
+      "max_distance": null,
+      "structured_hours": {
+        "Monday": {
+          "open": "0:00 AM",
+          "close": "0:01 AM"
+        },
+        "Tuesday": {
+          "open": "0:00 AM",
+          "close": "0:01 AM"
+        },
+        "Wednesday": {
+          "open": "0:00 AM",
+          "close": "0:01 AM"
+        },
+        "Thursday": {
+          "open": "0:00 AM",
+          "close": "0:01 AM"
+        },
+        "Friday": {
+          "open": "0:00 AM",
+          "close": "0:01 AM"
+        },
+        "Saturday": {
+          "open": "0:00 AM",
+          "close": "0:01 AM"
+        },
+        "Sunday": {
+          "open": "0:00 AM",
+          "close": "0:01 AM"
+        }
+      }
+    }
+  ],
+  "latitude": "30.0487594604",
+  "longitude": "-95.2193298340",
+  "resultCount": 50
+}

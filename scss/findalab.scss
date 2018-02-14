@@ -60,6 +60,9 @@ $findalab-results-background: #fff !default;
 /// @type Color
 $findalab-recommended-color: #ffa500 !default;
 
+/// @type Color
+$findalab-opennow-color: #30dd2f !default;
+
 /// Recommended result border witdh
 /// @type Number
 $findalab-recommended-border-width: 3px !default;
@@ -382,6 +385,15 @@ $findalab-user-location-font-weight: 500 !default;
 
 .findalab__hours__wrap {
   display: none;
+}
+
+.findalab__open {
+  margin-right: 7px;
+}
+
+.findalab__open__dot {
+  color: $findalab-opennow-color;
+  font-size: 1.2em;
 }
 
 

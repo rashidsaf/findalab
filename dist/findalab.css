@@ -223,6 +223,13 @@
 .findalab__hours__wrap {
   display: none; }
 
+.findalab__open {
+  margin-right: 7px; }
+
+.findalab__open__dot {
+  color: #30dd2f;
+  font-size: 1.2em; }
+
 @keyframes fadeInOpacity {
   0% {
     opacity: 0; }

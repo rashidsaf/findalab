@@ -169,6 +169,16 @@
         invalidPostalCodeMessage: ''
       };
 
+      this.dayMapping = {
+        0: 'Sunday',
+        1: 'Monday',
+        2: 'Tuesday',
+        3: 'Wednesday',
+        4: 'Thursday',
+        5: 'Friday',
+        6: 'Saturday'
+      };
+
       this.settings = $.extend(true, this.settings, settings);
 
       this.emptyResultsMessage = 'Please "' + this.settings.search.placeholder + '" above and press "' +
@@ -759,7 +769,7 @@
           event.preventDefault();
           var $link = $(this);
           var $toggle = $link.siblings('.findalab__hours');
-          $link.text($toggle.is(':visible') ? 'Show ▼' : 'Hide ▲');
+          $link.text($toggle.is(':visible') ? 'Show Hours' : 'Hide Hours');
           $toggle.slideToggle('300');
         });
       };
@@ -986,10 +996,11 @@
       /**
        * This function will handle rendering labs.
        * @param {Lab[]} labs
+       * @param {Date}  date
        * @return {boolean} Whether any labs were rendered.
        * @private
        */
-      this._renderLabs = function(labs) {
+      this._renderLabs = function(labs, date) {
         var $resultsList = this.find('[data-findalab-result-list]');
         var $resultTemplate = this.find('[data-findalab-result][data-template]');
 
@@ -1049,7 +1060,7 @@
             );
           } else {
             $result.find('[data-findalab-result-simple-hours]').remove();
-            this._buildHoursDom(lab, $result);
+            self._buildHoursDom(lab, $result, date);
             $result.find('[data-findalab-structured-hours-row][data-template]').remove();
           }
 
@@ -1100,15 +1111,47 @@
       };
 
       /**
-       * Builds the structured hours DOM for a Lab entry.
+       * Gets the timezone of the Lab and buils the domHours
        *
-       * @param {Lab} lab
-       * @param {jQuery} $result The jQuery DOM that should be modified to show the hours.
+       * @param {LabResult[]}          resultsLabs
+       * @param {Geocode}              geocode
        * @private
        */
-      this._buildHoursDom = function(lab, $result) {
-        var $table = $result.find('[data-findalab-structured-hours-body]');
+      this._labTimezone = function (resultsLabs, geocode) {
+        var APIKey = $('#APIKey').data("api-key");
+        var date = new Date();
 
+        $.ajax({
+          url: 'https://maps.googleapis.com/maps/api/timezone/json?',
+          dataType: 'json',
+          data: {
+            location: geocode.latitude + "," + geocode.longitude,
+            sensor: 'false',
+            timestamp: (Math.round((new Date().getTime())/1000)).toString(),
+            key: APIKey
+          }
+        }).done (function(time) {
+          if (time !== null) {
+            date.setTime( date.getTime() + (1000 * ((date.getTimezoneOffset() * 60) + time.rawOffset )));
+          }
+          self._onGeocodeTimezoneFinish(resultsLabs, date);
+        }).fail(function (){
+          self._onGeocodeTimezoneFinish(resultsLabs, date);
+        });
+      };
+
+      /**
+       * Builds the structured hours DOM for a Lab entry.
+       *
+       * @param {Lab}    lab
+       * @param {jQuery} $result The jQuery DOM that should be modified to show the hours.
+       * @param {Date}   date the date object with the current date on the lab location
+       * @private
+       */
+      this._buildHoursDom = function(lab, $result, date) {
+        var $table = $result.find('[data-findalab-structured-hours-body]');
+        var time = ( date.getHours() * 100 ) + date.getMinutes();
+        var removeHours = 'open';
         $.each(lab.structured_hours, function(/**string*/ day, /**Day*/ hours) {
           var $row = $result.find('[data-findalab-structured-hours-row][data-template]')
                       .clone()
@@ -1116,8 +1159,18 @@
           $row.find('[data-findalab-result-day]').html(day);
           $row.find('[data-findalab-result-hours]').html(hours.open + ' - ' + hours.close);
 
+          if (self.dayMapping[date.getDay()] === day && ( time > self._convertTime12to24(hours.open) &&
+              time < self._convertTime12to24(hours.close) )) {
+              removeHours = 'closed';
+          }
+
           if (hours.lunch_start) {
             $row.find('[data-findalab-result-hours-lunch]').html(hours.lunch_start + ' - ' + hours.lunch_stop);
+              if (self.dayMapping[date.getDay()] === day && (
+                  time > self._convertTime12to24(hours.lunch_start) &&
+                  time < self._convertTime12to24(hours.lunch_stop) )) {
+                  removeHours = 'open';
+              }
           } else {
             $row.find('[data-findalab-result-day-lunch]').remove();
             $row.find('[data-findalab-result-hours-lunch]').remove();
@@ -1125,6 +1178,25 @@
 
           $table.append($row);
         });
+
+        $result.find('[data-findlab-lab-hours-'+removeHours+']').remove();
+      };
+
+      /**
+       * Takes time from structure hours and converts it to a 24 hour time
+       *
+       * @param   {string} time
+       * @private
+       */
+      this._convertTime12to24 = function (time) {
+        // remove the AM/PM from time and remove the ':' separating hours and minutes
+        var hours = parseInt(time.slice(0, -2).replace(':', ''));
+
+        if (time.indexOf('PM') !== -1) {
+          hours += 1200;
+        }
+
+        return hours;
       };
 
       /**
@@ -1274,13 +1346,24 @@
        */
       this._onSearchSuccess = function(resultsLabs, geocode) {
           self.bounds = new google.maps.LatLngBounds();
-          var noLabs = !self._renderLabs(resultsLabs[0].labs);
-          if (noLabs) {
-              self._setMessage(self.noResultsMessage);
-          }
-          self.settings.googleMaps.map.fitBounds(self.bounds);
-          self._renderResultsTotal(resultsLabs);
-          self.onSearchSuccess(resultsLabs);
+          self._labTimezone(resultsLabs, geocode);
+      };
+
+      /**
+       * Private event handler for when a search is successful.
+       *
+       * @param {LabResult[]} resultsLabs
+       * @param {Date}        date
+       * @private
+       */
+      this._onGeocodeTimezoneFinish = function(resultsLabs, date) {
+         var noLabs = !self._renderLabs(resultsLabs[0].labs, date);
+         if (noLabs) {
+             self._setMessage(self.noResultsMessage);
+         }
+         self.settings.googleMaps.map.fitBounds(self.bounds);
+         self._renderResultsTotal(resultsLabs);
+         self.onSearchSuccess(resultsLabs);
       };
 
       /**
