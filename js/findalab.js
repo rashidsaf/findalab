@@ -769,7 +769,7 @@
           event.preventDefault();
           var $link = $(this);
           var $toggle = $link.siblings('.findalab__hours');
-          $link.text($toggle.is(':visible') ? 'Show Hours' : 'Hide Hours');
+            $link.text($toggle.is(':visible') ? 'Show Hours ▼' : 'Hide Hours ▲');
           $toggle.slideToggle('300');
         });
       };

@@ -2,6 +2,10 @@
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
 
+## v2.7.6 - Show Hours Arrow
+
+- **Changes:** Addition of arrow to show hours that was mistakenly removed on previous release.
+
 ## v2.7.3 - Currently Open Facilities are marked as such
 
 - **Changes:** When a lab is currently open according to the structured hours and lab's current time it will display as such with the text: `Open Now` and a green dot marker.
