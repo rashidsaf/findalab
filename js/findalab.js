@@ -1192,7 +1192,7 @@
         // remove the AM/PM from time and remove the ':' separating hours and minutes
         var hours = parseInt(time.slice(0, -2).replace(':', ''));
 
-        if (time.indexOf('PM') !== -1 && hours < 12) {
+        if (time.indexOf('PM') !== -1 && hours < 1200) {
           hours += 1200;
         }
 
