@@ -2,6 +2,10 @@
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
 
+## v2.7.7 - Show Hours Arrow
+
+- **Changes:** Fixes on logic for open labs.
+
 ## v2.7.6 - Show Hours Arrow
 
 - **Changes:** Addition of arrow to show hours that was mistakenly removed on previous release.
