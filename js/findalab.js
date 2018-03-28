@@ -1132,7 +1132,7 @@
           }
         }).done (function(time) {
           if (time !== null) {
-            date.setTime( date.getTime() + (1000 * ((date.getTimezoneOffset() * 60) + time.rawOffset )));
+            date.setTime( date.getTime() + (1000 * ((date.getTimezoneOffset() * 60) + (time.rawOffset + time.dstOffset))));
           }
           self._onGeocodeTimezoneFinish(resultsLabs, date);
         }).fail(function (){
