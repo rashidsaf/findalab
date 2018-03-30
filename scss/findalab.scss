@@ -95,6 +95,10 @@ $findlab-user-location-color: #3398db !default;
 /// @type number
 $findalab-user-location-font-weight: 500 !default;
 
+/// Font size for the hours section
+/// @type Number
+$findalab-hours-font-size: 15px !default;
+
 // Styles
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -367,6 +371,7 @@ $findalab-user-location-font-weight: 500 !default;
 .findalab__hours {
   display: none;
   margin-bottom: 0.5rem;
+  font-size: $findalab-hours-font-size;
 
   table {
     margin-top: 6px;
@@ -378,9 +383,10 @@ $findalab-user-location-font-weight: 500 !default;
   }
 }
 
-.findalab__small {
-  font-size: 85%;
+.findalab__hours__closed {
+  font-size: 80%;
   font-style: italic;
+  margin-top: 5px;
 }
 
 .findalab__hours__wrap {
