@@ -615,6 +615,7 @@
                   'data-title="' + lab.title  + '" ' +
                   'data-country="' + lab.country + '" ' +
                   'data-fax_number="' + lab.fax_number + '"' +
+                  'data-network_id="' + lab.network_id + '"' +
                   '>' +
                   self.settings.lab.buttonText +
                   '</a>';
@@ -1045,7 +1046,9 @@
               .attr('data-zip_code', lab.zip_code)
               .attr('data-network', lab.network)
               .attr('data-title', lab.title)
+              .attr('data-country', lab.country)
               .attr('data-fax_number', lab.fax_number)
+              .attr('data-network_id', lab.network_id)
               .addClass(self.settings.lab.buttonClass)
               .html(self.settings.lab.buttonText);
           } else {
@@ -1481,6 +1484,7 @@
  * @property {google.maps.Marker} marker
  * @property {string} max_distance
  * @property {string} network
+ * @property {integer} network_id
  * @property {string} number
  * @property {string} phoneNumber
  * @property {string} state

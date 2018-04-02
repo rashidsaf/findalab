@@ -55,3 +55,21 @@ Feature: Find Collection Centers
         | 23816 Hwy 59 North |
         | Suite 200          |
         | Kingwood, TX 77339 |
+
+  Scenario: The Select a Lab Button Should Render Specified Lab Data
+     When I am on "/simple.php"
+      And I fill in "Enter your zip" with "77057"
+      And I press "Search"
+     Then I should see "23816 Hwy 59 North"
+      And the following lab data should be available for the lab selected:
+        | data-id         |
+        | data-address    |
+        | data-address_2  |
+        | data-city       |
+        | data-state      |
+        | data-zip_code   |
+        | data-network    |
+        | data-title      |
+        | data-country    |
+        | data-fax_number |
+        | data-network_id |

@@ -2,6 +2,7 @@
 
 use Behat\FlexibleMink\PseudoInterface\SpinnerContextInterface;
 use Behat\Gherkin\Node\TableNode;
+use Behat\Mink\Element\NodeElement;
 use Behat\Mink\Exception\ExpectationException;
 use InvalidArgumentException;
 
@@ -35,5 +36,46 @@ trait MapResultsContext
                 throw new ExpectationException('Could not find result on page', $session);
             }
         });
+    }
+
+    /**
+     * Asserts that the specific attributes.
+     *
+     * @param  TableNode            $expectedData TableNode representation of the expected attributes.
+     * @throws ExpectationException If one of the expected attributes does not exist in the found select lab button.
+     * @throws ExpectationException If a Select Lab button does not exist.
+     *
+     * @Then the following lab data should be available for the lab selected:
+     */
+    public function assertLabDataAvailable(TableNode $expectedData)
+    {
+        $button = $this->assertLabSelectButton();
+        $expectedDataArray = $expectedData->getColumn(0);
+
+        array_map(function ($expectedAttribute) use ($button) {
+            if (!$button->hasAttribute($expectedAttribute)) {
+                throw new ExpectationException(
+                    "The '$expectedAttribute' attribute was not found in the Lab Select Button Found.",
+                    $this->getSession()
+                );
+            }
+        }, $expectedDataArray);
+    }
+
+    /**
+     * Retrieves the lab select button for the lab.
+     *
+     * @throws ExpectationException If a select lab is not found on the page.
+     * @return NodeElement
+     */
+    public function assertLabSelectButton()
+    {
+        $button = $this->getSession()->getPage()->find('xpath', "//button[contains(text(), 'Choose This Location')]");
+
+        if (!$button) {
+            throw new ExpectationException('A select lab button was not found on the page.', $this->getSession());
+        }
+
+        return $button;
     }
 }
