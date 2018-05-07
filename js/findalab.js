@@ -70,12 +70,16 @@
          * @property {string} limit                 Limit the number of search result.
          * @property {string} onlyNetwork           The lab network to be included (white-list).
          * @property {array}  recommendedNetworks   List of networks that are recommended.
+         * @property {string} filterByOrder         Filter better labs to this order transaction id.
+         * @property {array}  filterByTests         Filter labs to those that can service this list of tests by key attribute (name, slug...).
          */
         searchFunction: {
           excludeNetworks: undefined,
           limit: undefined,
           onlyNetwork: undefined,
-          recommendedNetworks: []
+          recommendedNetworks: [],
+          filterByOrder: null,
+          filterByTests: { key: null, values: [] }
         },
         /**
          * Setting for the lab item in the search result.
@@ -844,6 +848,8 @@
           data: $.extend({
             countryCode: country,
             filterNetwork: self.settings.searchFunction.excludeNetworks,
+            filterByOrder: self.settings.searchFunction.filterByOrder,
+            filterByTests: self.settings.searchFunction.filterByTests,
             labCount: self.settings.searchFunction.limit,
             network: self.settings.searchFunction.onlyNetwork,
             dayOnly: self.settings.dayOfWeekFilter.showOption ? self.settings.dayOfWeekFilter.dayOnly : ''
