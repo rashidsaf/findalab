@@ -1,6 +1,9 @@
 # Changelog
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
+## v2.8.4 - Show 'Open 24 hours' if lab open 24/7
+
+- **Changes:** Show 'Open 24 hours' if lab open 24/7 instead of showing a "Show ▼" button and show 'Open 24 hours' on the specific day that the lab is open 24 hours.
 
 ## v2.7.7 - Show Hours Arrow
 
@@ -43,7 +46,7 @@ The font style for label of each day filter option changed from regular to bold
   * Styling change
 * SCSS file clean up
 
-## v2.6.0 - Day of Week Filters 
+## v2.6.0 - Day of Week Filters
 
 - Can filter the search result to only show the labs with hours for specific day (open on that day), hide other labs.
 - When user switch between regular lab and saturday lab, the result should be refreshed

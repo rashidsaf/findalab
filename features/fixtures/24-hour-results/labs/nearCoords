@@ -49,6 +49,49 @@
           "close": "11:59 PM"
         }
       }
+    },
+     {
+      "number": "192",
+      "address": "1213 HERMANN DR STE 155",
+      "geocode_address": "1213 HERMANN DR STE 155",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zipcode": "77004",
+      "hours": "M-F  8AM-5:30P",
+      "latitude": "29.7232620000",
+      "longitude": "-95.3884410000",
+      "network": "Labcorp",
+      "network_id": "2",
+      "phoneNumber": "",
+      "fax_number": "2811111114",
+      "friendlyPhone": "",
+      "twilio_sid": "",
+      "title": "LabCorp",
+      "country": "US",
+      "distance": "24.664901127089262",
+      "max_distance": null,
+      "structured_hours": {
+        "Monday": {
+          "open": "0:00 AM",
+          "close": "11:59 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:30 PM"
+        }
+      }
     }
   ],
   "latitude": "30.0487594604",
