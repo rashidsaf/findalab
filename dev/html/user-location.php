@@ -47,7 +47,7 @@
               userLocation : {
                 showOption: true,
                 icon: 'fa fa-map-marker',
-                msg: 'Or use current location',
+                msg: 'Locate me',
                 loading: {
                   icon: 'fa fa-spin fa-spinner',
                   msg: 'Searching current location...'

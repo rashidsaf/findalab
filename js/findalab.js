@@ -145,7 +145,7 @@
         userLocation: {
           showOption: false,
           icon: 'fa fa-map-marker',
-          msg: 'Or use current location',
+          msg: 'Locate Me',
           loading: {
             icon: 'fa fa-spin fa-spinner',
             msg: 'Searching current location...'
@@ -163,7 +163,7 @@
           showOption: false,
           radioAllText: 'All',
           radioDaysText: {
-              6 : 'Have Saturday Hours'
+              6 : 'Open Saturdays'
           },
           dayOnly: null
         },
@@ -200,24 +200,15 @@
                         this.settings.search.title + '.';
 
       this.mapMarker  = {
-          path: 'm-13.86316,-25.61974l10.845,22.96658c0.31974,0.69158 0.79816,1.17' +
-          ' 1.38316,1.54184c0.63711,0.37184 1.32868,0.585 2.02026,0.585c0.69158,0 1.38079,-0.21316' +
-          ' 2.02027,-0.585c0.585,-0.37184 1.06342,-0.85026' +
-          ' 1.38079,-1.54184l10.845,-22.96658c0.63947,-1.38079 0.95684,-3.13579' +
-          ' 0.95684,-5.31473c0,-4.14711 -1.48737,-7.76132 -4.46448,-10.68632c-2.9771,-2.9771' +
-          ' -6.53921,-4.46447 -10.73842,-4.46447c-4.19921,0 -7.76131,1.48737' +
-          ' -10.73842,4.46447c-2.9771,2.925 -4.46684,6.53921 -4.46684,10.68632c0,2.17894' +
-          ' 0.31974,3.93394 0.95684,5.31473l0,0zm14.24842,-12.86289c2.07237,0 3.87948,0.74368' +
-          ' 5.36921,2.23105c1.48737,1.48974 2.23342,3.24237 2.23342,5.31711c0,2.12447 -0.74605,' +
-          ' 3.87947 -2.23342,5.36921c-1.48973,1.48737 -3.29684,2.23105 -5.36921,2.23105c-2.07473,' +
-          ' 0 -3.88184,-0.74368 -5.36921,-2.23105c-1.48973,-1.48974 -2.23342,-3.24474' +
-          ' -2.23342,-5.36921c0,-2.07474 0.74369,-3.82737 2.23342,-5.31711c1.48737,-1.48737' +
-          ' 3.29448,-2.23105 5.36921,-2.23105l0,0z',
+          path: 'M5.59,0A5.59,5.59,0,0,0,3.951,10.935l1.7,1.7,1.769-1.77A5.588,5.588,0,0,0,5.59,0ZM7.861,8.641A1.013,' +
+          '1.013,0,0,1,7,9.132H4.185A1.01,1.01,0,0,1,3.3,7.646L4.569,5.262V3.2H4.25a.4.4,0,0,1,0-.8H6.92a.4.4,0,1,1,0,' +
+          '.8H6.612v2.06L7.886,7.646A1.014,1.014,0,0,1,7.861,8.641ZM6.344,6.164H4.837a.19.19,0,0,0-.168.1L3.779,' +
+          '7.93a.461.461,0,0,0,.406.678H7A.461.461,0,0,0,7.4,7.93L6.512,6.265A.192.192,0,0,0,6.344,6.164Z',
           fillColor: self.settings.googleMaps.labMarkerFillColor,
           fillOpacity: 1,
-          scale: 1,
+          scale: 4,
           strokeColor: 'white',
-          strokeWeight: 2
+          strokeWeight: 1
         };
 
       this.mapMarkerHover = $.extend(true, {}, this.mapMarker);
@@ -708,12 +699,12 @@
        */
       this._constructDayOfWeekFilter = function (dayOfWeekObject) {
         var container = this.find('[data-findalab-day-filter]');
-        container.append('<input type="radio" name="day-of-week-filter" id="dow-all" value="" checked>'
-          + '<label for="dow-all"><strong>' + dayOfWeekObject.radioAllText + '</strong></label>');
+        container.append('<label class = "findalab__dayFilter" for="dow-all">'+'<input type="radio" name="day-of-week-filter" id="dow-all" value="" checked>'
+           + dayOfWeekObject.radioAllText + '<div class="findalab__radioButton"></div></label>');
         for (var day in dayOfWeekObject.radioDaysText) {
           if (dayOfWeekObject.radioDaysText.hasOwnProperty(day)) {
-          container.append('<input type="radio" name="day-of-week-filter" id="dow-' + day + '" value="' + day + '">'
-            + '<label for="dow-' + day +'"><strong>' + dayOfWeekObject.radioDaysText[day] + '</strong></label>');
+          container.append('<label class = "findalab__dayFilter" for="dow-' + day +'">' + '<input type="radio" name="day-of-week-filter" id="dow-' + day + '" value="'
+          + day + '">' + dayOfWeekObject.radioDaysText[day] + '<div class="findalab__radioButton"></div></label>');
           }
         }
         this.find('[data-findalab-day-filter]').on('change', this._onDayOfWeekFilterChanged);

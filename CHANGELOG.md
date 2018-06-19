@@ -1,6 +1,14 @@
 # Changelog
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
+
+## v2.8.5 - UI update
+
+- Overlay lab details box on top of the map
+- Labs will be displayed with an orange beaker icon.
+- Radio button design change.
+- Some border, margin and shadow change on lab details box.
+
 ## v2.8.4 - Show 'Open 24 hours' if lab open 24/7
 
 - **Changes:** Show 'Open 24 hours' if lab open 24/7 instead of showing a "Show ▼" button and show 'Open 24 hours' on the specific day that the lab is open 24 hours.
