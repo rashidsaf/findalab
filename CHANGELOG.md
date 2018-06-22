@@ -2,6 +2,10 @@
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
 
+## v2.8.6 - Minor CSS change
+
+- **Changes:** Don't set the width for findalab__box class since it will cover other element in small screen.
+
 ## v2.8.5 - UI update
 
 - Overlay lab details box on top of the map
