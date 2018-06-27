@@ -467,23 +467,37 @@
       };
 
       /**
+       * This function is an alternative way for Object.values() since Object.values() not supported in IE11.
+       */
+      function objectValues(obj) {
+        var res = [];
+        for (var i in obj) {
+            if (obj.hasOwnProperty(i)) {
+                res.push(obj[i]);
+            }
+        }
+        return res;
+      }
+
+      /**
        * check if a lab opens 24 hours 7 days
        * @param  {{day:hours}}  component.types structured_hours components
        * @return {boolean} true if the lab is open 24 hours 7 days. false if not.
        */
-      this.isOpenWholeDayAllWeek= function(component) {
+      this.isOpenWholeDayAllWeek = function(component) {
         var result = true;
-        Object.values(component).forEach(function(element){
+        objectValues(component).forEach(function(element){
           if(!self.isOpenWholeDay(element)) result = false;
         })
         return result;
       }
+
       /**
        * check if a lab opens 24 hours
        * @param  {{open:"AM", close:"PM"}}
        * @return {boolean} true if the lab is open 24 hours. false if not.
        */
-      this.isOpenWholeDay= function(component) {
+      this.isOpenWholeDay = function(component) {
         if(component.open == "0:00 AM" && component.close == "11:59 PM" && !component.lunch_start && !component.lunch_stop){
           return true;
         } else {

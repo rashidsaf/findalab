@@ -234,6 +234,7 @@ $findlab-radio-button-checked-border: 2px solid #ed9013 !default;
 }
 
 .findalab__box {
+  width: $findalab-list-width;
   margin: 3rem 1rem;
   z-index: 0;
 }
