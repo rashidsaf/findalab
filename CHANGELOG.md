@@ -2,6 +2,10 @@
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
 
+## v2.8.8 - Another IE11 bug fixed
+
+- **Changes:** v2.8.5 introduced an bug due to z-index this release fixes it.
+
 ## v2.8.7 - IE11 bug fixed
 
 - **Changes:** v2.8.4 introduced an bug because Object.values() is not supported by IE11 and this release fixes it.

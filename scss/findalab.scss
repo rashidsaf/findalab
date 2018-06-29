@@ -234,9 +234,10 @@ $findlab-radio-button-checked-border: 2px solid #ed9013 !default;
 }
 
 .findalab__box {
+  position: relative;
   width: $findalab-list-width;
   margin: 3rem 1rem;
-  z-index: 0;
+  z-index: 2;
 }
 
 .findalab__map {
@@ -251,7 +252,7 @@ $findlab-radio-button-checked-border: 2px solid #ed9013 !default;
     top: 0;
     border-left: $findalab-border;
     border-radius: 0 $findalab-radius $findalab-radius 0;
-    z-index: -1;
+    z-index: 1;
   }
 
   &.is-active {
