@@ -2,6 +2,10 @@
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
 
+## v2.8.9 - Fix some visual issue and improve mobile view
+
+- **Changes:** Remove whitespace around map, Fix the "Locate me" text flow and no padding and shadow on mobile view.
+
 ## v2.8.8 - Another IE11 bug fixed
 
 - **Changes:** v2.8.5 introduced an bug due to z-index this release fixes it.
