@@ -68,7 +68,7 @@ class LabController extends Controller
      */
     protected function loadLabs()
     {
-        $content = file_get_contents(base_path(self::LAB_FIXTURE));
+        $content = file_get_contents(base_path(static::LAB_FIXTURE));
 
         return json_decode($content);
     }

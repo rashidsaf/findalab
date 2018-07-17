@@ -18,3 +18,8 @@ $app->get('/', function () use ($app) {
 $app->get('/saturdayFilter/geocode', 'SaturdayFilterController@geocode');
 $app->get('/saturdayFilter/labs/nearCoords', 'SaturdayFilterController@labsNearCoords');
 $app->get('/saturdayFilter/phlebotomists/nearCoords', 'SaturdayFilterController@phlebotomistsNearCoords');
+
+//Only states filter
+$app->get('/onlyStateFilter/geocode', 'OnlyStatesFilterController@geocode');
+$app->get('/onlyStateFilter/labs/nearCoords', 'OnlyStatesFilterController@labsNearCoords');
+$app->get('/onlyStateFilter/phlebotomists/nearCoords', 'OnlyStatesFilterController@phlebotomistsNearCoords');
