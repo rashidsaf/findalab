@@ -1160,18 +1160,15 @@
        * @private
        */
       this._labTimezone = function (resultsLabs, geocode) {
-        var APIKey = $('#APIKey').data("api-key");
         var date = new Date();
 
         $.ajax({
-          url: 'https://maps.googleapis.com/maps/api/timezone/json?',
-          dataType: 'json',
-          data: {
-            location: geocode.latitude + "," + geocode.longitude,
-            sensor: 'false',
-            timestamp: (Math.round((new Date().getTime())/1000)).toString(),
-            key: APIKey
-          }
+            url: self.settings.baseURL + '/timezone',
+            dataType: 'json',
+            data: {
+                latitude: geocode.latitude,
+                longitude: geocode.longitude
+            }
         }).done (function(time) {
           if (time !== null) {
             date.setTime( date.getTime() + (1000 * ((date.getTimezoneOffset() * 60) + (time.rawOffset + time.dstOffset))));

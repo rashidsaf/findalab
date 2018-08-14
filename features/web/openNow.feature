@@ -10,8 +10,8 @@ Feature: Currently Open Lab
      Then I should see the following lab in the results:
        | 201 KINGWOOD MEDICAL DR #A100 |
        | KINGWOOD, TX 77339            |
-      And I should see "Open Now Open 24 hours"
-     When I follow "Show ▼"
+      And I should see "Open Now"
+     When I follow "Show Hours"
      Then there should be a table on the page with the following information:
        | Monday    | Open 24 hours     |
        | Tuesday   | 8:00 AM - 5:30 PM |
