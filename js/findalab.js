@@ -362,7 +362,7 @@
           var iconMarker;
           setLabFromResultsList(event);
 
-          iconMarker = this._buildIconMarkerNetwork(this.myLab.network);
+          iconMarker = this._buildIconMarkerNetwork(typeof this.myLab.network === 'string' ? this.myLab.network : this.myLab.network.name);
           this.myLab.marker.setIcon(iconMarker);
           this.myLab.marker.setAnimation(null);
 
@@ -624,7 +624,7 @@
        */
       this._buildInfoWindowMarkerContent = function(lab) {
           var infoWindowContent = '';
-          if (this.checkRecommended && this._isRecommended(lab.network)) {
+          if (this.checkRecommended && this._isRecommended(typeof lab.network === 'string' ? lab.network : lab.network.name)) {
               infoWindowContent += '<span class="findalab__infowindow--recommended__label">Recommended</span>';
           }
 
@@ -647,7 +647,7 @@
                   'data-city="' + lab.city + '" ' +
                   'data-state="' + lab.state + '" ' +
                   'data-zip_code="' + lab.zip_code + '" ' +
-                  'data-network="' + lab.network + '" ' +
+                  'data-network="' + (typeof lab.network === 'string' ? lab.network : lab.network.name) + '" ' +
                   'data-title="' + lab.title  + '" ' +
                   'data-country="' + lab.country + '" ' +
                   'data-fax_number="' + lab.fax_number + '"' +
