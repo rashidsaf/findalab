@@ -676,7 +676,10 @@
         var mapOptions = {
           center: this._buildLatLong(googleMapsObject.defaultLat, googleMapsObject.defaultLong),
           zoom: googleMapsObject.initialZoom,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeControlOptions: {
+            mapTypeIds: []
+          }
         };
 
         googleMapsObject.map = new google.maps.Map(document.getElementById('findalab-map'), mapOptions);
