@@ -362,7 +362,9 @@
           var iconMarker;
           setLabFromResultsList(event);
 
-          iconMarker = this._buildIconMarkerNetwork(typeof this.myLab.network === 'string' ? this.myLab.network : this.myLab.network.name);
+          iconMarker = this._buildIconMarkerNetwork(
+              this.myLab.network ? (this.myLab.network.name ? this.myLab.network.name : this.myLab.network) : ''
+          );
           this.myLab.marker.setIcon(iconMarker);
           this.myLab.marker.setAnimation(null);
 
@@ -624,7 +626,9 @@
        */
       this._buildInfoWindowMarkerContent = function(lab) {
           var infoWindowContent = '';
-          if (this.checkRecommended && this._isRecommended(typeof lab.network === 'string' ? lab.network : lab.network.name)) {
+          var network = lab.network ? (lab.network.name ? lab.network.name : lab.network ) : '';
+
+          if (this.checkRecommended && this._isRecommended(network)) {
               infoWindowContent += '<span class="findalab__infowindow--recommended__label">Recommended</span>';
           }
 
@@ -647,10 +651,10 @@
                   'data-city="' + lab.city + '" ' +
                   'data-state="' + lab.state + '" ' +
                   'data-zip_code="' + lab.zip_code + '" ' +
-                  'data-network="' + (typeof lab.network === 'string' ? lab.network : lab.network.name) + '" ' +
+                  'data-network="' + network + '" ' +
                   'data-title="' + lab.title  + '" ' +
                   'data-country="' + lab.country + '" ' +
-                  'data-fax_number="' + lab.fax_number + '"' +
+                  'data-fax_number="' + lab.fax_number + '" ' +
                   'data-network_id="' + lab.network_id + '"' +
                   '>' +
                   self.settings.lab.buttonText +
@@ -957,7 +961,9 @@
        */
       this._showMarker = function(lab) {
         var location = this._buildLatLong(lab.latitude, lab.longitude);
-        var iconMarker = this._buildIconMarkerNetwork(lab.network);
+        var iconMarker = this._buildIconMarkerNetwork(
+            lab.network ? (lab.network.name ? lab.network.name : lab.network) : ''
+        );
         var vMarker;
 
         vMarker = new google.maps.Marker({
@@ -1056,11 +1062,12 @@
         $.each(labs, $.proxy(function(index, lab) {
           this._fixLab(lab);
           var $result = $resultTemplate.clone().removeAttr('data-template');
+          var network = lab.network ? (lab.network.name ? lab.network.name : lab.network) : '';
           $result.attr('data-lab-id', lab.id);
           $result.data('id', index);
 
           if(this.checkRecommended) {
-            this._recommendedUI(lab.network, $result);
+            this._recommendedUI(network, $result);
           }
 
           if (lab.title) {
@@ -1086,7 +1093,7 @@
               .attr('data-city', lab.city)
               .attr('data-state', lab.state)
               .attr('data-zip_code', lab.zip_code)
-              .attr('data-network', lab.network)
+              .attr('data-network', network)
               .attr('data-title', lab.title)
               .attr('data-country', lab.country)
               .attr('data-fax_number', lab.fax_number)
