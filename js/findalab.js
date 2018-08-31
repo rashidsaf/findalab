@@ -635,7 +635,7 @@
           infoWindowContent +=
               '<h6>' + lab.title + '</h6>' +
               '<p>' + lab.address + '<br>' +
-              (lab.address_2 !== '' ? lab.address_2 + '<br>' : '') +
+              (lab.address2 !== '' ? lab.address2 + '<br>' : '') +
               lab.city + ', ' + lab.state + ' ' + lab.zip_code +
               '</p>';
 
@@ -647,7 +647,7 @@
                   'href="#" ' +
                   'data-id="' + lab.id + '" ' +
                   'data-address="' + lab.address + '" ' +
-                  'data-address_2="' + lab.address_2 + '" ' +
+                  'data-address2="' + lab.address2 + '" ' +
                   'data-city="' + lab.city + '" ' +
                   'data-state="' + lab.state + '" ' +
                   'data-zip_code="' + lab.zip_code + '" ' +
@@ -1022,8 +1022,8 @@
           if (!lab.zip_code && lab.zipcode) {
             lab.zip_code = lab.zipcode;
           }
-          if (!lab.address_2) {
-            lab.address_2 = '';
+          if (!lab.address2) {
+            lab.address2 = '';
           }
       };
 
@@ -1078,7 +1078,7 @@
 
           $result.find('[data-findalab-result-address]').html(
             lab.address + '<br>' +
-            (!lab.address_2 ? '' : lab.address_2 + '<br>') +
+            (!lab.address2 ? '' : lab.address2 + '<br>') +
             lab.city + ', ' + lab.state + ' ' + lab.zip_code
           );
           $result.find('[data-findalab-result-distance]').html(
@@ -1089,7 +1089,7 @@
             $result.find('[data-findalab-result-button]')
               .attr('data-id', lab.id)
               .attr('data-address', lab.address)
-              .attr('data-address_2', lab.address_2)
+              .attr('data-address2', lab.address2)
               .attr('data-city', lab.city)
               .attr('data-state', lab.state)
               .attr('data-zip_code', lab.zip_code)
@@ -1522,7 +1522,7 @@
  *
  * @typedef {Object} Lab
  * @property {string} address
- * @property {string} address_2
+ * @property {string} address2
  * @property {string} city
  * @property {string} country
  * @property {string} deleted_at
