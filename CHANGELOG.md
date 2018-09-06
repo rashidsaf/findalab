@@ -2,6 +2,11 @@
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
 
+## v2.8.16 - Add error callback to getCurrentPosition function
+
+- **Changes:** Add error callback so that the locate me button's loading state will stop if the user disallowed the
+browser to use their location.
+
 ## v2.8.9 - Fix some visual issue and improve mobile view
 
 - **Changes:** Remove whitespace around map, Fix the "Locate me" text flow and no padding and shadow on mobile view.

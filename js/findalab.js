@@ -1297,7 +1297,11 @@
         if(!navigator.geolocation) {
           _displayGeolocateError();
         } else {
-          navigator.geolocation.getCurrentPosition(_searchByCoords);
+          navigator.geolocation.getCurrentPosition(
+            _searchByCoords,
+            _displayGeolocateError,
+            {timeout: 20000}
+          );
         }
 
         /**
