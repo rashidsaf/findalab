@@ -226,7 +226,6 @@ $findlab-radio-button-checked-border: 2px solid #ed9013 !default;
 
   @media only screen and (min-width: $findalab-breakpoint) {
     width: $findalab-list-width;
-    box-shadow: $findalab-total-shadow;
   }
 }
 
@@ -236,7 +235,8 @@ $findlab-radio-button-checked-border: 2px solid #ed9013 !default;
 
   @media only screen and (min-width: $findalab-breakpoint) {
     width: $findalab-list-width;
-    padding: 3rem 1rem 0 1rem;
+    margin: 0rem 1rem;
+    top: 5rem;
   }
 }
 
@@ -246,7 +246,9 @@ $findlab-radio-button-checked-border: 2px solid #ed9013 !default;
 
   @media only screen and (min-width: $findalab-breakpoint) {
     width: $findalab-list-width;
-    padding: 0 1rem 3rem 1rem;
+    margin: 8rem 1rem 0rem 1rem;
+    bottom: 2rem;
+    box-shadow: $findalab-total-shadow;
   }
 }
 
