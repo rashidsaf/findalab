@@ -193,7 +193,7 @@
       this.noResultsMessage = 'Oops! Sorry, we could not find any testing centers near that location. ' +
       'Please try your search again with a different or less specific address.';
 
-      this.cannotGeolocateMessage = 'Oops! Sorry, we could not detect your location. ' + this.emptyResultsMessage;
+      this.cannotGeolocateMessage = 'We are unable to determine your location.<br/>' + this.emptyResultsMessage;
 
       this.invalidPostalCodeMessage = 'Oops! Invalid postal code: please enter a valid postal code and search again.';
 
@@ -1386,9 +1386,10 @@
         }
 
         /**
-         * sets the text of the error message that is displayed to the user
+         * sets the text of the error message that is displayed to the user and remove the locate me button
          */
         function _displayGeolocateError() {
+          $('[data-findalab-user-location]').remove();
           self._setMessage(self.cannotGeolocateMessage);
           _resetUserLocationUI();
         }

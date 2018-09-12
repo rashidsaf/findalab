@@ -2,6 +2,10 @@
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
 
+## v2.8.17 - Remove locate me button if geolocation blocked
+
+- **Changes:** Remove locate me button if geolocation blocked and also change the message text for geolocation error.
+
 ## v2.8.16 - Add error callback to getCurrentPosition function
 
 - **Changes:** Add error callback so that the locate me button's loading state will stop if the user disallowed the
