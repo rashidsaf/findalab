@@ -73,6 +73,7 @@
          * @property {array}  recommendedNetworks   List of networks that are recommended.
          * @property {string} filterByOrder         Filter better labs to this order transaction id.
          * @property {array}  filterByTests         Filter labs to those that can service this list of tests by key attribute (name, slug...).
+         * @property {string} filters               Filter labs that only do certain test.
          */
         searchFunction: {
           excludeNetworks: undefined,
@@ -81,7 +82,8 @@
           onlyStates: [],
           recommendedNetworks: [],
           filterByOrder: null,
-          filterByTests: { key: null, values: [] }
+          filterByTests: { key: null, values: [] },
+          filters: undefined
         },
         /**
          * Setting for the lab item in the search result.
@@ -890,6 +892,7 @@
             filterByStates: self.settings.searchFunction.onlyStates,
             filterByOrder: self.settings.searchFunction.filterByOrder,
             filterByTests: self.settings.searchFunction.filterByTests,
+            filters: self.settings.searchFunction.filters,
             labCount: self.settings.searchFunction.limit,
             network: self.settings.searchFunction.onlyNetwork,
             dayOnly: self.settings.dayOfWeekFilter.showOption ? self.settings.dayOfWeekFilter.dayOnly : ''

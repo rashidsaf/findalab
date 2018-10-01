@@ -2,6 +2,10 @@
 
 See the [release page] for authors, detailed dates, commit hashes and available downloads.
 
+## v2.8.19 - Add new search parameter filters
+
+- **Changes:** Add new search parameter filters to support filter of collection centers that only do drug test.
+
 ## v2.8.17 - Remove locate me button if geolocation blocked
 
 - **Changes:** Remove locate me button if geolocation blocked and also change the message text for geolocation error.
