@@ -77,4 +77,21 @@ trait MapContext
 
         throw new Exception("Lab \"$title\" not exist in the search result.");
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @Then the findalab map should be zoomed to at least level :level
+     */
+    public function assertMapZoom($level)
+    {
+        //@TODO This relies on certain test pages assigning the findalab object to a window variable. Can this be fixed?
+        $zoom = $this->getSession()->evaluateScript(
+            /* @lang JavaScript */'return window.labfinder.settings.googleMaps.map.getZoom()'
+        );
+
+        if ($zoom < $level) {
+            throw new Exception("Expected zoom of $level or greater, but got $zoom");
+        }
+    }
 }

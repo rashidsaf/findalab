@@ -1,0 +1,1876 @@
+{
+  "labs": [
+    {
+      "id": 25371,
+      "address": "1010 S. King St, #111",
+      "geocode_address": "",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip_code": "96814",
+      "hours": "M-F 7:30 am - 12:30 pm",
+      "latitude": "21.3020985000",
+      "longitude": "-157.8483857000",
+      "network_id": "11",
+      "phone_number": "8088648571",
+      "fax_number": "8085971750",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": "",
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "0.3738790927733239",
+      "gmap_search_keyword": "1010+S.+King+St,+#111++Honolulu+HI+96814",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 25034,
+        "lab_id": "25371",
+        "url": "honolulu-hi-1010-s-king-st-111-96814"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "7:30 AM",
+          "close": "12:30 PM"
+        },
+        "Tuesday": {
+          "open": "7:30 AM",
+          "close": "12:30 PM"
+        },
+        "Wednesday": {
+          "open": "7:30 AM",
+          "close": "12:30 PM"
+        },
+        "Thursday": {
+          "open": "7:30 AM",
+          "close": "12:30 PM"
+        },
+        "Friday": {
+          "open": "7:30 AM",
+          "close": "12:30 PM"
+        }
+      }
+    },
+    {
+      "id": 23870,
+      "address": "1441 Kapiolani Blvd 609",
+      "geocode_address": "",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip_code": "96814",
+      "hours": "M-F:\t7:00 am - 5:00 pm",
+      "latitude": "21.2926282000",
+      "longitude": "-157.8429919000",
+      "network_id": "11",
+      "phone_number": "8089730268",
+      "fax_number": "8089736565",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "0.42959930512031175",
+      "gmap_search_keyword": "1441+Kapiolani+Blvd+609++Honolulu+HI+96814",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23376,
+        "lab_id": "23870",
+        "url": "honolulu-hi-1441-kapiolani-blvd-609-96814"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23872,
+      "address": "1100 Ward Ave, Suite 700",
+      "geocode_address": "",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip_code": "96814",
+      "hours": "M, W, F: 8:00 am - 1:00 pm T, Th: 8:00 am - 4:30 pm lunch 1pm-1:30pm",
+      "latitude": "21.3035200000",
+      "longitude": "-157.8500279000",
+      "network_id": "11",
+      "phone_number": "8085666032",
+      "fax_number": "8085666033",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "0.48855114032746555",
+      "gmap_search_keyword": "1100+Ward+Ave,+Suite+700++Honolulu+HI+96814",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23378,
+        "lab_id": "23872",
+        "url": "honolulu-hi-1100-ward-ave-suite-700-96814"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "1:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "1:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM",
+          "lunch_start": "1:00 PM",
+          "lunch_stop": "1:30 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "1:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23873,
+      "address": "1401 South Beretania Street, Suite 103",
+      "geocode_address": "",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip_code": "96814",
+      "hours": "\tM-F:\t6:00 am - 5:00 pm Sat 6:00 am - 12:00 pm",
+      "latitude": "21.2996402000",
+      "longitude": "-157.8394022000",
+      "network_id": "11",
+      "phone_number": "8085320400",
+      "fax_number": "8085320399",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "0.591897466045338",
+      "gmap_search_keyword": "1401+South+Beretania+Street,+Suite+103++Honolulu+HI+96814",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23379,
+        "lab_id": "23873",
+        "url": "honolulu-hi-1401-south-beretania-street-suite-103-96814"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "6:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "6:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "6:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "6:00 AM",
+          "close": "5:00 PM"
+        },
+        "Saturday": {
+          "open": "6:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23879,
+      "address": "1319 Punahou Street",
+      "geocode_address": "",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip_code": "96826",
+      "hours": "m-f 6:30a-8:30p sat - sun 6a-8:30pm",
+      "latitude": "21.2999949000",
+      "longitude": "-157.8333443000",
+      "network_id": "11",
+      "phone_number": "8089838569",
+      "fax_number": "8089836463",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "0.9729399057534233",
+      "gmap_search_keyword": "1319+Punahou+Street++Honolulu+HI+96826",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23385,
+        "lab_id": "23879",
+        "url": "honolulu-hi-1319-punahou-street-96826"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:30 AM",
+          "close": "8:30 PM"
+        },
+        "Tuesday": {
+          "open": "6:30 AM",
+          "close": "8:30 PM"
+        },
+        "Wednesday": {
+          "open": "6:30 AM",
+          "close": "8:30 PM"
+        },
+        "Thursday": {
+          "open": "6:30 AM",
+          "close": "8:30 PM"
+        },
+        "Friday": {
+          "open": "6:30 AM",
+          "close": "8:30 PM"
+        },
+        "Saturday": {
+          "open": "6:00 AM",
+          "close": "8:30 PM"
+        },
+        "Sunday": {
+          "open": "6:00 AM",
+          "close": "8:30 PM"
+        }
+      }
+    },
+    {
+      "id": 23889,
+      "address": "1520 Liliha Street, #204",
+      "geocode_address": "",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip_code": "96817",
+      "hours": "M-F 7a-5p sat 7a-12pm",
+      "latitude": "21.3213153000",
+      "longitude": "-157.8608298000",
+      "network_id": "11",
+      "phone_number": "8085320381",
+      "fax_number": "8085220686",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "1.8899417277947108",
+      "gmap_search_keyword": "1520+Liliha+Street,+#204++Honolulu+HI+96817",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23393,
+        "lab_id": "23889",
+        "url": "honolulu-hi-1520-liliha-street-204-96817"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Saturday": {
+          "open": "7:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23890,
+      "address": "2228 Liliha Street, Suite 207",
+      "geocode_address": "",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip_code": "96817",
+      "hours": "\tM-F\t7:00 am to 3:30 pm sat 7a-12:30p",
+      "latitude": "21.3289397000",
+      "longitude": "-157.8526553000",
+      "network_id": "11",
+      "phone_number": "8085476151",
+      "fax_number": "8085476735",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "2.2476789373404364",
+      "gmap_search_keyword": "2228+Liliha+Street,+Suite+207++Honolulu+HI+96817",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23394,
+        "lab_id": "23890",
+        "url": "honolulu-hi-2228-liliha-street-suite-207-96817"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "7:00 AM",
+          "close": "3:30 PM"
+        },
+        "Tuesday": {
+          "open": "7:00 AM",
+          "close": "3:30 PM"
+        },
+        "Wednesday": {
+          "open": "7:00 AM",
+          "close": "3:30 PM"
+        },
+        "Thursday": {
+          "open": "7:00 AM",
+          "close": "3:30 PM"
+        },
+        "Friday": {
+          "open": "7:00 AM",
+          "close": "3:30 PM"
+        },
+        "Saturday": {
+          "open": "7:00 AM",
+          "close": "12:30 PM"
+        }
+      }
+    },
+    {
+      "id": 23876,
+      "address": "2055 North King Street, #102",
+      "geocode_address": "",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip_code": "96819",
+      "hours": "M-F:\t7:00 am to 4:00 pm sat 7a-12p",
+      "latitude": "21.3330559000",
+      "longitude": "-157.8793357000",
+      "network_id": "11",
+      "phone_number": "8088322341",
+      "fax_number": "8088322342",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "3.2203430766211727",
+      "gmap_search_keyword": "2055+North+King+Street,+#102++Honolulu+HI+96819",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23382,
+        "lab_id": "23876",
+        "url": "honolulu-hi-2055-north-king-street-102-96744"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "7:00 AM",
+          "close": "4:00 PM"
+        },
+        "Tuesday": {
+          "open": "7:00 AM",
+          "close": "4:00 PM"
+        },
+        "Wednesday": {
+          "open": "7:00 AM",
+          "close": "4:00 PM"
+        },
+        "Thursday": {
+          "open": "7:00 AM",
+          "close": "4:00 PM"
+        },
+        "Friday": {
+          "open": "7:00 AM",
+          "close": "4:00 PM"
+        },
+        "Saturday": {
+          "open": "7:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 25339,
+      "address": "3375 Koapaka Street, Suite B280",
+      "geocode_address": "",
+      "city": "Honolulu",
+      "state": "HI",
+      "zip_code": "96819",
+      "hours": "M-F:\t6:00 am - 4:00 pm ",
+      "latitude": "21.3357473000",
+      "longitude": "-157.9178975000",
+      "network_id": "11",
+      "phone_number": "8088345140",
+      "fax_number": "8088330018",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "5.24408537819936",
+      "gmap_search_keyword": "3375+Koapaka+Street,+Suite+B280++Honolulu+HI+96819",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 25003,
+        "lab_id": "25339",
+        "url": "honolulu-hi-3375-koapaka-street-suite-b280-96819"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:00 AM",
+          "close": "4:00 PM"
+        },
+        "Tuesday": {
+          "open": "6:00 AM",
+          "close": "4:00 PM"
+        },
+        "Wednesday": {
+          "open": "6:00 AM",
+          "close": "4:00 PM"
+        },
+        "Thursday": {
+          "open": "6:00 AM",
+          "close": "4:00 PM"
+        },
+        "Friday": {
+          "open": "6:00 AM",
+          "close": "4:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23868,
+      "address": "99-128 Aiea Heights Dr., #102",
+      "geocode_address": "",
+      "city": "Aiea",
+      "state": "HI",
+      "zip_code": "96701",
+      "hours": "M-F: 5:30am to 4:00pm Sat: 5:30am - 12:00pm",
+      "latitude": "21.3796432000",
+      "longitude": "-157.9304342000",
+      "network_id": "11",
+      "phone_number": "8084836840",
+      "fax_number": "8084836842",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "7.8077582301934925",
+      "gmap_search_keyword": "99-128+Aiea+Heights+Dr.,+#102++Aiea+HI+96701",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23374,
+        "lab_id": "23868",
+        "url": "aiea-hi-99-128-aiea-heights-dr-102-96701"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "5:30 AM",
+          "close": "4:00 PM"
+        },
+        "Tuesday": {
+          "open": "5:30 AM",
+          "close": "4:00 PM"
+        },
+        "Wednesday": {
+          "open": "5:30 AM",
+          "close": "4:00 PM"
+        },
+        "Thursday": {
+          "open": "5:30 AM",
+          "close": "4:00 PM"
+        },
+        "Friday": {
+          "open": "5:30 AM",
+          "close": "4:00 PM"
+        },
+        "Saturday": {
+          "open": "5:30 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23888,
+      "address": "98-211 Pali Momi Street, Suite 401",
+      "geocode_address": "",
+      "city": "Aiea",
+      "state": "HI",
+      "zip_code": "96701",
+      "hours": "M-F 8a-4:30p lunch 12:30pm - 1pm sat 8a-12pm",
+      "latitude": "21.3817900000",
+      "longitude": "-157.9382756000",
+      "network_id": "11",
+      "phone_number": "8084831881",
+      "fax_number": "8084832046",
+      "title": "Clinical Laboratories of ",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "8.26362206477268",
+      "gmap_search_keyword": "98-211+Pali+Momi+Street,+Suite+401++Aiea+HI+96701",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23392,
+        "lab_id": "23888",
+        "url": "aiea-hi-98-211-pali-momi-street-suite-401-96701"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "4:30 PM",
+          "lunch_start": "12:30 PM",
+          "lunch_stop": "1:00 PM"
+        },
+        "Saturday": {
+          "open": "8:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23878,
+      "address": "98-1079 Moanalua Rd., #495",
+      "geocode_address": "",
+      "city": "Aiea",
+      "state": "HI",
+      "zip_code": "96701",
+      "hours": "m-f 7a-5pm sat 7:30a-12pm",
+      "latitude": "21.3834586000",
+      "longitude": "-157.9383976000",
+      "network_id": "11",
+      "phone_number": "8084836845",
+      "fax_number": "8084836843",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "8.351472940865355",
+      "gmap_search_keyword": "98-1079+Moanalua+Rd.,+#495++Aiea+HI+96701",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23384,
+        "lab_id": "23878",
+        "url": "aiea-hi-98-1079-moanalua-rd-495-96701"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "7:00 AM",
+          "close": "5:00 PM"
+        },
+        "Saturday": {
+          "open": "7:30 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23886,
+      "address": "98-1079 Moanalua Rd, 2nd Fl",
+      "geocode_address": "",
+      "city": "Aiea",
+      "state": "HI",
+      "zip_code": "96701",
+      "hours": "M-F:\t7:00 am - 8:00 pm sat-sun 7a-8p",
+      "latitude": "21.3834586000",
+      "longitude": "-157.9383976000",
+      "network_id": "11",
+      "phone_number": "8084854243",
+      "fax_number": "8084854381",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "8.351472940865355",
+      "gmap_search_keyword": "98-1079+Moanalua+Rd,+2nd+Fl++Aiea+HI+96701",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23391,
+        "lab_id": "23886",
+        "url": "aiea-hi-981079-moanalua-rd-2nd-fl-96701"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "7:00 AM",
+          "close": "8:00 PM"
+        },
+        "Tuesday": {
+          "open": "7:00 AM",
+          "close": "8:00 PM"
+        },
+        "Wednesday": {
+          "open": "7:00 AM",
+          "close": "8:00 PM"
+        },
+        "Thursday": {
+          "open": "7:00 AM",
+          "close": "8:00 PM"
+        },
+        "Friday": {
+          "open": "7:00 AM",
+          "close": "8:00 PM"
+        },
+        "Saturday": {
+          "open": "7:00 AM",
+          "close": "8:00 PM"
+        },
+        "Sunday": {
+          "open": "7:00 AM",
+          "close": "8:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23877,
+      "address": "45-1151 Kamehameha Hwy Ste. H",
+      "geocode_address": "",
+      "city": "Kaneohe",
+      "state": "HI",
+      "zip_code": "96744",
+      "hours": "M-F:\t6:00 am - 2:00 pm Sat 6a-11a",
+      "latitude": "21.4183762000",
+      "longitude": "-157.8013273000",
+      "network_id": "11",
+      "phone_number": "8082330819",
+      "fax_number": "8082330818",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "8.9287577397316",
+      "gmap_search_keyword": "45-1151+Kamehameha+Hwy+Ste.+H++Kaneohe+HI+96744",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23383,
+        "lab_id": "23877",
+        "url": "kaneohe-hi-45-1151-kamehameha-hwy-ste-h-96744"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:00 AM",
+          "close": "2:00 PM"
+        },
+        "Tuesday": {
+          "open": "6:00 AM",
+          "close": "2:00 PM"
+        },
+        "Wednesday": {
+          "open": "6:00 AM",
+          "close": "2:00 PM"
+        },
+        "Thursday": {
+          "open": "6:00 AM",
+          "close": "2:00 PM"
+        },
+        "Friday": {
+          "open": "6:00 AM",
+          "close": "2:00 PM"
+        },
+        "Saturday": {
+          "open": "6:00 AM",
+          "close": "11:00 AM"
+        }
+      }
+    },
+    {
+      "id": 23875,
+      "address": "30 Aulike Street, #101",
+      "geocode_address": "",
+      "city": "Kailua",
+      "state": "HI",
+      "zip_code": "96734",
+      "hours": "m-f 6a-4p sat 6a-11a",
+      "latitude": "21.3963517000",
+      "longitude": "-157.7425727000",
+      "network_id": "11",
+      "phone_number": "8082666830",
+      "fax_number": "8082666835",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "9.667436634966398",
+      "gmap_search_keyword": "30+Aulike+Street,+#101++Kailua+HI+96734",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23381,
+        "lab_id": "23875",
+        "url": "kailua-hi-30-aulike-street-101-96734"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:00 AM",
+          "close": "4:00 PM"
+        },
+        "Tuesday": {
+          "open": "6:00 AM",
+          "close": "4:00 PM"
+        },
+        "Wednesday": {
+          "open": "6:00 AM",
+          "close": "4:00 PM"
+        },
+        "Thursday": {
+          "open": "6:00 AM",
+          "close": "4:00 PM"
+        },
+        "Friday": {
+          "open": "6:00 AM",
+          "close": "4:00 PM"
+        },
+        "Saturday": {
+          "open": "6:00 AM",
+          "close": "11:00 AM"
+        }
+      }
+    },
+    {
+      "id": 23871,
+      "address": "91-1401 Fort Weaver Rd., #A101",
+      "geocode_address": "",
+      "city": "Ewa Beach",
+      "state": "HI",
+      "zip_code": "96706",
+      "hours": "M-F:\t4:30 am - 1:00 pm Sat: 6:00am - 12:00 pm",
+      "latitude": "21.3342980000",
+      "longitude": "-158.0246819000",
+      "network_id": "11",
+      "phone_number": "8086830024",
+      "fax_number": "8086830025",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "11.662963713221778",
+      "gmap_search_keyword": "91-1401+Fort+Weaver+Rd.,+#A101++Ewa+Beach+HI+96706",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23377,
+        "lab_id": "23871",
+        "url": "ewa-beach-hi-91-1401-fort-weaver-rd-a101-96706"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "4:30 AM",
+          "close": "1:00 PM"
+        },
+        "Tuesday": {
+          "open": "4:30 AM",
+          "close": "1:00 PM"
+        },
+        "Wednesday": {
+          "open": "4:30 AM",
+          "close": "1:00 PM"
+        },
+        "Thursday": {
+          "open": "4:30 AM",
+          "close": "1:00 PM"
+        },
+        "Friday": {
+          "open": "4:30 AM",
+          "close": "1:00 PM"
+        },
+        "Saturday": {
+          "open": "6:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23891,
+      "address": "94-307 Farrington Hwy, Ste B4",
+      "geocode_address": "",
+      "city": "Waipahu",
+      "state": "HI",
+      "zip_code": "96797",
+      "hours": "M-F 6a-3:30p sat 6a-12pm",
+      "latitude": "21.3800644000",
+      "longitude": "-158.0176741000",
+      "network_id": "11",
+      "phone_number": "8086773870",
+      "fax_number": "8086773731",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "12.34225215537345",
+      "gmap_search_keyword": "94-307+Farrington+Hwy,+Ste+B4++Waipahu+HI+96797",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23395,
+        "lab_id": "23891",
+        "url": "waipahu-hi-94-307-farrington-hwy-ste-b4-96797"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:00 AM",
+          "close": "3:30 PM"
+        },
+        "Tuesday": {
+          "open": "6:00 AM",
+          "close": "3:30 PM"
+        },
+        "Wednesday": {
+          "open": "6:00 AM",
+          "close": "3:30 PM"
+        },
+        "Thursday": {
+          "open": "6:00 AM",
+          "close": "3:30 PM"
+        },
+        "Friday": {
+          "open": "6:00 AM",
+          "close": "3:30 PM"
+        },
+        "Saturday": {
+          "open": "6:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 23881,
+      "address": "94-216 Farrington Hwy., Suite B2-102",
+      "geocode_address": "",
+      "city": "Waipahu",
+      "state": "HI",
+      "zip_code": "96797",
+      "hours": "M-F 7:30a-3p sat 7:30a-12pm",
+      "latitude": "21.3798363000",
+      "longitude": "-158.0207947000",
+      "network_id": "11",
+      "phone_number": "8086716539",
+      "fax_number": "8086769319",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "12.512957017991583",
+      "gmap_search_keyword": "94-216+Farrington+Hwy.,+Suite+B2-102++Waipahu+HI+96797",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 23387,
+        "lab_id": "23881",
+        "url": "waipahu-hi-94-216-farrington-hwy-suite-b2-102-96797"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "7:30 AM",
+          "close": "3:00 PM"
+        },
+        "Tuesday": {
+          "open": "7:30 AM",
+          "close": "3:00 PM"
+        },
+        "Wednesday": {
+          "open": "7:30 AM",
+          "close": "3:00 PM"
+        },
+        "Thursday": {
+          "open": "7:30 AM",
+          "close": "3:00 PM"
+        },
+        "Friday": {
+          "open": "7:30 AM",
+          "close": "3:00 PM"
+        },
+        "Saturday": {
+          "open": "7:30 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 25340,
+      "address": "91-2135 Fort Weaver Rd, Suite 195",
+      "geocode_address": "",
+      "city": "Ewa Beach",
+      "state": "HI",
+      "zip_code": "96706",
+      "hours": "M-F:\t4:00 am - 2:00 pm  Sat: 7:00 - 12:00 pm",
+      "latitude": "21.3713198000",
+      "longitude": "-158.0271132000",
+      "network_id": "11",
+      "phone_number": "8086716191",
+      "fax_number": "8086772484",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "12.624520783067938",
+      "gmap_search_keyword": "91-2135+Fort+Weaver+Rd,+Suite+195++Ewa+Beach+HI+96706",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 25004,
+        "lab_id": "25340",
+        "url": "ewa-beach-hi-91-2135-fort-weaver-rd-suite-195-96706"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "4:00 AM",
+          "close": "2:00 PM"
+        },
+        "Tuesday": {
+          "open": "4:00 AM",
+          "close": "2:00 PM"
+        },
+        "Wednesday": {
+          "open": "4:00 AM",
+          "close": "2:00 PM"
+        },
+        "Thursday": {
+          "open": "4:00 AM",
+          "close": "2:00 PM"
+        },
+        "Friday": {
+          "open": "4:00 AM",
+          "close": "2:00 PM"
+        },
+        "Saturday": {
+          "open": "7:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 25344,
+      "address": "91-590 Farrington Hwy, Suite 195",
+      "geocode_address": "",
+      "city": "Kapolei",
+      "state": "HI",
+      "zip_code": "96707",
+      "hours": "M-F 6a-3p sat 6a-12p",
+      "latitude": "21.3384349000",
+      "longitude": "-158.0796562000",
+      "network_id": "11",
+      "phone_number": "8086740618",
+      "fax_number": "8086749241",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "15.184315530142136",
+      "gmap_search_keyword": "91-590+Farrington+Hwy,+Suite+195++Kapolei+HI+96707",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 25008,
+        "lab_id": "25344",
+        "url": "kapolei-hi-91-590-farrington-hwy-suite-195-96707"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:00 AM",
+          "close": "3:00 PM"
+        },
+        "Tuesday": {
+          "open": "6:00 AM",
+          "close": "3:00 PM"
+        },
+        "Wednesday": {
+          "open": "6:00 AM",
+          "close": "3:00 PM"
+        },
+        "Thursday": {
+          "open": "6:00 AM",
+          "close": "3:00 PM"
+        },
+        "Friday": {
+          "open": "6:00 AM",
+          "close": "3:00 PM"
+        },
+        "Saturday": {
+          "open": "6:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 25355,
+      "address": "845 Wainee St",
+      "geocode_address": "",
+      "city": "Lahaina",
+      "state": "HI",
+      "zip_code": "96761",
+      "hours": "M-F 6:30a-3:30p",
+      "latitude": "20.8770330000",
+      "longitude": "-156.6789970000",
+      "network_id": "11",
+      "phone_number": "8086618593",
+      "fax_number": "8086618598",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "80.85697720067019",
+      "gmap_search_keyword": "845+Wainee+St++Lahaina+HI+96761",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 25019,
+        "lab_id": "25355",
+        "url": "lahaina-hi-845-wainee-st-96761"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:30 AM",
+          "close": "3:30 PM"
+        },
+        "Tuesday": {
+          "open": "6:30 AM",
+          "close": "3:30 PM"
+        },
+        "Wednesday": {
+          "open": "6:30 AM",
+          "close": "3:30 PM"
+        },
+        "Thursday": {
+          "open": "6:30 AM",
+          "close": "3:30 PM"
+        },
+        "Friday": {
+          "open": "6:30 AM",
+          "close": "3:30 PM"
+        }
+      }
+    },
+    {
+      "id": 25359,
+      "address": "130 Prison St",
+      "geocode_address": "",
+      "city": "Lahaina",
+      "state": "HI",
+      "zip_code": "96761",
+      "hours": "M-F 8a-5p sat 8a-12p",
+      "latitude": "20.8710503000",
+      "longitude": "-156.6754661000",
+      "network_id": "11",
+      "phone_number": "8086675798",
+      "fax_number": "8086613254",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "81.22142458580329",
+      "gmap_search_keyword": "130+Prison+St++Lahaina+HI+96761",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 25023,
+        "lab_id": "25359",
+        "url": "lahaina-hi-130-prison-st-96761"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "8:00 AM",
+          "close": "5:00 PM"
+        },
+        "Saturday": {
+          "open": "8:00 AM",
+          "close": "12:00 PM"
+        }
+      }
+    },
+    {
+      "id": 25361,
+      "address": "2180 Main St, 2nd Floor",
+      "geocode_address": "",
+      "city": "Wailuku",
+      "state": "HI",
+      "zip_code": "96793",
+      "hours": "M-F 6:30a-5:00pm sat 8:30a-12:30pm",
+      "latitude": "20.8874890000",
+      "longitude": "-156.5046132000",
+      "network_id": "11",
+      "phone_number": "8082432312",
+      "fax_number": "8082490022",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "91.2238248532366",
+      "gmap_search_keyword": "2180+Main+St,+2nd+Floor++Wailuku+HI+96793",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 25025,
+        "lab_id": "25361",
+        "url": "wailuku-hi-2180-main-st-2nd-floor-96793"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:30 AM",
+          "close": "5:00 PM"
+        },
+        "Tuesday": {
+          "open": "6:30 AM",
+          "close": "5:00 PM"
+        },
+        "Wednesday": {
+          "open": "6:30 AM",
+          "close": "5:00 PM"
+        },
+        "Thursday": {
+          "open": "6:30 AM",
+          "close": "5:00 PM"
+        },
+        "Friday": {
+          "open": "6:30 AM",
+          "close": "5:00 PM"
+        },
+        "Saturday": {
+          "open": "8:30 AM",
+          "close": "12:30 PM"
+        }
+      }
+    },
+    {
+      "id": 25363,
+      "address": "80 Pakana St",
+      "geocode_address": "",
+      "city": "Wailuku",
+      "state": "HI",
+      "zip_code": "96793",
+      "hours": "M-F 6:30a-4:30p",
+      "latitude": "20.8521845000",
+      "longitude": "-156.4965790000",
+      "network_id": "11",
+      "phone_number": "8082445567",
+      "fax_number": "8082426137",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "92.51766287964924",
+      "gmap_search_keyword": "80+Pakana+St++Wailuku+HI+96793",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 25027,
+        "lab_id": "25363",
+        "url": "wailuku-hi-80-pakana-st-96793"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:30 AM",
+          "close": "4:30 PM"
+        },
+        "Tuesday": {
+          "open": "6:30 AM",
+          "close": "4:30 PM"
+        },
+        "Wednesday": {
+          "open": "6:30 AM",
+          "close": "4:30 PM"
+        },
+        "Thursday": {
+          "open": "6:30 AM",
+          "close": "4:30 PM"
+        },
+        "Friday": {
+          "open": "6:30 AM",
+          "close": "4:30 PM"
+        }
+      }
+    },
+    {
+      "id": 25358,
+      "address": "110 Kaahumanu Ave, Suite 108",
+      "geocode_address": "",
+      "city": "Kahului",
+      "state": "HI",
+      "zip_code": "96732",
+      "hours": "M-F 6:30a-4:30pm",
+      "latitude": "20.8908113000",
+      "longitude": "-156.4709355000",
+      "network_id": "11",
+      "phone_number": "8088730872",
+      "fax_number": "8088730873",
+      "title": "Clinical Laboratories of Hawaii",
+      "country": "US",
+      "imported_hours": "",
+      "import_hash": null,
+      "deleted_at": null,
+      "network_lab_ref_number": null,
+      "address2": null,
+      "is_rejected": false,
+      "does_drugs": false,
+      "does_phlebotomy": true,
+      "distance": "93.22219138599935",
+      "gmap_search_keyword": "110+Kaahumanu+Ave,+Suite+108++Kahului+HI+96732",
+      "is_northeast": false,
+      "manual_account_name": "CLH",
+      "url": {
+        "id": 25022,
+        "lab_id": "25358",
+        "url": "kahului-hi-110-kaahumanu-ave-suite-108-96732"
+      },
+      "network": {
+        "id": 11,
+        "name": "Clinical Laboratories of Hawaii",
+        "name_short": "CLH",
+        "search_lab_url": "https:\/\/www.clinicallabs.com\/locations\/find-a-location.aspx",
+        "created_at": "2018-03-14 18:17:19",
+        "updated_at": "2018-05-31 17:34:49"
+      },
+      "state_detail": {
+        "states_id": 11,
+        "name_long": "Hawaii",
+        "name_short": "HI",
+        "index": "1",
+        "country": "US",
+        "compliance_percent": "35"
+      },
+      "structured_hours": {
+        "Monday": {
+          "open": "6:30 AM",
+          "close": "4:30 PM"
+        },
+        "Tuesday": {
+          "open": "6:30 AM",
+          "close": "4:30 PM"
+        },
+        "Wednesday": {
+          "open": "6:30 AM",
+          "close": "4:30 PM"
+        },
+        "Thursday": {
+          "open": "6:30 AM",
+          "close": "4:30 PM"
+        },
+        "Friday": {
+          "open": "6:30 AM",
+          "close": "4:30 PM"
+        }
+      }
+    }
+  ],
+  "latitude": "21.2966976000",
+  "longitude": "-157.8480364000",
+  "resultCount": 25
+}

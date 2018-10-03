@@ -33,4 +33,12 @@ trait MapContextInterface
      * @return bool
      */
     abstract public function assertLabResultVisible($not, $title);
+
+    /**
+     * Assert if the map is zoomed to a particular level.
+     *
+     * @param  int       $level The expected minimum zoom level of the map.
+     * @throws Exception if the map is not zoomed in to at least the given level.
+     */
+    abstract public function assertMapZoom($level);
 }

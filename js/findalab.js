@@ -406,6 +406,9 @@
        */
       this.resize = function() {
         google.maps.event.trigger(self.settings.googleMaps.map, 'resize');
+        if (self.bounds) {
+          self.settings.googleMaps.map.fitBounds(self.bounds);
+        }
       };
 
       /**
@@ -771,7 +774,6 @@
           self.find('[data-findalab-content]').removeClass('is-active');
           self.find('[data-findalab-content="' + content + '"]').addClass('is-active');
           self.resize();
-          self.settings.googleMaps.map.fitBounds(self.bounds);
         });
       };
 
