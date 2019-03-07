@@ -203,23 +203,36 @@
                         'place your order and submit payment over the phone or online before visiting any of the ' +
                         this.settings.search.title + '.';
 
-      this.mapMarker  = {
-          path: 'M5.59,0A5.59,5.59,0,0,0,3.951,10.935l1.7,1.7,1.769-1.77A5.588,5.588,0,0,0,5.59,0ZM7.861,8.641A1.013,' +
-          '1.013,0,0,1,7,9.132H4.185A1.01,1.01,0,0,1,3.3,7.646L4.569,5.262V3.2H4.25a.4.4,0,0,1,0-.8H6.92a.4.4,0,1,1,0,' +
-          '.8H6.612v2.06L7.886,7.646A1.014,1.014,0,0,1,7.861,8.641ZM6.344,6.164H4.837a.19.19,0,0,0-.168.1L3.779,' +
-          '7.93a.461.461,0,0,0,.406.678H7A.461.461,0,0,0,7.4,7.93L6.512,6.265A.192.192,0,0,0,6.344,6.164Z',
-          fillColor: self.settings.googleMaps.labMarkerFillColor,
-          fillOpacity: 1,
-          scale: 4,
-          strokeColor: 'white',
-          strokeWeight: 1
+      this.mapMarker = makeMapMarker(self.settings.googleMaps.labMarkerFillColor, 'white');
+      this.mapMarkerHover = makeMapMarker(self.settings.googleMaps.markerHoverFillColor, 'white');
+      this.recommendedMapMarker = makeMapMarker(self.settings.googleMaps.recommendedMarkerFillColor, 'white');
+
+      /**
+       * Generates a map marker with the given colors.
+       *
+       * @param   {string}             fillColor   The color to fill the marker with.
+       * @param   {string}             strokeColor The stroke color for the marker.
+       * @returns {google.maps.Marker} The complete marker object.
+       */
+      function makeMapMarker(fillColor, strokeColor) {
+        var svg = '<svg width="48" height="54" xmlns="http://www.w3.org/2000/svg"><g><path stroke-width="1" ' +
+            'stroke="STROKE" fill="FILL" d="m24.047761,0.125001a23.915509,23.915509 0 0 0 -7.012079,' +
+            '46.782843l7.273053,7.273053l7.568253,-7.572532a23.906953,23.906953 0 0 0 -7.829228,-46.483365z"/>' +
+            '<path stroke-width="1" stroke="STROKE" fill="STROKE" d="m33.763704,37.093501a4.333884,4.333884 0 0 1 ' +
+            '-3.683587,2.100629l-12.04332,0a4.321049,4.321049 0 0 1 -3.786266,-6.357504l5.42912,-10.199387l0,' +
+            '-8.821785l-1.364767,0a1.711307,1.711307 0 0 1 0,-3.422613l11.422971,0a1.711307,1.711307 0 1 1 0,' +
+            '3.422613l-1.317706,0l0,8.813229l5.450511,10.207944a4.338162,4.338162 0 0 1 -0.106957,4.256875zm-6.49013,' +
+            '-10.597266l-6.447348,0a0.812871,0.812871 0 0 0 -0.718749,0.427827l-3.807657,7.127592a1.972281,1.972281 ' +
+            '0 0 0 1.736976,2.900665l12.04332,0a1.972281,1.972281 0 0 0 1.711307,-2.900665l-3.799101,-7.123314' +
+            'a0.821427,0.821427 0 0 0 -0.718749,-0.432105z"/></g></svg>';
+
+        var finalSvg = svg.replace(/STROKE/g, strokeColor).replace(/FILL/g, fillColor);
+
+        return {
+          anchor: new google.maps.Point(24, 54),
+          url: 'data:image/svg+xml;utf-8, ' + encodeURIComponent(finalSvg)
         };
-
-      this.mapMarkerHover = $.extend(true, {}, this.mapMarker);
-      this.mapMarkerHover.fillColor = self.settings.googleMaps.markerHoverFillColor;
-
-      this.recommendedMapMarker = $.extend(true, {}, this.mapMarker);
-      this.recommendedMapMarker.fillColor = self.settings.googleMaps.recommendedMarkerFillColor;
+      }
 
       this.labs = [];
 
