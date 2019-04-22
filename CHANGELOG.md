@@ -5,6 +5,18 @@ See the [release page] for authors, detailed dates, commit hashes and available 
 
 - **Changes:** Added project to CircleCI
 
+## v2.8.22  - Added CI
+
+- **Changes:** Added project to CircleCI
+
+## v2.8.21  - Fill in pin flask
+
+- **Changes:** Generate map markers with filled-in flask shape
+
+## v2.8.20  - Fix zooming issue
+
+- **Changes:** Fix issue with map being zoomed out to the farthest level if a search is performed while the map is hidden, and then the map is revealed
+
 ## v2.8.19 - Add new search parameter filters
 
 - **Changes:** Add new search parameter filters to support filter of collection centers that only do drug test.
