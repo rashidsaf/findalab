@@ -9,7 +9,6 @@ Feature: Findalab Loads Nicely
 
   Scenario: Loading state is removed and component appears
    Given I am on "/loading.php"
-    When I wait 4 seconds
     Then I should see "Test Centers"
      And I should see "Please \"Enter your zip\" above and press \"Search\" to see results."
      And I should not see "Loading Test Centers"

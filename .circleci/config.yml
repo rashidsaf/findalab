@@ -1,0 +1,70 @@
+version: 2.1
+
+commands:
+  prep:
+    description: "Bring the repository up-to-date with master and handle setup"
+    steps:
+      - checkout
+      - restore_cache:
+          key: composer-{{ checksum "composer.lock" }}
+      - restore_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+      - run:
+          name: Configure the CircleCI git user
+          command: |
+            git config --global user.email "ci@medology.com"
+            git config --global user.name "Circle CI"
+      - run:
+          name: Configure git to use SSH instead of HTTP
+          command: |
+            git config --global url.git@github.com:.insteadOf git://github.com/
+            git config --global --add url.git@github.com:.insteadOf https://github.com/
+      - run:
+          name: Merge master
+          command: git fetch origin && git merge origin/master --no-edit
+      - run:
+          name: Start containers
+          command: ./bin/containers up -d
+      - save_cache:
+          key: composer-{{ checksum "composer.lock" }}
+          paths:
+            - ~/.composer/cache
+      - save_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+  test:
+    description: "Set up and run tests"
+    steps:
+      - run:
+          name: Initialize the project
+          command: |
+            mkdir -p ./artifacts
+            bin/init_project
+      - run:
+          name: Behat tests
+          command: behat --strict -vv -f pretty -o std -f junit -o ./artifacts
+      - store_test_results:
+          path: artifacts
+      - store_artifacts:
+          path: artifacts
+
+jobs:
+  test:
+    working_directory: /tmp/findalab
+    parallelism: 1
+    machine:
+      enabled: true
+      docker_layer_caching: true
+    environment:
+      - PATH: /opt/circleci/.pyenv/shims:./bin:./node_modules/.bin:./vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+    steps:
+      - prep
+      - test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test

@@ -8,4 +8,5 @@ Feature: Hidden, Preloaded Map
     Then I should see "Map Ready"
     When I press "Show Map"
     Then I should see "25 Results"
+     And I should not see "Show Map"
      And the findalab map should be zoomed to at least level 8

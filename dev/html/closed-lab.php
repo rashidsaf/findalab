@@ -30,7 +30,7 @@
     </div>
 </div>
 
-<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script src="/js/lib/jquery.js"></script>
 <script src="/js/findalab.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY'); ?>&amp;callback=initMap" async></script>
 <div id="APIKey" data-api-key="<?= env('GOOGLE_MAP_API_KEY'); ?>" ></div>
@@ -38,7 +38,7 @@
 <script>
     function initMap() {
         $('#findalab').load('/template/findalab.html', function() {
-            $(this).find('.findalab').findalab({
+            window.labfinder = $(this).find('.findalab').findalab({
                 baseURL: 'http://findalab.local/fixtures/closed-lab'
             });
         });

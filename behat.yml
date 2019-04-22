@@ -10,6 +10,17 @@ default:
           selenium2:
             browser: chrome
             wd_host: http://chrome:4444/wd/hub
+            capabilities:
+              extra_capabilities:
+                chromeOptions:
+                  args:
+                    - "--ignore-certificate-errors"
+                    - "--test-type"
   suites:
     web_features:
-      contexts: [ WebContext ]
+      paths: [ features/web ]
+      contexts:
+        - features\bootstrap\WebContext
+        - features\contexts\ArtifactContext
+        - features\contexts\MapContext
+        - features\contexts\MapResultsContext

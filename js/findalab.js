@@ -215,7 +215,7 @@
        * @returns {google.maps.Marker} The complete marker object.
        */
       function makeMapMarker(fillColor, strokeColor) {
-        var svg = '<svg width="48" height="54" xmlns="http://www.w3.org/2000/svg"><g><path stroke-width="1" ' +
+        var svg = '<svg width="48" class="lab-marker-icon" height="54" xmlns="http://www.w3.org/2000/svg"><g><path stroke-width="1" ' +
             'stroke="STROKE" fill="FILL" d="m24.047761,0.125001a23.915509,23.915509 0 0 0 -7.012079,' +
             '46.782843l7.273053,7.273053l7.568253,-7.572532a23.906953,23.906953 0 0 0 -7.829228,-46.483365z"/>' +
             '<path stroke-width="1" stroke="STROKE" fill="STROKE" d="m33.763704,37.093501a4.333884,4.333884 0 0 1 ' +
@@ -659,7 +659,7 @@
 
           if (self.settings.lab.hasButton) {
               infoWindowContent +=
-                  '<a ' +
+                  '<button ' +
                   'data-findalab-result-button ' +
                   'class="' + self.settings.lab.buttonClass + '" ' +
                   'href="#" ' +
@@ -676,7 +676,7 @@
                   'data-network_id="' + lab.network_id + '"' +
                   '>' +
                   self.settings.lab.buttonText +
-                  '</a>';
+                  '</button>';
           }
 
           return infoWindowContent;

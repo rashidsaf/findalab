@@ -14,5 +14,4 @@ docker run \
     -v $(pwd):/workdir \
     -v ~/.cache:/home/user/.cache \
     -v ~/.ssh:/home/user/.ssh \
-    ${YARN_OWNER}/${YARN_REPO}:${YARN_TAG} \
-    yarn "$@"
+    ${YARN_IMAGE} yarn "$@"

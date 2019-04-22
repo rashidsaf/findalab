@@ -24,3 +24,11 @@ Feature: Findalab Input Fields Disable When Button Is Clicked
      When I wait 5 seconds
      Then the "Choose This Location" button should be enabled
       And the "Search" button should be enabled
+
+     Scenario: Disabled states appears after choose the info window location button is clicked
+       When I am on "/disable-buttons.php"
+        And I fill in "Enter your zip" with "77057"
+        And I press "Search"
+       When I click on the "LabCorp" marker
+        And I press "Choose This Location"
+       Then the "Choose This Location" button should be disabled

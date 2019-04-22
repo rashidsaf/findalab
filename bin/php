@@ -4,13 +4,14 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT="$(cd "${DIR}"/../ && pwd)"
 
 . "${ROOT}"/docker/lib/docker_host_user_id.sh
+. "${ROOT}"/bin/lib/env.sh
 
 docker run -it --rm \
-    -e LOCAL_USER_ID=$DOCKER_HOST_USER_ID \
-    --env-file "$ROOT"/docker/.env \
+    -e LOCAL_USER_ID=${DOCKER_HOST_USER_ID} \
+    --env-file "${ROOT}"/docker/.env \
     -v $(pwd):/var/www \
     -v ~/.composer:/home/user/.composer \
     -w /var/www \
-    --net findalab_default \
+    --net ${PROJECT_NAME}_default \
     --link web:findalab.local \
     chekote/php:5.6.30-laravel-a php "$@"

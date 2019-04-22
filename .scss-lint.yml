@@ -1,7 +1,5 @@
 # Default application configuration that all configurations inherit from.
 scss_files: 'scss/*.scss'
-exclude:
-  - 'dev/html/bower_components/**'
 
 # List of gem names to load custom linters from (make sure they are already
 # installed)

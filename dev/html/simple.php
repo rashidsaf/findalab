@@ -32,20 +32,19 @@
 
     <button id="findalab-reset" type="button" style="margin-top: 16px;">Reset findalab</button>
 
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/js/lib/jquery.js"></script>
     <script src="/js/findalab.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY'); ?>&amp;callback=initMap" async></script>
 
     <script>
      function initMap() {
-         var findalab;
          $('#findalab').load('/template/findalab.html', function() {
-             findalab = $(this).find('.findalab').findalab({
+             window.labfinder = $(this).find('.findalab').findalab({
                  baseURL: 'http://findalab.local/fixtures/simple-mockups'
              });
          });
          $('#findalab-reset').on('click', function() {
-             findalab.reset();
+             window.labfinder.reset();
          });
      }
     </script>

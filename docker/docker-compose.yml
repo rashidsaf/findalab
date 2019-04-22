@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   app:
@@ -19,11 +19,13 @@ services:
       - 443:443
 
   chrome:
-    image: selenium/standalone-chrome-debug:2.53.0
+    image: ${SELENIUM_IMAGE}
     depends_on:
       - web
     environment:
-        - no_proxy:localhost
+        SCREEN_WIDTH: 1600
+        SCREEN_HEIGHT: 1200
+        no_proxy: localhost
     links:
       - web
       - web:findalab.local
@@ -33,3 +35,7 @@ services:
     env_file: .env
     ports:
       - 5900:5900
+
+networks:
+  default:
+    driver: bridge

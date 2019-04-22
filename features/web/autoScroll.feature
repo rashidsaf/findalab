@@ -9,11 +9,7 @@ Feature: Auto scroll to lab in the list when map marker is clicked
      And I press "Search"
     Then I should see "Choose This Location"
      And I should see "4 Results"
-    When I click on the "Lab D" marker
-     And I wait 1 seconds
-    Then "Lab D" should be in the viewport of search result
-     And "Lab A" should not be in the viewport of search result
+    When I click on the "Lab C" marker
+    Then "Lab C" should be in the viewport of search result
     When I click on the "Lab A" marker
-     And I wait 1 seconds
     Then "Lab A" should be in the viewport of search result
-     And "Lab D" should not be in the viewport of search result

@@ -1,13 +1,36 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Medology/findalab/badges/quality-score.png?b=master&s=7722de14d64c14755fa8f122590a5400b7981a0f)](https://scrutinizer-ci.com/g/Medology/findalab/?branch=master)
+[![CircleCI](https://circleci.com/gh/Medology/findalab.svg?style=svg)](https://circleci.com/gh/Medology/findalab)
+
 # Find A Lab - jQuery Plugin
 
-The find a lab plugin is used throughout all of our (Medology) projects to implement our users to search
+The find a lab plugin is used throughout all of our (Healthlabs/Starfish) projects to implement our users to search
 for a testing lab using their postal code and choosing a location best for them.
 
-## Install into Project
-This plugin can be installed as a bower dependency. Run the following command in the root of your project:
+Installing Development Pre-Requisites
+-------------------------------------
+
+Install [Docker](https://www.docker.com).
+
+You will also want to ensure that `./bin`, `./node_modules/.bin` is in your `$PATH` and is the highest priority. You can do so by adding the following to your shell profile:
+
+```
+export PATH=./bin:./node_modules/.bin:./vendor/bin:$PATH
+```
+
+The project uses private GitHub repositories. To allow the various tools (such as Composer, Yarn, etc) to use your
+SSH keys to access these private repositories, we need to configure git to always use SSH instead of HTTPS. To do
+so, ensure that the following is in your `~/.gitconfig` file:
 
 ```bash
-$ bower install findalab --save-dev
+git config --global url.git@github.com:.insteadOf git://github.com/
+git config --global --add url.git@github.com:.insteadOf https://github.com/
+```
+
+## Install into Project
+This plugin can be installed as a yarn package. Run the following command in the root of your project:
+
+```bash
+$ yarn add Medology/findalab
 ```
 
 ## Requirements
@@ -90,12 +113,18 @@ and search for the labs near the user's zipcode.
 To view this in development, you will have to go to:
 https://findalab.local/user-location.php
 
-## Development
+## Installing The Project For Development
 
 To test and make updates to the jQuery plugin clone the repository:
 
 ```bash
 $ git clone https://github.com/Medology/findalab.git && cd findalab/dev
+```
+
+Start the Docker Containers:
+
+```bash
+containers up
 ```
 
 To setup your dev environment, you have to setup NPM and Bower dependencies. Run the following command in the root directory:
@@ -104,13 +133,7 @@ To setup your dev environment, you have to setup NPM and Bower dependencies. Run
 $ init_project
 ```
 
-The preceding command will initialize the file `web/.env`. Open the file and replace any placeholder environmental variables with the necessary API keys for testing.
-
-Next, you will want to setup and run the Docker environment by running the following command
-
-```bash
-containers up
-```
+The preceding command will initialize the file `dev/.env`. Open the file and replace any placeholder environmental variables with the necessary API keys for testing.
 
 Update your hosts file:
 
@@ -119,7 +142,6 @@ echo -e "\n\
 127.0.0.1 findalab.local\n\
 " | sudo tee -a /etc/hosts
 ```
-
 
 You can visit the example site at [findalab.local](http://findalab.local/).
 
@@ -130,12 +152,6 @@ $ gulp
 ```
 
 Gulp includes the `sass` task that compiles the example CSS as well as the `stylesheet` task that creates the individual CSS file.
-
-If you want to watch the files and rebuild gulp on save, use the following command
-
-```bash
-$ gulp watch
-````
 
 ## Releases
 

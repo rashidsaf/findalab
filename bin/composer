@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-docker run -it --rm --env-file "$(pwd)"/docker/.env -v $(pwd):/data -w /data composer/composer install

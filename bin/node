@@ -9,10 +9,9 @@ ROOT="$(cd "${DIR}"/../ && pwd)"
 . "${DIR}"/lib/tty.sh
 
 docker run \
-    -e LOCAL_USER_ID=$DOCKER_HOST_USER_ID \
-    --env-file "$ROOT"/docker/.env \
+    -e LOCAL_USER_ID=${DOCKER_HOST_USER_ID} \
+    --env-file "${ROOT}"/docker/.env \
     -i${TTY} \
     ${RM} \
     -v $(pwd):/workdir \
-    ${NODE_OWNER}/${NODE_REPO}:${NODE_TAG} \
-    node "$@"
+    ${NODE_IMAGE} node "$@"

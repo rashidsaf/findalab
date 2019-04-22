@@ -27,7 +27,7 @@ Feature: Currently Open Lab
        | 1213 Hermann Drive Suite 120 |
        | Houston, TX 77004            |
      And I should not see "Open Now"
-     When I follow "Show ▼"
+     When I follow "Show Hours ▼"
      Then there should be a table on the page with the following information:
        | Monday    | 0:00 AM - 0:01 AM |
        | Tuesday   | 0:00 AM - 0:01 AM |

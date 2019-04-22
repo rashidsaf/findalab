@@ -30,14 +30,14 @@
       </div>
     </div>
 
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/js/lib/jquery.js"></script>
     <script src="/js/findalab.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY'); ?>&amp;callback=initMap" async></script>
 
     <script>
      function initMap() {
          setTimeout(function() {
-             $('#findalab').load('/template/findalab.html', function() {
+             window.labfinder = $('#findalab').load('/template/findalab.html', function() {
                  $(this).find('.findalab').findalab({
                      baseURL: 'http://findalab.local/fixtures/simple-mockups',
                      lab: {
