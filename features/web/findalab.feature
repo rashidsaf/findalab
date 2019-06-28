@@ -70,3 +70,4 @@ Feature: Find Collection Centers
         | data-country    |
         | data-fax_number |
         | data-network_id |
+        | data-does_drugs |
