@@ -230,7 +230,8 @@
 
         return {
           anchor: new google.maps.Point(24, 54),
-          url: 'data:image/svg+xml;utf-8, ' + encodeURIComponent(finalSvg)
+          url: 'data:image/svg+xml;utf-8, ' + encodeURIComponent(finalSvg),
+          scaledSize: new google.maps.Size(48, 54)
         };
       }
 
@@ -987,6 +988,7 @@
 
         vMarker = new google.maps.Marker({
           map: self.settings.googleMaps.map,
+          optimized: false,
           icon: iconMarker,
           position: location,
           title: lab.title
