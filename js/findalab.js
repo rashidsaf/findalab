@@ -230,7 +230,7 @@
 
         return {
           anchor: new google.maps.Point(24, 54),
-          url: 'data:image/svg+xml;utf-8, ' + encodeURIComponent(finalSvg),
+          url: 'data:image/svg+xml;base64,' + btoa(finalSvg),
           scaledSize: new google.maps.Size(48, 54)
         };
       }
