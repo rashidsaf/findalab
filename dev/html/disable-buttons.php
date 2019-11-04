@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Findalab - Disable Buttons on Submit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/dist/findalab.css">
+    <link rel="stylesheet" href="/css/findalab.css">
     <style>
         body {
             margin: 0 auto;
@@ -38,39 +38,10 @@
 
     <div id="findalab-success-msg"></div>
 
-    <script src="/js/lib/jquery.js"></script>
-    <script src="/js/findalab.js"></script>
+
+    <script src="/js/samples/<?php echo basename(__FILE__, '.php') ?>.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY'); ?>&amp;callback=initMap" async></script>
 
-    <script>
-     function initMap() {
-        var findalab;
-        $('#findalab').load('/template/findalab.html', function() {
-            window.labfinder = findalab = $(this).find('.findalab').findalab({
-                baseURL: 'http://findalab.local/fixtures/simple-mockups'
-            });
-            window.labfinder.onLabSelect = function(){
-                testDisableEnable();
-            };
-
-        });
-
-        $('#findalab-keep-lab').on('click', function() {
-            testDisableEnable();
-        });
-        $('body').on('click', '[data-findalab-ihc-button]', function(){
-            testDisableEnable();
-        })
-
-        function testDisableEnable() {
-            window.labfinder.showDisabledState();
-            setTimeout(function() {
-                $('#findalab-success-msg').html('<h3>Success!</h3>');
-                window.labfinder.removeDisabledState();
-            }, 5000);
-        }
-     }
-    </script>
 
   </body>
 </html>

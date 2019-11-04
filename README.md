@@ -1,9 +1,9 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Medology/findalab/badges/quality-score.png?b=master&s=7722de14d64c14755fa8f122590a5400b7981a0f)](https://scrutinizer-ci.com/g/Medology/findalab/?branch=master)
 [![CircleCI](https://circleci.com/gh/Medology/findalab.svg?style=svg)](https://circleci.com/gh/Medology/findalab)
 
-# Find A Lab - jQuery Plugin
+# Find A Lab
 
-The find a lab plugin is used throughout all of our (Healthlabs/Starfish) projects to implement our users to search
+The find a lab package is used throughout all of our (Healthlabs/Starfish) projects to implement our users to search
 for a testing lab using their postal code and choosing a location best for them.
 
 Installing Development Pre-Requisites
@@ -35,29 +35,25 @@ $ yarn add Medology/findalab
 
 ## Requirements
 
-The `findalab` plugin requires the following dependencies:
-- jQuery
-- findalab.js
-- findalab.css
-
-Make sure to load the scripts and stylesheets when using the plugin.
+FindALabs only dependencies are an internal jQuery, and external google maps api.
 
 ## Setup
 
 Include the following code to initialize the plugin on the page:
 
 ```js
-  <script src="/jquery.js"></script>
-  <script src="/findalab.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAP_API_KEY&amp;callback=initMap" async></script>
+```
 
-  <script>
-    function initMap() {
-      $('#findalab').load('/template/findalab.html', function() {
-        $(this).find('.findalab').findalab();
-      }
-  </script>
+```js
+import FindALab from "findalab";
 
+window.initMap = function() {
+  
+}
+FindALab('#findalab').load('/template/findalab.html', function() {
+    FindALab(this).find('.findalab').findalab();
+}
 ```
 ## Pre-loader
 
@@ -93,8 +89,8 @@ Design tip: It's best to be pixel perfect in this case and match the height of t
 The plugin can be customized by redefining `findalab` settings object.
 
 ```js
-$('#findalab-selector').load('../path/to/src/findalab.html', function() {
-  var findalab = $(this).find('.findalab').findalab({
+FindALab('#findalab-selector').load('../path/to/src/findalab.html', function() {
+  const findalab = FindALab(this).find('.findalab').findalab({
     baseURL: YOUR_PROJECTS_URL,
     lab: {
       buttonText: 'Choose this place, yo!',
@@ -110,6 +106,7 @@ $('#findalab-selector').load('../path/to/src/findalab.html', function() {
 ## Use Current Location
 If userLocation.showOption is set to true in the custom settings, clicking the button will find the location of the user
 and search for the labs near the user's zipcode.
+
 To view this in development, you will have to go to:
 https://findalab.local/user-location.php
 
@@ -145,13 +142,13 @@ echo -e "\n\
 
 You can visit the example site at [findalab.local](http://findalab.local/).
 
-Finally, you can compile the stylesheets by running Gulp in the root directory:
+Finally, you can compile the stylesheets by running ```yarn dev``` in the root directory:
 
 ```bash
-$ gulp
+$ yarn dev
 ```
 
-Gulp includes the `sass` task that compiles the example CSS as well as the `stylesheet` task that creates the individual CSS file.
+Yarn includes the `sass` task that compiles the example CSS as well as the `stylesheet` task that creates the individual CSS file.
 
 ## Releases
 

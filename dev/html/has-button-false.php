@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Findalab - Disabled Buttons</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/dist/findalab.css">
+    <link rel="stylesheet" href="/css/findalab.css">
     <style>
      body {
          margin: 0 auto;
@@ -30,22 +30,9 @@
       </div>
     </div>
 
-    <script src="/js/lib/jquery.js"></script>
-    <script src="/js/findalab.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY'); ?>&amp;callback=initMap" async></script>
 
-    <script>
-     function initMap() {
-         $('#findalab').load('/template/findalab.html', function() {
-             window.labfinder = $(this).find('.findalab').findalab({
-                 baseURL: 'http://findalab.local/fixtures/simple-mockups',
-                 lab: {
-                     hasButton: false,
-                 }
-             });
-         });
-     }
-    </script>
+    <script src="/js/samples/<?php echo basename(__FILE__, '.php') ?>.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY'); ?>&amp;callback=initMap" async></script>
 
   </body>
 </html>

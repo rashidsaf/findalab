@@ -129,7 +129,6 @@ class WebContext extends FlexibleContext implements GathersContexts
      */
     public function ensurePageIsLoaded(AfterStepScope $scope)
     {
-        $this->waitForJqueryLoad();
         $this->waitForPageLoad();
     }
 

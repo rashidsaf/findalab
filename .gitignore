@@ -3,5 +3,8 @@
 node_modules
 vendor
 .env
-js/lib/
+src/js/lib/
 bin/composer
+dev/html/js/
+dev/html/css/
+mix-manifest.json

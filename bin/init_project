@@ -19,6 +19,6 @@ println "${GREEN}Installing NPM dependencies..."
 "${ROOT}"/bin/yarn
 exitCheck $?
 
-println "${GREEN}Compiling Gulp resources..."
-gulp
+println "${GREEN}Compiling resources..."
+yarn prod
 exitCheck $?

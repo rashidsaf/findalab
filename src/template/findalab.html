@@ -1,0 +1,89 @@
+<div class="findalab">
+  <div class="findalab__box__top">
+    <div class="findalab__search">
+      <h3 class="findalab__search__title" data-findalab-search-title></h3>
+      <p class="findalab__search__desc" data-findalab-search-desc></p>
+      <button class="findalab__search__user-location" type="button" data-findalab-user-location></button>
+      <div data-findalab-inputgroup-container>
+        <input type="text" data-findalab-search-field data-findalab-inputgroup-field>
+        <div data-findalab-inputgroup-button>
+          <button type="button" data-findalab-search-button data-qa-id="Findalab Search Button"></button>
+        </div>
+      </div>
+      <div data-findalab-day-filter class="findalab__search__day-filter"></div>
+      <div class="findalab__nav" data-findalab-nav>
+        <button type="button" class="findalab__nav__item is-active" data-findalab-nav-item="list">List View</button>
+        <button type="button" class="findalab__nav__item" data-findalab-nav-item="map">Map View</button>
+      </div>
+    </div>
+  </div>
+
+  <ul class="findalab__hide" data-findalab-results-template>
+    <li class="findalab__result" data-findalab-message data-template></li>
+    <li class="findalab__result" data-findalab-empty-list-message></li>
+    <li class="findalab__ihc" data-findalab-ihc data-template>
+      <h4 class="findalab__ihc__title" data-findalab-ihc-title></h4>
+      <p data-findalab-ihc-description></p>
+      <p>
+        <strong data-findalab-ihc-time-title></strong>
+        <br>
+        <span data-findalab-ihc-time-details></span>
+      </p>
+      <div>
+        <button type="button" data-findalab-ihc-button></button>
+      </div>
+      <div class="findalab__ihc__notice">
+        <small>
+          <em data-findalab-ihc-notice></em>
+        </small>
+      </div>
+    </li>
+    <li class="findalab__result" data-findalab-result data-template>
+      <h4 data-findalab-result-title></h4>
+      <address data-findalab-result-address></address>
+      <div data-findalab-result-distance></div>
+      <div data-findalab-result-simple-hours></div>
+      <div data-findalab-result-structured-hours>
+        <span data-findlab-lab-hours-open class="findalab__open">
+          <strong>Open Now</strong>
+          <span class="findalab__open__dot">●</span>
+        </span>
+        <a href="#" data-findalab-toggle-hours>Show Hours ▼</a>
+
+        <div class="findalab__hours">
+          <table>
+            <tbody data-findalab-structured-hours-body>
+              <tr data-findalab-structured-hours-row data-template>
+                <th>
+                  <div data-findalab-result-day></div>
+                  <div class="findalab__hours__closed" data-findalab-result-day-lunch>
+                    Closed for Lunch
+                  </div>
+                </th>
+                <td class="findalab__text-right">
+                  <div data-findalab-result-hours></div>
+                  <div class="findalab__hours__closed" data-findalab-result-day-lunch>
+                    <div data-findalab-result-hours-lunch></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br data-findalab-break>
+      <button type="button" data-findalab-result-button></button>
+    </li>
+  </ul>
+
+  <div class="findalab__map" data-findalab-content="map">
+    <div class="findalab__map__embed" id="findalab-map" data-findalab-map></div>
+  </div>
+  <div class="findalab__box__bottom">
+    <ul class="findalab__results is-active" data-findalab-result-list data-findalab-content="list">
+    </ul>
+    <div class="findalab__total">
+      <span data-findalab-total>No Results</span>
+    </div>
+  </div>
+</div>

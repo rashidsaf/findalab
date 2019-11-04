@@ -93,21 +93,23 @@ class MapContext implements Context, GathersContexts
     {
         $labTitles = $this->web_context->getSession()->getPage()->findAll('css', '[data-findalab-result-title]');
 
-        /** @var NodeElement $labTitle */
-        foreach ($labTitles as $labTitle) {
-            if ($labTitle->getText() == $title) {
-                if ($not && $labTitle->isVisible()) {
-                    throw new Exception("Lab \"$title\" should not be visible");
-                }
-                if (!$not && !$labTitle->isVisible()) {
-                    throw new Exception("Lab \"$title\" should be visible");
-                }
+        $this->waitFor(function () use ($title, $labTitles, $not) {
+            /** @var NodeElement $labTitle */
+            foreach ($labTitles as $labTitle) {
+                if ($labTitle->getText() == $title) {
+                    if ($not && $labTitle->isVisible()) {
+                        throw new Exception("Lab \"$title\" should not be visible");
+                    }
+                    if (!$not && !$labTitle->isVisible()) {
+                        throw new Exception("Lab \"$title\" should be visible");
+                    }
 
-                return true;
+                    return true;
+                }
             }
-        }
 
-        throw new Exception("Lab \"$title\" not exist in the search result.");
+            throw new Exception("Lab \"$title\" not exist in the search result.");
+        });
     }
 
     /**
