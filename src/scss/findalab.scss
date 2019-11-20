@@ -494,6 +494,12 @@ $findlab-radio-button-checked-border: 2px solid #ed9013 !default;
   }
 }
 
+.findalab_marker_infobox {
+  h6 {
+    max-width: fit-content;
+  }
+}
+
 @keyframes fadeInOpacity {
   0% {
     opacity: 0;

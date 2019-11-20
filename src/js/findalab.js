@@ -652,7 +652,7 @@ $.fn.extend({
 
 
     this._buildInfoWindowMarkerContent = function (lab) {
-      var infoWindowContent = '';
+      var infoWindowContent = '<div class="findalab_marker_infobox">';
       var network = lab.network ? lab.network.name ? lab.network.name : lab.network : '';
 
       if (this.checkRecommended && this._isRecommended(network)) {
@@ -665,7 +665,7 @@ $.fn.extend({
         infoWindowContent += '<button ' + 'data-findalab-result-button ' + 'class="' + self.settings.lab.buttonClass + '" ' + 'href="#" ' + 'data-id="' + lab.id + '" ' + 'data-address="' + lab.address + '" ' + 'data-address2="' + lab.address2 + '" ' + 'data-city="' + lab.city + '" ' + 'data-state="' + lab.state + '" ' + 'data-zip_code="' + lab.zip_code + '" ' + 'data-network="' + network + '" ' + 'data-title="' + lab.title + '" ' + 'data-country="' + lab.country + '" ' + 'data-fax_number="' + lab.fax_number + '" ' + 'data-network_id="' + lab.network_id + '" ' + 'data-does_drugs="' + lab.does_drugs + '"' + '>' + self.settings.lab.buttonText + '</button>';
       }
 
-      return infoWindowContent;
+      return infoWindowContent + '</div>';
     };
     /**
      * Construct Google Maps
