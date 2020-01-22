@@ -1,4 +1,6 @@
-<?php namespace features\contexts;
+<?php
+
+namespace features\contexts;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
@@ -37,9 +39,10 @@ class MapResultsContext implements Context, GathersContexts
      *
      * @Then I should see the following lab in the results:
      *
-     * @param  TableNode            $table Representation of the expected attributes of the lab.
-     * @throws ExpectationException If the expected lab is not visible in the search results.
-     * @throws Exception            If the spinner function throws an exception.
+     * @param TableNode $table representation of the expected attributes of the lab
+     *
+     * @throws ExpectationException if the expected lab is not visible in the search results
+     * @throws Exception            if the spinner function throws an exception
      */
     public function iShouldSeeTheFollowingLabInTheResults(TableNode $table)
     {
@@ -62,9 +65,10 @@ class MapResultsContext implements Context, GathersContexts
     /**
      * Asserts that the specific attributes.
      *
-     * @param  TableNode            $expectedData TableNode representation of the expected attributes.
-     * @throws ExpectationException If one of the expected attributes does not exist in the found select lab button.
-     * @throws ExpectationException If a Select Lab button does not exist.
+     * @param TableNode $expectedData tableNode representation of the expected attributes
+     *
+     * @throws ExpectationException if one of the expected attributes does not exist in the found select lab button
+     * @throws ExpectationException if a Select Lab button does not exist
      *
      * @Then the following lab data should be available for the lab selected:
      */
@@ -75,10 +79,7 @@ class MapResultsContext implements Context, GathersContexts
 
         array_map(function ($expectedAttribute) use ($button) {
             if (!$button->hasAttribute($expectedAttribute)) {
-                throw new ExpectationException(
-                    "The '$expectedAttribute' attribute was not found in the Lab Select Button Found.",
-                    $this->web_context->getSession()
-                );
+                throw new ExpectationException("The '$expectedAttribute' attribute was not found in the Lab Select Button Found.", $this->web_context->getSession());
             }
         }, $expectedDataArray);
     }
@@ -86,7 +87,8 @@ class MapResultsContext implements Context, GathersContexts
     /**
      * Retrieves the lab select button for the lab.
      *
-     * @throws ExpectationException If a select lab is not found on the page.
+     * @throws ExpectationException if a select lab is not found on the page
+     *
      * @return NodeElement
      */
     public function assertLabSelectButton()

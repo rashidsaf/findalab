@@ -1,4 +1,6 @@
-<?php namespace features\contexts;
+<?php
+
+namespace features\contexts;
 
 use ArrayAccess;
 use Exception;
@@ -16,10 +18,12 @@ abstract class ContextHelper
      * period. As soon as the lambda returns true, the method will return. This is useful when waiting on remote
      * drivers such as Selenium.
      *
-     * @param  callable  $lambda  The lambda to call. Must return true on success.
-     * @param  int       $timeout The number of seconds to spin for.
-     * @throws Exception If the timeout expires and the lambda has thrown a Exception.
-     * @return mixed     The result of the lambda if it succeeds.
+     * @param callable $lambda  The lambda to call. Must return true on success.
+     * @param int      $timeout the number of seconds to spin for
+     *
+     * @throws Exception if the timeout expires and the lambda has thrown a Exception
+     *
+     * @return mixed the result of the lambda if it succeeds
      */
     public static function waitFor(callable $lambda, $timeout = 30)
     {
@@ -45,12 +49,13 @@ abstract class ContextHelper
     /**
      * Asserts that an item is in an array using "dot" notation.
      *
-     * @param  array                    $array    The given array to look for the value.
-     * @param  string                   $key      The given key to find in the array.
-     * @param  string                   $expected The expected value for the array key.
-     * @throws InvalidArgumentException If the passed object is not an array.
-     * @throws InvalidArgumentException If the key is not found in the array.
-     * @throws InvalidArgumentException If the expected value is not the same in the array.
+     * @param array  $array    the given array to look for the value
+     * @param string $key      the given key to find in the array
+     * @param string $expected the expected value for the array key
+     *
+     * @throws InvalidArgumentException if the passed object is not an array
+     * @throws InvalidArgumentException if the key is not found in the array
+     * @throws InvalidArgumentException if the expected value is not the same in the array
      */
     public static function assertArrayDotValueMatches($array, $key, $expected)
     {
@@ -74,7 +79,7 @@ abstract class ContextHelper
     /**
      * Provides the directory that test artifacts should be stored to.
      *
-     * @return string the fully qualified directory, with no trailing directory separator.
+     * @return string the fully qualified directory, with no trailing directory separator
      */
     public static function getArtifactsDir()
     {
@@ -84,11 +89,12 @@ abstract class ContextHelper
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param ArrayAccess|array $array The array to be searched for with dot notation.
-     * @param string            $key   The key(s) to retrieve values from.
+     * @param ArrayAccess|array $array the array to be searched for with dot notation
+     * @param string            $key   the key(s) to retrieve values from
      *
      * @throws InvalidArgumentException When Key is null
-     * @throws OutOfBoundsException     When Key does not exist.
+     * @throws OutOfBoundsException     when Key does not exist
+     *
      * @return mixed
      */
     public static function array_get_value($array, $key)
@@ -103,7 +109,7 @@ abstract class ContextHelper
 
         foreach (explode('.', $key) as $segment) {
             if (!is_array($array) || !isset($array[$segment])) {
-                throw new OutOfBoundsException('Key '. $key .' does not Exists');
+                throw new OutOfBoundsException('Key ' . $key . ' does not Exists');
             }
 
             $array = $array[$segment];

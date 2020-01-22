@@ -1,4 +1,6 @@
-<?php namespace features\traits;
+<?php
+
+namespace features\traits;
 
 trait TracksWarnings
 {

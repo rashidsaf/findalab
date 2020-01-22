@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,8 +17,8 @@ class LabController extends Controller
 
     /** @var array Default coordination */
     protected $coord = [
-        'latitude' => '30.0487594604',
-        'longitude'=> '-95.2193298340',
+        'latitude'  => '30.0487594604',
+        'longitude' => '-95.2193298340',
     ];
 
     public function __construct()
@@ -27,7 +29,8 @@ class LabController extends Controller
     /**
      * Return the lab search result.
      *
-     * @param  Request  $request Http request.
+     * @param Request $request http request
+     *
      * @return Response
      */
     public function labsNearCoords(Request $request)
@@ -42,7 +45,8 @@ class LabController extends Controller
     /**
      * Return the geocoding result.
      *
-     * @param  Request  $request Http request.
+     * @param Request $request http request
+     *
      * @return Response
      */
     public function geocode(Request $request)
@@ -53,7 +57,8 @@ class LabController extends Controller
     /**
      * Return the phlebotomist search result.
      *
-     * @param  Request $request Http request.
+     * @param Request $request http request
+     *
      * @return mixed
      */
     public function phlebotomistsNearCoords(Request $request)

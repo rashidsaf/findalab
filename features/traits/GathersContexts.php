@@ -1,4 +1,6 @@
-<?php namespace features\traits;
+<?php
+
+namespace features\traits;
 
 use Behat\Behat\Context\Environment\InitializedContextEnvironment;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
@@ -19,18 +21,15 @@ trait GathersContexts
      *
      * This should be called at the beginning of any implementation of gathersContexts, and will return the environment.
      *
-     * @param  BeforeScenarioScope           $scope
-     * @throws RuntimeException              If the current environment is not initialized.
+     * @throws RuntimeException if the current environment is not initialized
+     *
      * @return InitializedContextEnvironment
      */
     public function getEnvironment(BeforeScenarioScope $scope)
     {
         $environment = $scope->getEnvironment();
         if (!($environment instanceof InitializedContextEnvironment)) {
-            throw new RuntimeException(
-                'Expected Environment to be ' . InitializedContextEnvironment::class .
-                ', but got ' . get_class($environment)
-            );
+            throw new RuntimeException('Expected Environment to be ' . InitializedContextEnvironment::class . ', but got ' . get_class($environment));
         }
 
         return $environment;

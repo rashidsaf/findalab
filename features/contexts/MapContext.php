@@ -1,4 +1,6 @@
-<?php namespace features\contexts;
+<?php
+
+namespace features\contexts;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
@@ -40,7 +42,8 @@ class MapContext implements Context, GathersContexts
      * @Then there should be a :type pin on the map
      * @Then there should be 1 :type pin on the map
      *
-     * @param  int                  $number The number of pins to check for. Defaults to 1.
+     * @param int $number The number of pins to check for. Defaults to 1.
+     *
      * @throws ExpectationException if there are more or less than $number of pins
      * @throws Exception
      */
@@ -51,9 +54,7 @@ class MapContext implements Context, GathersContexts
         );
 
         if ($num_of_pins != $number) {
-            throw new ExpectationException(
-                "Expected $number pins, but found " . $num_of_pins . ', instead.', $this->web_context->getSession()
-            );
+            throw new ExpectationException("Expected $number pins, but found " . $num_of_pins . ', instead.', $this->web_context->getSession());
         }
     }
 
@@ -62,7 +63,8 @@ class MapContext implements Context, GathersContexts
      *
      * @When /^I click on the "(?P<title>[^"]*)" marker/
      *
-     * @param  string    $title The title of the marker
+     * @param string $title The title of the marker
+     *
      * @throws Exception When marker not found
      */
     public function clickMarkerByTitle($title)
@@ -84,9 +86,11 @@ class MapContext implements Context, GathersContexts
      *
      * @Then /^"(?P<title>[^"]*)" should (?:|(?P<not>not ))be in the viewport of search result$/
      *
-     * @param  null|string $not   If the lab should appear.
-     * @param  string      $title The title of the lab.
-     * @throws Exception   When Lab is not found in the search result.
+     * @param string|null $not   if the lab should appear
+     * @param string      $title the title of the lab
+     *
+     * @throws Exception when Lab is not found in the search result
+     *
      * @return bool
      */
     public function assertLabResultVisible($title, $not = null)
@@ -117,8 +121,9 @@ class MapContext implements Context, GathersContexts
      *
      * @Then the findalab map should be zoomed to at least level :level
      *
-     * @param  int       $level The expected minimum zoom level of the map.
-     * @throws Exception if the map is not zoomed in to at least the given level.
+     * @param int $level the expected minimum zoom level of the map
+     *
+     * @throws Exception if the map is not zoomed in to at least the given level
      */
     public function assertMapZoom($level)
     {
@@ -136,8 +141,9 @@ class MapContext implements Context, GathersContexts
      *
      * @When I set the lab hours to :hours
      *
-     * @param  string               $label The lab hours option to select.
-     * @throws ExpectationException When the lab hours option is not found.
+     * @param string $label the lab hours option to select
+     *
+     * @throws ExpectationException when the lab hours option is not found
      */
     public function setLabHours($label)
     {

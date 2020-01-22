@@ -1,4 +1,6 @@
-<?php namespace features\interfaces;
+<?php
+
+namespace features\interfaces;
 
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use RuntimeException;
@@ -22,9 +24,8 @@ interface GathersContexts
      * leverage their features.
      *
      * @BeforeScenario
-     * @param  BeforeScenarioScope $scope
-     * @throws RuntimeException    If the current environment is not initialized.
-     * @return void
+     *
+     * @throws RuntimeException if the current environment is not initialized
      */
     public function gatherContexts(BeforeScenarioScope $scope);
 }

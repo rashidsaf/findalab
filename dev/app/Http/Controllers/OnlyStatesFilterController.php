@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +15,8 @@ class OnlyStatesFilterController extends LabController
     /**
      * Filter lab results by specific states.
      *
-     * @param  Request  $request Http request
+     * @param Request $request Http request
+     *
      * @return Response
      */
     public function labsNearCoords(Request $request)

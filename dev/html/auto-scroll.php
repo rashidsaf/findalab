@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/../bootstrap/app.php' ?>
+<?php require __DIR__ . '/../bootstrap/app.php'; ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -33,7 +33,7 @@
     <button id="findalab-reset" type="button" style="margin-top: 16px;">Reset findalab</button>
 
 
-    <script src="/js/samples/<?php echo basename(__FILE__, '.php') ?>.js"></script>
+    <script src="/js/samples/<?php echo basename(__FILE__, '.php'); ?>.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY'); ?>&amp;callback=initMap" async></script>
 
 

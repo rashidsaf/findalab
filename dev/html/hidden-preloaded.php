@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/../bootstrap/app.php' ?>
+<?php require __DIR__ . '/../bootstrap/app.php'; ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,7 +35,7 @@
 </div>
 
 
-<script src="/js/samples/<?php echo basename(__FILE__, '.php') ?>.js"></script>
+<script src="/js/samples/<?php echo basename(__FILE__, '.php'); ?>.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<?= env('GOOGLE_MAP_API_KEY'); ?>&amp;callback=initMap" async></script>
 <div id="APIKey" data-api-key="<?= env('GOOGLE_MAP_API_KEY'); ?>" ></div>
 

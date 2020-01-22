@@ -1,4 +1,6 @@
-<?php namespace features\contexts;
+<?php
+
+namespace features\contexts;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Hook\Scope\AfterScenarioScope;
@@ -32,8 +34,9 @@ class ArtifactContext implements Context
     /**
      * Provides the filename (excluding extension) that artifacts for this step should be saved under.
      *
-     * @param  AfterStepScope $scope the scope for the step.
-     * @return string         the file name (excluding extension).
+     * @param AfterStepScope $scope the scope for the step
+     *
+     * @return string the file name (excluding extension)
      */
     public function getStepPath(AfterStepScope $scope)
     {
@@ -45,8 +48,9 @@ class ArtifactContext implements Context
     /**
      * Provides the filename (excluding extension) that artifacts for this step should be saved under.
      *
-     * @param  AfterScenarioScope $scope the scope for the step.
-     * @return string             the file name (excluding extension).
+     * @param AfterScenarioScope $scope the scope for the step
+     *
+     * @return string the file name (excluding extension)
      */
     public function getScenarioPath(AfterScenarioScope $scope)
     {
@@ -56,12 +60,24 @@ class ArtifactContext implements Context
     }
 
     /**
+     * Gets the path to an artifact file.
+     *
+     * @param string $filename the name of the file in the artifact directory
+     *
+     * @return string the full file path, or the artifact directory if no filename was given
+     */
+    public function getPath($filename = '')
+    {
+        return realpath(__DIR__ . '/../../artifacts') . DIRECTORY_SEPARATOR . $filename;
+    }
+
+    /**
      * Removes anything which isn't a word, whitespace, number or any of the following characters -_~,;[](), replaces
      * white spaces with underscore and avoid the 255 character limit.
      *
      * @param string $fileName File name to clean
      *
-     * @return string the file name (excluding extension).
+     * @return string the file name (excluding extension)
      */
     private function cleanFilename($fileName)
     {
@@ -81,16 +97,5 @@ class ArtifactContext implements Context
         $fileName = substr($fileName, 0, 100);
 
         return $fileName;
-    }
-
-    /**
-     * Gets the path to an artifact file.
-     *
-     * @param  string $filename The name of the file in the artifact directory.
-     * @return string The full file path, or the artifact directory if no filename was given.
-     */
-    public function getPath($filename = '')
-    {
-        return realpath(__DIR__ . '/../../artifacts') . DIRECTORY_SEPARATOR . $filename;
     }
 }
