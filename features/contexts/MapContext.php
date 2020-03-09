@@ -50,7 +50,8 @@ class MapContext implements Context, GathersContexts
     public function assertPinsOnMap($number = 1)
     {
         $num_of_pins = $this->web_context->getSession()->evaluateScript(
-        /* @lang JavaScript */'return window.labfinder.settings.googleMaps.markers.length'
+        /* @lang JavaScript */
+            'return window.labfinder.settings.googleMaps.markers.length'
         );
 
         if ($num_of_pins != $number) {
@@ -128,7 +129,8 @@ class MapContext implements Context, GathersContexts
     public function assertMapZoom($level)
     {
         $zoom = $this->web_context->getSession()->evaluateScript(
-            /* @lang JavaScript */'return window.labfinder.settings.googleMaps.map.getZoom()'
+            /* @lang JavaScript */
+            'return window.labfinder.settings.googleMaps.map.getZoom()'
         );
 
         if ($zoom < $level) {

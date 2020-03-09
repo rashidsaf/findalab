@@ -143,7 +143,8 @@ class WebContext extends FlexibleContext implements GathersContexts
     {
         $start = time();
         do {
-            $requestsWaiting = $this->getSession()->evaluateScript(<<<'JS'
+            $requestsWaiting = $this->getSession()->evaluateScript(
+                <<<'JS'
 return $.active;
 JS
             );

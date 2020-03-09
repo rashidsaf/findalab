@@ -35,7 +35,8 @@ class LabController extends Controller
      */
     public function labsNearCoords(Request $request)
     {
-        return response()->json(array_merge([
+        return response()->json(
+            array_merge([
                 'labs'        => $this->labs,
                 'resultCount' => count($this->labs),
             ], $this->coord)
