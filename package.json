@@ -20,7 +20,7 @@
   "dependencies": {
     "cross-env": "^7.0.2",
     "findalab": "Medology/findalab",
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   },
   "devDependencies": {
     "laravel-mix": "^5.0.4",
