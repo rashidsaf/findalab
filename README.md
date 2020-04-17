@@ -11,11 +11,7 @@ Installing Development Pre-Requisites
 
 Install [Docker](https://www.docker.com).
 
-You will also want to ensure that `./bin`, `./node_modules/.bin` is in your `$PATH` and is the highest priority. You can do so by adding the following to your shell profile:
-
-```
-export PATH=./bin:./vendor/bin:$PATH:./node_modules/.bin
-```
+[Configure your system path](https://github.com/Medology/Scripts/wiki/Project-executables-and-your-system-path).
 
 The project uses private GitHub repositories. To allow the various tools (such as Composer, Yarn, etc) to use your
 SSH keys to access these private repositories, we need to configure git to always use SSH instead of HTTPS. To do
