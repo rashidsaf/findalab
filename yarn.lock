@@ -2918,13 +2918,6 @@ find-up@^4.0.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-findalab@Medology/findalab:
-  version "3.0.0"
-  resolved "https://codeload.github.com/Medology/findalab/tar.gz/464440f8296b3c2ea4fde0b76188e7179a0e1e1d"
-  dependencies:
-    cross-env "^7.0.2"
-    jquery "~3.4.1"
-
 findup-sync@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/findup-sync/-/findup-sync-3.0.0.tgz#17b108f9ee512dfb7a5c7f3c8b27ea9e1a9c08d1"

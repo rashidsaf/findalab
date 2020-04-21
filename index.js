@@ -1,5 +1,5 @@
-import FindALab from "./dist/findalab";
-import FindALabCSS from "./dist/findalab.css";
+import findALab from "./dist/findalab";
+import findALabCSS from "./dist/findalab.css";
 
-export default FindALab;
-export {FindALab, FindALabCSS};
+export default findALab;
+export {findALab, findALabCSS};

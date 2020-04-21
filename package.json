@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "cross-env": "^7.0.2",
-    "findalab": "Medology/findalab",
     "jquery": "~3.4.1"
   },
   "devDependencies": {
