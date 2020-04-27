@@ -1872,5 +1872,12 @@
   ],
   "latitude": "21.2966976000",
   "longitude": "-157.8480364000",
-  "resultCount": 25
+  "resultCount": 25,
+  "tzInfo": {
+    "dstOffset":3600,
+    "rawOffset":-18000,
+    "status":"OK",
+    "timeZoneId":"America\/New_York",
+    "timeZoneName":"Eastern Daylight Time"
+    }
 }

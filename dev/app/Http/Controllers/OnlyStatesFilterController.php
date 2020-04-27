@@ -19,7 +19,7 @@ class OnlyStatesFilterController extends LabController
      *
      * @return Response
      */
-    public function labsNearCoords(Request $request)
+    public function labsNearPostalCode(Request $request)
     {
         if ($states = $request->get('filterByStates')) {
             $labsResult = array_filter($this->labs, function ($lab) use ($states) {
@@ -29,9 +29,10 @@ class OnlyStatesFilterController extends LabController
             return response()->json(array_merge([
                 'labs'        => array_values($labsResult),
                 'resultCount' => count($this->labs),
+                'tzInfo'      => $this->tzInfo,
             ], $this->coord));
         }
 
-        return parent::labsNearCoords($request);
+        return parent::labsNearPostalCode($request);
     }
 }

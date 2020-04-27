@@ -21,6 +21,15 @@ class LabController extends Controller
         'longitude' => '-95.2193298340',
     ];
 
+    /** @var array Default time zone information */
+    protected $tzInfo = [
+        'dstOffset' => 3600,
+        'rawOffset' => -18000,
+        'status' => 'OK',
+        'timeZoneId' => "America\/New_York",
+        'timeZoneName' => 'Eastern Daylight Time',
+    ];
+
     public function __construct()
     {
         $this->labs = $this->loadLabs();
@@ -33,12 +42,13 @@ class LabController extends Controller
      *
      * @return Response
      */
-    public function labsNearCoords(Request $request)
+    public function labsNearPostalCode(Request $request)
     {
         return response()->json(
             array_merge([
                 'labs'        => $this->labs,
                 'resultCount' => count($this->labs),
+                'tzInfo'      => $this->tzInfo,
             ], $this->coord)
         );
     }

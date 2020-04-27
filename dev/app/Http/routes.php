@@ -15,11 +15,9 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-$app->get('/saturdayFilter/geocode', 'SaturdayFilterController@geocode');
-$app->get('/saturdayFilter/labs/nearCoords', 'SaturdayFilterController@labsNearCoords');
+$app->get('/saturdayFilter/labs/nearPostalCode', 'SaturdayFilterController@labsNearPostalCode');
 $app->get('/saturdayFilter/phlebotomists/nearCoords', 'SaturdayFilterController@phlebotomistsNearCoords');
 
 //Only states filter
-$app->get('/onlyStateFilter/geocode', 'OnlyStatesFilterController@geocode');
-$app->get('/onlyStateFilter/labs/nearCoords', 'OnlyStatesFilterController@labsNearCoords');
+$app->get('/onlyStateFilter/labs/nearPostalCode', 'OnlyStatesFilterController@labsNearPostalCode');
 $app->get('/onlyStateFilter/phlebotomists/nearCoords', 'OnlyStatesFilterController@phlebotomistsNearCoords');
