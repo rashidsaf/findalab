@@ -55,7 +55,6 @@ jobs:
     parallelism: 1
     machine:
       enabled: true
-      docker_layer_caching: true
     environment:
       - PATH: /opt/circleci/.pyenv/shims:./bin:./node_modules/.bin:./vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
