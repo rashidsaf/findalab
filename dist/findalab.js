@@ -609,7 +609,7 @@ $.fn.extend({
         return;
       }
 
-      self._searchGeoCode(searchValue, searchValueCountry);
+      self._searchNearPostalCode(searchValueCountry, searchValue);
     };
     /**
      * Builds a Google Maps Latitude/Longitude object.
@@ -837,64 +837,20 @@ $.fn.extend({
     this._onLabSelect = function (lab) {
       this.onLabSelect(lab);
     };
-    /**
-     * Search the collection centers.
-     *
-     * @param {object} geocode   The geocode to search near
-     * @param {string} [country] The country value
-     * @private
-     */
 
-
-    this._searchCollectionCenters = function (geocode, country) {
-      var labsPromise = self._searchNearCoords(self.settings.searchURL.labs, country, geocode);
-
-      $.when(labsPromise, geocode).done(self._onSearchSuccess).fail(self._onSearchError).always($.proxy(self._onSearchComplete, self));
-    };
-    /**
-     * Search the geocode location
-     *
-     * @param  {string} searchValue        The value searched
-     * @param  {string} searchValueCountry The country of the searched value
-     * @private
-     */
-
-
-    this._searchGeoCode = function (searchValue, searchValueCountry) {
-      $.ajax({
-        url: self.settings.baseURL + '/geocode',
-        dataType: 'json',
-        data: {
-          zip: searchValue,
-          countryCode: searchValueCountry
-        }
-      }).done(function (results) {
-        if (!results.length) {
-          self._setMessage(self.noResultsMessage);
-        }
-
-        self._searchCollectionCenters(results[0]);
-      }).fail(self._onSearchError);
-    };
     /**
      * Finds nearby collection centers from the country and geocode given.
      *
-     * @param  {string} collectionCenter    The type of collection center
      * @param  {string} country             The country of the search
-     * @param  {object} geocode             The geocode to search near
-     * @param  {float}  geocode.latitude    The latitude of the geocode
-     * @param  {float}  geocode.longitude   The longitude of the geocode
-     * @param  {string} geocode.countryCode The country code of the geocode
-     * @return {ajax}   The collection center results from the ajax request
+     * @param postalCode
      * @private
      */
-
-
-    this._searchNearCoords = function (collectionCenter, country, geocode) {
-      return $.ajax({
-        url: self.settings.baseURL + '/' + collectionCenter + '/nearCoords',
+    this._searchNearPostalCode = function (country, postalCode) {
+      $.ajax({
+        url: self.settings.baseURL + '/' + self.settings.searchURL.labs + '/nearPostalCode',
         dataType: 'json',
-        data: $.extend({
+        data: {
+          postalCode: postalCode,
           countryCode: country,
           filterNetwork: self.settings.searchFunction.excludeNetworks,
           filterByStates: self.settings.searchFunction.onlyStates,
@@ -904,8 +860,15 @@ $.fn.extend({
           labCount: self.settings.searchFunction.limit,
           network: self.settings.searchFunction.onlyNetwork,
           dayOnly: self.settings.dayOfWeekFilter.showOption ? self.settings.dayOfWeekFilter.dayOnly : ''
-        }, geocode)
-      });
+        }
+      }).done(function (results) {
+        if (!results.labs.length) {
+          self._setMessage(self.noResultsMessage);
+        } else {
+          self._onSearchSuccess(results.labs, results.tzInfo);
+        }
+      }).fail(self._onSearchError)
+        .always($.proxy(self._onSearchComplete, self));
     };
     /**
      * Sets the type value of the search input.
@@ -1144,7 +1107,7 @@ $.fn.extend({
 
 
     this._renderResultsTotal = function (resultsLabs) {
-      var totalResults = resultsLabs[0].labs.length;
+      var totalResults = resultsLabs.length;
       var pluralLabs = totalResults > 1 ? 's' : '';
       self.find('[data-findalab-total]').html(totalResults + ' Result' + pluralLabs);
     };
@@ -1169,34 +1132,7 @@ $.fn.extend({
 
       return parsedDistance;
     };
-    /**
-     * Gets the timezone of the Lab and buils the domHours
-     *
-     * @param {LabResult[]}          resultsLabs
-     * @param {Geocode}              geocode
-     * @private
-     */
 
-
-    this._labTimezone = function (resultsLabs, geocode) {
-      var date = new Date();
-      $.ajax({
-        url: self.settings.baseURL + '/timezone',
-        dataType: 'json',
-        data: {
-          latitude: geocode.latitude,
-          longitude: geocode.longitude
-        }
-      }).done(function (time) {
-        if (time !== null) {
-          date.setTime(date.getTime() + 1000 * (date.getTimezoneOffset() * 60 + (time.rawOffset + time.dstOffset)));
-        }
-
-        self._onGeocodeTimezoneFinish(resultsLabs, date);
-      }).fail(function () {
-        self._onGeocodeTimezoneFinish(resultsLabs, date);
-      });
-    };
     /**
      * Builds the structured hours DOM for a Lab entry.
      *
@@ -1438,10 +1374,15 @@ $.fn.extend({
      */
 
 
-    this._onSearchSuccess = function (resultsLabs, geocode) {
+    this._onSearchSuccess = function (resultsLabs, tzInfo) {
       self.bounds = new google.maps.LatLngBounds();
+      var date = new Date();
 
-      self._labTimezone(resultsLabs, geocode);
+      if (tzInfo !== null) {
+        date.setTime(date.getTime() + 1000 * (date.getTimezoneOffset() * 60 + (tzInfo.rawOffset + tzInfo.dstOffset)));
+      }
+
+      self._onGeocodeTimezoneFinish(resultsLabs, date);
     };
     /**
      * Private event handler for when a search is successful.
@@ -1453,7 +1394,7 @@ $.fn.extend({
 
 
     this._onGeocodeTimezoneFinish = function (resultsLabs, date) {
-      var noLabs = !self._renderLabs(resultsLabs[0].labs, date);
+      var noLabs = !self._renderLabs(resultsLabs, date);
 
       if (noLabs) {
         self._setMessage(self.noResultsMessage);
